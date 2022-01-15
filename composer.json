@@ -1,0 +1,20 @@
+{
+  "name": "ameri/indoffpro",
+  "description": "creacion de tienda online de productos promocionales",
+  "tyoe": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "michelle gastelum reyes",
+      "email": "ymisshie@gmail.com"
+    }
+  ],
+  "require": {
+
+  },
+  "autoload": {
+    "psr-4": {
+      "ameri\\":"src/"
+    }
+  }
+}

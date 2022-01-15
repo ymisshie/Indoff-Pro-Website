@@ -1,0 +1,74 @@
+/*
+require 'vendor/autoload.php';
+
+$producto = new ameri\Producto;
+
+if($_SERVER['REQUEST_METHOD'] ==='POST'){
+
+    if ($_POST['accion']==='Registrar'){
+
+        if(empty($_POST['nombre_producto']))
+            exit('Completar titulo');
+        
+        if(empty($_POST['descripcion_producto']))
+            exit('Completar titulo');
+            
+            if(empty($_POST['precio_producto']))
+            exit('Completar Precio');
+
+        if(empty($_POST['categoria_id_producto']))
+            exit('Seleccionar una Categoria');
+
+        if(!is_numeric($_POST['categoria_id_producto']))
+            exit('Seleccionar una Categoria válida');
+
+            if(empty($_POST['categoria_id_producto']))
+            exit('Seleccionar una Categoria');
+
+        if(!is_numeric($_POST['categoria_id_producto']))
+            exit('Seleccionar una Categoria válida');
+
+            
+            
+        
+        $_params = array(
+            'nombre'=>$_POST['nombre_producto'],
+            'descripcion'=>$_POST['descripcion_producto'],
+            'imagen'=> subirFoto(),
+            'precio'=>$_POST['precio_producto'],
+            'categoria_id'=>$_POST['categoria_id_producto'],
+            'fecha'=> date('Y-m-d')
+        );
+
+        $rpt = $producto->registrar($_params);
+
+        
+        if($rpt)
+            header('Location: dashboard.php');
+        else
+            print 'Error al registrar una pelicula';
+        
+
+
+    }
+
+}
+
+
+function subirFoto() {
+
+    $carpeta = __DIR__.'upload/';
+
+    $archivo = $carpeta.$_FILES['imagen_producto']['name'];
+
+    move_uploaded_file($_FILES['imagen_producto']['tmp_name'],$archivo);
+
+    return $_FILES['imagen_producto']['name'];
+
+
+}
+
+
+
+
+*/
