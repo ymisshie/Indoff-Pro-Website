@@ -3,8 +3,8 @@
 <section id="categorias" class="categorias-section">
     <div class="container">
 
-        <div class="row justify-content-center categorias1">
-            <h2 class="section-title py-5">Buscar por Categoria</h2>
+        <div class="row justify-content-center text-center categorias-fichas">
+            <h2 class="section-title py-lg-5">Buscar por Categoria</h2>
 
                             <?php
                             require 'vendor/autoload.php';
@@ -18,8 +18,8 @@
                               {
                                 $item = $info_categoria[$x];
                           ?>
-                          <div class="col-3 mx-4">
-                <a class="card categorias" href="categorias.php?id=<?php print $item['id']?>">
+                          <div class="col-lg-3 mx-5">
+                <a class="card categorias mb-lg-5" href="categorias.php?id=<?php print $item['id']?>">
                     
 
                     <?php 
@@ -34,8 +34,8 @@
                             <?php }?>
 
                     <div class="card-body">
-                        <h5 class="card-title"><?php print $item['nombre']?></h5>
-                        <p class="card-text"><?php print $item['descripcion']?></p>
+                        <h5 class="fw-700"><?php print $item['nombre']?></h5>
+                        <p class="fw-500 m-lg-0"><?php print $item['descripcion']?></p>
                     </div>
                 </a>
             </div>

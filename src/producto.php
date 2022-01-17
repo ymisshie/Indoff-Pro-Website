@@ -18,7 +18,7 @@ class Producto{
     }
 
     public function registrar($_params){
-        $sql="INSERT INTO `productos` (`nombre`, `proveedor`,`descrpcion`, `imagen`, `categoria_id`, `fecha`, `op1`, `op2`,`op3`,`op4`,`op5`,`op6`,`op7`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `precio1`, `precio2`, `precio3`, `precio4`, `precio5`, `precio6`, `precio7`, `size`, `peso`) VALUES (:nombre, :proveedor, :descripcion, :imagen, :categoria_id, :fecha, :op1, :op2, :op3, :op4, :op5, :op6, :op7, :q1, :q2, :q3, :q4, :q5, :q6, :q7, :precio1, :precio2, :precio3, :precio4, :precio5, :precio6, :precio7, :size, :peso)";
+        $sql="INSERT INTO `productos` (`nombre`, `proveedor`,`descrpcion`, `imagen`, `categoria_id`, `fecha`, `op1`, `op2`,`op3`,`op4`,`op5`,`op6`,`op7`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `precio1`, `precio2`, `precio3`, `precio4`, `precio5`, `precio6`, `precio7`, `size`, `peso`, `color`) VALUES (:nombre, :proveedor, :descripcion, :imagen, :categoria_id, :fecha, :op1, :op2, :op3, :op4, :op5, :op6, :op7, :q1, :q2, :q3, :q4, :q5, :q6, :q7, :precio1, :precio2, :precio3, :precio4, :precio5, :precio6, :precio7, :size, :peso, :color)";
 
         $resultado=$this->cn->prepare($sql);
 
@@ -50,6 +50,9 @@ class Producto{
             ":precio5" => $_params['precio5'], 
             ":precio6" => $_params['precio6'], 
             ":precio7" => $_params['precio7'],
+            ":size" => $_params['size'], 
+            ":peso" => $_params['peso'],
+            ":color" => $_params['color'],
 
         );
 
@@ -59,7 +62,7 @@ class Producto{
     }
 
     public function actualizar($_params){
-        $sql="UPDATE `productos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `categoria_id`=:categoria_id,`fecha`=:fecha, `op1`=:op1, `op2`=:op2, `op3`=:op3, `op4`=:op4, `op5`=:op5, `op6`=:op6, `op7`=:op7, `q1`=:q1, `q2`=:q2, `q3`=:q3, `q4`=:q4, `q5`=:q5, `q6`=:q6, `q7`=:q7, `precio1`=:precio1, `precio2`=:precio2, `precio3`=:precio3, `precio4`=:precio4, `precio5`=:precio5, `precio6`=:precio6,`precio7`=:precio7, `size`=:size, `peso`=:peso WHERE `id` =:id";
+        $sql="UPDATE `productos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `categoria_id`=:categoria_id,`fecha`=:fecha, `op1`=:op1, `op2`=:op2, `op3`=:op3, `op4`=:op4, `op5`=:op5, `op6`=:op6, `op7`=:op7, `q1`=:q1, `q2`=:q2, `q3`=:q3, `q4`=:q4, `q5`=:q5, `q6`=:q6, `q7`=:q7, `precio1`=:precio1, `precio2`=:precio2, `precio3`=:precio3, `precio4`=:precio4, `precio5`=:precio5, `precio6`=:precio6,`precio7`=:precio7, `size`=:size, `peso`=:peso, `color`=:color WHERE `id` =:id";
 
         $resultado=$this->cn->prepare($sql);
 
@@ -99,7 +102,8 @@ class Producto{
             ":precio6" => $_params['precio6'], 
             ":precio7" => $_params['precio7'], 
             ":size" => $_params['size'], 
-            ":peso" => $_params['peso']
+            ":peso" => $_params['peso'],
+            ":color" => $_params['color']
 
         );
 
@@ -125,7 +129,7 @@ class Producto{
     public function mostrar(){
 
 
-        $sql ="SELECT productos.id, productos.nombre, proveedor, productos.descripcion, productos.imagen, categorias.id, productos.fecha, op1, op2, op3, op4, op5, op6, op7, q1, q2, q3, q4, q5, q6, q7, precio1, precio2, precio3, precio4, precio5, precio6, precio7, size, peso FROM productos
+        $sql ="SELECT productos.id, productos.nombre, proveedor, productos.descripcion, productos.imagen, categorias.id, productos.fecha, op1, op2, op3, op4, op5, op6, op7, q1, q2, q3, q4, q5, q6, q7, precio1, precio2, precio3, precio4, precio5, precio6, precio7, size, peso, color FROM productos
         INNER JOIN categorias
         ON productos.categoria_id = categorias.id ORDER BY productos.id ASC";
     

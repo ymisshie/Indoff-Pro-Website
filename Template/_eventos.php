@@ -4,31 +4,31 @@
 
         <div class="row eventos-chart color-black-bg">
 
-            <div class="col-6 evento1 align-self-center">
+            <div class="col-6 evento1 align-self-center text-white">
                 <div class="col-4 mx-auto">
-                    <h5 class="etiqueta1">Evento destacado</h5>
+                    <h5 class="etiqueta-evento p-lg-2 text-white text-center">Evento destacado</h5>
                 </div>
 
                 <div class="col-6 mx-auto text-center">
-                    <h2 class="section-subtitle">Evento</h2>
+                    <h1 class="section-subtitle py-lg-3">Evento</h1>
                     <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus,
                         enim.
                     </p>
-                    <a class="btn btn-secondary" href="#" role="button">Ver productos</a>
+                    <a class="btn btn-primary" href="#" role="button">Ver productos</a>
                 </div>
             </div>
 
             <div class="col-6 evento1 align-self-center">
                 <div class="col-4 mx-auto">
-                    <h5 class="etiqueta2 color-white-bg">Próximo evento</h5>
+                    <h5 class="etiqueta-evento p-lg-2 text-center color-white-bg">Próximo evento</h5>
                 </div>
 
-                <div class="col-6 mx-auto text-center">
-                    <h2 class="section-subtitle">Evento</h2>
+                <div class="col-6 mx-auto text-center text-white">
+                    <h1 class="section-subtitle py-lg-3">Evento</h1>
                     <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus,
                         enim.
                     </p>
-                    <a class="btn btn-secondary-w" href="#" role="button">Ver productos</a>
+                    <a class="btn btn-link text-white" href="#" role="button">Ver productos</a>
                 </div>
             </div>
         </div>

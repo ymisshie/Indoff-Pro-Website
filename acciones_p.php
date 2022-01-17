@@ -8,19 +8,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if ($_POST['accion'] === 'Registrar') {
-              print '<pre>';
+
+        print '<pre>';
         print_r($_POST);
 
         print_r($_FILES);
 
         if (empty($_POST['nombre_producto']))
-            exit('Completar titulo');
+            exit('Completar nombre');
 
         if (empty($_POST['descripcion_producto']))
-            exit('Completar descripción del producto');
+            exit('Completar descripción');
 
         if (empty($_POST['proveedor_producto']))
-            exit('Seleccionar un proveedor');
+            exit('Completar proveedor');
 
         if (empty($_POST['categoria_id_producto']))
             exit('Seleccionar una categoria');
@@ -28,26 +29,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!is_numeric($_POST['categoria_id_producto']))
             exit('Seleccionar una categoria válida');
 
-        if (empty($_POST['op1_producto']))
-            exit('Seleccionar una opción 1');
-
         if (!is_numeric($_POST['q1_producto']))
-            exit('Seleccionar una cantidad 1');
+            exit('Completar una cantidad 1 válida');
 
         if (empty($_POST['precio_producto1']))
-            exit('Completar precio 1');
+            exit('Completar precio 1 válido');
 
         if (!is_numeric($_POST['precio_producto1']))
-            exit('Seleccionar un precio 1');
+            exit('Completar precio 1 válido');
 
+        if (!is_numeric($_POST['size_producto']))
+            exit('Completar tamaño válido');
 
-        if (empty($_POST['size_producto']))
-            exit('Seleccionar un proveedor');
+        if (empty($_POST['color_producto']))
+            exit('Completar colores');
 
-        if (empty($_POST['peso_producto']))
-            exit('Seleccionar un proveedor');
-
-      
 
 
         $_params = array(
@@ -79,7 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'precio6' => $_POST['precio_producto6'],
             'precio7' => $_POST['precio_producto7'],
             'size' => $_POST['size_producto'],
-            'peso' => $_POST['peso_producto']
+            'peso' => $_POST['peso_producto'],
+            'color' => $_POST['color_producto']
 
         );
 
@@ -98,45 +95,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if ($_POST['accion'] === 'Actualizar') {
+
         print '<pre>';
         print_r($_POST);
 
         print_r($_FILES);
 
         if (empty($_POST['nombre_producto']))
-        exit('Completar titulo');
+            exit('Completar nombre');
 
-    if (empty($_POST['descripcion_producto']))
-        exit('Completar descripción del producto');
+        if (empty($_POST['descripcion_producto']))
+            exit('Completar descripción');
 
-    if (empty($_POST['proveedor_producto']))
-        exit('Seleccionar un proveedor');
+        if (empty($_POST['proveedor_producto']))
+            exit('Completar proveedor');
 
-    if (empty($_POST['categoria_id_producto']))
-        exit('Seleccionar una categoria');
+        if (empty($_POST['categoria_id_producto']))
+            exit('Seleccionar una categoria');
 
-    if (!is_numeric($_POST['categoria_id_producto']))
-        exit('Seleccionar una categoria válida');
+        if (!is_numeric($_POST['categoria_id_producto']))
+            exit('Seleccionar una categoria válida');
 
-    if (empty($_POST['op1_producto']))
-        exit('Seleccionar una opción 1');
+        if (!is_numeric($_POST['q1_producto']))
+            exit('Completar una cantidad 1 válida');
 
-    if (!is_numeric($_POST['q1_producto']))
-        exit('Seleccionar una cantidad 1');
+        if (empty($_POST['precio_producto1']))
+            exit('Completar precio 1 válido');
 
-    if (empty($_POST['precio_producto1']))
-        exit('Completar precio 1');
+        if (!is_numeric($_POST['precio_producto1']))
+            exit('Completar precio 1 válido');
 
-    if (!is_numeric($_POST['precio_producto1']))
-        exit('Seleccionar un precio 1');
+        if (!is_numeric($_POST['size_producto']))
+            exit('Completar tamaño válido');
 
-
-    if (empty($_POST['size_producto']))
-        exit('Seleccionar un proveedor');
-
-    if (empty($_POST['peso_producto']))
-        exit('Seleccionar un proveedor');
-
+        if (empty($_POST['color_producto']))
+            exit('Completar colores');
 
 
         $_params = array(
@@ -169,6 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'precio7' => $_POST['precio_producto7'],
             'size' => $_POST['size_producto'],
             'peso' => $_POST['peso_producto'],
+            'color' => $_POST['color_producto'],
             'id' => $_POST['id'],
         );
 

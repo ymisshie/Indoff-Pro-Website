@@ -1,0 +1,447 @@
+@import url("https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+/*sass template*/
+/*global classes*/
+
+
+/*globales*/
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  color: #303030;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/*Logo*/
+.navbar-brand {
+  font-family: "Gentium Book Basic", serif;
+  font-size: 4em;
+  font-style: italic;
+}
+
+.navbar-brand:hover {
+  opacity: 85%;
+}
+
+/*Navbar*/
+
+.nav-link:hover {
+  opacity: 85%;
+  text-decoration-line: underline;
+  text-underline-offset: 6px;
+}
+
+.dropdown-item {
+  color: #303030;
+}
+
+.dropdown-item:hover {
+  background-color: #CB4955;
+  color: #ffffff;
+}
+
+
+.btn {
+  font-weight: 600;
+  border-radius: 0.5em;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  border: none;
+
+}
+
+/*botones*/
+
+.btn-primary {
+  background-color: #CB4955;
+}
+
+.btn-primary:hover {
+  background-color: #E49F49;
+}
+
+.btn-secondary {
+  background-color: #E49F49;
+}
+
+.btn-secondary-w {
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #775FC7;
+}
+
+
+.btn-link {
+  box-shadow: none;
+
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  text-decoration-line: underline;
+  text-underline-offset: 6px;
+}
+
+.btn-link:hover {
+  background-color: #E49F49;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.0);
+  text-decoration: none;
+
+
+}
+
+
+
+/*globales*/
+
+/*
+.search-form {
+  margin-bottom: 0.5em;
+}
+
+.search-page {
+  border-radius: 3em;
+}
+
+.search-bar {
+  border: 3px solid rgba(255, 255, 255, 0);
+  width: 16em;
+}
+
+.search-bar:focus {
+  border: solid 3px #E49F49;
+}
+
+.btn-search {
+  background-color: none;
+  color: #ffffff;
+  font-size: 1.5em;
+  border-radius: 10em;
+}
+
+.btn-search:hover, .btn-search:focus {
+  background-color: #ffffff;
+  color: #3AB0AB;
+  border-radius: 10em;
+}
+*/
+
+
+.form-control {
+  border: solid 3px #E7E7E7;
+  border-radius: 3em;
+}
+
+.form-control:hover {
+  border: solid 3px #E49F49;
+}
+
+/*card*/
+.card {
+  border: none;
+}
+
+
+.etiqueta-evento {
+  background-color: #E49F49;
+  border-radius: 3em;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  font-weight: 600;
+}
+
+
+
+.btn-color {
+  cursor: pointer;
+}
+
+/*
+.qty-dropdown {
+  font: "Poppins", sans-serif;
+
+}
+*/
+/*
+.cantidad {
+  background-color: #E7E7E7;
+  border-radius: 1em;
+}
+*/
+
+
+
+
+/*typography classes*/
+
+/*especificar font families*/
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-gentium {
+  font-family: "Gentium Book Basic", serif;
+}
+
+/*font sizes*/
+
+.fs-07 {
+  font-size: 0.7em !important;
+}
+
+.fs-09 {
+  font-size: 0.9em !important;
+}
+
+.fs-1 {
+  font-size: 1em !important;
+}
+
+.fs-1-2 {
+  font-size: 1.2em !important;
+}
+
+.fs-1-5 {
+  font-size: 1.5em !important;
+}
+
+.fs-2 {
+  font-size: 2em !important;
+}
+
+.fs-2-5 {
+  font-size: 2.5em !important;
+}
+
+.fs-3 {
+  font-size: 3em !important;
+}
+
+.fs-3-5 {
+  font-size: 3.5em !important;
+}
+
+.fs-4 {
+  font-size: 4em !important;
+}
+
+.fs-4-5 {
+  font-size: 4.5em !important;
+}
+
+
+/*font weight*/
+
+.fw-100 {
+  font-weight: 100;
+}
+
+.fw-200 {
+  font-weight: 200;
+}
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.fw-900 {
+  font-weight: 900;
+}
+
+
+.hero-title {
+  font-weight: 700;
+  font-size: 3em;
+  text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hero-description {
+  font-size: 1.2em;
+  font-weight: 500;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.section-title
+{
+  font-weight: 800;
+  font-size: 2em;
+}
+
+.section-subtitle
+{
+  font-weight: 700;
+}
+
+/*hero index*/
+
+.carousel-image {
+  height: 28em;
+  background-color: rgb(0, 0, 0);
+}
+
+
+/*categorias index*/
+.categorias .card-body {
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  background-color: #CB4955;
+  color: #ffffff;
+}
+
+.categorias {
+  border-radius: 1em;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  background-color: #E7E7E7;
+}
+
+.categorias .card-body:hover {
+  background-color: #E49F49;
+}
+
+.categorias-fichas a, .categorias {
+  text-decoration: none;
+}
+
+.eventos-chart {
+  height: 30em;
+}
+
+.beneficios-section .beneficios {
+  border-radius: 1em;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+/*clientes index*/
+
+/*suscribir index
+.suscribir-section
+{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(assets/Banner/banner2.jpg);
+}
+*/
+
+
+/*hero categorias*/
+.hero-categorias {
+  height: 35em;
+}
+
+/*busqueda categorias*/
+.btn-group, .btn-group-filtros, .btn-group-menu {
+  width: 100%;
+}
+
+
+.btn-filtro {
+  width: 100%;
+  border-bottom: #E7E7E7 solid 2px;
+}
+
+.btn-filtro2 {
+  width: 100%;
+  border-bottom: #E7E7E7 solid 2px;
+}
+
+.btn-filtro:hover, .btn-filtro:focus, .btn-filtro2:hover, .btn-filtro2:focus {
+  background-color: #E7E7E7;
+}
+
+.producto-ficha {
+  border-radius: 1em;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.producto-carrito {
+  border-bottom: #E7E7E7 solid 2px;
+  border-top: #E7E7E7 solid 2px;
+}
+
+
+
+
+
+/*color template*/
+.color-aqua {
+  color: #3AB0AB !important;
+}
+
+.color-aqua-bg {
+  background: #3AB0AB !important;
+}
+
+.color-red {
+  color: #CB4955 !important;
+}
+
+.color-red-bg {
+  background: #CB4955 !important;
+}
+
+.color-orange {
+  color: #E49F49 !important;
+}
+
+.color-orange-bg {
+  background: #E49F49 !important;
+}
+
+.color-purple {
+  color: #775FC7 !important;
+}
+
+.color-purple-bg {
+  background: #775FC7 !important;
+}
+
+.color-white {
+  color: #ffffff !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.color-white-bg {
+  background: #ffffff !important;
+}
+
+.color-grey {
+  color: #E7E7E7 !important;
+}
+
+.color-grey-bg {
+  background: #E7E7E7 !important;
+}
+
+.color-black {
+  color: #303030 !important;
+}
+
+.color-black-bg {
+  background: #303030 !important;
+}
+
+/*# sourceMappingURL=style.css.map */
