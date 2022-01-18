@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style2.css">
 
     <?php
     // require functions.php file
@@ -32,7 +32,7 @@
 
     <!--start #header-->
     <header id="header">
-        <div class="d-flex justify-content-between px-lg-5 py-lg-3 color-aqua-bg">
+        <div class="d-flex justify-content-between px-lg-5 py-lg-1 color-aqua-bg">
             <a class="navbar-brand text-white font-gentium" href="index.php">Indoff Pro</a>
             <div class="phone-info text-end ms-auto px-lg-5 fw-600 align-self-center text-white">
                 <p class="mb-lg-2">(664) 625 11 11</p>

@@ -1,57 +1,62 @@
 <?php
- require 'vendor/autoload.php';
+require 'vendor/autoload.php';
 
 
- if(isset($_GET['id']) && is_numeric($_GET['id'])){
-    
- $id=$_GET['id'];
- $categoria = new ameri\Categoria;
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
- $resultado=$categoria->mostrarPorId($id);
+    $id = $_GET['id'];
+    $categoria = new ameri\Categoria;
 
- if(!$resultado)
- header('Location: dashboard.php');
+    $resultado = $categoria->mostrarPorId($id);
 
- /*
+    if (!$resultado)
+        header('Location: dashboard.php');
+
+    /*
  print '<pre>';
  print_r($resultado);
  die;
  */
- }
- else
- {
-    
-        header('Location: dashboard.php');
- }
+} else {
+
+    header('Location: dashboard.php');
+}
 ?>
 
 
 <section>
     <div class="container" id="form-actualizar-c">
         <div class="row justify-content-center">
-        <h2 class="section-title m-0 mt-5 mb-3">Actualizar categoria</h2>
-            <div class="col-8 color-grey-bg p-3 my-4 text-center">
-            <form method="POST" action="acciones_c.php" enctype="multipart/form-data" >
+            <h2 class="section-title pt-lg-5 text-center">Actualizar: <?php print $resultado['nombre'] ?></h2>
 
-            <input type="hidden" name="id" value="<?php print $resultado['id']?>">
+            <!--
+            <div class="col-lg-4 py-lg-3 text-center">
+                <a class="btn btn-primary " href="dashboard.php" role="button">Regresar <i class="fas fa-undo ms-lg-2 me-lg-1"></i></a>
+            </div>
+-->
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 formulario p-lg-3 my-lg-4 text-center px-lg-5">
+                <form method="POST" action="acciones_c.php" enctype="multipart/form-data">
 
-                    <div class="form-group text-start">
-                        <label class="col-form-label">Nombre de la categoria</label>
-                        <input value="<?php print $resultado['nombre']?>" class="form-control" name="nombre_categoria" type="text" placeholder="" required>
+                    <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
+
+                    <div class="form-group text-start py-lg-2">
+                        <h6 class="col-form-label fw-600">Nombre de la categoria</h6>
+                        <input value="<?php print $resultado['nombre'] ?>" class="form-control" name="nombre_categoria" type="text" required>
                     </div>
-                    <div class="form-group text-start">
-                        <label class="col-form-label">Descripción</label>
-                        <textarea class="form-control" name="descripcion_categoria" id="" type="text" placeholder="" required><?php print $resultado['descripcion']?> </textarea>
-
+                    <div class="form-group text-start py-lg-2">
+                        <label class="col-form-label fw-600">Descripción</label>
+                        <textarea class="form-control" name="descripcion_categoria" id="" type="text" placeholder="" required><?php print $resultado['descripcion'] ?> </textarea>
                     </div>
-                    <div class="col-12 form-group text-start">
-                        <label class="col-form-label">Imagen</label>
+                    <div class="form-group text-start py-lg-2">
+                        <h6 class="col-form-label fw-600">Imagen</h6>
                         <input name="imagen" type="file">
-                        <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen']?>">
+                        <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen'] ?>">
                     </div>
-                    
-                    <input type="submit" name="accion" class="btn btn-success my-4" value="Actualizar">
-                    <a href="dashboard.php" type="submit" class="btn btn-danger my-4" role="button">Cancelar</a>
+
+                    <input type="submit" name="accion" class="btn btn-secondary my-lg-4" value="Actualizar">
+                    <a href="dashboard.php" type="submit" class="btn btn-primary my-lg-4 mx-lg-4" role="button">Cancelar</a>
                 </form>
             </div>
         </div>

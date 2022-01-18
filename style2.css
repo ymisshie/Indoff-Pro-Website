@@ -114,13 +114,18 @@ body {
 
 .form-control {
   border: solid 3px var(--grey);
-  border-radius: 3em;
+  border-radius: 1em;
 }
 
 .form-control:hover {
   border: solid 3px var(--orange);
 }
 
+.formulario
+{
+  background-color: var(--grey);
+  border-radius: 1em;
+}
 /*card*/
 .card {
   border: none;

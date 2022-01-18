@@ -69,7 +69,7 @@
                                 <td scope="col" class="text-start fs-07"><?php print $item['descripcion'] ?></td>
                                 <td scope="col"><?php print $item['fecha'] ?></td>
                                 <td scope="col" class="text-center">
-                                    <a href="form-actualizar-c.php?id=<?php print $item['id'] ?>" class="btn-secondary btn btn-sm mx-lg-3 my-lg-4" role="button">Editar<i class="far fa-edit ms-lg-2 me-lg-1"></i></a>
+                                    <a href="form-actualizar-c.php?id=<?php print $item['id'] ?>" class="btn-secondary btn btn-sm mx-lg-3 my-lg-4 color-purple-bg " role="button">Editar<i class="far fa-edit ms-lg-2 me-lg-1"></i></a>
                                     <a href="acciones_c.php?id=<?php print $item['id'] ?>" class="btn-primary btn btn-sm my-lg-4" role="button">Eliminar<i class="far fa-trash-alt ms-lg-2 me-lg-1"></i></a>
                                 </td>
                             </tr>
