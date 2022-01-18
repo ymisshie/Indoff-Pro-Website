@@ -3,82 +3,88 @@
     <div class="container">
 
         <div class="row justify-content-center">
-            
-            <h2 class="section-title m-0 mt-5 mb-3">Categorias actuales</h2>
-            <div class="text-center mb-3">
-                <a class="btn btn-primary" href="form-registrar-c.php" role="button">Nuevo</a>
+            <div class="col-12">
+                <h2 class="section-title pt-lg-5 text-center">Categorias actuales</h2>
             </div>
+            <div class="col-lg-4 py-lg-3 text-center">
+                <a class="btn btn-primary " href="form-registrar-c.php" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>
+            </div>
+        </div>
 
-            <table class="table">
+        <div class="row justify-content-center">
+            <table class="table  table-hover my-lg-4">
                 <thead>
-                    <tr class="text-center">
-                        <th scope="col-2">ID</th>
-                        <th scope="col-3">Nombre</th>
-                        <th scope="col-3">Descripción</th>
-                        <th scope="col-3">Imagen</th>
-                        <th scope="col-3">Fecha</th>
+                    <tr class="text-center color-red-bg color-white">
+                        <th scope="col">ID</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-                
+
                 <tbody>
 
-                <?php
-                
-                require 'vendor/autoload.php';
-                $categoria = new ameri\Categoria;
+                    <?php
 
-                $info_categoria=$categoria->mostrar();
+                    require 'vendor/autoload.php';
+                    $categoria = new ameri\Categoria;
 
-                /*
+                    $info_categoria = $categoria->mostrar();
+
+                    /*
                 print '<pre>';
                 print_r($info_producto);
                 
                 die;
                 */
 
-                $cantidad=count($info_categoria);
+                    $cantidad = count($info_categoria);
 
-                if($cantidad>0){
-                    $c=0;
-                    for($x =0; $x<$cantidad; $x++){
-                        $c++;
-                        $item= $info_categoria[$x];
-                ?>
+                    if ($cantidad > 0) {
+                        $c = 0;
+                        for ($x = 0; $x < $cantidad; $x++) {
+                            $c++;
+                            $item = $info_categoria[$x];
+                    ?>
 
-        <tr class="text-center">
+                            <tr class="text-center align-items-center">
+                                <td scope="col" class="fw-600"><?php print $c  ?></td>
+                                <td scope="col" class="text-center">
+                                    <?php
+                                    $imagen = 'upload/' . $item['imagen'];
+                                    if (file_exists($imagen)) {
+                                    ?>
+                                        <img src="<?php print $imagen; ?>" height="100px">
 
-                        <td scope="col"><?php print $c ?></td>
-                        <td scope="col"><?php print $item['nombre'] ?></td>
-                        <td scope="col"><?php print $item['descripcion'] ?></td>
-                        <td scope="col" class="text-center">
-                            <?php 
-                            $imagen='upload/' .$item['imagen'];
-                            if(file_exists($imagen)){
-                            ?>
-                            <img src="<?php print $imagen;?>" width="100">
-
-                            <?php } else {?>
-                                Sin imagen
-                            <?php }?>
-                        <td scope="col"><?php print $item['fecha'] ?></td>
-                        <td class="col-3 text-center">
-                            <a href="acciones_c.php?id=<?php print $item['id']?>" class="btn-danger btn-sm" role="button">Eliminar</a>
-                            <a href="form-actualizar-c.php?id=<?php print $item['id']?>" class="btn-success btn-sm" role="button">Editar</a>
-                            <a href="productos-dashboard.php?id=<?php print $item['id']?>" class="btn-warning btn-sm text_white" role="button">Ver productos</a>
-                        </td>
+                                    <?php } else { ?>
+                                        Sin imagen
+                                    <?php } ?>
+                                </td>
+                                <td scope="col" class="fw-600"><?php print $item['nombre'] ?>
+                                    <br>
+                                    <a href="productos-dashboard.php?id=<?php print $item['id'] ?>" class="btn btn-sm btn-secondary my-lg-2" role="button">Ver productos</a>
+                                </td>
+                                <td scope="col" class="text-start fs-07"><?php print $item['descripcion'] ?></td>
+                                <td scope="col"><?php print $item['fecha'] ?></td>
+                                <td scope="col" class="text-center">
+                                    <a href="form-actualizar-c.php?id=<?php print $item['id'] ?>" class="btn-secondary btn btn-sm mx-lg-3 my-lg-4" role="button">Editar<i class="far fa-edit ms-lg-2 me-lg-1"></i></a>
+                                    <a href="acciones_c.php?id=<?php print $item['id'] ?>" class="btn-primary btn btn-sm my-lg-4" role="button">Eliminar<i class="far fa-trash-alt ms-lg-2 me-lg-1"></i></a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <tr>
+                            <td colspan="6">
+                                Sin registro
+                            </td>
                         </tr>
-                                  <?php
+                    <?php
                     }
-                }else{
-                ?>
- <tr>
-                        <td colspan="5">
-                            NO HAY REGISTROS
-                        </td>
-                </tr>
-                <?php
-                }
-                ?>
+                    ?>
 
                 </tbody>
             </table>

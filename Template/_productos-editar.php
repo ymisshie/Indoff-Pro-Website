@@ -13,7 +13,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $info_producto = $producto->mostrar();
     $info_categoria = $categoria->mostrarPorId($id);
 
-    
+
     /*
  print '<pre>';
  print_r ($info_categoria);
@@ -66,31 +66,32 @@ foreach ($info_producto as $productos) {
 <section id="categorias" class="categorias-section">
     <div class="container">
 
-        <div class="row justify-content-center categorias1">
-
-            <h2 class="section-title m-0 mt-5 mb-3"><?php print $info_categoria['nombre']?> actuales</h2>
-            <div class="text-center mb-3">
-                <a class="btn btn-primary" href="form-registrar-p.php" role="button">Agregar nuevo</a>
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="section-title pt-lg-5 text-center">Categorias actuales</h2>
             </div>
+            <div class="col-lg-4 py-lg-3 text-center">
+                <a class="btn btn-primary " href="form-registrar-c.php" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>
+            </div>
+        </div>
 
-            <table class="table">
+        <div class="row justify-content-center">
+
+            <table class="table table-hover my-lg-4">
                 <thead>
-                    <tr class="text-center">
-                        <th scope="col-2">ID</th>
-                        <th scope="col-3">Nombre</th>
-                        <th scope="col-3">Descripción</th>
-                        <th scope="col-3">Proveedor</th>
-                        <th scope="col-3">Imagen</th>
-                        <th scope="col-3">Fecha</th>
-                        <th scope="col-3">1</th>
-                        <th scope="col-3">2</th>
-                        <th scope="col-3">3</th>
-                        <th scope="col-3">4</th>
-                        <th scope="col-3">5</th>
-                        <th scope="col-3">6</th>
-                        <th scope="col-3">7</th>
+                    <tr class="text-center color-red-bg color-white">
+                        <th scope="col">ID</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col" class="col-2">Nombre</th>
+                        <th scope="col" class="col-2">Descripción</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Opciones</th>
+                        <th scope="col">Colores</th>
+                        <th scope="col">Peso y tamaño</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
+
                 <tbody>
 
                     <?php
@@ -102,126 +103,39 @@ foreach ($info_producto as $productos) {
 
                         $c = 1;
                         foreach ($info_producto as $item_producto) {
-                            if ($id == $item_producto['id']) 
-                            {
+                            if ($id == $item_producto['id']) {
                     ?>
 
                                 <tr class="text-center">
-                                    <td scope="col"><?php print $c ?></td>
-                                    <td scope="col"><?php print $item_producto['nombre'] ?></td>
-                                    <td scope="col"><?php print $item_producto['descripcion'] ?></td>
-                                    <td scope="col"><?php print $item_producto['proveedor'] ?></td>
+                                    <td scope="col" class="fw-600"><?php print $c ?></td>
                                     <td scope="col" class="text-center">
                                         <?php
                                         $imagen = 'upload/' . $item_producto['imagen'];
                                         if (file_exists($imagen)) {
                                         ?>
-                                            <img src="<?php print $imagen; ?>" width="100">
+                                            <img src="<?php print $imagen; ?>" height="100px">
 
                                         <?php
                                         } else { ?>
                                             Sin imagen
                                         <?php } ?>
 
-
-                                        <!--  <td scope="col"><?php //print $item['categoria_id']
-                                                                ?></td> -->
+                                    </td>
+                                    <td scope="col" class="fw-600"><?php print $item_producto['nombre'] ?>
+                                        <br>
+                                        <p class="fw-400 py-lg-1"> <?php print $item_producto['proveedor'] ?></p>
+                                        <a href="form-actualizar-p.php?id=<?php print $item_producto[0] ?>" class="btn-secondary btn btn-sm mx-lg-3 my-lg-4" role="button">Editar<i class="far fa-edit ms-lg-2 me-lg-1"></i></a>
+                                    </td>
+                                    <td scope="col" class="fs-07 text-start"><?php print $item_producto['descripcion'] ?></td>
                                     <td scope="col"><?php print $item_producto['fecha'] ?></td>
 
-                                    <?php
-                                    if ($item_producto['op1'] != '') 
-                                    {
-                                    ?>
-                                        <td scope="col"><?php print $item_producto['op1'] ?> <br> <?php print $item_producto['q1'] ?>, <?php print $item_producto['precio1'] ?></td>
-                                    <?php
-                                    } 
-                                    else 
-                                    {
-                                    ?>
-                                        <td scope="col">No hay registro</td>
-                                    <?php } ?>
+                                    <td scope="col"><?php print $item_producto['fecha'] ?></td>
+                                    <td scope="col"><?php print $item_producto['fecha'] ?></td>
 
-                                    <?php
-                                    if ($item_producto['op2'] != '') 
-                                    {
-                                    ?>
-                                        <td scope="col"><?php print $item_producto['op2'] ?> <br> <?php print $item_producto['q2'] ?>, <?php print $item_producto['precio2'] ?></td>
-                                    <?php
-                                    } 
-                                    else 
-                                    {
-                                    ?>
-                                        <td scope="col">No hay registro</td>
-                                    <?php } ?>
+                                    <td scope="col"><?php print $item_producto['fecha'] ?></td>
 
-                                    <?php
-                                    if ($item_producto['op3'] != '') 
-                                    {
-                                    ?>
-                                        <td scope="col"><?php print $item_producto['op3'] ?> <br> <?php print $item_producto['q3'] ?>, <?php print $item_producto['precio3'] ?></td>
-                                    <?php
-                                    } 
-                                    else 
-                                    {
-                                    ?>
-                                        <td scope="col">No hay registro</td>
-                                    <?php } ?>
-
-                                    <?php
-                                    if ($item_producto['op4'] != '') 
-                                    {
-                                    ?>
-                                        <td scope="col"><?php print $item_producto['op4'] ?> <br> <?php print $item_producto['q4'] ?>, <?php print $item_producto['precio4'] ?></td>
-                                    <?php
-                                    } 
-                                    else 
-                                    {
-                                    ?>
-                                        <td scope="col">No hay registro</td>
-                                    <?php } ?>
-                            
-                                    <?php
-                                    if ($item_producto['op5'] != '') 
-                                    {
-                                    ?>
-                                        <td scope="col"><?php print $item_producto['op5'] ?> <br> <?php print $item_producto['q5'] ?>, <?php print $item_producto['precio5'] ?></td>
-                                    <?php
-                                    } 
-                                    else 
-                                    {
-                                    ?>
-                                        <td scope="col">No hay registro</td>
-                                    <?php } ?>
-
-                                    <?php
-                                    if ($item_producto['op6'] != '') 
-                                    {
-                                    ?>
-                                        <td scope="col"><?php print $item_producto['op6'] ?> <br> <?php print $item_producto['q6'] ?>, <?php print $item_producto['precio6'] ?></td>
-                                    <?php
-                                    } 
-                                    else 
-                                    {
-                                    ?>
-                                        <td scope="col">No hay registro</td>
-                                    <?php } ?>
-
-                                    <?php
-                                    if ($item_producto['op7'] != '') 
-                                    {
-                                    ?>
-                                        <td scope="col"><?php print $item_producto['op7'] ?> <br> <?php print $item_producto['q7'] ?>, <?php print $item_producto['precio7'] ?></td>
-                                    <?php
-                                    } 
-                                    else 
-                                    {
-                                    ?>
-                                        <td scope="col">No hay registro</td>
-                                    <?php } ?>
-                               
                                     <td class="col text-center">
-                                        <a href="acciones_p.php?id=<?php print $item_producto[0] ?>" class="btn-danger btn-sm" role="button">Eliminar</a>
-                                        <a href="form-actualizar-p.php?id=<?php print $item_producto[0] ?>" class="btn-success btn-sm" role="button">Editar</a>
+                                        <a href="acciones_p.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-lg-5" role="button">Eliminar<i class="far fa-trash-alt ms-lg-2 me-lg-1"></i></a>
                                     </td>
                                 </tr>
                         <?php
@@ -229,12 +143,11 @@ foreach ($info_producto as $productos) {
                                 $c++;
                             }
                         }
-                    } 
-                else {
+                    } else {
                         ?>
                         <tr>
-                            <td colspan="13">
-                                NO HAY REGISTROS
+                            <td colspan="9">
+                                Sin registros
                             </td>
                         </tr>
                     <?php

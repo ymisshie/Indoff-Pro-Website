@@ -26,6 +26,10 @@ body {
   text-transform: uppercase;
 }
 
+.ns
+{
+  box-shadow: none !important;
+}
 /*Navbar*/
 
 /*Logo*/
@@ -74,10 +78,6 @@ body {
 
 .btn-secondary {
   background-color: var(--orange);
-}
-
-.btn-secondary-w {
-  border: none;
 }
 
 .btn-secondary:hover {
