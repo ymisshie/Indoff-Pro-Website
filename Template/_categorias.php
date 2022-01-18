@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="row justify-content-center text-center categorias-fichas">
-            <h2 class="section-title py-lg-5">Buscar por Categoria</h2>
+            <h2 class="section-title py-lg-5">Encontrar por Categoria</h2>
 
                             <?php
                             require 'vendor/autoload.php';

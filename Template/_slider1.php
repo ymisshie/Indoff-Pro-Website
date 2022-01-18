@@ -1,5 +1,5 @@
 <!--slider-->
-<section id="slider1" class="color-grey-bg">
+<section id="slider1" class="color-black-bg">
 
     <div class="container-fluid p-0">
 
@@ -16,10 +16,11 @@
                     <img src="..." class="d-block w-100 carousel-image" alt="Productos promocionales Slide1">
                     <div class="carousel-caption mb-lg-5">
                         <div class="row justify-content-center">
-                            <div class="col-6">
+                            <div class="col-lg-6">
                                 <h1 class="hero-title">Promocione su marca con Indoff</h1>
                                 <h6 class="hero-description py-lg-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
                                     rem delectus eius voluptates harum neque culpa numquam, doloremque debitis ullam.</h6>
+                                    <br>
                                 <a class="btn btn-primary mx-lg-3" href="login.php" role="button">Registrarse</a>
                                 <a class="btn btn-link text-white" href="#categorias" role="button">Ver productos ></a>
                             </div>
