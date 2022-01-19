@@ -1,8 +1,16 @@
 <section>
     <div class="container" id="form-registro-p">
         <div class="row justify-content-center">
-            <h2 class="section-title m-0 mt-5 mb-3">Añadir producto</h2>
+            <h2 class="section-title pt-lg-5 text-center">Añadir categoria</h2>
 
+            <!--
+            <div class="col-lg-4 py-lg-3 text-center">
+                <a class="btn btn-primary " href="dashboard.php" role="button">Regresar <i class="fas fa-undo ms-lg-2 me-lg-1"></i></a>
+            </div>
+-->
+        </div>
+
+        <div class="row justify-content-center">
             <div class="col-9 color-grey-bg p-3 mt-4 mb-4 text-center">
                 <form method="POST" action="acciones_p.php" enctype="multipart/form-data">
                     <div class="form-group text-start">

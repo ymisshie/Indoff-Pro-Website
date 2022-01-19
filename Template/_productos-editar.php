@@ -71,7 +71,7 @@ foreach ($info_producto as $productos) {
                 <h2 class="section-title pt-lg-5 text-center">Categorias actuales</h2>
             </div>
             <div class="col-lg-4 py-lg-3 text-center">
-                <a class="btn btn-primary " href="form-registrar-c.php" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>
+                <a class="btn btn-primary " href="form-registrar-p.php" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>
             </div>
         </div>
 
