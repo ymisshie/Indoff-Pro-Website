@@ -1,8 +1,8 @@
 
 
 <?php
-$title = "Inicio Indoff Pro";
-$pagina ="inicio";
+$title = "Registrar producto";
+$pagina ="Registrar producto";
 ?>
 
 <?php
@@ -14,8 +14,6 @@ include('header-usuario.php')
 //include header.php file
 include('Template/_form-registrar-p.php')
 ?>
-
-
 
 <?php
     //include footer.php file

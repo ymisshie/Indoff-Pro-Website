@@ -19,7 +19,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
     <?php
     // require functions.php file
@@ -32,13 +34,13 @@
 
     <!--start #header-->
     <header id="header">
-        <div class="d-flex justify-content-between px-lg-5 py-lg-1 color-aqua-bg">
-            <a class="navbar-brand text-white font-gentium" href="index.php">Indoff Pro</a>
+        <div class="d-flex justify-content-between px-lg-5 pt-lg-1 color-aqua-bg">
+            <a class="navbar-brand text-white font-gentium p-0 m-0" href="index.php">Indoff Pro</a>
             <div class="phone-info text-end ms-auto px-lg-5 fw-600 align-self-center text-white">
                 <p class="mb-lg-2">(664) 625 11 11</p>
-                <p class="mb-lg-2">(664) 123 39 90</p>
+                <p class="mb-lg-1">(664) 123 39 90</p>
             </div>
-            <div class="align-self-center menu text-center d-flex text-white">
+            <div class="align-items-center menu text-center d-flex text-white">
                 <div class="col btn-cuenta">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
                     <div><a href="login.php" class="nav-link text-white px-lg-3 fw-500">Login</a></div>
@@ -51,7 +53,7 @@
         </div>
 
         <!--pimary navigation-->
-        <nav class="navbar navbar-expand-lg color-aqua-bg fw-600 px-lg-1">
+        <nav class="navbar py-lg-1 navbar-expand-lg color-aqua-bg fw-600 px-lg-1">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -59,14 +61,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item px-lg-4 uppercase <?php if ($pagina == "inicio") {
-                                                echo "active";
-                                            } ?>">
+                                                                    echo "active";
+                                                                } ?>">
                             <a class="nav-link text-white active" aria-current="page" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item px-lg-4 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
-                                                                    echo "active";
-                                                                } ?>" href="categorias.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                        echo "active";
+                                                                                    } ?>" href="categorias.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorias
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

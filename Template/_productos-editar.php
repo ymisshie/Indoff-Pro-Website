@@ -68,7 +68,7 @@ foreach ($info_producto as $productos) {
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="section-title pt-lg-5 text-center">Categorias actuales</h2>
+                <h2 class="section-title pt-lg-5 text-center">Productos actuales</h2>
             </div>
             <div class="col-lg-4 py-lg-3 text-center">
                 <a class="btn btn-primary " href="form-registrar-p.php" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>

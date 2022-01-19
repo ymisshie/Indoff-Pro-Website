@@ -11,15 +11,11 @@
     <!--BOOTSTRAP CDN-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <!-- Owl-carousel CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha256-UhQQ4fxEeABh4JrcmAJ1+16id/1dnlOEVCFOxDef9Lw=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha256-kksNxjDRxd/5+jGurZUJd1sdR2v+ClrCl3svESBaJqw=" crossorigin="anonymous" />
-
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
 
     <?php
     // require functions.php file
@@ -32,45 +28,19 @@
 
     <!--start #header-->
     <header id="header">
-        <div class="d-flex justify-content-between px-lg-5 py-lg-1 color-aqua-bg">
-            <a class="navbar-brand text-white font-gentium" href="index.php">Indoff Pro</a>
-            <div class="phone-info text-end ms-auto px-lg-5 fw-600 align-self-center text-white">
-                <p class="mb-lg-2">(664) 625 11 11</p>
-                <p class="mb-lg-2">(664) 123 39 90</p>
-            </div>
-            <div class="align-self-center menu text-center d-flex text-white">
-                <div class="col btn-cuenta">
-                    <div><i class="fas fa-user-alt fs-1-5"></i></div>
-                    <div><a href="login.php" class="nav-link text-white px-lg-3 fw-500">Login</a></div>
-                </div>
-                <div class="col btn-carrito">
-                    <div><i class="fas fa-shopping-cart fs-1-5"></i></div>
-                    <div><a href="carrito.php" class="nav-link text-white px-lg-3 fw-500">Carrito</a></div>
-                </div>
-                <div class="col btn-menu">
-                    <div><i class="fas fa-bars fs-1-5" ></i></div>
-                    <div>
-                        <a class="nav-link text-white px-lg-3 fw-500" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            Menu
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
 
         <!--pimary navigation-->
-        <nav class="navbar navbar-expand-lg color-aqua-bg fw-600 px-lg-1">
+        <nav class="navbar py-lg-1 navbar-expand-lg color-aqua-bg fw-600 px-lg-1">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav me-auto align-items-center">
+
+                        <a class="navbar-brand px-lg-4 fs-2-5 fw-500 text-white font-gentium p-0 m-0" href="index.php">Indoff Pro</a>
+
                         <li class="nav-item px-lg-4 uppercase <?php if ($pagina == "inicio") {
                                                                     echo "active";
                                                                 } ?>">
@@ -112,7 +82,33 @@
                         <li class="nav-item px-lg-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Nosotros</a>
                         </li>
+
+
                     </ul>
+                    <div class="d-flex mx-auto pt-lg-1 bg m-0">
+                        <div class="align-items-center menu text-center d-flex text-white">
+                            <div class="col mx-lg-2 d-flex align-items-center btn-cuenta">
+                                <div><i class="fas fa-user-alt fs-1-5"></i></div>
+                                <div><a href="login.php" class="nav-link text-white px-lg-3 fw-500">Login</a></div>
+                            </div>
+                            <div class="col mx-lg-2 d-flex align-items-center btn-carrito">
+                                <div><i class="fas fa-shopping-cart fs-1-5"></i></div>
+                                <div><a href="carrito.php" class="nav-link text-white px-lg-3 fw-500">Carrito</a></div>
+                            </div>
+                            <div class="col mx-lg-2 d-flex align-items-center btn-menu">
+                                <div><i class="fas fa-bars fs-1-5"></i></div>
+                                <div>
+                                    <a class="nav-link text-white px-lg-3 fw-500" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Menu
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
