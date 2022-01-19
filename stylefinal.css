@@ -11,6 +11,7 @@
   --orange: #E49F49;
   --black: #303030;
   --grey: #E7E7E7;
+  --grey2: #9b9b9b;
   --aqua: #3AB0AB;
 }
 
@@ -69,7 +70,6 @@ body {
   border-radius: 0.5em;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
   border: none;
-
 }
 
 .btn-primary {
@@ -100,8 +100,6 @@ body {
   background-color: var(--orange);
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.0);
   text-decoration: none;
-
-
 }
 
 .btn-color {
@@ -115,21 +113,25 @@ body {
   border: var(--white) solid 2px;
 }
 
-
-.form-control, .qty-dropdown, .select {
-  border: solid 3px var(--grey);
-  border-radius: 1em;
+.form-control, .qty-dropdown
+{
   height: 2.6em;
   padding-left: 1em;
   padding-right: 1em;
 }
 
-.textarea, .select {
+.form-control, .qty-dropdown, .color-select, .color-select, .select2-selection{
+  border: solid 3px var(--grey) !important;
+  border-radius: 1em !important;
+}
+
+textarea {
   height: auto !important;
 }
 
-.form-control:hover, .form-control:focus, .qty-dropdown:hover, .qty-dropdown:focus, .color-select:hover {
-  border: solid 3px var(--orange);
+.form-control:hover, .form-control:focus, .qty-dropdown:hover, .qty-dropdown:focus, .color-select:hover, .color-select:focus , .select2-selection:hover
+{
+  border: solid 3px var(--orange) !important;
 }
 
 .formulario {
@@ -138,22 +140,63 @@ body {
   background-color: var(--white);
 }
 
-.color-select {
-  border-radius: 1em !important;
-  border: var(--grey) solid 3px !important;
+.color-select, .select2-selection{
   background-color: var(--white) !important;
-  height: 13em;
+ /*height: 13em !important;*/
 }
 
-select option {
-  border: solid 3px rgba(0, 0, 0, 0) !important;
+.select2-search__field
+{
+  height: auto !important;
+  color: var(--black);
+  font-family: "Poppins" sans-serif !important;
+  font-size: 1em !important;
+  padding: 0.2em !important;
 }
 
-select option:hover {
-  opacity: 70%;
+.select2-selection__choice
+{
+  background-color: var(--purple) !important;
+  color: var(--white);
+  font-family: "Poppins" sans-serif;
+  font-size: 1em !important;
+  border:var(--white) solid 4px !important;
+  border-radius: 4px !important;
+}
+.select2-selection__choice__remove:hover
+{
+  opacity: 30%;
+}
+
+.select2-selection__choice span
+{
+  color: var(--white);
+  font-family: "Poppins" sans-serif;
+  font-size: 1em !important;
 }
 
 
+.select2-selection__choice span
+{
+  color: var(--white);
+  font-family: "Poppins" sans-serif;
+  font-size: 1em !important;
+}
+.select2-selection__choice span:hover
+{
+  color: var(--white) !important;
+}
+
+select option:hover 
+{
+  background-color: var(--grey) !important;
+  color: var(--black) !important;
+}
+
+.required:after {
+  content:" *";
+  color: red;
+}
 /*card*/
 .card {
   border: none;
@@ -429,6 +472,13 @@ select option:hover {
 
 .color-grey-bg {
   background: var(--grey) !important;
+}
+.color-grey2 {
+  color: var(--grey2) !important;
+}
+
+.color-grey3-bg {
+  background: var(--grey2) !important;
 }
 
 .color-black {

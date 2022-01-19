@@ -14,8 +14,13 @@
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
+    <!--select-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylefinal.css">
+
 
     <?php
     // require functions.php file

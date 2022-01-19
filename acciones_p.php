@@ -41,44 +41,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!is_numeric($_POST['size_producto']))
             exit('Completar tamaño válido');
 
-        if (empty($_POST['color_producto']))
-            exit('Completar colores');
 
+        if (!empty($_POST['color_producto']))
+        exit('Completar colores del producto');
 
+/*
+        foreach ($_POST['color_producto'] as $selected)
+        {
+            echo $selected;
+        }
+        */
 
-        $_params = array(
-            'nombre' => $_POST['nombre_producto'],
-            'descripcion' => $_POST['descripcion_producto'],
-            'proveedor' => $_POST['proveedor_producto'],
-            'categoria_id' => $_POST['categoria_id_producto'],
-            'imagen' => subirFoto(),
-            'fecha' => date('Y-m-d'),
-            'op1' => $_POST['op1_producto'],
-            'op2' => $_POST['op2_producto'],
-            'op3' => $_POST['op3_producto'],
-            'op4' => $_POST['op4_producto'],
-            'op5' => $_POST['op5_producto'],
-            'op6' => $_POST['op6_producto'],
-            'op7' => $_POST['op7_producto'],
-            'q1' => $_POST['q1_producto'],
-            'q2' => $_POST['q2_producto'],
-            'q3' => $_POST['q3_producto'],
-            'q4' => $_POST['q4_producto'],
-            'q5' => $_POST['q5_producto'],
-            'q6' => $_POST['q6_producto'],
-            'q7' => $_POST['q7_producto'],
-            'precio1' => $_POST['p1_producto'],
-            'precio2' => $_POST['p2_producto'],
-            'precio3' => $_POST['p3_producto'],
-            'precio4' => $_POST['p4_producto'],
-            'precio5' => $_POST['p5_producto'],
-            'precio6' => $_POST['p6_producto'],
-            'precio7' => $_POST['p7_producto'],
-            'size' => $_POST['size_producto'],
-            'peso' => $_POST['peso_producto'],
-            'color' => $_POST['langOpt']
-
-        );
+            $_params = array(
+                'nombre' => $_POST['nombre_producto'],
+                'descripcion' => $_POST['descripcion_producto'],
+                'proveedor' => $_POST['proveedor_producto'],
+                'categoria_id' => $_POST['categoria_id_producto'],
+                'imagen' => subirFoto(),
+                'fecha' => date('Y-m-d'),
+                'op1' => $_POST['op1_producto'],
+                'op2' => $_POST['op2_producto'],
+                'op3' => $_POST['op3_producto'],
+                'op4' => $_POST['op4_producto'],
+                'op5' => $_POST['op5_producto'],
+                'op6' => $_POST['op6_producto'],
+                'op7' => $_POST['op7_producto'],
+                'q1' => $_POST['q1_producto'],
+                'q2' => $_POST['q2_producto'],
+                'q3' => $_POST['q3_producto'],
+                'q4' => $_POST['q4_producto'],
+                'q5' => $_POST['q5_producto'],
+                'q6' => $_POST['q6_producto'],
+                'q7' => $_POST['q7_producto'],
+                'precio1' => $_POST['p1_producto'],
+                'precio2' => $_POST['p2_producto'],
+                'precio3' => $_POST['p3_producto'],
+                'precio4' => $_POST['p4_producto'],
+                'precio5' => $_POST['p5_producto'],
+                'precio6' => $_POST['p6_producto'],
+                'precio7' => $_POST['p7_producto'],
+                'size' => $_POST['size_producto'],
+                'peso' => $_POST['peso_producto'],
+                'color' => $_POST['color_producto']
+               
+            );
 
 
         $rpt = $producto->registrar($_params);
@@ -162,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'precio7' => $_POST['p7_producto'],
             'size' => $_POST['size_producto'],
             'peso' => $_POST['peso_producto'],
-            'color' => $_POST['langOpt'],
+            'color' => $_POST['color_producto'],
             'id' => $_POST['id'],
         );
 

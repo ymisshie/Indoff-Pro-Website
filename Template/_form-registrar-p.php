@@ -81,7 +81,7 @@
 
                         <div class="form-group text-start py-lg-2">
                             <h6 class="col-form-label fw-600">Colores</h6>
-
+                       
                             <?php
                             $array = array(
                                 "Black",
@@ -227,21 +227,47 @@
                                 "White",
                             );
 
-
                             //print_r($array);
                             ?>
 
-                            <select name="color_producto" multiple class="color-select col-12">
+                            <select name="color_producto[]" multiple class="color-select col-md-12" id="color-select" required>
 
                                 <?php
 
                                 for ($y = 0; $y < 141; $y++) {
                                 ?>
-                                    <option value="<?php print $array[$y] ?>" style="background-color:<?php print $array[$y] ?>; " class="px-lg-3 fw-500 text-white text-center"><?php print $array[$y] ?></option>
+                                    <option value="<?php print $array[$y] ?>" style="background-color:<?php print $array[$y] ?>; " class="px-lg-3 fw-400 
+    
+    <?php
+                                    if ($y <= 13 || $y >= 16 && $y <= 42 || $y >= 44 && $y <= 85) {
+                                        print 'text-white';
+                                    } else {
+                                        print 'color-black';
+                                    }
+    ?>
+     text-center">
+                                        <?php print $array[$y] ?>
+                                    </option>
                                 <?php
                                 }
                                 ?>
                             </select>
+
+                            <div class="row p-lg-4">
+                                <?php
+
+                                for ($z = 0; $z < 141; $z++) {
+                                ?>
+
+                                    <div class="col-lg-1 p-lg-2" style="background-color: <?php print $array[$z] ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $array[$z] ?>">
+                                    </div>
+
+                                <?php
+
+                                }
+
+                                ?>
+                            </div>
 
                         </div>
 
