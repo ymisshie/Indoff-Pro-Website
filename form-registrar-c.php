@@ -16,7 +16,6 @@ include('Template/_form-registrar-c.php')
 ?>
 
 
-
 <?php
     //include footer.php file
     include('footer.php')

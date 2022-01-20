@@ -1,7 +1,36 @@
+<?php
+require 'vendor/autoload.php';
+
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
+
+
+    $producto = new ameri\Producto;
+    $categoria = new ameri\Categoria;
+
+    $info_producto = $producto->mostrar();
+    $info_categoria = $categoria->mostrarPorId($id);
+
+    /*
+ print '<pre>';
+ print_r ($info_categoria);
+
+die;
+*/
+
+    /*
+ print '<pre>';
+ print_r($info_producto);
+*/
+}
+
+?>
+
 <section>
     <div class="container-fluid color-grey-bg pb-lg-5" id="form-registro-p">
         <div class="row justify-content-center">
-            <h3 class="pt-lg-5 fw-700 pb-lg-3 text-center">Añadir producto</h3>
+            <h3 class="pt-lg-5 fw-700 pb-lg-3 text-center">Añadir producto a <?php print $info_categoria['nombre']; ?></h3>
         </div>
 
         <div class="row justify-content-center">
@@ -42,20 +71,40 @@
                         <div class="form-group text-start py-lg-2">
                             <h6 class="col-form-label fw-600">Categoria del producto</h6>
                             <select class="form-control" name="categoria_id_producto" required>
-                                <option value="">Seleccione una categoria</option>
-                                <?php
-                                require 'vendor/autoload.php';
-                                $categoria = new ameri\Categoria;
-                                $info_categoria = $categoria->mostrar();
-                                $cantidad = count($info_categoria);
-                                for ($x = 0; $x < $cantidad; $x++) {
-                                    $item = $info_categoria[$x];
-                                ?>
-                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+
                                 <?php
 
-                                }
+                                $categoria2 = new ameri\Categoria;
+                                $info_categorias = $categoria2->mostrar();
+                                $cantidad = count($info_categorias);
+
+
+                                for ($x = 0; $x < $cantidad; $x++) {
+                                    $item = $info_categorias[$x];
+
+                                    if ($item['id'] == $info_categoria['id']) {
                                 ?>
+                                        <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+
+                                    <?php
+                                    }
+                                }
+
+                                for ($w = 0; $w < $cantidad; $w++) {
+                                    $item = $info_categorias[$w];
+
+                                    if ($item['id'] != $info_categoria['id']) {
+                                    ?>
+
+                                        <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+                                <?php
+
+                                    }
+                                }
+
+                                ?>
+
+                                <option value="">Seleccione una categoria</option>
 
                             </select>
                         </div>
@@ -81,7 +130,7 @@
 
                         <div class="form-group text-start py-lg-2">
                             <h6 class="col-form-label fw-600">Colores</h6>
-                       
+
                             <?php
                             $array = array(
                                 "Black",
@@ -324,8 +373,8 @@
                         }
                         ?>
 
-                        <input type="submit" name="accion" class="btn btn-secondary my-lg-4" value="Registrar">
-                        <a href="productos-dashboad.php" class="btn btn-primary my-lg-4 mx-lg-4" role="buttton">Cancelar</a>
+                        <input type="submit" name="accion" href="acciones_p.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-secondary my-lg-4" value="Registrar">
+                        <a href="productos-dashboard.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-primary my-lg-4 mx-lg-4" role="buttton">Cancelar</a>
 
                 </form>
 

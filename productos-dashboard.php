@@ -1,8 +1,8 @@
 
 
 <?php
-$title = "Inicio Indoff Pro";
-$pagina ="inicio";
+$title = "Dashboard productos";
+$pagina ="dashboard-p";
 ?>
 
 <?php

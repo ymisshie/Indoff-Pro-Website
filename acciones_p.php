@@ -38,12 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!is_numeric($_POST['p1_producto']))
             exit('Completar precio 1 válido');
 
-        if (!is_numeric($_POST['size_producto']))
-            exit('Completar tamaño válido');
-
-
-        if (!empty($_POST['color_producto']))
+         
+        if (empty($_POST['color_producto']))
         exit('Completar colores del producto');
+
+        $color = $_POST['color_producto'];
+        foreach($color as $color_array)
+        {
+        echo $color_array;
+        }
+
 
 /*
         foreach ($_POST['color_producto'] as $selected)
@@ -83,8 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'size' => $_POST['size_producto'],
                 'peso' => $_POST['peso_producto'],
                 'color' => $_POST['color_producto']
-               
+
+              
             );
+           
 
 
         $rpt = $producto->registrar($_params);
@@ -93,12 +99,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
             //cuando se el registro se de de forma correcta se direccina a 
-            header('Location: productos-dashboard.php');
+            header('Location: productos-dashboard.php?id=$id');
 
         else
             print 'Error al registrar un producto';
     }
 
+    
 
     if ($_POST['accion'] === 'Actualizar') {
 

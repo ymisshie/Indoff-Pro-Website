@@ -18,7 +18,7 @@ class Producto{
     }
 
     public function registrar($_params){
-        $sql="INSERT INTO `productos` (`nombre`, `proveedor`,`descrpcion`, `imagen`, `categoria_id`, `fecha`, `op1`, `op2`,`op3`,`op4`,`op5`,`op6`,`op7`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `precio1`, `precio2`, `precio3`, `precio4`, `precio5`, `precio6`, `precio7`, `size`, `peso`, `color`) VALUES (:nombre, :proveedor, :descripcion, :imagen, :categoria_id, :fecha, :op1, :op2, :op3, :op4, :op5, :op6, :op7, :q1, :q2, :q3, :q4, :q5, :q6, :q7, :precio1, :precio2, :precio3, :precio4, :precio5, :precio6, :precio7, :size, :peso, :color)";
+        $sql="INSERT INTO `productos` (`nombre`, `proveedor`,`descripcion`, `imagen`, `categoria_id`, `fecha`, `op1`, `op2`,`op3`,`op4`,`op5`,`op6`,`op7`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `precio1`, `precio2`, `precio3`, `precio4`, `precio5`, `precio6`, `precio7`, `size`, `peso`, `color`) VALUES (:nombre, :proveedor, :descripcion, :imagen, :categoria_id, :fecha, :op1, :op2, :op3, :op4, :op5, :op6, :op7, :q1, :q2, :q3, :q4, :q5, :q6, :q7, :precio1, :precio2, :precio3, :precio4, :precio5, :precio6, :precio7, :size, :peso, :color)";
 
         $resultado=$this->cn->prepare($sql);
 
