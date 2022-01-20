@@ -32,10 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!is_numeric($_POST['q1_producto']))
             exit('Completar una cantidad 1 válida');
 
-        if (empty($_POST['precio_producto1']))
+        if (empty($_POST['p1_producto']))
             exit('Completar precio 1 válido');
 
-        if (!is_numeric($_POST['precio_producto1']))
+        if (!is_numeric($_POST['p1_producto']))
             exit('Completar precio 1 válido');
 
         if (!is_numeric($_POST['size_producto']))

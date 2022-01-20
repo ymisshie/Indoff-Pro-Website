@@ -51,6 +51,11 @@
                                                                 } ?>">
                             <a class="nav-link text-white active" aria-current="page" href="index.php">Inicio</a>
                         </li>
+                        <li class="nav-item px-lg-4 uppercase <?php if ($pagina == "inicio") {
+                                                                    echo "active";
+                                                                } ?>">
+                            <a class="nav-link text-white active" aria-current="page" href="dashboard.php">Dashboard</a>
+                        </li>
                         <li class="nav-item px-lg-4 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
                                                                                         echo "active";
