@@ -149,7 +149,6 @@
   font-size: 1em;
   color: #ffffff !important;
   padding: 0em 2em 0em 2em;
-  background-color: red;
 }
 
 .nav-link {
@@ -602,8 +601,4 @@ body {
 
 .color-black-bg {
   background: #303030;
-}
-
-.nav-item{
-  background-color: red;
 }
