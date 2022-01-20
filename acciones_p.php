@@ -4,57 +4,69 @@ require 'vendor/autoload.php';
 
 $producto = new ameri\Producto;
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $id = $_GET['id'];
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    if ($_POST['accion'] === 'Registrar') {
-
-        print '<pre>';
-        print_r($_POST);
-
-        print_r($_FILES);
-
-        if (empty($_POST['nombre_producto']))
-            exit('Completar nombre');
-
-        if (empty($_POST['descripcion_producto']))
-            exit('Completar descripción');
-
-        if (empty($_POST['proveedor_producto']))
-            exit('Completar proveedor');
-
-        if (empty($_POST['categoria_id_producto']))
-            exit('Seleccionar una categoria');
-
-        if (!is_numeric($_POST['categoria_id_producto']))
-            exit('Seleccionar una categoria válida');
-
-        if (!is_numeric($_POST['q1_producto']))
-            exit('Completar una cantidad 1 válida');
-
-        if (empty($_POST['p1_producto']))
-            exit('Completar precio 1 válido');
-
-        if (!is_numeric($_POST['p1_producto']))
-            exit('Completar precio 1 válido');
-
-         
-        if (empty($_POST['color_producto']))
-        exit('Completar colores del producto');
-
-        $color = $_POST['color_producto'];
-        foreach($color as $color_array)
-        {
-        echo $color_array;
-        }
 
 
-/*
-        foreach ($_POST['color_producto'] as $selected)
-        {
-            echo $selected;
-        }
-        */
+        if ($_POST['accion'] === 'Registrar') {
+            print '<pre>';
+            print_r($_POST);
+
+            print_r($_FILES);
+
+            if (empty($_POST['nombre_producto'])) {
+                exit('Completar nombre');
+            }
+
+            if (empty($_POST['descripcion_producto'])) {
+                exit('Completar descripción');
+            }
+
+            if (empty($_POST['proveedor_producto'])) {
+                exit('Completar proveedor');
+            }
+
+            if (empty($_POST['categoria_id_producto'])) {
+                exit('Seleccionar una categoria');
+            }
+
+            if (!is_numeric($_POST['categoria_id_producto'])) {
+                exit('Seleccionar una categoria válida');
+            }
+
+            if (!is_numeric($_POST['q1_producto'])) {
+                exit('Completar una cantidad 1 válida');
+            }
+
+            if (empty($_POST['p1_producto'])) {
+                exit('Completar precio 1 válido');
+            }
+
+            if (!is_numeric($_POST['p1_producto'])) {
+                exit('Completar precio 1 válido');
+            }
+
+
+            if (empty($_POST['color_producto'])) {
+                exit('Completar colores del producto');
+            }
+
+            $color = $_POST['color_producto'];
+            foreach ($color as $color_array) {
+                echo $color_array;
+            }
+
+
+            /*
+                    foreach ($_POST['color_producto'] as $selected)
+                    {
+                        echo $selected;
+                    }
+                    */
 
             $_params = array(
                 'nombre' => $_POST['nombre_producto'],
@@ -88,24 +100,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'peso' => $_POST['peso_producto'],
                 'color' => $_POST['color_producto']
 
-              
+
             );
-           
 
 
-        $rpt = $producto->registrar($_params);
 
-        if ($rpt)
+            $rpt = $producto->registrar($_params);
+
+            if ($rpt) {
 
 
-            //cuando se el registro se de de forma correcta se direccina a 
-            header('Location: productos-dashboard.php?id=$id');
-
-        else
-            print 'Error al registrar un producto';
+                //cuando se el registro se de de forma correcta se direccina a
+                header('Location: productos-dashboard.php?id=$id');
+            } else {
+                print 'Error al registrar un producto';
+            }
+        }
     }
-
-    
 
     if ($_POST['accion'] === 'Actualizar') {
 
