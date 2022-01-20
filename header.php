@@ -101,7 +101,7 @@
                             <li><a class="dropdown-item" href="#">Evento 5</a></li>
                             <li><a class="dropdown-item" href="#">Evento 6</a></li>
                         </ul>
-</li>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="#">Contacto</a>
                     </li>

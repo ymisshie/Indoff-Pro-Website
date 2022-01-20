@@ -100,6 +100,7 @@ class Producto{
             ":precio7" => $_params['precio7'], 
             ":size" => $_params['size'], 
             ":peso" => $_params['peso']
+            // Falta id?
 
         );
 

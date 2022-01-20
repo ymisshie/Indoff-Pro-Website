@@ -54,16 +54,16 @@ class Categoria{
     }
 
     public function eliminar($id){
-$sql ="DELETE FROM  `categorias` WHERE  `id`=:id";
-$resultado=$this->cn->prepare($sql);
+        $sql ="DELETE FROM  `categorias` WHERE  `id`=:id";
+        $resultado=$this->cn->prepare($sql);
 
-$_array=array(
-    ":id" =>$id
-);
+        $_array=array(
+            ":id" =>$id
+        );
 
-if($resultado->execute($_array))
-return true;
-return false;
+        if($resultado->execute($_array))
+        return true;
+        return false;
     }
 
 

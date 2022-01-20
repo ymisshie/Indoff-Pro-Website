@@ -35,7 +35,7 @@
         integrity="sha256-pTxD+DSzIwmwhOqTFN+DB+nHjO4iAsbgfyFq5K5bcE0=" crossorigin="anonymous"></script>
 
 <!-- Custom Javascript -->
-<script src="index.js"></script>
+<!-- <script src="index.js"></script> -->
 </body>
 
 </html>

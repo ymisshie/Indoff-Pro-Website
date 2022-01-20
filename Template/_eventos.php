@@ -2,9 +2,14 @@
 <section id="eventos">
     <div class="container-fluid">
 
-        <div class="row eventos-chart color-black-bg">
+        <div class="row eventos-chart color-black-bg text-white">
 
-            <div class="col-6 evento1 align-self-center">
+            <?php
+                require 'vendor/autoload.php';
+                $evento = new ameri\Evento;
+
+            ?>
+            <!-- <div class="col-6 evento1 align-self-center">
                 <div class="col-4 mx-auto">
                     <h5 class="etiqueta1">Evento destacado</h5>
                 </div>
@@ -30,7 +35,7 @@
                     </p>
                     <a class="btn btn-secondary-w" href="#" role="button">Ver productos</a>
                 </div>
-            </div>
+            </div> -->
         </div>
 
     </div>

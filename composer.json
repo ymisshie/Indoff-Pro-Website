@@ -1,12 +1,16 @@
 {
   "name": "ameri/indoffpro",
-  "description": "creacion de tienda online de productos promocionales",
-  "tyoe": "project",
+  "description": "Creacion de tienda online de productos promocionales",
+  "type": "project",
   "license": "MIT",
   "authors": [
     {
       "name": "michelle gastelum reyes",
       "email": "ymisshie@gmail.com"
+    },
+    {
+      "name": "Alessandra Palacios",
+      "email": "alessandra.palacios@indoff.com"
     }
   ],
   "require": {
