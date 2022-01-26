@@ -42,12 +42,16 @@
             <a class="navbar-brand logo text-white" <?php echo $root_dashboard;?>>Indoff Pro</a>
         </div>
         <nav class="px-5 navbar color-aqua-bg navbar-expand-lg  navbar-dark">
+            
             <button class="navbar-toggler mb-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
+                <ul class="navbar-nav mr-auto mx-4">
+                    <li class="nav-item"> 
+                        <a class="nav-link <?php if ($pagina == "inicio") {echo "active";}?>" <?php echo $root_dashboard;?>>Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown mx-4">
                         <a class="nav-link dropdown-toggle <?php if ($pagina == "categorias") {echo "active";}?>" <?php echo $root_categorias;?> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorías
                         </a>    
@@ -56,7 +60,7 @@
                         <a class="dropdown-item text-center <?php if ($pagina == "productos") {echo "active";}?>" <?php echo $root_productos;?>>Productos</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown mx-4">
                         <a class="nav-link dropdown-toggle <?php if ($pagina == "eventos") {echo "active";}?>" <?php echo $root_eventos;?> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Eventos
                         </a>
@@ -65,18 +69,24 @@
                         <a class="dropdown-item text-center <?php if ($pagina == "eventos-productos") {echo "active";}?>" <?php echo $root_eventos_productos;?>>Productos</a>
                         </div>
                     </li>
-                    <li class="nav-item"> 
+                    <li class="nav-item mx-4"> 
                         <a class="nav-link <?php if ($pagina == "pedidos") {echo "active";}?>" <?php echo $root_pedidos;?>>Pedidos</a>
                     </li>
+                    <li class="nav-item mx-4"> 
+                        <a class="nav-link <?php if ($pagina == "pedidos") {echo "active";}?>" href="">Contacto</a>
+                    </li>
+                    <li class="nav-item mx-4"> 
+                        <a class="nav-link <?php if ($pagina == "pedidos") {echo "active";}?>" href="">Nosotros</a>
+                    </li>
                 </ul>
-                <ul class="navbar-nav mr-auto">
-                    <i class="fas fa-user-cog pt-1" style="color: white"></i>
+                <ul class="navbar-nav" style="margin-right: 5%">
+                    <i class="fas fa-user-cog pt-1" style="color: white; margin-top: 8%"></i>
                     <li class="nav-item dropdown" style="padding-left:5%"> 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Admin
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" <?php echo $root_logout;?>>Cerrar Sesión</a>
+                            <a class="dropdown-item text-center" <?php echo $root_logout;?>>Cerrar Sesión</a>
                         </div>
                     </li>
                 </ul>

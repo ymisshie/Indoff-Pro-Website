@@ -20,5 +20,12 @@ include('../../Template/_header-admin.php')
 
 <?php
 //include header.php file
+include('../../Template/_eventos-editar.php')
+?>
+
+
+<?php
+//include header.php file
 include('../../footer.php')
 ?>
+

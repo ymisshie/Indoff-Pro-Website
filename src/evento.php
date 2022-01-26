@@ -8,6 +8,7 @@ class Evento{
     private $cn = null;
 
     public function __construct(){
+
         $this->config = parse_ini_file(__DIR__.'/../config.ini');
 
         // Ruta de la conexión a base de datos utilizando PDO
@@ -26,7 +27,7 @@ class Evento{
         $resultado = $this->cn->prepare($sql);
 
         // Indicar los params
-        $array = array(
+        $_array = array(
             ":nombre" =>$_params['nombre'],
             ":descripcion" =>$_params['descripcion'],
             ":imagen" =>$_params['imagen'],
@@ -34,17 +35,17 @@ class Evento{
         );
 
         // Ejecutar la consulta 
-        if(resultado->execute($_array))
+        if($resultado->execute($_array))
             return true;
         return false;
     }
 
     public function actualizar($_params){
-        $sql = "UPDATE `eventos` SET `nombre`=:nombre,`descripcion`=:descripcion,`imagen`=':imagen,`fecha`=:fecha WHERE `id`=:id";
+        $sql = "UPDATE `eventos` SET `nombre`=:nombre,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha WHERE `id`=:id";
 
         $resultado = $this->cn->prepare($sql);
 
-        $array = array(
+        $_array = array(
             ":nombre" => $_params['nombre'],
             ":descripcion" => $_params['descripcion'],
             ":imagen" => $_params['imagen'],
@@ -52,7 +53,7 @@ class Evento{
             ":id" => $_params['id']
         );
  
-        if(resultado->execute($_array))
+        if($resultado->execute($_array))
             return true;
         return false;
     }
@@ -62,17 +63,17 @@ class Evento{
 
         $resultado = $this->cn->prepare($sql);
 
-        $array = array(
-            ":id" => $_params['id']
+        $_array = array(
+            ":id" => $id
         );
 
-        if(resultado->execute($_array))
+        if($resultado->execute($_array))
             return true;
         return false;
     }
 
     public function mostrar(){
-        $sql = "SELECT nombre, descripcion, imagen, fecha FROM `eventos`";
+        $sql = "SELECT id, nombre, descripcion, imagen, fecha FROM `eventos`";
         
         $resultado = $this->cn->prepare($sql);
 
@@ -82,7 +83,20 @@ class Evento{
         return false;
     }
 
-    public function mostrarPorId(){
+    public function mostrarPorId($id){
+        
+        $sql = "SELECT * FROM `eventos` WHERE `id`=:id";
+
+        $resultado = $this->cn->prepare($sql);
+
+        $_array = array(
+            ":id" => $id
+        );
+        
+        if($resultado->execute($_array))
+            return $resultado->fetch();
+
+        return false;
         
     }
 }
