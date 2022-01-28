@@ -51,32 +51,38 @@
                     <li class="nav-item"> 
                         <a class="nav-link <?php if ($pagina == "inicio") {echo "active";}?>" <?php echo $root_dashboard;?>>Inicio</a>
                     </li>
-                    <li class="nav-item dropdown mx-4">
-                        <a class="nav-link dropdown-toggle <?php if ($pagina == "categorias") {echo "active";}?>" <?php echo $root_categorias;?> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <!-- <li class="nav-item dropdown mx-4">
+                        <a class="nav-link dropdown-toggle ?php if ($pagina == "categorias") {echo "active";}?>" ?php echo $root_categorias;?> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorías
                         </a>    
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-center <?php if ($pagina == "categorias") {echo "active";}?>" <?php echo $root_categorias;?>>Categorías</a>
-                        <a class="dropdown-item text-center <?php if ($pagina == "productos") {echo "active";}?>" <?php echo $root_productos;?>>Productos</a>
+                        <a class="dropdown-item text-center ?php if ($pagina == "categorias") {echo "active";}?>" ?php echo $root_categorias;?>>Categorías</a>
+                        <a class="dropdown-item text-center ?php if ($pagina == "productos") {echo "active";}?>" ?php echo $root_productos;?>>Productos</a>
                         </div>
+                    </li> -->
+                    <li class="nav-item mx-4"> 
+                        <a class="nav-link <?php if ($pagina == "categorias") {echo "active";}?>" <?php echo $root_categorias;?>>Categorías</a>
                     </li>
-                    <li class="nav-item dropdown mx-4">
-                        <a class="nav-link dropdown-toggle <?php if ($pagina == "eventos") {echo "active";}?>" <?php echo $root_eventos;?> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item mx-4"> 
+                        <a class="nav-link <?php if ($pagina == "eventos") {echo "active";}?>" <?php echo $root_eventos;?>>Eventos</a>
+                    </li>
+                    <!-- <li class="nav-item dropdown mx-4">
+                        <a class="nav-link dropdown-toggle ?php if ($pagina == "eventos") {echo "active";}?>" ?php echo $root_eventos;?> id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Eventos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-center <?php if ($pagina == "eventos") {echo "active";}?>" <?php echo $root_eventos;?>>Eventos</a>
-                        <a class="dropdown-item text-center <?php if ($pagina == "eventos-productos") {echo "active";}?>" <?php echo $root_eventos_productos;?>>Productos</a>
+                        <a class="dropdown-item text-center ?php if ($pagina == "eventos") {echo "active";}?>" ?php echo $root_eventos;?>>Eventos</a>
+                        <a class="dropdown-item text-center ?php if ($pagina == "eventos-productos") {echo "active";}?>" ?php echo $root_eventos_productos;?>>Productos</a>
                         </div>
-                    </li>
+                    </li> -->
                     <li class="nav-item mx-4"> 
                         <a class="nav-link <?php if ($pagina == "pedidos") {echo "active";}?>" <?php echo $root_pedidos;?>>Pedidos</a>
                     </li>
                     <li class="nav-item mx-4"> 
-                        <a class="nav-link <?php if ($pagina == "pedidos") {echo "active";}?>" href="">Contacto</a>
+                        <a class="nav-link <?php if ($pagina == "contacto") {echo "active";}?>" href="">Contacto</a>
                     </li>
                     <li class="nav-item mx-4"> 
-                        <a class="nav-link <?php if ($pagina == "pedidos") {echo "active";}?>" href="">Nosotros</a>
+                        <a class="nav-link <?php if ($pagina == "nosotros") {echo "active";}?>" href="">Nosotros</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav" style="margin-right: 5%">

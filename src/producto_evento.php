@@ -26,7 +26,7 @@ class Producto_Evento{
         $resultado = $this->cn->prepare($sql);
 
         // Indicar los params
-        $array = array(
+        $_array = array(
             ":nombre" =>$_params['nombre'],
             ":proveedor" =>$_params['proveedor'],
             ":descripcion" =>$_params['descripcion'],
@@ -60,7 +60,7 @@ class Producto_Evento{
         );
 
         // Ejecutar la consulta 
-        if(resultado->execute($_array))
+        if($resultado->execute($_array))
             return true;
         return false;
     }
@@ -70,8 +70,9 @@ class Producto_Evento{
 
         $resultado = $this->cn->prepare($sql);
 
-        $array = array(
+        $_array = array(
             ":nombre" =>$_params['nombre'],
+            ":proveedor" =>$_params['proveedor'],
             ":descripcion" =>$_params['descripcion'],
             ":imagen" =>$_params['imagen'],
             ":evento_id"=>$_params['evento_id'],
@@ -103,7 +104,7 @@ class Producto_Evento{
             ":id"=> $_params['id'],
         );
  
-        if(resultado->execute($_array))
+        if($resultado->execute($_array))
             return true;
         return false;
     }
@@ -113,17 +114,17 @@ class Producto_Evento{
 
         $resultado = $this->cn->prepare($sql);
 
-        $array = array(
-            ":id" => $_params['id']
+        $_array=array(
+            ":id" =>$id
         );
 
-        if(resultado->execute($_array))
+        if($resultado->execute($_array))
             return true;
         return false;
     }
 
     public function mostrar(){
-        $sql = "SELECT productos_eventos.id, productos_eventos.nombre, productos_eventos.descripcion, productos_eventos.imagen, productos_eventos.fecha, op1, op2, op3, op4, op5, op6, op7, q1, q2 ,q3, q4, q5, q6, q7, precio1, precio2, precio3, precio4, precio5, precio6, precio7, size, peso, color FROM `productos_eventos`
+        $sql = "SELECT productos_eventos.id, productos_eventos.nombre, productos_eventos.proveedor, productos_eventos.descripcion, productos_eventos.imagen, evento_id, productos_eventos.fecha, op1, op2, op3, op4, op5, op6, op7, q1, q2 ,q3, q4, q5, q6, q7, precio1, precio2, precio3, precio4, precio5, precio6, precio7, size, peso, color FROM `productos_eventos`
         
         INNER JOIN eventos
         ON productos_eventos.evento_id = eventos.id ORDER BY productos_eventos.id ASC
@@ -137,16 +138,16 @@ class Producto_Evento{
         return false;
     }
 
-    public function mostrarPorId(){
+    public function mostrarPorId($id){
         $sql = "SELECT * FROM  `productos_eventos` WHERE `id`=:id";
         
         $resultado = $this->cn->prepare($sql);
 
-        $array = array(
-            ":id" => $_params['id']
+       $_array=array(
+            ":id" =>$id
         );
 
-        if($resultado->execute($array))
+        if($resultado->execute($_array))
             return $resultado->fetch();
 
         return false;

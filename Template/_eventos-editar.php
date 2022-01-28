@@ -70,7 +70,7 @@
                             <!-- Quite el "<" antes del ?php  -->
                             <a href="../acciones-e.php?id=<?php print $item['id'] ?>" class="btn-danger btn-sm" role="button">Eliminar</a>
                             <a href="form-editar-e.php?id=<?php print $item['id'] ?>" class="btn-success btn-sm" role="button">Editar</a>
-                            <a href="" class="btn-warning btn-sm text_white" role="button">Ver productos</a>
+                            <a href="../productos-eventos/index.php?id=<?php print $item['id']?>" class="btn-warning btn-sm text_white" role="button">Ver productos</a>
                             <!-- <a href="../productos-eventos/index.php?id=?php print $item['id']?>" class="btn-warning btn-sm text_white" role="button">Ver productos</a> -->
                         </td>
                         </tr>

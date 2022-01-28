@@ -358,10 +358,10 @@ select option:hover
 .categorias-fichas a, .categorias {
   text-decoration: none;
 }
-
-.eventos-chart {
-  height: 30em;
-}
+  
+/* .eventos-chart {
+  height: 40em;
+} */
 
 .beneficios-section .beneficios {
   border-radius: 1em;
