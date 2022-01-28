@@ -10,7 +10,7 @@ include('header.php')
 
 <?php
 /*include producto-hero*/
-include('Template/_producto_evento_hero.php')
+include('Template/_productos_evento_hero.php')
 /*include producto-hero*/
 ?>
 

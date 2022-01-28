@@ -71,7 +71,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item <?php if ($pagina == "inicio") {echo "active";}?>">
                         <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-                    </li>
+                    </li>   
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle <?php if ($pagina == "categorias") {echo "active";}?>" href="categorias.php" id="navbarDropdown" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
@@ -93,14 +93,25 @@
                             Eventos
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Evento 1</a></li>
-                            <li><a class="dropdown-item" href="#">Evento 2</a></li>
-                            <!--<li><hr class="dropdown-divider"></li>-->
-                            <li><a class="dropdown-item" href="#">Evento 3</a></li>
-                            <li><a class="dropdown-item" href="#">Evento 4</a></li>
-                            <li><a class="dropdown-item" href="#">Evento 5</a></li>
-                            <li><a class="dropdown-item" href="#">Evento 6</a></li>
-                        </ul>
+                            <?php
+                                require 'vendor/autoload.php';
+                                $evento = new ameri\Evento;
+                                $info_evento = $evento->mostrar();
+                                $cantidad = count($info_evento);
+
+                                if($cantidad > 0)
+                                {
+                                    for($x =0; $x < $cantidad; $x++)
+                                    {
+                                    $item = $info_evento[$x];
+                            ?>
+                                <li><a class="dropdown-item" href="producto_evento.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                    
+                            <?php
+                                    }
+                                }
+                            ?>
+                            </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " aria-current="page" href="#">Contacto</a>
