@@ -14,14 +14,14 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="..." class="d-block w-100 carousel-image" alt="Productos promocionales Slide1">
-                    <div class="carousel-caption mb-lg-5">
+                    <div class="carousel-caption mb-md-5">
                         <div class="row justify-content-center">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 col-md-12">
                                 <h1 class="hero-title">Promocione su marca con Indoff</h1>
-                                <h6 class="hero-description py-lg-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-                                    rem delectus eius voluptates harum neque culpa numquam, doloremque debitis ullam.</h6>
-                                    <br>
-                                <a class="btn btn-primary mx-lg-3" href="login.php" role="button">Registrarse</a>
+                                <h5 class="hero-description py-md-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
+                                    rem delectus eius voluptates harum neque culpa numquam, doloremque debitis ullam.</h5>
+                                <br>
+                                <a class="btn btn-primary mx-md-3" href="login.php" role="button">Registrarse</a>
                                 <a class="btn btn-link text-white" href="#categorias" role="button">Ver productos ></a>
                             </div>
                         </div>
@@ -46,32 +46,33 @@
 
 <section>
     <div class="container-fluid color-grey-bg">
-        <div class="row justify-content-center d-flex">
-            <div class="col-lg-2 d-flex justify-content-center mx-4">
+        <div class="row justify-content-lg-center justify-content-md-evenly d-flex">
+
+            <div class="col-md-4 col-lg-2 d-flex justify-content-center mx-md-0 mx-lg-4">
                 <div class="align-self-center">
                     <span><i class="fas fa-tshirt fs-3 align-self-center"></i></span>
                 </div>
-                <div class="px-lg-4 py-lg-4 align-self-center">
+                <div class="px-lg-4 px-md-3 py-md-4 align-self-center">
                     <h6 class="fw-600">Variedad de</h6>
                     <h6 class="uppercase m-0 fw-700">productos</h6>
                 </div>
             </div>
-            <div class="col-lg-2 d-flex justify-content-center mx-4">
+            <div class="col-md-4 col-lg-2 d-flex justify-content-center  mx-md-0 mx-lg-4">
                 <div class="align-self-center">
                     <span><i class="fas fa-magic fs-3 align-self-center"></i></span>
                 </div>
-                <div class="px-lg-4 py-lg-4 align-self-center">
+                <div class="px-lg-4 px-md-3 py-md-4 align-self-center">
                     <h6 class="fw-600">Sencilla</h6>
                     <h6 class="uppercase m-0 fw-700">Personalización</h6>
                 </div>
             </div>
-            <div class="col-lg-2 d-flex justify-content-center mx-4">
+            <div class="col-md-3 col-lg-2 d-flex justify-content-center  mx-md-0 mx-lg-4">
                 <div class="align-self-center">
                     <span><i class="fas fa-award fs-3 align-self-center"></i></span>
                 </div>
-                <div class="px-lg-4 py-lg-4 align-self-center">
+                <div class="px-lg-4 px-md-3 py-md-4 align-self-center">
                     <h6 class="fw-600">Satisfacción</h6>
-                    <h6 class="uppercase m-0 fw-00">Garantizada </h6>
+                    <h6 class="uppercase m-0 fw-700">Garantizada </h6>
                 </div>
             </div>
         </div>

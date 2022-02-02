@@ -12,11 +12,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $info_producto = $producto->mostrar();
     $info_categoria = $categoria->mostrarPorId($id);
 
-
-
-
     $cantidad_productos = 0;
-
 
     //para ver cuantos productos corresponden a la categoria
     foreach ($info_producto as $productos) {
@@ -25,9 +21,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $cantidad_productos++;
         }
     }
-
-
-
 
     /*
  print '<pre>';
@@ -78,7 +71,7 @@ foreach ($info_producto as $productos) {
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="section-title pt-lg-5 text-center">
+                <h2 class="section-title pt-md-5 text-center">
 
                     <?php
                     print $cantidad_productos;
@@ -93,25 +86,23 @@ foreach ($info_producto as $productos) {
                     ?>
                 </h2>
             </div>
-            <div class="col-lg-4 py-lg-3 text-center">
-                <a class="btn btn-primary " href="form-registrar-p.php?id=<?php print $info_categoria['id'] ?>" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>
+            <div class="col-md-4 py-md-3 text-center">
+                <a class="btn btn-primary" href="form-registrar-p.php?id=<?php print $info_categoria['id'] ?>" role="button">Agregar nuevo <i class="fas fa-plus ms-md-2 me-md-1"></i></a>
             </div>
         </div>
 
         <div class="row justify-content-center">
-
-            <table class="table table-hover my-lg-4">
+            <table class="col-md-3 table table-hover my-md-4">
                 <thead>
                     <tr class="text-center color-red-bg color-white">
-                        <th scope="col">ID</th>
-                        <th scope="col" class="col-1">Imagen</th>
-                        <th scope="col" class="col-2">Nombre</th>
-                        <th scope="col" class="col-1">Descripción</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Opciones</th>
-                        <th scope="col">Colores</th>
-                        <th scope="col" class="col-2">Peso y tamaño</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col" class="col-md-1">ID</th>
+                        <th scope="col" class="col-md-1">Imagen</th>
+                        <th scope="col" class="col-md-1">Información</th>
+                        <th scope="col" class="col-md-1">Variaciones</th>
+                        <th scope="col" class="col-md-1">Cantidad y costo</th>
+                        <th scope="col" class="col-md-1">Colores</th>
+                        <th scope="col" class="col-md-1">Peso y tamaño</th>
+                        <th scope="col" class="col-md-1">Acciones</th>
                     </tr>
                 </thead>
 
@@ -143,81 +134,107 @@ foreach ($info_producto as $productos) {
                                         <?php } ?>
 
                                     </td>
-                                    <td scope="col" class="fw-600"><?php print $item_producto['nombre'] ?>
+
+                                    <td scope="col" class="fw-700"><?php print $item_producto['nombre'] ?>
                                         <br>
-                                        <p class="fw-400 py-lg-1"> <?php print $item_producto['proveedor'] ?></p>
-                                        <a href="form-actualizar-p.php?id=<?php print $item_producto[0] ?>" class="btn-secondary btn btn-sm mx-lg-3 my-lg-4" role="button">Editar<i class="far fa-edit ms-lg-2 me-lg-1"></i></a>
+                                        <p class="fw-500 pt-md-1"> <?php print $item_producto['proveedor'] ?></p>
+
+                                        <a href="form-actualizar-p.php?id=<?php print $item_producto[0] ?>" class="btn-secondary btn btn-sm mx-md-3 mb-md-4" role="button">Editar<i class="far fa-edit ms-md-2 me-md-1"></i></a>
+
+                                        <p class="fw-400 fs-09 "><?php print $item_producto['descripcion'] ?></p>
+
+
                                     </td>
-                                    <td scope="col" class="fs-07 text-start"><?php print $item_producto['descripcion'] ?></td>
-
-                                    <td scope="col" class="fs-09"><?php print $item_producto['fecha'] ?></td>
-
-                                    <?php
 
 
-                                    print $item_producto['color'];
-
-                                    ?>
-
-                                    <td scope="col" class="fs-09"><?php print $item_producto['fecha'] ?></td>
                                     <td scope="col" class="fs-09">
+                                        <div class="d-flex justify-content-center">
 
-                                        <select class="col-12 color-select" multiple>
-                                            <option value=""><?php
-                                                                print $item_producto['op1'];
-                                                                print ', ';
-                                                                print $item_producto['q1'];
-                                                                print ', ';
-                                                                print $item_producto['precio1'];
-                                                                ?> </option>
-                                            <option value=""><?php
-                                                                print $item_producto['op2'];
-                                                                print ', ';
-                                                                print $item_producto['q2'];
-                                                                print ', ';
-                                                                print $item_producto['precio2'];
-                                                                ?> </option>
-                                            <option value=""><?php
-                                                                print $item_producto['op3'];
-                                                                print ', ';
-                                                                print $item_producto['q3'];
-                                                                print ', ';
-                                                                print $item_producto['precio3'];
-                                                                ?> </option>
-                                            <option value=""><?php
-                                                                print $item_producto['op4'];
-                                                                print ', ';
-                                                                print $item_producto['q4'];
-                                                                print ', ';
-                                                                print $item_producto['precio4'];
-                                                                ?> </option>
-                                            <option value=""><?php
-                                                                print $item_producto['op5'];
-                                                                print ', ';
-                                                                print $item_producto['q5'];
-                                                                print ', ';
-                                                                print $item_producto['precio5'];
-                                                                ?> </option>
-                                            <option value=""><?php
-                                                                print $item_producto['op6'];
-                                                                print ', ';
-                                                                print $item_producto['q6'];
-                                                                print ', ';
-                                                                print $item_producto['precio6'];
-                                                                ?> </option>
-                                        
-                                            <option value=""><?php
-                                                                print $item_producto['op7'];
-                                                                print ', ';
-                                                                print $item_producto['q7'];
-                                                                print ', ';
-                                                                print $item_producto['precio7'];
-                                                                ?> </option>
-                                        </select>
+
+                                            <?php
+
+                                            $opciones = $item_producto['opciones'];
+                                            $separada = '';
+                                            $separador = ",";
+                                            $separada = explode($separador, $opciones);
+
+                                            $count_opciones = count($separada);
+
+                                            for ($o = 0; $o < $count_opciones; $o++) {
+                                            ?>
+                                                <p class="mx-1 my-md-1"><?php print $separada[$o]; ?>
+                                                </p>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+
 
 
 
                                     </td>
+
+
+
+                                    <td scope="col" class="fs-09 text-start">
+
+                                        <?php
+
+                                        $cantidad = $item_producto['cantidad'];
+                                        $costo = $item_producto['precio'];
+                                        $separada_cantidad = '';
+                                        $separada_costo = '';
+                                        $separador = ",";
+                                        $separada_cantidad = explode($separador, $cantidad);
+                                        $separada_costo = explode($separador, $costo);
+
+                                        $count_cantidad = count($separada_cantidad);
+                                        $count_costo = count($separada_costo);
+
+                                        for ($ca = 0; $ca < $count_cantidad; $ca++) {
+
+                                        ?>
+
+                                            <div class="mx-1 my-md-1 text-center"><?php print $separada_cantidad[$ca];
+                                                                                    print ' piezas, a $';
+                                                                                    print $separada_costo[$ca]; ?>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+
+                                    <td scope="col" class="fs-07 text-start">
+
+                                        <div class="d-flex justify-content-center">
+
+
+                                            <?php
+
+                                            $colores = $item_producto['color'];
+                                            $separada = '';
+                                            $separador = ",";
+                                            $separada = explode($separador, $colores);
+
+                                            $count_colores = count($separada);
+
+                                            for ($u = 0; $u < $count_colores; $u++) {
+                                            ?>
+
+                                                <div class="col-1 p-md-3 rounded-circle mx-1 my-md-1" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
+
+
+                                                </div>
+                                            <?php
+                                            }
+                                            ?>
+                                        </div>
+
+
+                                    </td>
+
+
+
 
 
                                     <td scope="col" class="fs-09">
@@ -242,7 +259,7 @@ foreach ($info_producto as $productos) {
 
 
                                     <td class="col text-center">
-                                        <a href="acciones_p.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-lg-5" role="button">Eliminar<i class="far fa-trash-alt ms-lg-2 me-lg-1"></i></a>
+                                        <a href="acciones_p.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-md-1" role="button">Eliminar<i class="far fa-trash-alt ms-md-2 me-md-1"></i></a>
                                     </td>
                                 </tr>
                         <?php

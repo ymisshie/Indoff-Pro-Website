@@ -1,74 +1,49 @@
-/*
-require 'vendor/autoload.php';
+<?php
 
-$producto = new ameri\Producto;
-
-if($_SERVER['REQUEST_METHOD'] ==='POST'){
-
-    if ($_POST['accion']==='Registrar'){
-
-        if(empty($_POST['nombre_producto']))
-            exit('Completar titulo');
-        
-        if(empty($_POST['descripcion_producto']))
-            exit('Completar titulo');
-            
-            if(empty($_POST['precio_producto']))
-            exit('Completar Precio');
-
-        if(empty($_POST['categoria_id_producto']))
-            exit('Seleccionar una Categoria');
-
-        if(!is_numeric($_POST['categoria_id_producto']))
-            exit('Seleccionar una Categoria válida');
-
-            if(empty($_POST['categoria_id_producto']))
-            exit('Seleccionar una Categoria');
-
-        if(!is_numeric($_POST['categoria_id_producto']))
-            exit('Seleccionar una Categoria válida');
-
-            
-            
-        
-        $_params = array(
-            'nombre'=>$_POST['nombre_producto'],
-            'descripcion'=>$_POST['descripcion_producto'],
-            'imagen'=> subirFoto(),
-            'precio'=>$_POST['precio_producto'],
-            'categoria_id'=>$_POST['categoria_id_producto'],
-            'fecha'=> date('Y-m-d')
-        );
-
-        $rpt = $producto->registrar($_params);
-
-        
-        if($rpt)
-            header('Location: dashboard.php');
-        else
-            print 'Error al registrar una pelicula';
-        
+$opciones = $info_producto['opciones'];
+$separada = '';
+$separador = ",";
 
 
-    }
+if ($opciones != '') {
 
-}
+    $separada = explode($separador, $opciones);
 
+    $count_opciones = count($separada);
 
-function subirFoto() {
-
-    $carpeta = __DIR__.'upload/';
-
-    $archivo = $carpeta.$_FILES['imagen_producto']['name'];
-
-    move_uploaded_file($_FILES['imagen_producto']['tmp_name'],$archivo);
-
-    return $_FILES['imagen_producto']['name'];
+    for ($o = 0; $o < $count_opciones; $o++) {
+?>
+        <div class="col-md-3 col-lg-3 text-center">
+            <h5 class="fw-500"><?php if ($separada[$o] != '') {
+                                    print $separada[$o];
+                                } ?></h5>
 
 
-}
+<?php
 
+$cantidad = $info_producto['cantidad'];
+$costo = $info_producto['precio'];
+$separada_cantidad = '';
+$separada_costo = '';
+$separador = ",";
+$separada_cantidad = explode($separador, $cantidad);
+$separada_costo = explode($separador, $costo);
 
+$count_cantidad = count($separada_cantidad);
 
+$count_costo = count($separada_costo);
 
-*/
+for ($ca = 0; $ca < $count_cantidad; $ca++) {
+    $int_cantidad = intval($separada_cantidad[$ca]);
+    $int_costo = intval($separada_costo[$ca]);
+    $costounidad = $int_costo / $int_cantidad; ?>
+
+    <option value="<?php
+                    print $separada_cantidad[$ca];
+                    print ',';
+                    print $separada_costo[$ca]; ?>"><?php
+                                                    print $int_cantidad;
+                                                    print ', $';
+                                                    print number_format($costounidad, 2);
+                                                    print ', $';
+                                                    print $int_costo; ?></option>

@@ -42,7 +42,42 @@
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
+    });
+
+
+
+    var nextinput = 0;
+
+
+    $("#nuevo_campo").click(function(e) {
+        nextinput++;
+        s
+        var campo = '<div class="d-flex pt-lg-2 pb-lg-2"> <h6 class=" col-form-label col-lg-3 fw-600 color-grey2">Cantidad mínima ' + newinput + '</h6> <div class="form-group col-lg-3 mx-lg-3"> <input class=" col-12 qty-dropdown" type="number" name="q' + newinput + '_producto" placeholder="0" onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1"> <small class="d-flex form-text text-disbabled">Cantidad mínima ' + newinput + '</small> </div> <h6 class="col-form-label fw-600 col-lg-2 color-grey2 ms-lg-4">Costo ' + newinput + '</h6> <div class="form-group col-lg-3"> <input class=" col-12 qty-dropdown" type="number" name="p' + newinput + '_producto" placeholder="0" onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1"> <small class="d-flex form-text text-disbabled">Costo ' + newinput + '</small></div></div>'
+    });
+
+    function cambiarPrecio() {
+        var precios_lista = document.getElementById("cantidadcosto_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].textContent;
+
+        console.log(valor);
+
+        var arreglo = valor.split(",")
+
+        console.log(arreglo);
+
+        var modificarlabelcantidad = document.getElementById("cantidad_dinamica");
+        modificarlabelcantidad.textContent = 'Cantidad total: ' + arreglo[0] + ' Unidades';
+
+        var modificarlabelcostounidad = document.getElementById("costounidad_dinamico");
+        modificarlabelcostounidad.textContent = arreglo[1] + '/Unidad';
+
+        var modificarlabelprecio = document.getElementById("precio_dinamico");
+        modificarlabelprecio.textContent = 'Costo total: ' + arreglo[2];
+
+        console.log(modificarlabel.textContent)
+
+    }
+
 </script>
 
 </body>

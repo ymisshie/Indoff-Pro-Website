@@ -4,7 +4,7 @@
     <div class="container">
 
         <div class="row justify-content-center text-center categorias-fichas">
-            <h2 class="section-title py-lg-5">Encontrar por Categoria</h2>
+            <h2 class="section-title py-md-5">Encontrar por Categoria</h2>
 
                             <?php
                             require 'vendor/autoload.php';
@@ -18,8 +18,8 @@
                               {
                                 $item = $info_categoria[$x];
                           ?>
-                          <div class="col-lg-3 mx-5">
-                <a class="card categorias mb-lg-5" href="categorias.php?id=<?php print $item['id']?>">
+                          <div class="col-lg-3 col-md-6 px-md-3 mx-lg-5">
+                <a class="card categorias mb-md-5" href="categorias.php?id=<?php print $item['id']?>">
                     
 
                     <?php 

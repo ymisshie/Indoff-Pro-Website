@@ -6,8 +6,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $id = $_GET['id'];
     $producto = new ameri\Producto;
+    $categoria = new ameri\Categoria;
+
 
     $resultado = $producto->mostrarPorId($id);
+    $info_categoria = $categoria->mostrar();
+
 
     if (!$resultado)
         header('Location: dashboard.php');
@@ -22,159 +26,388 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 ?>
 
-<section>
-    <div class="container" id="form-registro-p">
-        <h2 class="section-title text-start m-0 mt-5 mb-3">Añadir producto</h2>
-        <div class="row justify-content-center p-3 mt-4 mb-4 color-grey-bg ">
 
-            <div class="col-8 text-center">
-                <form method="POST" action="acciones_p.php" enctype="multipart/form-data">
+<section class="color-grey-bg">
+    <div class="container pb-md-5" id="form-registro-p">
+        <div class="row justify-content-center">
+            <h3 class="pt-md-5 fw-700 pb-lg-3 pb-md-4 text-center">Actualizar: <?php print $resultado['nombre']; ?></h3>
+        </div>
 
-                    <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
+        <div class="row">
 
-                    <div class="form-group text-start">
-                        <label class="col-form-label">Nombre del producto</label>
-                        <input value="<?php print $resultado['nombre'] ?>" class="form-control" name="nombre_producto" type="text" placeholder="" required>
+            <form method="POST" action="acciones_p.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-md-4 text-center">
+
+                <div class="col-lg-4 col-md-9 mx-md-auto">
+                    <div class="col-lg-10 col-md-9 mx-auto d-flex py-md-2 justify-content-evenly">
+                        <div class="ws col-lg-2 col-md-2 rounded-circle color-orange-bg align-self-center py-md-3 ">
+                            <span><i class="far fa-question-circle text-white fs-1-5"></i></span>
+                        </div>
+                        <h5 class="fw-700 py-md-4 mb-0">Información del producto</h5>
                     </div>
-                    <div class="form-group text-start">
-                        <label class="col-form-label">Descripción</label>
-                        <textarea class="form-control" name="descripcion_producto" id="" type="text" placeholder="" required> <?php print $resultado['descripcion'] ?> </textarea>
+
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Nombre del producto <span class="color-red">*</span></h6>
+                        <input class="form-control" name="nombre_producto" value="<?php print $resultado['nombre']; ?>" type="text" placeholder="Nombre del producto" required>
                     </div>
-                    <div class="form-group text-start">
-                        <label class="col-form-label">Proveedor</label>
-                        <input class="form-control" name="proveedor_producto" id="" type="text" placeholder="" required value="<?php print $resultado['proveedor']?> ">
+
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Nombre del proveedor <span class="color-red">*</span></h6>
+                        <input class="form-control" name="proveedor_producto" type="text" value="<?php print $resultado['proveedor']; ?>" placeholder="Nombre del proveedor o distribuidor" required>
                     </div>
-                    <div class="col-12 form-group text-start">
-                        <label class="col-form-label">Imagen</label>
+
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Descripción del producto <span class="color-red">*</span></h6>
+                        <textarea class="form-control textarea" name="descripcion_producto" type="text" placeholder="Descripción detallada del producto o colores de impresión." required><?php print $resultado['descripcion']; ?></textarea>
+                    </div>
+
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Imagen <span class="color-red">*</span></h6>
                         <input name="imagen" type="file">
-                        <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen'] ?>">
+                        <small class="d-flex form-text text-disbabled m-0 py-2">La imagen anterior está guardada.</small>
                     </div>
 
-                    <div class="col-12 form-group text-start">
-                        <label class="col-form-label">Categoria</label>
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Categoria del producto <span class="color-red">*</span></h6>
                         <select class="form-control" name="categoria_id_producto" required>
-                            <option value="">Seleccione una categoria</option>
-                            <?php
-                            require 'vendor/autoload.php';
-                            $categoria = new ameri\Categoria;
-                            $info_categoria = $categoria->mostrar();
-                            $cantidad = count($info_categoria);
-                            for ($x = 0; $x < $cantidad; $x++) {
-                                $item = $info_categoria[$x];
-                            ?>
-                                <option value="<?php print $item['id'] ?>" <?php print $resultado['categoria_id'] == $item['id'] ? 'selected' : '' ?>><?php print $item['nombre'] ?></option>
+
                             <?php
 
-                            }
+                            $categoria2 = new ameri\Categoria;
+                            $info_categorias = $categoria2->mostrar();
+                            $cantidad = count($info_categorias);
+
+
+                            for ($x = 0; $x < $cantidad; $x++) {
+                                $item = $info_categorias[$x];
+
+                                if ($item['id'] == $info_categoria['id']) {
                             ?>
+                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+
+                                <?php
+                                }
+                            }
+
+                            for ($w = 0; $w < $cantidad; $w++) {
+                                $item = $info_categorias[$w];
+
+                                if ($item['id'] != $info_categoria['id']) {
+                                ?>
+
+                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+                            <?php
+
+                                }
+                            }
+
+                            ?>
+
+                            <option value="">Seleccione una categoria</option>
+
                         </select>
                     </div>
 
-                    <div class="cantidad col-12 py-4 d-flex justify-content-between font-size-0.7">
-                        <div class="text-center mx-3">
-                            <h6 class="font-poppins">Opción 1</h6>
-                            <input id="op1" class="form-control" type="text" value="<?php print $resultado['op1'] ?> " name="op1_producto" required> 
+                    <div class="form-group text-start">
+
+                        <div class="d-flex pt-md-2 pb-md-2">
+
+                            <div class="form-group text-start py-md-2">
+                                <h6 class="col-form-label fw-600">Dimensiones</h6>
+                                <input class="form-control" name="size_producto" type="text" value="<?php print $resultado['size']; ?>" placeholder="55 x 30 cm">
+                            </div>
+
+                            <div class="form-group text-start  mx-md-4 py-md-2">
+                                <h6 class="col-form-label fw-600">Peso</h6>
+                                <input class="form-control" name="peso_producto" type="text" value="<?php print $resultado['peso'] ?>" placeholder="0.5 kg">
+                            </div>
+
+
                         </div>
-                        <div class="text-center mx-3">
-                            <h6 class="font-poppins">Opción 2</h6>
-                            <input id="op2" class="form-control" type="text" name="op2_producto" value="<?php print $resultado['op2'] ?> " required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="font-poppins">Opción 3</h6>
-                            <input id="op3" class="form-control" type="text" name="op3_producto" value="<?php print $resultado['op3'] ?> "required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="font-poppins">Opción 4</h6>
-                            <input id="op4" class="form-control" type="text" name="op4_producto" value="<?php print $resultado['op4'] ?> " value="" required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="font-poppins">Opción 5</h6>
-                            <input id="op5" class="form-control" type="text" name="op5_producto" value="<?php print $resultado['op5'] ?> " required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="font-poppins">Opción 6</h6>
-                            <input id="op6" class="form-control" type="text" name="op6_producto" value="<?php print $resultado['op6'] ?> " required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="font-poppins">Opción 7</h6>
-                            <input id="op7" class="form-control" type="textF" name="op7_producto" value="<?php print $resultado['op7'] ?> " required>
+
+                        <small class="d-flex form-text text-disbabled m-0">Si el producto requiere de los siguientes elementos</small>
+
+                    </div>
+
+                    <!--colores-->
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Colores<span class="color-red">*</span></h6>
+
+                        <?php
+                        $array = array(
+                            "Black",
+                            "Navy",
+                            "Darkblue",
+                            "MediumBlue",
+                            "Blue",
+                            "DarkGreen",
+                            "Green",
+                            "Teal",
+                            "DarkCyan",
+                            "DeepSkyBlue",
+                            "DarkTurquoise",
+                            "MediumSpringGreen",
+                            "Lime",
+                            "SpringGreen",
+                            "Aqua",
+                            "Cyan",
+                            "MidnightBlue",
+                            "DodgerBlue",
+                            "LightSeaGreen",
+                            "ForestGreen",
+                            "SeaGreen",
+                            "DarkSlateGray",
+                            "LimeGreen",
+                            "MediumSeaGreen",
+                            "Turquoise",
+                            "RoyalBlue",
+                            "SteelBlue",
+                            "DarkSlateBlue",
+                            "MediumTurquoise",
+                            "Indigo",
+                            "DarkOliveGreen",
+                            "CadetBlue",
+                            "CornflowerBlue",
+                            "RebeccaPurple",
+                            "MediumAquaMarine",
+                            "DimGray",
+                            "SlateBlue",
+                            "OliveDrab",
+                            "SlateGray",
+                            "LightSlateGray",
+                            "MediumSlateBlue",
+                            "LawnGreen",
+                            "Chartreuse",
+                            "Aquamarine",
+                            "Maroon",
+                            "Purple",
+                            "Olive",
+                            "Gray",
+                            "SkyBlue",
+                            "LightSkyBlue",
+                            "BlueViolet",
+                            "DarkRed",
+                            "DarkMagenta",
+                            "SaddleBrown",
+                            "DarkSeaGreen",
+                            "LightGreen",
+                            "MediumPurple",
+                            "DarkViolet",
+                            "PaleGreen",
+                            "DarkOrchid",
+                            "YellowGreen",
+                            "Sienna",
+                            "Brown",
+                            "DarkGray",
+                            "LightBlue",
+                            "GreenYellow",
+                            "PaleTurquoise",
+                            "LightSteelBlue",
+                            "PowderBlue",
+                            "FireBrick",
+                            "DarkGoldenRod",
+                            "MediumOrchid",
+                            "RosyBrown",
+                            "DarkKhaki",
+                            "Silver",
+                            "MediumVioletRed",
+                            "IndianRed",
+                            "Peru",
+                            "Chocolate",
+                            "Tan",
+                            "LightGray",
+                            "Thistle",
+                            "Orchid",
+                            "GoldenRod",
+                            "PaleVioletRed",
+                            "Crimson",
+                            "Gainsboro",
+                            "Plum",
+                            "BurlyWood",
+                            "LightCyan",
+                            "Lavender",
+                            "DarkSalmon",
+                            "Violet",
+                            "PaleGoldenRod",
+                            "LightCoral",
+                            "Khaki",
+                            "AliceBlue",
+                            "HoneyDew",
+                            "Azure",
+                            "SandyBrown",
+                            "Wheat",
+                            "Beige",
+                            "WhiteSmoke",
+                            "MintCream",
+                            "GhostWhite",
+                            "Salmon",
+                            "AntiqueWhite",
+                            "Linen",
+                            "LightGoldenRodYellow",
+                            "OldLace",
+                            "Red",
+                            "Fuchsia",
+                            "Magenta",
+                            "DeepPink",
+                            "OrangeRed",
+                            "Tomato",
+                            "HotPink",
+                            "Coral",
+                            "DarkOrange",
+                            "LightSalmon",
+                            "Orange",
+                            "LightPink",
+                            "Pink",
+                            "Gold",
+                            "PeachPuff",
+                            "NavajoWhite",
+                            "Moccasin",
+                            "Bisque",
+                            "MistyRose",
+                            "BlanchedAlmond",
+                            "PapayaWhip",
+                            "LavenderBlush",
+                            "SeaShell",
+                            "Cornsilk",
+                            "LemonChiffon",
+                            "FloralWhite",
+                            "Snow",
+                            "Yellow",
+                            "LightYellow",
+                            "Ivory",
+                            "White",
+                        );
+
+                        //print_r($array);
+                        ?>
+
+                        <select name="color_producto[]" multiple class="color-select col-md-12 col-lg-12" id="color-select" required>
+
+                            <?php
+
+                            for ($y = 0; $y < 141; $y++) {
+                            ?>
+                                <option value="<?php print $array[$y] ?>" style="background-color:<?php print $array[$y] ?>; " class="px-lg-3 fw-400">
+                                    <?php print $array[$y] ?>
+                                </option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+
+                        <div class="row p-lg-4 py-md-4 px-md-3">
+                            <?php
+
+                            for ($z = 0; $z < 141; $z++) {
+                            ?>
+
+                                <div class="col-lg-1 col-md-1 p-md-2" style="background-color: <?php print $array[$z] ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $array[$z] ?>">
+                                </div>
+
+                            <?php
+
+                            }
+
+                            ?>
                         </div>
 
                     </div>
 
+                </div>
 
-                    <div class="cantidad col-12 pb-4 d-flex justify-content-between font-size-0.7">
-                        <div class=" text-center mx-3">
-                            <h5 class="col-form-label font-poppins">Cantidad</h5> <input class="form-control" name="q1_producto" type="text" value="<?php print $resultado['q1'] ?>" required>
+                <div class="col-md-9 mx-md-auto col-lg-6" id="campos">
+
+                    <div class="col-lg-7 col-md-9 mx-auto d-flex py-md-2 justify-content-evenly">
+                        <div class="ws col-lg-2 col-md-2 rounded-circle color-purple-bg align-self-center py-md-3">
+                            <span><i class="fas fa-boxes text-white fs-1-5"></i></span>
                         </div>
-                        <div class=" text-center mx-3">
-                            <h5 class="col-form-label font-poppins">Cantidad</h5> <input class="form-control" name="q2_producto" type="text" value="<?php print $resultado['q2'] ?>" required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h5 class="col-form-label font-poppins">Cantidad</h5> <input class="form-control" name="q3_producto" type="text" value="<?php print $resultado['q3'] ?>" required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h5 class="col-form-label font-poppins">Cantidad</h5>
-                            <input class="form-control" name="q4_producto" type="text" value="<?php print $resultado['q4'] ?>" required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h5 class="col-form-label font-poppins">Cantidad</h5>
-                            <input class="form-control" name="q5_producto" type="text" value="<?php print $resultado['q5'] ?>" required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h5 class="col-form-label font-poppins">Cantidad</h5>
-                            <input class="form-control" name="q6_producto" type="text" value="<?php print $resultado['q6'] ?>" required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h5 class="col-form-label font-poppins">Cantidad</h5>
-                            <input class="form-control" name="q7_producto" type="text" value="<?php print $resultado['q7'] ?>" required>
-                        </div>
+                        <h5 class="fw-700 py-md-4 mb-0">Variaciones del producto</h5>
                     </div>
 
-                    <div class="cantidad col-12 pb-4 d-flex justify-content-between font-size-0.7">
-                        <div class=" text-center mx-3">
-                            <h6 class="col-form-label font-poppins">Precio 1</h6> <input class="form-control" name="precio_producto1" type="text" value="<?php print $resultado['precio1'] ?>" required>
-                        
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="col-form-label font-poppins">Precio 2</h6> <input class="form-control" name="precio_producto2" type="text" value="<?php print $resultado['precio2'] ?>" required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="col-form-label font-poppins">Precio 3</h6> <input class="form-control" name="precio_producto3" type="text"  value="<?php print $resultado['precio3'] ?>"  required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="col-form-label font-poppins">Precio 4</h6>
-                            <input class="form-control" name="precio_producto4" type="text"  value="<?php print $resultado['precio4'] ?>"  required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="col-form-label font-poppins">Precio 5</h6>
-                            <input class="form-control" name="precio_producto5" type="text"  value="<?php print $resultado['precio5'] ?>"  required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="col-form-label font-poppins">Precio 6</h6>
-                            <input class="form-control" name="precio_producto6" type="text"  value="<?php print $resultado['precio6'] ?>"  required>
-                        </div>
-                        <div class=" text-center mx-3">
-                            <h6 class="col-form-label font-poppins">Precio 7</h6>
-                            <input class="form-control" name="precio_producto7" type="text"  value="<?php print $resultado['precio7'] ?>" 
-                            required>
-                        </div>
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Opciones del producto</h6>
+                        <textarea class="form-control textarea" name="opciones_producto" type="text" placeholder="(Opcional) Si el producto tiene variaciones. Ej: tallas de camisetas, S, M, L, XL."><?php print $resultado['opciones'] ?> </textarea>
                     </div>
 
-                    
-            </div>
+                    <?php
+                    $count = 7;
+                    $countdivs = 1;
+                    ?>
+                    <div class="form-group text-start py-md-2">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="col-form-label fw-600">Cantidades mínimas y costos</h6>
 
-            <input type="submit" name="accion" class="btn btn-success my-4" value="Actualizar">
-            <a href="dashboard.php" type="submit" class="btn btn-danger my-4" role="button">Cancelar</a>
+                            <!--<a href="nuevo_campo" class="btn btn-sm align-self-center btn-link2 color-red ns" role="button">Agregar campo</a>-->
+                        </div>
 
-            <!--
-                    <input type="submit" name="accion" class="btn btn-success my-4" 
-                    value="Registrar">
-                    <a href="dashboard.php" class="btn btn-danger my-4" role="buttton">Cancelar</a>
--->
+                        <?php
+                        for ($x = 1; $x < 8; $x++) {
+                        ?>
+
+                            <div class="d-flex pt-md-2 pb-md-2">
+
+                                <h6 class=" col-form-label col-md-3 col-lg-3  fw-600 color-grey2">Cantidad mín <?php
+                                                                                                                print $x;
+                                                                                                                if ($x == 1) {
+                                                                                                                    print ' <span class="color-red ms-md-1">  *</span>'
+                                                                                                                ?>
+                                    <?php
+                                                                                                                }
+                                    ?></h6>
+                                <div class="form-group col-md-3 mx-lg-3">
+
+                                    <?php
+
+                                    $cantidad = $resultado['cantidad'];
+                                    $costo = $resultado['precio'];
+                                    $separada_cantidad = '';
+                                    $separada_costo = '';
+                                    $separador = ",";
+                                    $separada_cantidad = explode($separador, $cantidad);
+                                    $separada_costo = explode($separador, $costo);
+
+                                    $count_cantidad = count($separada_cantidad);
+                                    $count_costo = count($separada_costo);
+
+                                    ?>
+
+                                    <input class=" col-md-12 qty-dropdown" type="number" name="cantidad_producto[]" value="<?php print $separada_cantidad[$x-1] ?>" placeholder="0" <?php if ($x == 1) {
+                                                                                                                                                                                        print 'required';
+                                                                                                                                                                                    } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
+                                    <small class="d-flex form-text text-disbabled">Cantidad mín <?php print $x ?></small>
+                                </div>
+                                <h6 class="col-form-label fw-600 col-md-2 color-grey2 ms-md-4">Costo <?php
+                                                                                                        print $x;
+                                                                                                        if ($x == 1) {
+                                                                                                            print ' <span class="color-red ms-md-1">  *</span>'
+                                                                                                        ?>
+                                    <?php
+                                                                                                        }
+                                    ?></h6>
+                                <div class="form-group col-md-3">
+                                    <input class=" col-md-12 qty-dropdown" type="number" name="precio_producto[]" placeholder="0" value="<?php print $separada_costo[$x-1] ?>" <?php if ($x == 1) {
+                                                                                                                                                                                    print 'required';
+                                                                                                                                                                                } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
+                                    <small class="d-flex form-text text-disbabled">Costo <?php
+                                                                                            print $x;
+
+                                                                                            ?>
+                                    </small>
+                                </div>
+                            </div>
+
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+
+                    <input type="submit" name="accion" href="acciones_p.php?id=<?php print $resultado['id']?>" class="btn btn-secondary my-md-4" value="Actualizar">
+                    <a href="productos-dashboard.php?id=<?php print $resultado['id']?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
+
+                </div>
+
             </form>
-        </div>
-    </div>
 
+        </div>
     </div>
 </section>

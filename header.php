@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="stylefinal.css">
+    <link rel="stylesheet" href="style1.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -33,39 +33,44 @@
 <body>
 
     <!--start #header-->
-    <header id="header">
-        <div class="d-flex justify-content-between px-lg-5 pt-lg-1 color-aqua-bg">
-            <a class="navbar-brand text-white font-gentium p-0 m-0" href="index.php">Indoff Pro</a>
-            <div class="phone-info text-end ms-auto px-lg-5 fw-600 align-self-center text-white">
-                <p class="mb-lg-2">(664) 625 11 11</p>
-                <p class="mb-lg-1">(664) 123 39 90</p>
+    <header id="header" class="color-aqua-bg">
+        <div class="d-flex justify-content-between px-lg-5 pt-md-2 px-md-5">
+            <a class="align-self-center navbar-brand px-lg-5 fw-500 text-white font-gentiumme-auto" href="index.php">Indoff Pro</a>
+            <div class="phone-info text-end ms-auto fw-600 align-self-center text-white">
+                <p class="mb-2">(664) 625 11 11</p>
+                <p class="mb-1">(664) 123 39 90</p>
             </div>
-            <div class="align-items-center menu text-center d-flex text-white">
+            <div class="align-items-center menu text-center d-flex text-white ps-lg-5 ps-md-3">
+                <div class="col btn-carrito">
+    
+                    <div><i class="fas fa-file-invoice fs-1-5"></i></div>
+                    <div><a href="carrito.php" class="nav-link text-white px-md-3 fw-500">Cotizaciones</a></div>
+    
+                
+                </div>
                 <div class="col btn-cuenta">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
-                    <div><a href="login.php" class="nav-link text-white px-lg-3 fw-500">Login</a></div>
-                </div>
-                <div class="col btn-carrito">
-                    <div><i class="fas fa-shopping-cart fs-1-5"></i></div>
-                    <div><a href="carrito.php" class="nav-link text-white px-lg-3 fw-500">Carrito</a></div>
+                    <div><a href="login.php" class="nav-link text-white px-md-3 fw-500">Login</a></div>
                 </div>
             </div>
         </div>
 
         <!--pimary navigation-->
-        <nav class="navbar py-lg-1 navbar-expand-lg color-aqua-bg fw-600 px-lg-1">
+        <nav class="navbar py-md-2 navbar-expand-lg  fw-600 px-lg-5 px-md-3">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon">
+                        <i class="fas fa-bars text-white m-0"></i>
+                    </span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item px-lg-4 uppercase <?php if ($pagina == "inicio") {
+                        <li class="nav-item px-md-4  uppercase <?php if ($pagina == "inicio") {
                                                                     echo "active";
                                                                 } ?>">
                             <a class="nav-link text-white active" aria-current="page" href="index.php">Inicio</a>
                         </li>
-                        <li class="nav-item px-lg-4 dropdown">
+                        <li class="nav-item px-md-4 px-md-0 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
                                                                                         echo "active";
                                                                                     } ?>" href="categorias.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,7 +86,7 @@
                                 <li><a class="dropdown-item" href="#">Categoria 6</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown px-lg-4">
+                        <li class="nav-item dropdown  px-md-4">
                             <a class="nav-link text-white text-white dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Eventos
                             </a>
@@ -95,10 +100,10 @@
                                 <li><a class="dropdown-item" href="#">Evento 6</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item px-lg-4 uppercase">
+                        <li class="nav-item px-md-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>
                         </li>
-                        <li class="nav-item px-lg-4 uppercase">
+                        <li class="nav-item px-md-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Nosotros</a>
                         </li>
                     </ul>

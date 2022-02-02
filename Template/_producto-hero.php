@@ -22,11 +22,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 <!--product-hero-->
 <section id="producto" class="producto-hero">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <input type="hidden" name="id" value="<?php print $info_producto['id'] ?>">
 
-            <div class="col-lg-5 p-0 text-center">
+    <div class="container-fluid">
+
+        <div class="row px-md-5 py-md-5 p-lg-3 justify-content-center" method="POST" action="acciones_p.php" enctype="multipart/form-data">
+
+            <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
+
+            <!--IMAGEN DEL PRODUCTO-->
+            <div class="col-md-12 col-lg-4 text-center align-self-center">
                 <?php
                 $imagen = 'upload/' . $info_producto['imagen'];
                 if (file_exists($imagen)) {
@@ -37,70 +41,183 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     Sin imagen
                 <?php } ?>
             </div>
+            <!--!IMAGEN DEL PRODUCTO-->
 
-            <div class="col-lg-7 px-lg-5">
-                <h4 class="section-title pt-lg-5"><?php print $info_producto['nombre'] ?>
+            <!--INFO DEL PRODUCTO-->
+            <div class="col-md-7 col-lg-5 px-md-4 px-lg-5">
+                <h4 class="section-title pt-md-4"><?php print $info_producto['nombre'] ?>
                 </h4>
-                <h6 class="fw-500"> <?php print $info_producto['proveedor'] ?></h6>
-                <p class="py-lg-3 m-0"><?php print $info_producto['descripcion'] ?></p>
+                <h6 class="fw-600 py-md-1 color-red"> <?php print $info_producto['proveedor'] ?></h6>
+                <p class="py-md-2"><?php print $info_producto['descripcion'] ?></p>
 
                 <!-- color -->
-                <div class="color col py-lg-3">
+                <div class="color col-12 py-md-3">
                     <h6 class="fs-1-2 fw-600 m-0">Color</h6>
-                    <div class="d-flex py-lg-3">
-                        <div class="color-aqua-bg p-lg-3 me-lg-4 btn btn-color">
-                        </div>
-                        <div class="color-aqua-bg p-lg-3 me-lg-4 btn btn-color">
-                        </div>
-                        <div class="color-aqua-bg p-lg-3 me-lg-4 btn btn-color">
-                        </div>
-                        <div class="color-aqua-bg p-lg-3 me-lg-4 btn btn-color">
-                        </div>
-                        <div class="color-aqua-bg p-lg-3 me-lg-4 btn btn-color">
-                        </div>
+
+                    <div class="color col-md-10 d-flex py-md-2">
+
+                        <?php
+
+                        $colores = $info_producto['color'];
+                        $separada = '';
+                        $separador = ",";
+                        $separada = explode($separador, $colores);
+
+                        $count_colores = count($separada);
+
+                        for ($u = 0; $u < $count_colores; $u++) {
+                        ?>
+
+                            <div class="p-md-3 p-lg-3 py-lg-3 me-md-3 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
+                            </div>
+                        <?php
+                        }
+                        ?>
+
+
                     </div>
+                    <!-- !color -->
+
                 </div>
 
-                <!-- !color -->
-                <h6 class="fs-1-2 fw-600 m-0">Cantidad</h6>
-                <!-- product qty section -->
-                <div class="cantidad col py-lg-2 d-flex">
+                <div class="color col-12 py-md-3">
+                    <h6 class="fs-1-2 fw-600 m-0">Unidades</h6>
+                    <p class="py-md-2 col-md-8 col-lg-12">Seleccione la cantidad y costo por variación de producto.</p>
 
+                    <?php
+                    $opciones = $info_producto['opciones'];
+                    $separada = '';
+                    $separador = ",";
+
+
+                    $cantidad = $info_producto['cantidad'];
+                    $costo = $info_producto['precio'];
+                    $separada_cantidad = '';
+                    $separada_costo = '';
+                    $separador = ",";
+                    $separada_cantidad = explode($separador, $cantidad);
+                    $separada_costo = explode($separador, $costo);
+
+                    $count_cantidad = count($separada_cantidad);
+
+                    $count_costo = count($separada_costo);
+                    ?>
+                    <!--CANTIDAD Y COSTO-->
+                    <div class="color-grey-bg 
+                    <?php
+                    if ($opciones != '') {
+                        print 'col-md-11 col-lg-12';
+                    } else if ($opciones == '') {
+                        print 'col-md-9';
+                    }
+                    ?>
+                    
+                    formulario d-flex flex-wrap py-md-2 mt-md-3 p-md-2">
+
+
+
+                        <?php
+
+                        if ($opciones != '') {
+                            $separada = explode($separador, $opciones);
+
+                            $count_opciones = count($separada);
+
+                            for ($o = 0; $o < $count_opciones; $o++) {
+                        ?>
+                                <div class="col-md-12 col-lg-6 text-center">
+                                    <h5 class="fw-500"><?php if ($separada[$o] != '') {
+                                                            print $separada[$o];
+                                                        } ?></h5>
+
+                                    <select class="col-md-12 qty-dropdown" name="cantidadcosto_producto" id="cantidadcosto_producto" onchange="cambiarPrecio()">
+                                        <option value="" class="fw-600">
+                                            Unidades, C/u, Total
+                                        </option>
+
+
+                                        <?php
+                                        for ($ca = 0; $ca < $count_cantidad; $ca++) {
+                                            $int_cantidad = intval($separada_cantidad[$ca]);
+                                            $int_costo = intval($separada_costo[$ca]);
+                                            $costounidad = $int_costo / $int_cantidad; ?>
+
+                                            <option value="<?php
+                                                            print $separada_cantidad[$ca];
+                                                            print ',';
+                                                            print $separada_costo[$ca]; ?>"><?php
+                                                                                            print $int_cantidad;
+                                                                                            print ', $';
+                                                                                            print number_format($costounidad, 2);
+                                                                                            print ', $';
+                                                                                            print $int_costo; ?></option>
+                                        <?php
+                                        }
+                                        ?>
+                                    </select>
+
+                                </div>
+
+                            <?php
+                            }
+                        } else {
+                            ?>
+                            <select class="col-md-12 me-auto qty-dropdown" name="cantidadcosto_producto" id="cantidadcosto_producto" onchange="cambiarPrecio()">
+                                <option value="" class="fw-600">
+                                    Unidades, C/u, Total
+                                </option>
+
+                                <?php
+                                for ($ca = 0; $ca < $count_cantidad; $ca++) {
+                                    $int_cantidad = intval($separada_cantidad[$ca]);
+                                    $int_costo = intval($separada_costo[$ca]);
+                                    $costounidad = $int_costo / $int_cantidad; ?>
+
+                                    <option value="<?php
+                                                    print $separada_cantidad[$ca];
+                                                    print ',';
+                                                    print $separada_costo[$ca]; ?>"><?php
+                                                                                    print $int_cantidad;
+                                                                                    print ', $';
+                                                                                    print number_format($costounidad, 2);
+                                                                                    print ', $';
+                                                                                    print $int_costo; ?></option>
+                                <?php
+                                }
+                                ?>
+                            </select>
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+                    <!--!CANTIDAD Y COSTO-->
+
+
+                </div>
+
+
+            </div>
+            <!--!INFO DEL PRODUCTO-->
+            <div class="col-md-5 col-lg-2 align-self-md-center">
+                <div class="formulario ws color-grey-bg px-md-4 py-md-5">
+
+                    <h4 class="py-md-3 fw-700" id="precio_dinamico">Costo total: $<?php print number_format($separada_costo[0], 2) ?></h4>
+                    <p class="m-0 fw-500" id="cantidad_dinamica">Cantidad total: <?php print $separada_cantidad[0] ?> Unidades</p>
+                    <p class="m-0 fw-500" id="costounidad_dinamico">$<?php print number_format((number_format($separada_costo[0])) / (number_format($separada_cantidad[0])), 2) ?>/Unidad</p>
 
                     <!--
-                    <div class=" text-center mx-3">
-                        <h6 class="font-poppins"><?php print $info_producto['op2'] ?></h6>
-                        <input id="qtyS" class="qty-dropdown" type="number" name="qtyS" value="0">
-                    </div>
-
-                -->
+<a href="productos-dashboard.php?id=<?php //print $info_categoria['id'] 
+                                    ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
+    -->
 
                 </div>
 
-                <div class="col-12 pt-3 d-flex">
-                    <div class="col-5">
-                        <p class="precio-info m-0 font-size-09">Cantidad total: 72</p>
-                        <p class="precio-info m-0">$110/Unidad</p>
-                        <h5 class="precio-info precio-total py-lg-3 fw-600">Precio: $7,900</h5>
-                    </div>
-                    <div class="col-lg-7 text-center">
+                <input type="submit" name="accion" href="acciones_p.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-lg btn-primary mt-md-5" value="Solicitar cotización">
 
-                        <!--
-                        <div class="col-8 d-flex pb-3">
-                            <span><i class="fas fa-shipping-fast font-size-2 pt-2"></i></span>
-                            <p class="px-3 text-start m-0 mb-2 font-size-09">Envio estimado para el lunes 13 de diciembre</p>
-                        </div>
-                -->
-                        <div class="div d-flex btn-compras">
-                            <button type="submit" class="btn btn-primary">Comprar</button>
-                            <button type="submit" class="btn btn-secondary mx-lg-4">Agregar al carrito</button>
-                        </div>
-
-
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
+
+
 </section>
 <!--!product-hero-->
