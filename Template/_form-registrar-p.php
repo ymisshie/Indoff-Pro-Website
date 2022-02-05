@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -35,7 +35,7 @@ die;
 
         <div class="row">
 
-            <form method="POST" action="acciones_p.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-md-4 text-center">
+            <form method="POST" action="../acciones_p.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-md-4 text-center">
 
                 <div class="col-lg-4 col-md-9 mx-md-auto">
                     <div class="col-lg-10 col-md-9 mx-auto d-flex py-md-2 justify-content-evenly">
@@ -386,8 +386,8 @@ die;
 
                     </div>
 
-                    <input type="submit" name="accion" href="acciones_p.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-secondary my-md-4" value="Registrar">
-                    <a href="productos-dashboard.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
+                    <input type="submit" name="accion" class="btn btn-secondary my-md-4" value="Registrar">
+                    <a href="index.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
 
                 </div>
 

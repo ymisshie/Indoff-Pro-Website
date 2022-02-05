@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -14,7 +14,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
     if (!$resultado)
-        header('Location: dashboard.php');
+        header('Location: ../productos/index.php');
 
     /*
  print '<pre>';
@@ -22,7 +22,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
  die;
  */
 } else {
-    header('Location: dashboard.php');
+    header('Location:  ../productos/index.php');
 }
 ?>
 
@@ -35,9 +35,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <div class="row">
 
-            <form method="POST" action="acciones_p.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-md-4 text-center">
+            <form method="POST" action="../acciones_p.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-md-4 text-center">
 
                 <div class="col-lg-4 col-md-9 mx-md-auto">
+                    <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
+
                     <div class="col-lg-10 col-md-9 mx-auto d-flex py-md-2 justify-content-evenly">
                         <div class="ws col-lg-2 col-md-2 rounded-circle color-orange-bg align-self-center py-md-3 ">
                             <span><i class="far fa-question-circle text-white fs-1-5"></i></span>
@@ -63,6 +65,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Imagen <span class="color-red">*</span></h6>
                         <input name="imagen" type="file">
+                        <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen'] ?>">
+
                         <small class="d-flex form-text text-disbabled m-0 py-2">La imagen anterior está guardada.</small>
                     </div>
 
@@ -370,7 +374,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                                     ?>
 
-                                    <input class=" col-md-12 qty-dropdown" type="number" name="cantidad_producto[]" value="<?php print $separada_cantidad[$x-1] ?>" placeholder="0" <?php if ($x == 1) {
+                                    <input class=" col-md-12 qty-dropdown" type="number" name="cantidad_producto[]" value="<?php print $separada_cantidad[$x - 1] ?>" placeholder="0" <?php if ($x == 1) {
                                                                                                                                                                                         print 'required';
                                                                                                                                                                                     } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
                                     <small class="d-flex form-text text-disbabled">Cantidad mín <?php print $x ?></small>
@@ -384,7 +388,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                                                                                         }
                                     ?></h6>
                                 <div class="form-group col-md-3">
-                                    <input class=" col-md-12 qty-dropdown" type="number" name="precio_producto[]" placeholder="0" value="<?php print $separada_costo[$x-1] ?>" <?php if ($x == 1) {
+                                    <input class=" col-md-12 qty-dropdown" type="number" name="precio_producto[]" placeholder="0" value="<?php print $separada_costo[$x - 1] ?>" <?php if ($x == 1) {
                                                                                                                                                                                     print 'required';
                                                                                                                                                                                 } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
                                     <small class="d-flex form-text text-disbabled">Costo <?php
@@ -401,8 +405,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     </div>
 
-                    <input type="submit" name="accion" href="acciones_p.php?id=<?php print $resultado['id']?>" class="btn btn-secondary my-md-4" value="Actualizar">
-                    <a href="productos-dashboard.php?id=<?php print $resultado['id']?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
+                    <input type="submit" name="accion" href="../acciones_p.php?id=<?php print $resultado['id'] ?>" class="btn btn-secondary my-md-4" value="Actualizar">
+                    <a href="index.php?id=<?php print $resultado['id'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
 
                 </div>
 

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -86,8 +86,8 @@
                                 <li><a class="dropdown-item" href="#">Categoria 6</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown  px-md-4">
-                            <a class="nav-link text-white text-white dropdown-toggle uppercase" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li class="nav-item dropdown px-md-4">
+                            <a class="nav-link text-white text-white dropdown-toggle uppercase" href="panel/eventos/index.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Eventos
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

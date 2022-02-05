@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -67,7 +67,7 @@ foreach ($info_producto as $productos) {
 
 <!--categorias-->
 <section id="categorias" class="categorias-section">
-    <div class="container">
+    <div class="container-fluid px-md-5">
 
         <div class="row justify-content-center">
             <div class="col-12">
@@ -95,14 +95,14 @@ foreach ($info_producto as $productos) {
             <table class="col-md-3 table table-hover my-md-4">
                 <thead>
                     <tr class="text-center color-red-bg color-white">
-                        <th scope="col" class="col-md-1">ID</th>
-                        <th scope="col" class="col-md-1">Imagen</th>
-                        <th scope="col" class="col-md-1">Información</th>
-                        <th scope="col" class="col-md-1">Variaciones</th>
-                        <th scope="col" class="col-md-1">Cantidad y costo</th>
-                        <th scope="col" class="col-md-1">Colores</th>
-                        <th scope="col" class="col-md-1">Peso y tamaño</th>
-                        <th scope="col" class="col-md-1">Acciones</th>
+                        <th scope="col" class="col-md-1 col-lg-1">ID</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Imagen</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Información</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Variaciones</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Cant. y costo</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Colores</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Peso y tamaño</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Acciones</th>
                     </tr>
                 </thead>
 
@@ -123,10 +123,10 @@ foreach ($info_producto as $productos) {
                                     <td scope="col" class="fw-600"><?php print $c ?></td>
                                     <td scope="col" class="text-center">
                                         <?php
-                                        $imagen = 'upload/' . $item_producto['imagen'];
+                                        $imagen = '../../upload/' . $item_producto['imagen'];
                                         if (file_exists($imagen)) {
                                         ?>
-                                            <img src="<?php print $imagen; ?>" width="200px">
+                                            <img src="<?php print $imagen; ?>" width="150px">
 
                                         <?php
                                         } else { ?>
@@ -195,9 +195,19 @@ foreach ($info_producto as $productos) {
 
                                         ?>
 
-                                            <div class="mx-1 my-md-1 text-center"><?php print $separada_cantidad[$ca];
-                                                                                    print ' piezas, a $';
-                                                                                    print $separada_costo[$ca]; ?>
+                                            <div class="text-center"><?php
+
+                                                                        if ($separada_cantidad[$ca] == "") {
+                                                                        } else {
+                                                                            print $separada_cantidad[$ca];
+                                                                            if ($separada_cantidad[$ca] == 1) {
+                                                                                print ' pieza, a $';
+                                                                            } elseif ($separada_cantidad[$ca] > 1) {
+                                                                                print ' piezas, a $';
+                                                                            }
+                                                                            print $separada_costo[$ca];
+                                                                        }
+                                                                        ?>
                                             </div>
                                         <?php
                                         }
@@ -233,10 +243,6 @@ foreach ($info_producto as $productos) {
 
                                     </td>
 
-
-
-
-
                                     <td scope="col" class="fs-09">
                                         <?php
 
@@ -259,7 +265,7 @@ foreach ($info_producto as $productos) {
 
 
                                     <td class="col text-center">
-                                        <a href="acciones_p.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-md-1" role="button">Eliminar<i class="far fa-trash-alt ms-md-2 me-md-1"></i></a>
+                                        <a href="../acciones_p.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-md-1" role="button">Eliminar<i class="far fa-trash-alt ms-md-2 me-md-1"></i></a>
                                     </td>
                                 </tr>
                         <?php

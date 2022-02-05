@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -23,40 +23,35 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 ?>
 
+<section class="color-grey-bg pb-5">
 
-<section>
-    <div class="container" id="form-actualizar-c">
+    <div class="container pb-5" id="form-registro-c">
         <div class="row justify-content-center">
-            <h2 class="section-title pt-lg-5 text-center">Actualizar: <?php print $resultado['nombre'] ?></h2>
-
-            <!--
-            <div class="col-lg-4 py-lg-3 text-center">
-                <a class="btn btn-primary " href="dashboard.php" role="button">Regresar <i class="fas fa-undo ms-lg-2 me-lg-1"></i></a>
-            </div>
--->
+            <h3 class="pt-md-5 fw-700 pb-lg-3 pb-md-4 text-center">Actualizar: <?php print $resultado['nombre'] ?></h3>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-6 formulario p-lg-3 my-lg-4 text-center px-lg-5">
-                <form method="POST" action="acciones_c.php" enctype="multipart/form-data">
+
+        <div class="row justify-content-center pb-5">
+            <div class="col-md-9 col-lg-6 ws formulario p-md-3 my-md-4 text-center px-md-5 ">
+                <form method="POST" action="../acciones_c.php" enctype="multipart/form-data">
 
                     <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
 
-                    <div class="form-group text-start py-lg-2">
+                    <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Nombre de la categoria</h6>
                         <input value="<?php print $resultado['nombre'] ?>" class="form-control" name="nombre_categoria" type="text" required>
                     </div>
-                    <div class="form-group text-start py-lg-2">
+                    <div class="form-group text-start py-md-2">
                         <label class="col-form-label fw-600">Descripción</label>
                         <textarea class="form-control" name="descripcion_categoria" id="" type="text" placeholder="" required><?php print $resultado['descripcion'] ?> </textarea>
                     </div>
-                    <div class="form-group text-start py-lg-2">
+                    <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Imagen</h6>
                         <input name="imagen" type="file">
                         <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen'] ?>">
                     </div>
 
                     <input type="submit" name="accion" class="btn btn-secondary my-lg-4" value="Actualizar">
-                    <a href="dashboard.php" type="submit" class="btn btn-primary my-lg-4 mx-lg-4" role="button">Cancelar</a>
+                    <a href="index.php" type="submit" class="btn btn-primary my-lg-4 mx-lg-4" role="button">Cancelar</a>
                 </form>
             </div>
         </div>
