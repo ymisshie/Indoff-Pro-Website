@@ -72,11 +72,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Categoria del producto <span class="color-red">*</span></h6>
-                        <select class="form-control" name="categoria_id_producto_evento" required>
+                        <select class="form-control" name="evento_id_producto" required>
 
                             <?php
 
-                            $categoria2 = new ameri\Categoria;
+                            $categoria2 = new ameri\Evento;
                             $info_categorias = $categoria2->mostrar();
                             $cantidad = count($info_categorias);
 

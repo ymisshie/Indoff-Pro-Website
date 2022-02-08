@@ -1,10 +1,36 @@
+<?php
+
+require '../../vendor/autoload.php';
+$categoria = new ameri\Categoria;
+
+$info_categoria = $categoria->mostrar();
+
+
+$cantidad = count($info_categoria);
+
+?>
+
 <!--categorias-->
 <section id="categorias">
     <div class="container-fluid px-md-5">
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="section-title pt-md-5 text-center">Categorias actuales</h2>
+
+
+
+                <h2 class="section-title pt-md-5 text-center"> <?php
+                                                                print $cantidad;
+
+                                                                if ($cantidad == 1) {
+
+                                                                    print ' Categoria registrada';
+                                                                } else {
+                                                                    print ' Categorias registradas';
+                                                                }
+
+                                                                ?>
+                </h2>
             </div>
             <div class="col-md-4 py-md-3 py-lg-3 text-center">
                 <a class="btn btn-primary " href="form-registrar-c.php" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>
@@ -27,20 +53,6 @@
                 <tbody>
 
                     <?php
-
-                    require '../../vendor/autoload.php';
-                    $categoria = new ameri\Categoria;
-
-                    $info_categoria = $categoria->mostrar();
-
-                    /*
-                    print '<pre>';
-                    print_r($info_producto);
-                
-                    die;
-                    */
-
-                    $cantidad = count($info_categoria);
 
                     if ($cantidad > 0) {
                         $c = 0;

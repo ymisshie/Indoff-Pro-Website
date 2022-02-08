@@ -1,10 +1,34 @@
+<?php
+
+require '../../vendor/autoload.php';
+$evento = new ameri\Evento;
+
+$info_evento = $evento->mostrar();
+
+$cantidad = count($info_evento);
+
+?>
+
+
+
+
 <!--categorias-->
 <section id="categorias">
     <div class="container-fluid px-md-5">
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="section-title pt-md-5 text-center">Eventos</h2>
+                <h2 class="section-title pt-md-5 text-center"><?php
+                                                                print $cantidad;
+
+                                                                if ($cantidad == 1) {
+
+                                                                    print ' Evento registrada';
+                                                                } else {
+                                                                    print ' Eventos registradas';
+                                                                }
+
+                                                                ?></h2>
             </div>
             <div class="col-md-4 py-md-3 py-lg-3 text-center">
                 <a class="btn btn-primary " href="form-registrar-e.php" role="button">Agregar nuevo <i class="fas fa-plus ms-lg-2 me-lg-1"></i></a>
@@ -26,14 +50,7 @@
 
                 <tbody>
 
-                    <?php
-
-                    require '../../vendor/autoload.php';
-                    $evento = new ameri\Evento;
-
-                    $info_evento = $evento->mostrar();
-
-                    $cantidad = count($info_evento);
+             <?php
 
                     if ($cantidad > 0) {
                         $c = 0;

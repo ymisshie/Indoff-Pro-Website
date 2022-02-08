@@ -5,7 +5,6 @@ require '../vendor/autoload.php';
 $producto_evento = new ameri\Producto_Evento;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     if ($_POST['accion'] === 'Registrar') {
         print '<pre>';
         print_r($_POST);
@@ -25,11 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit('Completar proveedor');
         }
 
-        if (empty($_POST['categoria_id_producto_evento'])) {
+        if (empty($_POST['evento_id_producto'])) {
             exit('Seleccionar una categoria');
         }
 
-        if (!is_numeric($_POST['categoria_id_producto_evento'])) {
+        if (!is_numeric($_POST['evento_id_producto'])) {
             exit('Seleccionar una categoria válida');
         }
 
@@ -80,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'nombre' => $_POST['nombre_producto_evento'],
             'descripcion' => $_POST['descripcion_producto_evento'],
             'proveedor' => $_POST['proveedor_producto_evento'],
-            'evento_id' => $_POST['categoria_id_producto_evento'],
+            'evento_id' => $_POST['evento_id_producto'],
             'imagen' => subirFoto(),
             'fecha' => date('Y-m-d'),
             'opciones' => $_POST['opciones_producto_evento'],
@@ -104,12 +103,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 
+ 
     if ($_POST['accion'] === 'Actualizar') {
         print '<pre>';
         print_r($_POST);
 
         print_r($_FILES);
-
+     
 
         if (empty($_POST['nombre_producto_evento'])) {
             exit('Completar nombre');
@@ -123,11 +123,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit('Completar proveedor');
         }
 
-        if (empty($_POST['categoria_id_producto_evento'])) {
+        if (empty($_POST['evento_id_producto'])) {
             exit('Seleccionar una categoria');
         }
 
-        if (!is_numeric($_POST['categoria_id_producto_evento'])) {
+        if (!is_numeric($_POST['evento_id_producto'])) {
             exit('Seleccionar una categoria válida');
         }
 
@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'nombre' => $_POST['nombre_producto_evento'],
             'descripcion' => $_POST['descripcion_producto_evento'],
             'proveedor' => $_POST['proveedor_producto_evento'],
-            'evento_id' => $_POST['categoria_id_producto_evento'],
+            'evento_id' => $_POST['evento_id_producto'],
             'imagen' => subirFoto(),
             'fecha' => date('Y-m-d'),
             'opciones' => $_POST['opciones_producto_evento'],
@@ -204,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($rpt)
 
             //cuando se el registro se de de forma correcta se direccina a 
-            header("Location: productos-eventos/index.php?id=" . $_params['evento_id']);
+            header("Location: productos-eventos/index.php?id=".$_params['evento_id']);
 
         else
             print 'Error al actualizar un producto';
@@ -219,7 +219,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if ($rpt)
         //cuando se el registro se de de forma correcta se direccina a 
-        header('Location: eventos/index.php');
+        header("Location: productos-eventos/index.php?id=".$_params[$id]);
     //header("Location:  productos-eventos/index.php?id=".$_params['evento_id']);
     else
         print 'Error al eliminar un producto';

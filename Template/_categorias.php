@@ -24,7 +24,7 @@
                             if (file_exists($imagen)) {
                             ?>
 
-                                <img src="<?php print $imagen; ?>" class="card-img-top" style="height: 11em;" alt="...">
+                                <img src="<?php print $imagen; ?>" class="card-img-top py-md-3"  alt="...">
 
                             <?php } else { ?>
                                 Sin imagen

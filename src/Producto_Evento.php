@@ -50,32 +50,37 @@ class Producto_Evento
         return false;
     }
 
-    public function actualizar($_params)
-    {
-        $sql = "UPDATE `productos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `evento_id`=:evento_id,`fecha`=:fecha, `opciones`=:opciones, `cantidad`=:cantidad,`precio`= :precio,`size`=:size, `peso`=:peso, `color`=:color WHERE `id` =:id";
+    public function actualizar($_params){
+        $sql="UPDATE `productos_eventos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `evento_id`=:evento_id,`fecha`=:fecha, `opciones`=:opciones, `cantidad`=:cantidad,`precio`= :precio,`size`=:size, `peso`=:peso, `color`=:color WHERE `id` =:id";
 
+        $resultado=$this->cn->prepare($sql);
 
-        $resultado = $this->cn->prepare($sql);
+        /*
+        print '<pre>';
+        print_r($_POST);
 
-        $_array = array(
-            ":nombre" => $_params['nombre'],
+        print_r($_FILES);
+        */
+        
+        $_array=array(
+            ":nombre" => $_params['nombre'], 
             ":proveedor" => $_params['proveedor'],
-            ":descripcion" => $_params['descripcion'],
-            ":imagen" => $_params['imagen'],
-            ":evento_id" => $_params['evento_id'],
+            ":descripcion" => $_params['descripcion'],  
+            ":imagen" => $_params['imagen'], 
+            ":evento_id" => $_params['evento_id'], 
             ":fecha" => $_params['fecha'],
             ":opciones" => $_params['opciones'],
             ":cantidad" => $_params['cantidad'],
             ":precio" => $_params['precio'],
-            ":size" => $_params['size'],
+            ":size" => $_params['size'], 
             ":peso" => $_params['peso'],
             ":color" => $_params['color'],
             ":id" => $_params['id']
 
         );
 
-        if ($resultado->execute($_array))
-            return true;
+        if($resultado->execute($_array))
+        return true;
         return false;
     }
 

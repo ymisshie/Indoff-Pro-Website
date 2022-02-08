@@ -374,14 +374,17 @@ select option:hover {
     text-decoration: none;
 }
 
-
+.dashboard-card-icon
+{
+    font-size: 6em;
+}
 
 
 /*categorias index*/
 .dashboard-card .card-body {
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
-    background-color: var(--purple);
+    background-color: var(--red);
     color: var(--white)
 }
 
