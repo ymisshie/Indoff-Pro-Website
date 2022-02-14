@@ -59,7 +59,7 @@
             </div>
             <div class="col-md-4 col-lg-2 d-flex justify-content-center  mx-md-0 mx-lg-4">
                 <div class="align-self-center">
-                    <span><i class="fas fa-magic fs-3 align-self-center"></i></span>
+                    <span><i class="fas fa-magic-wand-sparkles fs-3 align-self-center"></i></span>
                 </div>
                 <div class="px-lg-4 px-md-3 py-md-4 align-self-center">
                     <h6 class="fw-600">Sencilla</h6>

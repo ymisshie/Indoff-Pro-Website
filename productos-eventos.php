@@ -1,7 +1,6 @@
 <?php
-
-$title = "Eventos";
-$pagina ="eventos";
+$title = "Productos";
+$pagina ="productos-eventos";
 ?>
 
 <?php
@@ -9,15 +8,16 @@ $pagina ="eventos";
 include('header.php')
 ?>
 
+
 <?php
 /*include hero-categorias*/
-include('Template/_hero-eventos.php')
+include('Template/_hero-productos-eventos.php')
 /*include hero-categorias*/
 ?>
 
 <?php
 /*include filtros-categorias*/
-include('Template/_eventos-categorias.php')
+include('Template/_filtros-productos-eventos.php')
 /*include filtros-categorias*/
 ?>
 

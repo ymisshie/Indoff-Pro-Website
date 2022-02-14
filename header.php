@@ -17,9 +17,9 @@
 
     <!-- font awesome icons -->
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
-    
+
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style6.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -42,11 +42,10 @@
             </div>
             <div class="align-items-center menu text-center d-flex text-white ps-lg-5 ps-md-3">
                 <div class="col btn-carrito">
-    
+
                     <div><i class="fas fa-file-invoice fs-1-5"></i></div>
                     <div><a href="carrito.php" class="nav-link text-white px-md-3 fw-500">Cotizaciones</a></div>
-    
-                
+
                 </div>
                 <div class="col btn-cuenta">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
@@ -65,17 +64,18 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item px-md-4  uppercase <?php if ($pagina == "inicio") {
-                                                                    echo "active";
-                                                                } ?>">
-                            <a class="nav-link text-white active" aria-current="page" href="index.php">Inicio</a>
+                        <li class="nav-item px-md-4 uppercase">
+                            <a class="nav-link text-white  <?php if ($pagina == "inicio") {
+                                                                echo "active";
+                                                            } ?>" aria-current="page" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item px-md-4 px-md-0 dropdown">
-                            <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
-                                                                                        echo "active";
-                                                                                    } ?>" href="categorias.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link text-white uppercase dropdown-toggle  <?php if ($pagina == "categorias") {
+                                                                                            echo "active";
+                                                                                        } ?>" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorias
                             </a>
+
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
                                     require 'vendor/autoload.php';
@@ -94,13 +94,16 @@
                                 <?php
                                         }
                                     }
-                                ?>
-                            </ul>
+
+
                         </li>
                         <li class="nav-item dropdown px-md-4">
-                            <a class="nav-link text-white text-white dropdown-toggle uppercase" href="panel/eventos/index.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link text-white text-white dropdown-toggle uppercase <?php if ($pagina == "eventos") {
+                                                                                                    echo "active";
+                                                                                                } ?>" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Eventos
                             </a>
+
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
                                     require 'vendor/autoload.php';
@@ -119,8 +122,7 @@
                                 <?php
                                         }
                                     }
-                                ?>
-                            </ul>
+
                         </li>
                         <li class="nav-item px-md-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>
