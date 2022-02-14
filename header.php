@@ -17,9 +17,9 @@
 
     <!-- font awesome icons -->
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
-    
+
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style6.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -42,11 +42,10 @@
             </div>
             <div class="align-items-center menu text-center d-flex text-white ps-lg-5 ps-md-3">
                 <div class="col btn-carrito">
-    
+
                     <div><i class="fas fa-file-invoice fs-1-5"></i></div>
                     <div><a href="carrito.php" class="nav-link text-white px-md-3 fw-500">Cotizaciones</a></div>
-    
-                
+
                 </div>
                 <div class="col btn-cuenta">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
@@ -65,39 +64,53 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item px-md-4  uppercase <?php if ($pagina == "inicio") {
-                                                                    echo "active";
-                                                                } ?>">
-                            <a class="nav-link text-white active" aria-current="page" href="index.php">Inicio</a>
+                        <li class="nav-item px-md-4 uppercase">
+                            <a class="nav-link text-white  <?php if ($pagina == "inicio") {
+                                                                echo "active";
+                                                            } ?>" aria-current="page" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item px-md-4 px-md-0 dropdown">
-                            <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
-                                                                                        echo "active";
-                                                                                    } ?>" href="categorias.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link text-white uppercase dropdown-toggle  <?php if ($pagina == "categorias") {
+                                                                                            echo "active";
+                                                                                        } ?>" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categorias
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Categoria 1</a></li>
-                                <li><a class="dropdown-item" href="#">Categoria 2</a></li>
-                                <!--<li><hr class="dropdown-divider"></li>-->
-                                <li><a class="dropdown-item" href="#">Categoria 3</a></li>
-                                <li><a class="dropdown-item" href="#">Categoria 4</a></li>
-                                <li><a class="dropdown-item" href="#">Categoria 5</a></li>
-                                <li><a class="dropdown-item" href="#">Categoria 6</a></li>
+
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+
+                                <?php
+                                require 'vendor/autoload.php';
+
+                                $categorias = new ameri\Categoria;
+                                $info_categorias = $categorias->mostrar();
+
+                                foreach ($info_categorias as $item_categorias) {
+                                ?>
+                                    <li><a class="dropdown-item" href="categorias.php?id=<?php print $item_categorias['id']; ?>"><?php print $item_categorias['nombre'] ?></a></li>
+                                <?php
+                                }
+                                ?>
                             </ul>
                         </li>
                         <li class="nav-item dropdown px-md-4">
-                            <a class="nav-link text-white text-white dropdown-toggle uppercase" href="panel/eventos/index.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link text-white text-white dropdown-toggle uppercase <?php if ($pagina == "eventos") {
+                                                                                                    echo "active";
+                                                                                                } ?>" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Eventos
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Evento 1</a></li>
-                                <li><a class="dropdown-item" href="#">Evento 2</a></li>
-                                <!--<li><hr class="dropdown-divider"></li>-->
-                                <li><a class="dropdown-item" href="#">Evento 3</a></li>
-                                <li><a class="dropdown-item" href="#">Evento 4</a></li>
-                                <li><a class="dropdown-item" href="#">Evento 5</a></li>
-                                <li><a class="dropdown-item" href="#">Evento 6</a></li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <?php
+                            
+                                $eventos = new ameri\Evento;
+                                $info_eventos = $eventos->mostrar();
+
+                                foreach ($info_eventos as $item_eventos) {
+                                ?>
+                                    <li><a class="dropdown-item" href="productos-eventos.php?id=<?php print $item_eventos['id']; ?>"><?php print $item_eventos['nombre'] ?></a></li>
+                                <?php
+                                }
+                                ?>
                             </ul>
                         </li>
                         <li class="nav-item px-md-4 uppercase">
