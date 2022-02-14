@@ -406,7 +406,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     </div>
 
                     <input type="submit" name="accion" href="../acciones_p.php?id=<?php print $resultado['id'] ?>" class="btn btn-secondary my-md-4" value="Actualizar">
-                    <a href="index.php?id=<?php print $resultado['id'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
+                    <a href="index.php?id=<?php print $resultado['5'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
 
                 </div>
 

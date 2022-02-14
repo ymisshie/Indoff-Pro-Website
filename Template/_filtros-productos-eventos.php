@@ -79,7 +79,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         foreach ($info_pe as $item_pe) {
                         ?>
 
-                            <div href="producto.php?id=<?php print $item_pe[0] ?>" class="col-lg-3 col-md-8 m-lg-4 collapse <?php if ($id == $item_pe['id']) {
+                            <div href="producto-evento-hero.php?id=<?php print $item_pe[0] ?>" class="col-lg-3 col-md-8 m-lg-4 collapse <?php if ($id == $item_pe['id']) {
                                                                                                                                         print 'show';
                                                                                                                                     } ?>" id="categoria<?php print $item_pe['id'] ?>">
 
@@ -89,7 +89,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                     if (file_exists($imagen)) {
                                     ?>
 
-                                        <a href="producto.php?id=<?php print $item_pe[0] ?>">
+                                        <a href="producto-evento-hero.php?id=<?php print $item_pe[0] ?>">
                                             <img src="<?php print $imagen; ?>" class="p-md-3 img-fluid">
                                         </a>
 
