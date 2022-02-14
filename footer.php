@@ -34,6 +34,9 @@
         jQuery('.collapse').collapse('hide');
     });
 
+
+    //Seleccion de colores de producto por el admin
+
     $("#color-select").select2({
         placeholder: 'Seleccione los colores deseados o puede buscarlos por nombre con la referencia de abajo.',
         allowClear: true
@@ -44,40 +47,46 @@
         return new bootstrap.Tooltip(tooltipTriggerEl)
     });
 
+    //Obtener el valor del color
+    function color_selected() {
+        var buttonName = event.target.name;
+        console.log(buttonName);
+        document.getElementById('mostrarColorNombre').innerHTML = buttonName;
+        document.getElementById('mostrarColor').style.backgroundColor = buttonName;
+    };
 
 
-    var nextinput = 0;
+    /*
+        var nextinput = 0;
 
-
-    $("#nuevo_campo").click(function(e) {
-        nextinput++;
-        s
-        var campo = '<div class="d-flex pt-lg-2 pb-lg-2"> <h6 class=" col-form-label col-lg-3 fw-600 color-grey2">Cantidad mínima ' + newinput + '</h6> <div class="form-group col-lg-3 mx-lg-3"> <input class=" col-12 qty-dropdown" type="number" name="q' + newinput + '_producto" placeholder="0" onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1"> <small class="d-flex form-text text-disbabled">Cantidad mínima ' + newinput + '</small> </div> <h6 class="col-form-label fw-600 col-lg-2 color-grey2 ms-lg-4">Costo ' + newinput + '</h6> <div class="form-group col-lg-3"> <input class=" col-12 qty-dropdown" type="number" name="p' + newinput + '_producto" placeholder="0" onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1"> <small class="d-flex form-text text-disbabled">Costo ' + newinput + '</small></div></div>'
-    });
+        $("#nuevo_campo").click(function(e) {
+            nextinput++;
+            var campo = '<div class="d-flex pt-lg-2 pb-lg-2"> <h6 class=" col-form-label col-lg-3 fw-600 color-grey2">Cantidad mínima ' + newinput + '</h6> <div class="form-group col-lg-3 mx-lg-3"> <input class=" col-12 qty-dropdown" type="number" name="q' + newinput + '_producto" placeholder="0" onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1"> <small class="d-flex form-text text-disbabled">Cantidad mínima ' + newinput + '</small> </div> <h6 class="col-form-label fw-600 col-lg-2 color-grey2 ms-lg-4">Costo ' + newinput + '</h6> <div class="form-group col-lg-3"> <input class=" col-12 qty-dropdown" type="number" name="p' + newinput + '_producto" placeholder="0" onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1"> <small class="d-flex form-text text-disbabled">Costo ' + newinput + '</small></div></div>'
+        });
+        */
 
     function cambiarPrecio() {
-        var precios_lista = document.getElementById("cantidadcosto_producto");
-        var valor = precios_lista.options[precios_lista.selectedIndex].textContent;
+        var precios_lista = document.getElementById("cantidad_producto[]");
 
+
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
         console.log(valor);
 
         var arreglo = valor.split(",")
 
         console.log(arreglo);
 
-        var modificarlabelcantidad = document.getElementById("cantidad_dinamica");
-        modificarlabelcantidad.textContent = 'Cantidad total: ' + arreglo[0] + ' Unidades';
+        if (valor != 'Unidades') {
 
-        var modificarlabelcostounidad = document.getElementById("costounidad_dinamico");
-        modificarlabelcostounidad.textContent = arreglo[1] + '/Unidad';
+            for (var i = 0; i < miArray.length; i += 1) {
 
-        var modificarlabelprecio = document.getElementById("precio_dinamico");
-        modificarlabelprecio.textContent = 'Costo total: ' + arreglo[2];
-
-        console.log(modificarlabel.textContent)
-
+                var modificarlabelprecio = document.getElementById("precioselect_producto");
+                modificarlabelprecio.textContent = 'Costo: ' + arreglo[0];
+                var modificarlabelcostounidad = document.getElementById("precioIndividual");
+                modificarlabelcostounidad.textContent = arreglo[1] + '/Unidad';
+            }
+        }
     }
-
 </script>
 
 </body>

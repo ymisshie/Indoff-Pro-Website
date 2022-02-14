@@ -4,13 +4,13 @@
 
 
 :root {
-    --purple: #775FC7;
     --white: #ffffff;
     --purple: #775FC7;
     --red: #c54955;
     --orange: #E49F49;
     --black: #303030;
     --grey: #E7E7E7;
+    --grey3: #eeeeee;
     --grey2: #9b9b9b;
     --aqua: #3AB0AB;
 }
@@ -44,12 +44,20 @@ body {
     font-style: italic;
 }
 
+
 .navbar-brand:hover {
     opacity: 85%;
 }
 
 .nav-link:hover {
     opacity: 85%;
+    text-decoration-line: underline;
+    text-underline-offset: 6px;
+}
+
+.nav-link.active
+{
+    opacity: 85% !important;
     text-decoration-line: underline;
     text-underline-offset: 6px;
 }
@@ -127,11 +135,15 @@ body {
     cursor: pointer;
     border-radius: 5em;
     box-shadow: none;
-    border: #00000000 solid 2px;
+    border: #00000000 solid 4px;
 }
 
 .btn-color:hover {
-    border: var(--white) solid 2px;
+    border: var(--white) solid 4px;
+}
+
+.btn-color:active, .btn-color:focus{
+    border: var(--red) solid 4px;
 }
 
 .form-control, .qty-dropdown {
@@ -155,13 +167,17 @@ textarea {
 
 .formulario {
     border-radius: 1em;
-    border: var(--grey) solid 3px;
     background-color: var(--white);
 }
 
 .color-select, .select2-selection {
     background-color: var(--white) !important;
     /*height: 13em !important;*/
+}
+
+.select-cantidades select
+{
+    width: 100%;
 }
 
 .select2-search__field {
@@ -351,7 +367,6 @@ select option:hover {
 
 }
 
-
 /*categorias index*/
 .categorias .card-body {
     border-bottom-left-radius: 1em;
@@ -360,17 +375,36 @@ select option:hover {
     color: var(--white)
 }
 
-.categorias {
+.eventos .card-img-top
+{
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+
+.eventos .card-body {
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    background-color: var(--red);
+    color: var(--white);
+    background-color: var(--purple);
+}
+
+.eventos .card-body:hover {
+    background-color: var(--orange)
+}
+
+.categorias, .eventos {
     border-radius: 1em;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
     background-color: var(--grey);
+
 }
 
 .categorias .card-body:hover {
     background-color: var(--orange);
 }
 
-.categorias-fichas a, .categorias, .dashboard-card {
+.card {
     text-decoration: none;
 }
 
@@ -510,9 +544,15 @@ select option:hover {
 .color-grey2 {
     color: var(--grey2) !important;
 }
+.color-grey23 {
+    color: var(--grey3) !important;
+}
 
 .color-grey2-bg {
     background: var(--grey2) !important;
+}
+.color-grey3-bg {
+    background: var(--grey3) !important;
 }
 
 .color-black {

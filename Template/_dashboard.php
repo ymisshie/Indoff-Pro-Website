@@ -50,7 +50,7 @@ $cantidadca = count($info_categorias);
 
             <div class="col-lg-3 col-md-7">
                 <a class="card dashboard-card mb-md-5 text-center" href="">
-                <h3 class="fw-600 p-md-4 pb-md-0 color-purple text-end">0</h3>
+                <h3 class="fw-600 p-md-4 pb-md-0 color-grey text-end">1</h3>
                     <i class="dashboard-card-icon fa-solid fa-envelope-open-text  pt-md-3 pb-md-5 color-purple"></i>
                     <div class="card-body py-md-4">
                         <h5 class="fw-700">Información <i class="fa-solid fa-pen-to-square"></i></h5>

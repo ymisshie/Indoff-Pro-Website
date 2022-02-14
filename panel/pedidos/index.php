@@ -7,7 +7,7 @@ $pagina ="pedidos";
 <?php
 $root_functions = '../../functions.php';
 $root_inicio = 'href="../dashboard.php"';
-$root_styles = '<link rel="stylesheet" href="../../style.css">';
+$root_styles = '<link rel="stylesheet" href="../../style2.css">';
 $root_categorias = 'href="../categorias/index.php"';
 $root_dashboard = 'href="../dashboard.php"';
 $root_productos = 'href="../productos/index.php"';
