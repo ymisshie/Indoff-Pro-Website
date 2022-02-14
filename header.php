@@ -94,7 +94,8 @@
                                 <?php
                                         }
                                     }
-
+                                ?>
+                            </ul>
 
                         </li>
                         <li class="nav-item dropdown px-md-4">
@@ -116,6 +117,27 @@
                                         for($x =0; $x < $cantidad; $x++)
                                         {
                                         $item = $info_evento[$x];
+                                ?>
+                                    <li><a class="dropdown-item" href="eventos.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                        
+                                <?php
+                                        }
+                                    }
+
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <?php
+                                    require 'vendor/autoload.php';
+                                    $evento = new ameri\Evento;
+                                    $info_evento = $evento->mostrar();
+                                    $cantidad = count($info_evento);
+
+                                    if($cantidad > 0)
+                                    {
+                                        for($x =0; $x < $cantidad; $x++)
+                                        {
+                                        $item = $info_evento[$x];
+
                                 ?>
                                     <li><a class="dropdown-item" href="eventos.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
                                         
