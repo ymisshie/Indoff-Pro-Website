@@ -12,7 +12,7 @@ $info_eventos = $eventos->mostrar();
 
     <div class="container-fluid">
 
-        <div class="row  eventos-chart color-black-bg">
+        <div class="row  eventos-chart color-black-bg py-5">
 
             <div class="col-6 evento1 align-self-center text-white" style="background-image: url(upload/<?php print $info_eventos[0]['imagen'];?>);">
                 <div class="col-4 mx-auto">
