@@ -14,6 +14,7 @@ $root_eventos = 'href="../eventos/index.php"';
 $root_eventos_productos = 'href="../productos-eventos/index.php"';
 $root_pedidos = 'href="../pedidos/index.php"';
 $root_logout = 'href="../index.php"';
+$root_vendor = '../../vendor/autoload.php';
 ?>
 
 

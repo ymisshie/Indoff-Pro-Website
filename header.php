@@ -76,22 +76,26 @@
                                 Categorias
                             </a>
 
-
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
-                                require 'vendor/autoload.php';
+                                    require 'vendor/autoload.php';
+                                    $categoria = new ameri\Categoria;
+                                    $info_categoria = $categoria->mostrar();
+                                    $cantidad_categoria = count($info_categoria);
 
-                                $categorias = new ameri\Categoria;
-                                $info_categorias = $categorias->mostrar();
-
-                                foreach ($info_categorias as $item_categorias) {
+                                    if($cantidad_categoria > 0)
+                                    {
+                                        for($x =0; $x < $cantidad_categoria; $x++)
+                                        {
+                                        $item = $info_categoria[$x];
                                 ?>
-                                    <li><a class="dropdown-item" href="categorias.php?id=<?php print $item_categorias['id']; ?>"><?php print $item_categorias['nombre'] ?></a></li>
+                                    <li><a class="dropdown-item" href="categorias.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                        
                                 <?php
-                                }
-                                ?>
-                            </ul>
+                                        }
+                                    }
+
+
                         </li>
                         <li class="nav-item dropdown px-md-4">
                             <a class="nav-link text-white text-white dropdown-toggle uppercase <?php if ($pagina == "eventos") {
@@ -99,19 +103,26 @@
                                                                                                 } ?>" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Eventos
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <?php
-                            
-                                $eventos = new ameri\Evento;
-                                $info_eventos = $eventos->mostrar();
 
-                                foreach ($info_eventos as $item_eventos) {
-                                ?>
-                                    <li><a class="dropdown-item" href="productos-eventos.php?id=<?php print $item_eventos['id']; ?>"><?php print $item_eventos['nombre'] ?></a></li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
-                                }
+                                    require 'vendor/autoload.php';
+                                    $evento = new ameri\Evento;
+                                    $info_evento = $evento->mostrar();
+                                    $cantidad = count($info_evento);
+
+                                    if($cantidad > 0)
+                                    {
+                                        for($x =0; $x < $cantidad; $x++)
+                                        {
+                                        $item = $info_evento[$x];
                                 ?>
-                            </ul>
+                                    <li><a class="dropdown-item" href="eventos.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                        
+                                <?php
+                                        }
+                                    }
+
                         </li>
                         <li class="nav-item px-md-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>

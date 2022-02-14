@@ -69,8 +69,24 @@
                                                                                                 } ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_eventos; ?>>Eventos</a>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Evento 1</a></li>
-                              
+                                <?php
+                                    require $root_vendor;
+                                    $evento = new ameri\Evento;
+                                    $info_evento = $evento->mostrar();
+                                    $cantidad = count($info_evento);
+
+                                    if($cantidad > 0)
+                                    {
+                                        for($x =0; $x < $cantidad; $x++)
+                                        {
+                                        $item = $info_evento[$x];
+                                ?>
+                                    <li><a class="dropdown-item" href="eventos/index.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                        
+                                <?php
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </li>
                         <li class="nav-item px-md-4 uppercase">
