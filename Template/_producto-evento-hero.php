@@ -213,7 +213,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                 </div>
 
-                <input type="submit" name="accion" href="acciones_p.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-lg btn-primary mt-md-5" value="Solicitar cotización">
+                <!-- <input type="submit" name="accion" href="acciones_p.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-lg btn-primary mt-md-5" value="Solicitar cotización"> -->
 
             </div>
         </div>

@@ -12,7 +12,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $resultado = $producto->mostrarPorId($id);
     $info_categoria = $categoria->mostrar();
 
-
     if (!$resultado)
         header('Location: ../productos-eventos/index.php');
 
@@ -73,41 +72,20 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Categoria del producto <span class="color-red">*</span></h6>
                         <select class="form-control" name="evento_id_producto" required>
-
+                            <option value="">Seleccione un evento</option>
                             <?php
-
-                            $categoria2 = new ameri\Evento;
-                            $info_categorias = $categoria2->mostrar();
-                            $cantidad = count($info_categorias);
-
-
+                            require '../../vendor/autoload.php';
+                            $evento = new ameri\Evento;
+                            $info_evento = $evento->mostrar();
+                            $cantidad = count($info_evento);
                             for ($x = 0; $x < $cantidad; $x++) {
-                                $item = $info_categorias[$x];
-
-                                if ($item['id'] == $info_categoria['id']) {
+                                $item = $info_evento[$x];
                             ?>
-                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
-
-                                <?php
-                                }
-                            }
-
-                            for ($w = 0; $w < $cantidad; $w++) {
-                                $item = $info_categorias[$w];
-
-                                if ($item['id'] != $info_categoria['id']) {
-                                ?>
-
-                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+                                <option value="<?php print $item['id'] ?>" <?php print $resultado['evento_id'] == $item['id'] ? 'selected' : '' ?>><?php print $item['nombre'] ?></option>
                             <?php
 
-                                }
                             }
-
                             ?>
-
-                            <option value="">Seleccione una categoria</option>
-
                         </select>
                     </div>
 
@@ -406,7 +384,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     </div>
 
                     <input type="submit" name="accion" href="../acciones-pe.php?id=<?php print $resultado['id'] ?>" class="btn btn-secondary my-md-4" value="Actualizar">
-                    <a href="index.php?id=<?php print $resultado['id'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
+                    <a href="index.php?id=<?php print $resultado['5'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
 
                 </div>
 

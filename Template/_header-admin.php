@@ -58,9 +58,24 @@
                                                                                         echo "active";
                                                                                     } ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <?php
+                                    require $root_vendor;
+                                    $categoria = new ameri\Categoria;
+                                    $info_categoria = $categoria->mostrar();
+                                    $cantidad = count($info_categoria);
 
-                                <li><a class="dropdown-item" href="#"> Categoria</a></li>
-
+                                    if($cantidad > 0)
+                                    {
+                                        for($x =0; $x < $cantidad; $x++)
+                                        {
+                                        $item = $info_categoria[$x];
+                                ?>
+                                    <li><a class="dropdown-item" href="<?php print $root_productos_eventos_header ?>productos/index.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                        
+                                <?php
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </li>
                         <li class="nav-item dropdown px-md-4 ">
@@ -73,15 +88,15 @@
                                     require $root_vendor;
                                     $evento = new ameri\Evento;
                                     $info_evento = $evento->mostrar();
-                                    $cantidad = count($info_evento);
+                                    $cantidad_evento = count($info_evento);
 
-                                    if($cantidad > 0)
+                                    if($cantidad_evento > 0)
                                     {
-                                        for($x =0; $x < $cantidad; $x++)
+                                        for($x =0; $x < $cantidad_evento; $x++)
                                         {
                                         $item = $info_evento[$x];
                                 ?>
-                                    <li><a class="dropdown-item" href="eventos/index.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                    <li><a class="dropdown-item" href="<?php print $root_productos_eventos_header ?>productos-eventos/index.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
                                         
                                 <?php
                                         }
