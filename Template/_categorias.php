@@ -2,8 +2,8 @@
 <section id="categorias" class="categorias-section">
     <div class="container">
 
-        <div class="row justify-content-center text-center categorias-fichas p-md-5">
-            <h2 class="section-title py-md-5">Encontrar por Categoria</h2>
+        <div class="row justify-content-center text-center categorias-fichas pb-md-5">
+            <h2 class="section-title py-md-5">Categorias de productos destacados</h2>
 
             <?php
             require 'vendor/autoload.php';
@@ -15,7 +15,7 @@
                 for ($x = 0; $x < $cantidad; $x++) {
                     $item = $info_categoria[$x];
             ?>
-                    <div class="col-lg-3 col-md-6 px-md-3 mx-lg-5">
+                    <div class="col-lg-4 col-md-6 px-md-5">
                         <a class="card categorias mb-md-5" href="categorias.php?id=<?php print $item['id'] ?>">
 
                             <?php
@@ -38,9 +38,7 @@
                 <?php }
             } else { ?>
                 <h4>NO HAY REGISTROS</h4>
-
             <?php } ?>
-
         </div>
         <!--
         <div class="row justify-content-center categorias2">
@@ -77,7 +75,6 @@
 
         </div>
             -->
-    </div>
     </div>
 
 </section>

@@ -488,8 +488,14 @@ select option:hover {
 
 .thumbnail
 {
-    height: 14em;
+    height: 16em;
 }
+
+.thumbnail-producto
+{
+    height: 15em;
+}
+
 /*color template*/
 .color-aqua {
     color: var(--aqua) !important;

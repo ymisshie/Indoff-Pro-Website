@@ -13,69 +13,50 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $info_producto = $producto->mostrar();
     $info_categoria = $categoria->mostrar();
 
-
-
-    /*
- print '<pre>';
- print $info_categoria['nombre'];
-*/
-
-    /*
- print '<pre>';
- print_r($info_producto);
-*/
-
-    /*
-    foreach ($info_producto as $productos) {
-        //if ($resultadop['categoria_id']=$resultadoc['id'])
-        print '<pre>';
-        print_r($productos);
-    }
-*/
-
     if (!$info_producto && $info_categoria)
         header('Location: index.php');
 } else {
     header('Location: index.php');
 }
 
-
-/*
-foreach ($info_producto as $productos) {
-    //if ($resultadop['categoria_id']=$resultadoc['id'])
-    print '<pre>';
-    print $productos[5];
-    print $productos['0'];
-}
-*/
-
-/*
- print '<pre>';
-
- if($resultadop['categoria_id'] ==$id)
- {
-     print $resultadop;
- }
- die;
- */
-
 ?>
 
-<!--filtros-categorias-->
-<section id="productos" class="productos-section">
 
-    <div class="container">
+<?php
+$cantidad_categorias = count($info_categoria);
 
-        <?php
-        $cantidad_categorias = count($info_categoria);
+if ($cantidad_categorias > 0) {
+    //$cont_categorias=0;
+?>
 
-        if ($cantidad_categorias > 0) {
-            //$cont_categorias=0;
-        ?>
+    <section id="hero-categorias" class="color-black-bg">
+        <div class="container-fluid py-md-5">
+            <div class="row">
+                <div class="col-lg-4 col-md-8 text-white align-self-center offset-md-1 ">
+                    <?php
+                    $info_categoria_elegida = $categoria->mostrarPorId($id);
+                    ?>
+                    <h1 class="hero-title py-md-3" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
+                    <h5 class="hero-description " id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h5>
+                    <br>
+                    <a class="btn btn-primary me-lg-3" href="login.php" role="button">Ver categorias </a>
+                    <a class="btn btn-link text-white" href="#categorias" role="button">Registrarse ></a>
+                    <?php
+
+                    ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--filtros-categorias-->
+    <section id="productos" class="productos-section">
+
+        <div class="container">
 
             <div class="row justify-content-center">
 
-                <div class="col-lg-2 col-md-4 filtros py-md-4 my-md-5 text-center color-grey3-bg formulario ws">
+                <div class="col-lg-2 col-md-3 filtros py-md-4 my-md-5 text-center color-grey3-bg formulario ws">
 
                     <h6 class="fw-700">Filtrar por categoria</h6>
 
@@ -96,7 +77,7 @@ foreach ($info_producto as $productos) {
                         ?>
                             <button class="btn btn-filtro2 <?php if ($id == $item_categoria['id']) {
                                                                 print 'active';
-                                                            } ?>" role="button" data-bs-toggle="collapse" href="#categoria<?php print $item_categoria['id']; ?>" role="button" aria-expanded="<?php if ($id == $item_categoria['id'])
+                                                            } ?>" role="button" data-bs-toggle="collapse" href="#categoria<?php print $item_categoria['id'];?>" role="button" aria-expanded="<?php if ($id == $item_categoria['id'])
                                                                                                                                                                                                     print 'true';
                                                                                                                                                                                                 else print 'false' ?>" aria-controls="categoria<?php print $item_categoria['id']; ?>" <?php if ($id == $item_categoria['id']) {
                                                                                                                                                                                                                                                                                             print 'checked';
@@ -110,7 +91,7 @@ foreach ($info_producto as $productos) {
                 <div class="col-lg-10 col-md-8 text-center">
 
                     <div class="col-12">
-                        <h2 class="section-title py-md-5 m-md-0">Productos disponibles</h5>
+                        <h2 class="section-title py-md-5 m-md-0"><?php print $info_categoria_elegida['nombre'];?> disponibles</h5>
                     </div>
 
 
@@ -131,7 +112,7 @@ foreach ($info_producto as $productos) {
                                     ?>
 
                                         <a href="producto.php?id=<?php print $item_producto[0] ?>">
-                                            <img src="<?php print $imagen; ?>" class="p-md-3 img-fluid">
+                                            <img src="<?php print $imagen; ?>" class="p-md-3 img-fluid thumbnail-producto" style="object-fit:contain;">
                                         </a>
 
 
@@ -175,15 +156,18 @@ foreach ($info_producto as $productos) {
 
 
                                     $costo = $item_producto['precio'];
+                                    $cantidad = $item_producto['cantidad'];
 
                                     $separada_costo = '';
+                                    $separada_cantidad = '';
                                     $separador = ",";
                                     $separada_costo = explode($separador, $costo);
-
+                                    $separada_cantidad = explode($separador, $cantidad);
                                     $count_costo = count($separada_costo);
+                                    $count_cantidad = count($separada_cantidad);
 
                                     ?>
-                                    <p class="fw-400 pt-md-3 pb-md-4 m-0">Desde $<?php print $separada_costo[0] ?></p>
+                                    <p class="fw-400 pt-md-3 pb-md-4 m-0">Desde $<?php print $separada_costo[0]?> por <?php print $separada_cantidad[0]?> unidades</p>
                                     <?php
 
                                     ?>
@@ -202,9 +186,7 @@ foreach ($info_producto as $productos) {
 
                         ?>
                     </div>
-                <?php
-            }
-                ?>
+
 
 
                 </div>
@@ -212,7 +194,10 @@ foreach ($info_producto as $productos) {
 
             </div>
 
-    </div>
+        </div>
 
-</section>
-<!--!filtros-categorias-->
+    </section>
+    <!--!filtros-categorias-->
+<?php
+}
+?>
