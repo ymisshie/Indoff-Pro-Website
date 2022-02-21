@@ -1,3 +1,10 @@
+<?php
+// session_start();
+
+// if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
+// header('Location: index.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,11 +63,26 @@
                         <li class="nav-item px-md-4 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
                                                                                         echo "active";
-                                                                                    } ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
+                                                                                    } ?>" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <?php
+                                    require $root_vendor;
+                                    $categoria = new ameri\Categoria;
+                                    $info_categoria = $categoria->mostrar();
+                                    $cantidad = count($info_categoria);
 
-                                <li><a class="dropdown-item" href="#"> Categoria</a></li>
-
+                                    if($cantidad > 0)
+                                    {
+                                        for($x =0; $x < $cantidad; $x++)
+                                        {
+                                        $item = $info_categoria[$x];
+                                ?>
+                                    <li><a class="dropdown-item" href="<?php print $root_productos_eventos_header ?>productos/index.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                        
+                                <?php
+                                        }
+                                    }
+                                ?>
                             </ul>
                         </li>
                         <li class="nav-item dropdown px-md-4 ">
@@ -73,15 +95,15 @@
                                     require $root_vendor;
                                     $evento = new ameri\Evento;
                                     $info_evento = $evento->mostrar();
-                                    $cantidad = count($info_evento);
+                                    $cantidad_evento = count($info_evento);
 
-                                    if($cantidad > 0)
+                                    if($cantidad_evento > 0)
                                     {
-                                        for($x =0; $x < $cantidad; $x++)
+                                        for($x =0; $x < $cantidad_evento; $x++)
                                         {
                                         $item = $info_evento[$x];
                                 ?>
-                                    <li><a class="dropdown-item" href="eventos/index.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
+                                    <li><a class="dropdown-item" href="<?php print $root_productos_eventos_header ?>productos-eventos/index.php?id=<?php print $item['id']?>"><?php print $item['nombre']?></a></li>
                                         
                                 <?php
                                         }
@@ -98,8 +120,7 @@
 
 
                     </ul>
-                    <div class="d-flex ms-auto px-md-4 pb-md-2
-                    pt-lg-1 m-0">
+                    <div class="d-flex px-md-4 pb-md-2 pt-lg-1 m-0 mr-8">
                         <div class="align-items-center menu text-center d-flex text-white">
                             <div class="col mx-lg-4 d-flex align-items-center btn-carrito">
                                 <div><i class="fas fa-file-invoice fs-1-5"></i></div>
@@ -107,12 +128,12 @@
                             </div>
                             <div class="col mx-lg-2 d-flex align-items-center btn-menu">
                                 <div><i class="fas fa-user-alt fs-1-5"></i></div>
-                                <div>
-                                    <a class="nav-link text-white px-lg-3 fw-500" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Login
+                                <div class="nav-item dropdown">
+                                    <a class="nav-link text-white px-lg-3 fw-500  dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <?php print $_SESSION['admin_info']['nombre_login'] ?>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                                        <li><a class="dropdown-item" href="<?php print $root_cerrar_sesion ?>">Cerrar sesión</a></li>
                                     </ul>
                                 </div>
                             </div>

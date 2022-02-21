@@ -6,70 +6,29 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $id = $_GET['id'];
 
+    $pe = new ameri\Producto_Evento;
+    $evento = new ameri\Evento;
 
-    $producto = new ameri\Producto;
-    $categoria = new ameri\Categoria;
+   $info_pe = $pe->mostrar();
+    $info_evento = $evento->mostrar();
 
-    $info_producto = $producto->mostrar();
-    $info_categoria = $categoria->mostrar();
-
-
-
-    /*
- print '<pre>';
- print $info_categoria['nombre'];
-*/
-
-    /*
- print '<pre>';
- print_r($info_producto);
-*/
-
-    /*
-    foreach ($info_producto as $productos) {
-        //if ($resultadop['categoria_id']=$resultadoc['id'])
-        print '<pre>';
-        print_r($productos);
-    }
-*/
-
-    if (!$info_producto && $info_categoria)
+    if (!$info_pe && $info_evento)
         header('Location: index.php');
 } else {
     header('Location: index.php');
 }
 
-
-/*
-foreach ($info_producto as $productos) {
-    //if ($resultadop['categoria_id']=$resultadoc['id'])
-    print '<pre>';
-    print $productos[5];
-    print $productos['0'];
-}
-*/
-
-/*
- print '<pre>';
-
- if($resultadop['categoria_id'] ==$id)
- {
-     print $resultadop;
- }
- die;
- */
-
 ?>
 
 <!--filtros-categorias-->
-<section id="productos" class="productos-section">
+<section id="productos" class="productos-eventos-section">
 
     <div class="container">
 
         <?php
-        $cantidad_categorias = count($info_categoria);
+        $cantidad_eventos = count($info_evento);
 
-        if ($cantidad_categorias > 0) {
+        if ($cantidad_eventos > 0) {
             //$cont_categorias=0;
         ?>
 
@@ -77,7 +36,7 @@ foreach ($info_producto as $productos) {
 
                 <div class="col-lg-2 col-md-4 filtros py-md-4 my-md-5 text-center color-grey3-bg formulario ws">
 
-                    <h6 class="fw-700">Filtrar por categoria</h6>
+                    <h6 class="fw-700">Filtrar por evento</h6>
 
                     <br>
                     <div class="btn-group-vertical btn-group-filtros" role="group" aria-label="Vertical button group">
@@ -92,15 +51,15 @@ foreach ($info_producto as $productos) {
 
                         <?php
 
-                        foreach ($info_categoria as $item_categoria) {
+                        foreach ($info_evento as $item_evento) {
                         ?>
-                            <button class="btn btn-filtro2 <?php if ($id == $item_categoria['id']) {
+                            <button class="btn btn-filtro2 <?php if ($id == $item_evento['id']) {
                                                                 print 'active';
-                                                            } ?>" role="button" data-bs-toggle="collapse" href="#categoria<?php print $item_categoria['id']; ?>" role="button" aria-expanded="<?php if ($id == $item_categoria['id'])
+                                                            } ?>" role="button" data-bs-toggle="collapse" href="#categoria<?php print $item_evento['id']; ?>" role="button" aria-expanded="<?php if ($id == $item_evento['id'])
                                                                                                                                                                                                     print 'true';
-                                                                                                                                                                                                else print 'false' ?>" aria-controls="categoria<?php print $item_categoria['id']; ?>" <?php if ($id == $item_categoria['id']) {
+                                                                                                                                                                                                else print 'false' ?>" aria-controls="categoria<?php print $item_evento['id']; ?>" <?php if ($id == $item_evento['id']) {
                                                                                                                                                                                                                                                                                             print 'checked';
-                                                                                                                                                                                                                                                                                        } ?>><?php print $item_categoria['nombre']; ?></button>
+                                                                                                                                                                                                                                                                                        } ?>><?php print $item_evento['nombre']; ?></button>
                         <?php
                         }
                         ?>
@@ -117,20 +76,20 @@ foreach ($info_producto as $productos) {
                     <div class="col-12 d-flex justify-content-evenly flex-wrap flex-row">
 
                         <?php
-                        foreach ($info_producto as $item_producto) {
+                        foreach ($info_pe as $item_pe) {
                         ?>
 
-                            <div href="producto.php?id=<?php print $item_producto[0] ?>" class="col-lg-3 col-md-8 m-lg-4 collapse <?php if ($id == $item_producto['id']) {
+                            <div href="producto-evento-hero.php?id=<?php print $item_pe[0] ?>" class="col-lg-3 col-md-8 m-lg-4 collapse <?php if ($id == $item_pe['id']) {
                                                                                                                                         print 'show';
-                                                                                                                                    } ?>" id="categoria<?php print $item_producto['id'] ?>">
+                                                                                                                                    } ?>" id="categoria<?php print $item_pe['id'] ?>">
 
                                 <div class="formulario ws align-self-center" id="colapseExample">
                                     <?php
-                                    $imagen = 'upload/' . $item_producto['imagen'];
+                                    $imagen = 'upload/' . $item_pe['imagen'];
                                     if (file_exists($imagen)) {
                                     ?>
 
-                                        <a href="producto.php?id=<?php print $item_producto[0] ?>">
+                                        <a href="producto-evento-hero.php?id=<?php print $item_pe[0] ?>">
                                             <img src="<?php print $imagen; ?>" class="p-md-3 img-fluid">
                                         </a>
 
@@ -144,7 +103,7 @@ foreach ($info_producto as $productos) {
 
                                         <?php
 
-                                        $colores = $item_producto['color'];
+                                        $colores = $item_pe['color'];
                                         $separada = '';
                                         $separador = ",";
                                         $separada = explode($separador, $colores);
@@ -166,15 +125,15 @@ foreach ($info_producto as $productos) {
                                     </div>
                                     <!-- !color -->
 
-                                    <h5 class="pt-md-3 m-0 fw-700"><?php print $item_producto['nombre'] ?></h5>
+                                    <h5 class="pt-md-3 m-0 fw-700"><?php print $item_pe['nombre'] ?></h5>
 
-                                    <h6 class="pt-md-1 m-0 fw-600"><?php print $item_producto['proveedor'] ?></h6>
+                                    <h6 class="pt-md-1 m-0 fw-600"><?php print $item_pe['proveedor'] ?></h6>
 
 
                                     <?php
 
 
-                                    $costo = $item_producto['precio'];
+                                    $costo = $item_pe['precio'];
 
                                     $separada_costo = '';
                                     $separador = ",";
@@ -189,10 +148,10 @@ foreach ($info_producto as $productos) {
                                     ?>
                                 </div>
 
-                                <a class="btn btn-primary text-white my-md-4" href="producto.php?id=<?php print $item_producto[0] ?>" role="button">Ver más</a>
+                                <a class="btn btn-primary text-white my-md-4" href="producto-evento-hero.php?id=<?php print $item_pe[0] ?>" role="button">Ver más</a>
 
                                 <!--
-                                <a class="btn btn-secondary ms-md-3 ms-lg-1 my-md-4" href="carrito.php?id=<?php //print $item_producto[0] 
+                                <a class="btn btn-secondary ms-md-3 ms-lg-1 my-md-4" href="carrito.php?id=<?php //print $item_pe[0] 
                                                                                                             ?>" role="button">Agregar al carrito</a>
                                     -->
                             </div>

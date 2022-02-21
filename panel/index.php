@@ -1,16 +1,18 @@
 <?php
 $title = "Admin Indoff Pro";
 $pagina = "inicio";
+// $root_styles = '<link rel="stylesheet" href="../style6.css">';
 ?>
 
-<?php
-//include header.php file
+<!-- <php
+include header.php file
 include('variables_root.php')
-?>
+> -->
 
 <?php
 //include header.php file
-include('../Template/_header-login.php')
+include('../Template/_header-login.php');
+   // rest of your code
 ?>
 
 <div class="container mt-5">
@@ -21,27 +23,36 @@ include('../Template/_header-login.php')
                     <h3 class="pt-3 font-weight-bold">Admin Login</h3>
                 </div>
                 <div class="panel-body p-3">
-                    <form action="login_admin.php" method="post">
+                    <form action="login-admin.php" method="post">
                         <div class="form-group py-2">
                             <div class="input-field">
                                 <span class="far fa-user p-2"></span>
                                 <input type="text" placeholder="Username or Email" required name="nombre_admin">
                             </div>
                         </div>
-                        <div class="form-group py-1 pb-2">
+                        <div class="form-group py-2 pb-2">
                             <div class="input-field">
-                                <span class="fas fa-lock px-2"></span>
+                                <span class="fas fa-lock p-2"></span>
                                 <input type="password" placeholder="Enter your Password" required name="clave_admin">
-                                <button class="btn bg-white text-muted">
+                                <!-- <button class="btn bg-white text-muted">
                                     <span class="far fa-eye-slash"></span>
-                                </button>
+                                </button> -->
                             </div>
                         </div>
-                        <div class="form-inline">
-                            <input type="checkbox" name="remember" id="remember">
-                            <label for="remember" class="text-muted">Remember me</label>
+                        <!-- <div class="form-inline">
+                            <a href="form-register-admin.php" id="createaccount" class="font-weight-bold">Create admin account</a>
                             <a href="#" id="forgot" class="font-weight-bold float-end">Forgot password?</a>
+                        </div> -->
+                        <div>
+                            <?php
+                                session_start();
+                                if(!empty($_SESSION['message'])) {
+                                    echo '<p class="message text-center mt-2" > '.$_SESSION['message'].'</p>';
+                                    unset($_SESSION['message']);
+                                }
+                            ?>
                         </div>
+                        
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-secondary btn-lg mt-3 text-center"> Login </button>
                         </div>
