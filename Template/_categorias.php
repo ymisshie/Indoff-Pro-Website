@@ -2,7 +2,7 @@
 <section id="categorias" class="categorias-section">
     <div class="container">
 
-        <div class="row justify-content-center text-center categorias-fichas">
+        <div class="row justify-content-center text-center categorias-fichas p-md-5">
             <h2 class="section-title py-md-5">Encontrar por Categoria</h2>
 
             <?php
@@ -18,13 +18,12 @@
                     <div class="col-lg-3 col-md-6 px-md-3 mx-lg-5">
                         <a class="card categorias mb-md-5" href="categorias.php?id=<?php print $item['id'] ?>">
 
-
                             <?php
                             $imagen = 'upload/' . $item['imagen'];
                             if (file_exists($imagen)) {
                             ?>
 
-                                <img src="<?php print $imagen; ?>" class="card-img-top py-md-3"  alt="...">
+                                <img src="<?php print $imagen; ?>" class="card-img-top thumbnail py-md-3 " style="object-fit: contain;" alt="...">
 
                             <?php } else { ?>
                                 Sin imagen

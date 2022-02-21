@@ -44,6 +44,7 @@
 
 </section>
 
+<!--
 <section>
     <div class="container-fluid color-grey-bg">
         <div class="row justify-content-lg-center justify-content-md-evenly d-flex">
@@ -79,5 +80,5 @@
 
     </div>
 </section>
-
+-->
 <!--!slider-->

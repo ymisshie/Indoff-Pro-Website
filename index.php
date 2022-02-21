@@ -12,7 +12,7 @@ include('header.php')
 
 <?php
 /*include slider1*/
-include('Template/_slider1.php')
+include('Template/_hero-index.php')
 /*include slider1*/
 ?>
 

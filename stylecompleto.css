@@ -486,8 +486,10 @@ select option:hover {
     border-top: var(--grey) solid 2px;
 }
 
-
-
+.thumbnail
+{
+    height: 14em;
+}
 /*color template*/
 .color-aqua {
     color: var(--aqua) !important;

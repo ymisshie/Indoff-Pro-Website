@@ -19,7 +19,7 @@
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style6.css">
+    <link rel="stylesheet" href="stylecompleto.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
