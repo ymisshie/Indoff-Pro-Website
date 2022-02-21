@@ -2,6 +2,10 @@
 <?php
 $title = "Registro Eventos - Indoff Pro";
 $pagina ="eventos";
+session_start();
+
+if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
+    header('Location: ../index.php');
 ?>
 
 
@@ -18,6 +22,7 @@ $root_pedidos = 'href="../pedidos/index.php"';
 $root_logout = 'href="../index.php"';
 $root_vendor = '../../vendor/autoload.php';
 $root_productos_eventos_header = '../';
+$root_cerrar_sesion = '../cerrar-sesion.php';
 ?>
 
 

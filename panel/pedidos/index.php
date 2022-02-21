@@ -1,6 +1,10 @@
 <?php
 $title = "Productos de Eventos - Indoff Pro";
 $pagina ="pedidos";
+session_start();
+
+if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
+    header('Location: ../index.php');
 ?>
 
 
@@ -17,6 +21,7 @@ $root_pedidos = 'href="index.php"';
 $root_logout = 'href="../index.php"';
 $root_vendor = '../../vendor/autoload.php';
 $root_productos_eventos_header = '../';
+$root_cerrar_sesion = '../cerrar-sesion.php';
 ?>
 
 

@@ -10,6 +10,8 @@ $info_categorias = $categorias->mostrar();
 $cantidade = count($info_eventos);
 $cantidadca = count($info_categorias);
 
+
+
 ?>
 
 <section>
