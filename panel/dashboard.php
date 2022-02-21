@@ -1,6 +1,13 @@
 <?php
+
 $title = "Dashboard Indoff Pro";
 $pagina = "inicio";
+
+session_start();
+
+if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
+    header('Location: index.php');
+
 ?>
 
 <?php
@@ -15,6 +22,7 @@ $root_eventos_productos = 'href="productos-eventos/index.php"';
 $root_pedidos = 'href="pedidos/index.php"';
 $root_logout = 'href="index.php"';
 $root_vendor = '../vendor/autoload.php';
+$root_cerrar_sesion = 'cerrar-sesion.php';
 $root_productos_eventos_header = '';
 ?>
 

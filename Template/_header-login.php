@@ -23,7 +23,7 @@
             integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
         <!--CUSTOM CSS FILE-->
-        <link rel="stylesheet" href="../style1.css">
+        <link rel="stylesheet" href="../style6.css">
         <link rel="stylesheet" href="../styles_login.css">
         
         <?php

@@ -582,3 +582,10 @@ select option:hover {
         font-size: 2.5em !important;
     }
 }
+
+
+/* Required * */
+.required:after {
+content:" *";
+color: red;
+}

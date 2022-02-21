@@ -21,7 +21,7 @@
     <!--CUSTOM CSS FILE-->
     <link rel="stylesheet" href="style33.css">
 
-    <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
+    <!-- <link href="jquery.multiselect.css" rel="stylesheet" type="text/css"> -->
 
     <?php
     // require functions.php file
