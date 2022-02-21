@@ -71,3 +71,10 @@ img {
         left: 25%
     }
 }
+
+/* Required * */
+.required:after {
+    content:" *";
+    color: red;
+    }
+    
