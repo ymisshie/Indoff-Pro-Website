@@ -55,8 +55,7 @@ body {
     text-underline-offset: 6px;
 }
 
-.nav-link.active
-{
+.nav-link.active {
     opacity: 85% !important;
     text-decoration-line: underline;
     text-underline-offset: 6px;
@@ -142,7 +141,7 @@ body {
     border: var(--white) solid 4px;
 }
 
-.btn-color:active, .btn-color:focus{
+.btn-color:active, .btn-color:focus {
     border: var(--red) solid 4px;
 }
 
@@ -175,8 +174,7 @@ textarea {
     /*height: 13em !important;*/
 }
 
-.select-cantidades select
-{
+.select-cantidades select {
     width: 100%;
 }
 
@@ -221,11 +219,6 @@ textarea {
 select option:hover {
     background-color: var(--grey) !important;
     color: var(--black) !important;
-}
-
-.required:after {
-    content: " *";
-    color: red;
 }
 
 /*card*/
@@ -375,8 +368,7 @@ select option:hover {
     color: var(--white)
 }
 
-.eventos .card-img-top
-{
+.eventos .card-img-top {
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
 }
@@ -396,8 +388,7 @@ select option:hover {
 .categorias, .eventos {
     border-radius: 1em;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
-    background-color: var(--grey);
-
+    background-color: var(--grey3);
 }
 
 .categorias .card-body:hover {
@@ -408,11 +399,9 @@ select option:hover {
     text-decoration: none;
 }
 
-.dashboard-card-icon
-{
+.dashboard-card-icon {
     font-size: 6em;
 }
-
 
 /*categorias index*/
 .dashboard-card .card-body {
@@ -432,17 +421,10 @@ select option:hover {
     background-color: var(--orange);
 }
 
-
 .beneficios-section .beneficios {
     border-radius: 1em;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
-
-/*hero categorias*/
-.hero-categorias {
-    height: 34em;
-}
-
 
 /*busqueda categorias*/
 .btn-group, .btn-group-filtros, .btn-group-menu {
@@ -480,21 +462,23 @@ select option:hover {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
 }
 
-
 .producto-carrito {
     border-bottom: var(--grey) solid 2px;
     border-top: var(--grey) solid 2px;
 }
 
-.thumbnail
-{
-    height: 16em;
+.thumbnail {
+    height: 13em;
 }
 
-.thumbnail-producto
-{
+.categorias:hover {
+    background-color: var(--grey);
+}
+
+.thumbnail-producto {
     height: 15em;
 }
+
 
 /*color template*/
 .color-aqua {
@@ -552,6 +536,7 @@ select option:hover {
 .color-grey2 {
     color: var(--grey2) !important;
 }
+
 .color-grey23 {
     color: var(--grey3) !important;
 }
@@ -559,6 +544,7 @@ select option:hover {
 .color-grey2-bg {
     background: var(--grey2) !important;
 }
+
 .color-grey3-bg {
     background: var(--grey3) !important;
 }
@@ -586,6 +572,6 @@ select option:hover {
 
 /* Required * */
 .required:after {
-content:" *";
-color: red;
+    content: " *";
+    color: red;
 }

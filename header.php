@@ -19,7 +19,7 @@
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style33.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- <link href="jquery.multiselect.css" rel="stylesheet" type="text/css"> -->
 
@@ -34,7 +34,7 @@
 
     <!--start #header-->
     <header id="header" class="color-aqua-bg">
-        <div class="d-flex justify-content-between px-lg-5 pt-md-2 px-md-5">
+        <div class="d-flex justify-content-between px-lg-5 pt-md-0 px-md-5">
             <a class="align-self-center navbar-brand px-lg-5 fw-500 text-white font-gentiumme-auto" href="index.php">Indoff Pro</a>
             <div class="phone-info text-end ms-auto fw-600 align-self-center text-white">
                 <p class="mb-2">(664) 625 11 11</p>
@@ -55,7 +55,7 @@
         </div>
 
         <!--pimary navigation-->
-        <nav class="navbar py-md-2 navbar-expand-lg  fw-600 px-lg-5 px-md-3">
+        <nav class="navbar py-md-1 navbar-expand-lg fw-600 px-lg-5 px-md-3">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">

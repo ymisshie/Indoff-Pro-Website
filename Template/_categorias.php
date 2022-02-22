@@ -1,8 +1,7 @@
 <!--categorias-->
 <section id="categorias" class="categorias-section">
     <div class="container">
-
-        <div class="row justify-content-center text-center categorias-fichas pb-md-5">
+        <div class="row justify-content-center text-center pb-md-5">
             <h2 class="section-title py-md-5">Categorias de productos destacados</h2>
 
             <?php
@@ -31,7 +30,6 @@
 
                             <div class="card-body">
                                 <h5 class="fw-700"><?php print $item['nombre'] ?></h5>
-                                <p class="fw-500 m-lg-0"><?php print $item['descripcion'] ?></p>
                             </div>
                         </a>
                     </div>
@@ -40,41 +38,7 @@
                 <h4>NO HAY REGISTROS</h4>
             <?php } ?>
         </div>
-        <!--
-        <div class="row justify-content-center categorias2">
 
-            <div class="col-3 mx-4">
-                <a class="card categorias" href="categorias.php">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Categoria</h5>
-                        <p class="card-text">Descripcion de categoria 1.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-3 mx-4">
-                <a class="card categorias" href="categorias.php">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Categoria</h5>
-                        <p class="card-text">Descripcion de categoria 1.</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-3 mx-4">
-                <a class="card categorias" href="categorias.php">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Categoria</h5>
-                        <p class="card-text">Descripcion de categoria 1.</p>
-                    </div>
-                </a>
-            </div>
-
-        </div>
-            -->
     </div>
 
 </section>

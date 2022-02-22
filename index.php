@@ -40,11 +40,6 @@ include('Template/_clientes.php')
 /*include clientes*/
 ?>
 
-<?php
-/*include suscribir*/
-include('Template/_suscribir.php')
-/*include suscribir*/
-?>
 
 <?php
 //include footer.php file
