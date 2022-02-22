@@ -8,13 +8,6 @@ $pagina ="categorias";
 include('header.php')
 ?>
 
-
-<?php
-/*include hero-categorias*/
-include('Template/_hero-categorias.php')
-/*include hero-categorias*/
-?>
-
 <?php
 /*include filtros-categorias*/
 include('Template/_filtros-categorias.php')
