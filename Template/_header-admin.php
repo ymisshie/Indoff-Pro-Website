@@ -58,7 +58,7 @@
                         <li class="nav-item px-md-4 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
                                                                                         echo "active";
-                                                                                    } ?>" href="" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
+                                                                                    } ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
                                     require $root_vendor;
