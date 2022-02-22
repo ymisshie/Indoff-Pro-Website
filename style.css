@@ -44,21 +44,24 @@ body {
     font-style: italic;
 }
 
-
 .navbar-brand:hover {
     opacity: 85%;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link.active  {
     opacity: 85%;
     text-decoration-line: underline;
-    text-underline-offset: 6px;
+    text-underline-offset: 12px;
+    text-decoration-thickness: 4px;
+    text-decoration-color: var(--orange);
 }
 
-.nav-link.active {
+.secondary-navbar .nav-link.active, .secondary-navbar .nav-link:hover {
     opacity: 85% !important;
     text-decoration-line: underline;
-    text-underline-offset: 6px;
+    text-underline-offset: 13px;
+    text-decoration-color: var(--aqua);
+    text-decoration-thickness: 4px;
 }
 
 .dropdown-item {
@@ -68,6 +71,11 @@ body {
 .dropdown-item:hover {
     background-color: var(--red);
     color: var(--white);
+}
+
+
+.secondary-navbar .nav-item {
+    font-weight: 500;
 }
 
 /*botones*/
@@ -165,8 +173,15 @@ textarea {
 }
 
 .formulario {
-    border-radius: 1em;
+
     background-color: var(--white);
+    border: var(--grey) solid 3px;
+}
+
+.categorias-filtro .formulario:hover
+{
+    border-color: var(--red);
+    cursor: pointer;
 }
 
 .color-select, .select2-selection {
@@ -353,29 +368,13 @@ select option:hover {
     font-weight: 700;
 }
 
-/*hero index*/
-
-.carousel-image {
-    height: 28em;
-
-}
-
 /*categorias index*/
 .categorias .card-body {
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
     background-color: var(--red);
-    color: var(--white)
-}
-
-.eventos .card-img-top {
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
+    color: var(--white);
 }
 
 .eventos .card-body {
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
     background-color: var(--red);
     color: var(--white);
     background-color: var(--purple);
@@ -386,7 +385,6 @@ select option:hover {
 }
 
 .categorias, .eventos {
-    border-radius: 1em;
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
     background-color: var(--grey3);
 }
@@ -405,14 +403,11 @@ select option:hover {
 
 /*categorias index*/
 .dashboard-card .card-body {
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
     background-color: var(--red);
     color: var(--white)
 }
 
 .dashboard-card {
-    border-radius: 1em;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
     background-color: var(--grey);
 }
@@ -422,7 +417,6 @@ select option:hover {
 }
 
 .beneficios-section .beneficios {
-    border-radius: 1em;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -430,7 +424,6 @@ select option:hover {
 .btn-group, .btn-group-filtros, .btn-group-menu {
     width: 100%;
 }
-
 
 .btn-filtro {
     width: 100%;
@@ -459,6 +452,7 @@ select option:hover {
 
 .producto-ficha {
     border-radius: 1em;
+    border: var(--grey) solid 3px;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -476,7 +470,7 @@ select option:hover {
 }
 
 .thumbnail-producto {
-    height: 15em;
+    height: 13em;
 }
 
 

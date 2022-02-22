@@ -1,7 +1,6 @@
 <?php
 require 'vendor/autoload.php';
 
-
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $id = $_GET['id'];
@@ -26,84 +25,60 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 $cantidad_categorias = count($info_categoria);
 
 if ($cantidad_categorias > 0) {
-    //$cont_categorias=0;
+    //$cont_categorias=0;<
+    $info_categoria_elegida = $categoria->mostrarPorId($id);
 ?>
 
-    <section id="hero-categorias" class="color-black-bg">
-        <div class="container-fluid py-md-5">
-            <div class="row">
-                <div class="col-lg-4 col-md-8 text-white align-self-center offset-md-1 ">
-                    <?php
-                    $info_categoria_elegida = $categoria->mostrarPorId($id);
-                    ?>
-                    <h1 class="hero-title py-md-3" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
-                    <h5 class="hero-description " id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h5>
-                    <br>
-                    <a class="btn btn-primary me-lg-3" href="login.php" role="button">Ver categorias </a>
-                    <a class="btn btn-link text-white" href="#categorias" role="button">Registrarse ></a>
-                    <?php
-
-                    ?>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--filtros-categorias-->
-    <section id="productos" class="productos-section">
-
-        <div class="container">
-
-            <div class="row justify-content-center">
-
-                <div class="col-lg-2 col-md-3 filtros py-md-4 my-md-5 text-center color-grey3-bg formulario ws">
-
-                    <h6 class="fw-700">Filtrar por categoria</h6>
-
-                    <br>
-                    <div class="btn-group-vertical btn-group-filtros" role="group" aria-label="Vertical button group">
-                        <!--<button type="button" class="btn btn-filtro" role="button" data-filter="*">Mostrar todo</button>-->
-
-                        <!--
-                    <input type="hidden" name="id" value="<?php //print $resultadoc['id']
-                                                            ?>">
-                    <?php
-                    ?>
-                    -->
-
+    <!--navbar-->
+    <section>
+        <nav class="navbar secondary-navbar color-grey3-bg py-md-1 navbar-expand-lg fw-600 px-lg-5 px-md-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="fas fa-bars text-white m-0"></i>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
                         <?php
-
-                        foreach ($info_categoria as $item_categoria) {
+                        foreach ($info_categoria as $categorias) {
                         ?>
-                            <button class="btn btn-filtro2 <?php if ($id == $item_categoria['id']) {
-                                                                print 'active';
-                                                            } ?>" role="button" data-bs-toggle="collapse" href="#categoria<?php print $item_categoria['id'];?>" role="button" aria-expanded="<?php if ($id == $item_categoria['id'])
-                                                                                                                                                                                                    print 'true';
-                                                                                                                                                                                                else print 'false' ?>" aria-controls="categoria<?php print $item_categoria['id']; ?>" <?php if ($id == $item_categoria['id']) {
-                                                                                                                                                                                                                                                                                            print 'checked';
-                                                                                                                                                                                                                                                                                        } ?>><?php print $item_categoria['nombre']; ?></button>
+                            <li class="nav-item px-md-4">
+                                <a class="nav-link color-black <?php if ($categorias['id'] == $id) {
+                                                                    print 'active';
+                                                                } ?>" aria-current="page" href="categorias.php?id=<?php print $categorias['id']; ?>"><?php print $categorias['nombre']; ?></a>
+                            </li>
                         <?php
                         }
                         ?>
-                    </div>
+                    </ul>
                 </div>
+            </div>
+        </nav>
+    </section>
 
-                <div class="col-lg-10 col-md-8 text-center">
+    <!--!navbar-->
 
-                    <div class="col-12">
-                        <h2 class="section-title py-md-5 m-md-0"><?php print $info_categoria_elegida['nombre'];?> disponibles</h5>
-                    </div>
+    <!--filtros-categorias-->
+    <section class="categorias-filtro">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h1 class="section-title pt-md-5 color-black" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
+                    <h6 class="py-md-3" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
+                </div>
+            </div>
 
+            <div class="row justify-content-center text-center">
+                <div class="col-12 d-flex justify-content-evenly flex-wrap flex-row">
 
-                    <div class="col-12 d-flex justify-content-evenly flex-wrap flex-row">
+                    <?php
+                    foreach ($info_producto as $item_producto) {
 
-                        <?php
-                        foreach ($info_producto as $item_producto) {
-                        ?>
+                        if ($item_producto[5] == $info_categoria_elegida['id']) {
+                    ?>
 
-                            <div href="producto.php?id=<?php print $item_producto[0] ?>" class="col-lg-3 col-md-8 m-lg-4 collapse <?php if ($id == $item_producto['id']) {
-                                                                                                                                        print 'show';
-                                                                                                                                    } ?>" id="categoria<?php print $item_producto['id'] ?>">
+                            <div href="producto.php?id=<?php print $item_producto[5] ?>" class="col-lg-3 col-md-8 m-lg-4">
 
                                 <div class="formulario ws align-self-center" id="colapseExample">
                                     <?php
@@ -121,10 +96,8 @@ if ($cantidad_categorias > 0) {
                                     <?php } ?>
 
 
-                                    <div class="color col-lg-10 col-md-10 mx-auto d-flex justify-content-evenly py-md-2">
-
+                                    <div class="color col-lg-8 col-md-10 mx-auto d-flex justify-content-evenly py-md-2">
                                         <?php
-
                                         $colores = $item_producto['color'];
                                         $separada = '';
                                         $separador = ",";
@@ -135,8 +108,7 @@ if ($cantidad_categorias > 0) {
                                         for ($u = 0; $u < $count_colores; $u++) {
                                         ?>
 
-                                            <div class="p-md-3 mx-md-1 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
-
+                                            <div class="p-md-2 mx-md-1 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
 
                                             </div>
                                         <?php
@@ -167,35 +139,19 @@ if ($cantidad_categorias > 0) {
                                     $count_cantidad = count($separada_cantidad);
 
                                     ?>
-                                    <p class="fw-400 pt-md-3 pb-md-4 m-0">Desde $<?php print $separada_costo[0]?> por <?php print $separada_cantidad[0]?> unidades</p>
+                                    <p class="fw-400 pt-md-3 pb-md-4 m-0">Desde $<?php print $separada_costo[0] ?> por <?php print $separada_cantidad[0] ?> unidades</p>
                                     <?php
 
                                     ?>
                                 </div>
-
-                                <a class="btn btn-primary text-white my-md-4" href="producto.php?id=<?php print $item_producto[0] ?>" role="button">Ver más</a>
-
-                                <!--
-                                <a class="btn btn-secondary ms-md-3 ms-lg-1 my-md-4" href="carrito.php?id=<?php //print $item_producto[0] 
-                                                                                                            ?>" role="button">Agregar al carrito</a>
-                                    -->
                             </div>
-                        <?php
 
+                    <?php
                         }
-
-                        ?>
-                    </div>
-
-
-
+                    }
+                    ?>
                 </div>
-
-
             </div>
-
-        </div>
-
     </section>
     <!--!filtros-categorias-->
 <?php
