@@ -48,7 +48,7 @@ body {
     opacity: 85%;
 }
 
-.nav-link:hover, .nav-link.active  {
+.nav-link:hover, .nav-link.active {
     opacity: 85%;
     text-decoration-line: underline;
     text-underline-offset: 12px;
@@ -81,8 +81,7 @@ body {
 /*botones*/
 
 .btn {
-    font-weight: 600;
-    border-radius: 0.5em;
+    font-weight: 400;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
     border: none;
 }
@@ -173,13 +172,11 @@ textarea {
 }
 
 .formulario {
-
     background-color: var(--white);
-    border: var(--grey) solid 3px;
+    border: var(--grey) solid 3px !important;
 }
 
-.categorias-filtro .formulario:hover
-{
+.categorias-filtro .formulario:hover {
     border-color: var(--red);
     cursor: pointer;
 }
@@ -236,11 +233,6 @@ select option:hover {
     color: var(--black) !important;
 }
 
-/*card*/
-.card {
-    border: none;
-}
-
 .etiqueta-evento {
     background-color: var(--orange);
     border-radius: 3em;
@@ -264,7 +256,6 @@ select option:hover {
 .font-gentium {
     font-family: "Gentium Book Basic", serif;
 }
-
 
 .fs-07 {
     font-size: 0.7em !important;
@@ -356,6 +347,7 @@ select option:hover {
 
 .hero-description {
     font-weight: 500;
+    line-height: 1.5em;
     text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -369,28 +361,27 @@ select option:hover {
 }
 
 /*categorias index*/
-.categorias .card-body {
-    background-color: var(--red);
+.categorias .card-body, .eventos .card-body {
     color: var(--white);
+    background-color: var(--red);
 }
 
-.eventos .card-body {
-    background-color: var(--red);
-    color: var(--white);
-    background-color: var(--purple);
-}
-
-.eventos .card-body:hover {
-    background-color: var(--orange)
+.card {
+    border: none;
 }
 
 .categorias, .eventos {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
-    background-color: var(--grey3);
+    background-color: var(--white);
 }
 
 .categorias .card-body:hover {
     background-color: var(--orange);
+}
+
+
+.categorias:hover, .eventos:hover {
+    background-color: var(--grey3);
 }
 
 .card {
@@ -463,10 +454,6 @@ select option:hover {
 
 .thumbnail {
     height: 13em;
-}
-
-.categorias:hover {
-    background-color: var(--grey);
 }
 
 .thumbnail-producto {

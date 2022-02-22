@@ -1,15 +1,16 @@
+<section class="color-black-bg">
 
+    <div class="container-fluid">
 
-<section id="hero" class="color-black-bg">
-    <div class="container-fluid py-md-5">
-        <div class="row">
-            <div class="col-lg-4 col-md-8 text-white align-self-center offset-md-6 ">
-                <h1 class="hero-title py-md-3 ">Productos para toda ocasión</h1>
-                <h5 class="hero-description py-md-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed iure nam fugit aliquid, unde assumenda quidem quo expedita, recusandae vero pariatur consequatur perferendis.</h5>
-                <br>
-                <a class="btn btn-primary me-lg-3" href="login.php" role="button">Registrarse</a>
-                <a class="btn btn-link text-white" href="#categorias" role="button">Ver productos ></a>
+        <div class="row justify-content-center color-white">
+            <div class="col-lg-6 col-md-9 py-md-5 text-center">
+                <h1 class="hero-title">Productos para toda ocasion</h1>
+                <h6 class="col-md-8 mx-auto hero-description py-md-3 mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
+                    rem delectus eius voluptates harum neque culpa numquam, doloremque debitis ullam.</h6>
+                <a class="btn btn-primary mt-md-3 mx-md-3" href="login.php" role="button">Registrarse</a>
+                <a class="btn btn-link mt-md-3 text-white" href="#categorias" role="button">Ver productos ></a>
             </div>
         </div>
     </div>
+
 </section>

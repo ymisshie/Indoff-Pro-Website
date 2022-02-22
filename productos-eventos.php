@@ -8,19 +8,11 @@ $pagina ="productos-eventos";
 include('header.php')
 ?>
 
-
-<?php
-/*include hero-categorias*/
-include('Template/_hero-productos-eventos.php')
-/*include hero-categorias*/
-?>
-
 <?php
 /*include filtros-categorias*/
 include('Template/_filtros-productos-eventos.php')
 /*include filtros-categorias*/
 ?>
-
 
 <?php
 //include footer.php file

@@ -80,7 +80,7 @@ if ($cantidad_categorias > 0) {
 
                             <div href="producto.php?id=<?php print $item_producto[5] ?>" class="col-lg-3 col-md-8 m-lg-4">
 
-                                <div class="formulario ws align-self-center" id="colapseExample">
+                                <div class="formulario ws align-self-center">
                                     <?php
                                     $imagen = 'upload/' . $item_producto['imagen'];
                                     if (file_exists($imagen)) {
