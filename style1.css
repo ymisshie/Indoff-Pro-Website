@@ -8,7 +8,7 @@
     --purple: #775FC7;
     --red: #c54955;
     --orange: #E49F49;
-    --black: #303030;
+    --black: #555555;
     --grey: #E7E7E7;
     --grey3: #eeeeee;
     --grey2: #9b9b9b;
@@ -177,7 +177,7 @@ textarea {
 }
 
 .categorias-filtro .formulario:hover {
-    border-color: var(--red);
+    border-color: var(--red) !important;
     cursor: pointer;
 }
 
@@ -379,7 +379,6 @@ select option:hover {
     background-color: var(--orange);
 }
 
-
 .categorias:hover, .eventos:hover {
     background-color: var(--grey3);
 }
@@ -411,42 +410,6 @@ select option:hover {
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
 }
 
-/*busqueda categorias*/
-.btn-group, .btn-group-filtros, .btn-group-menu {
-    width: 100%;
-}
-
-.btn-filtro {
-    width: 100%;
-    border-radius: 0%;
-    border-bottom: var(--red) solid 2px;
-    box-shadow: none;
-}
-
-.btn-filtro2 {
-    width: 100%;
-    border-bottom: var(--red) solid 2px;
-    box-shadow: none;
-    border-radius: 0%;
-}
-
-.btn-filtro:hover, .btn-filtro2:hover {
-    background-color: var(--red);
-    color: var(--white);
-}
-
-.btn-filtro:focus, .btn-filtro2:focus {
-    background-color: var(--purple);
-    color: var(--white);
-    border-bottom: rgba(0, 0, 0, 0) solid 2px;
-}
-
-.producto-ficha {
-    border-radius: 1em;
-    border: var(--grey) solid 3px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
-}
-
 .producto-carrito {
     border-bottom: var(--grey) solid 2px;
     border-top: var(--grey) solid 2px;
@@ -461,7 +424,7 @@ select option:hover {
 }
 
 
-/*color template*/
+/*COLORES*/
 .color-aqua {
     color: var(--aqua) !important;
 }
@@ -541,7 +504,7 @@ select option:hover {
 /*# sourceMappingURL=style.css.map */
 
 
-
+/*RESPONSIVE*/
 /*breakpoint mediano*/
 
 @media (max-width:999px) {

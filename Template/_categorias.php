@@ -15,7 +15,7 @@
                     $item = $info_categoria[$x];
             ?>
                     <div class="col-lg-4 col-md-6 px-md-5">
-                        <a class="card  categorias mb-md-5" href="categorias.php?id=<?php print $item['id'] ?>">
+                        <a class="card categorias mb-md-5" href="categorias.php?id=<?php print $item['id'] ?>">
                             <?php
                             $imagen = 'upload/' . $item['imagen'];
                             if (file_exists($imagen)) {
