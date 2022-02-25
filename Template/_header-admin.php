@@ -1,9 +1,4 @@
-<?php
-// session_start();
 
-// if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
-// header('Location: index.php');
-?>
 
 <!DOCTYPE html>
 <html lang="en">

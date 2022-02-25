@@ -62,7 +62,7 @@ include('header.php');
 
   <!-- Checkbox -->
   <div class="form-check d-flex justify-content-center mb-4">
-    <button type="submit" class="btn btn-secondary btn-lg mt-3 text-center"> Create </button>
+    <button type="submit" class="btn btn-secondary btn-lg mt-3 text-center" name="accion" value="Registrar"> Create </button>
   </div>
 
   <!-- Submit button -->

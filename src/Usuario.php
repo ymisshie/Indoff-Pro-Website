@@ -38,6 +38,29 @@ class Usuario
     //     return false;
     // }
 
+    public function registrar($_params){
+        // Lectura de la ruta de la consulta
+        $sql = "INSERT INTO `usuarios`(`nombre_login`, `pwd_usuario_hash`, `nombre_usuario`, `apellido_usuario`, `email_user`, `estado`) VALUES (:nombre_login, :pwd_usuario_hash, :nombre_usuario, :apellido_usuario, :email_user, :estado)";
+        
+        // Preparar la consulta
+        $resultado = $this->cn->prepare($sql);
+
+        // Indicar los params
+        $_array = array(
+            ":nombre_login" =>$_params['nombre_login'],
+            ":pwd_usuario_hash" =>$_params['pwd_usuario_hash'],
+            ":nombre_usuario" =>$_params['nombre_usuario'],
+            ":apellido_usuario" =>$_params['apellido_usuario'],
+            ":email_user" =>$_params['email_user'],
+            ":estado" =>$_params['estado'],
+        );
+
+        // Ejecutar la consulta 
+        if($resultado->execute($_array))
+            return true;
+        return false;
+    }
+
     public function login($nombre_login, $pwd_usuario_hash)
     {   
         $pwd = "SELECT pwd_usuario_hash FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
@@ -69,4 +92,5 @@ class Usuario
             
         }
     }
+
 }
