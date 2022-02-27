@@ -1,8 +1,12 @@
 <!--categorias-->
 <section id="categorias" class="categorias-section">
     <div class="container">
-        <div class="row justify-content-center text-center pb-md-5">
+
+        <div class="row justify-content-center text-center">
             <h2 class="section-title py-md-5">Categorias destacadas</h2>
+        </div>
+
+        <div class="row justify-content-center text-center pb-md-5">
 
             <?php
             require 'vendor/autoload.php';

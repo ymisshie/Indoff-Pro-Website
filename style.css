@@ -77,6 +77,10 @@ body {
     text-decoration-color: var(--orange) !important;
 }
 
+footer a
+{
+    text-decoration: none;
+}
 .admin-nav-menu:focus
 {
     text-decoration-color: var(--red) !important;

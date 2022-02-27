@@ -2,9 +2,51 @@
 <!--!start #main-site-->
 
 <!--start #footer-->
-<footer>
+<footer class="color-aqua-bg">
+    <div class="container-fluid text-white px-md-5 py-md-3">
+        <div class="row justify-content-center py-md-3">
+            <div class="col offset-md-1 px-md-5">
+                <a class="navbar-brand fw-500 px-md-4 mx-md-2 text-white" href="index.php">Indoff Pro</a>
+            </div>
+        </div>
+        <div class="row justify-content-center pb-md-2">
+            <div class="col-md-3">
+                <h5 class="uppercase py-md-4 fw-600">Productos Promocionales</h5>
+                <p> <a href="categorias.php" class="uppercase text-white fw-500">Categorias</a></p>
+                <p> <a href="eventos.php" class="uppercase text-white fw-500">Eventos</a></p>
+                <p> <a href="contacto.php" class="uppercase text-white fw-500">Contacto</a></p>
+                <p> <a href="nosotros.php" class="uppercase text-white fw-500">Nosotros</a></p>
+            </div>
+            <div class="col-md-3">
+                <h5 class="uppercase py-md-4 fw-600">Contáctanos</h5>
+                <p><span><i class="fas fa-map-marker-alt me-md-3 fs-1-2"></i></span> Tijuana, México</p>
+                <p><a href="mailto:mexico@indoff.com" class="text-white"><span><i class="fas fa-envelope me-md-3 fs-1-2"></i></span>mexico@indoff.com</a></p>
+                <p><span><i class="fas fa-phone me-md-3 fs-1-2"></i></span>(664) 625 11 11</p>
+                <p><span><i class="fas fa-phone me-md-3 fs-1-2"></i></span>(664) 123 39 90</p>
+            </div>
 
+            <div class="col-md-3">
+                <h5 class="uppercase py-md-4 fw-600 col-md-9">Conecta con nuestras redes sociales</h5>
+                <div class="col-md-7 d-flex justify-content-between">
+                    <div class="">
+                        <a href="https://www.linkedin.com/company/31381210/admin/"><i class="fab fa-linkedin fs-3 text-white"></i></a>
+                    </div>
+                    <div class="">
+                        <a href="https://www.facebook.com/indoffpro"><i class="fab fa-facebook fs-3 text-white"></i></a>
+                    </div>
+                    <div class="">
+                        <a href="mailto:mexico@indoff.com"><i class="fas fa-envelope fs-3 text-white"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
+<div class="text-center copyright py-md-4">
+    © 2022 Copyright:
+    <a class="text-reset fw-bold mb-0" href="index.php">indoffpro.com</a>
+</div>
+
 <!--!start #footer-->
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
