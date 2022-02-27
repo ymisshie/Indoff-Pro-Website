@@ -54,6 +54,8 @@ session_start();
                     <?php
                     }
                     ?>
+                </div>
+                <div class="col btn-carrito">
                     <?php if ($_SESSION['admin_info']) {
                     ?>
                         <div><i class="fas fa-file-invoice fs-1-5"></i></div>
@@ -61,7 +63,6 @@ session_start();
                     <?php
                     }
                     ?>
-
                 </div>
                 <div class="col btn-cuenta">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
@@ -91,6 +92,7 @@ session_start();
                         ?>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="panel/cerrar-sesion.php">Cerrar sesión</a></li>
+                                <li><a class="dropdown-item" href="panel/dashboard.php">Ir a Dashboard</a></li>
                             </ul>
                         <?php
                         }
