@@ -65,26 +65,136 @@
         */
 
     function cambiarPrecio() {
-        var precios_lista = document.getElementById("cantidad_producto[]");
 
-
+        var precios_lista = document.getElementById("selectOpciones1_producto");
         var valor = precios_lista.options[precios_lista.selectedIndex].value;
-        console.log(valor);
-
+        //console.log(valor);
         var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad1_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect1_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual1_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
 
-        console.log(arreglo);
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones2_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad2_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect2_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual2_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
 
-        if (valor != 'Unidades') {
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones3_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad3_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect3_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual3_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
 
-            for (var i = 0; i < miArray.length; i += 1) {
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones4_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad4_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect4_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual4_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
 
-                var modificarlabelprecio = document.getElementById("precioselect_producto");
-                modificarlabelprecio.textContent = 'Costo: ' + arreglo[0];
-                var modificarlabelcostounidad = document.getElementById("precioIndividual");
-                modificarlabelcostounidad.textContent = arreglo[1] + '/Unidad';
-            }
-        }
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones5_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad5_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect5_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual5_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
+
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones6_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad6_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect6_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual6_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
+
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones7_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad7_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect7_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual7_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
+
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones8_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad8_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect8_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual8_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
+
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones9_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad9_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect9_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual9_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
+
+        // console.log(modificarlabel.textContent)
+        var precios_lista = document.getElementById("selectOpciones10_producto");
+        var valor = precios_lista.options[precios_lista.selectedIndex].value;
+        //console.log(valor);
+        var arreglo = valor.split(",")
+        var modificarlabelcantidad = document.getElementById("cantidad10_producto");
+        modificarlabelcantidad.textContent = arreglo[0];
+        var modificarlabelcantidad = document.getElementById("precioSelect10_producto");
+        modificarlabelcantidad.textContent = arreglo[1];
+        var modificarprecioindividual = document.getElementById("precioIndividual10_producto");
+        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
+
+        var precioTotal = document.getElementById("precioTotal");
     }
 </script>
 

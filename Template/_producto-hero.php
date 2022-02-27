@@ -54,12 +54,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <div class="row justify-content-center">
             <!--IMAGEN DEL PRODUCTO-->
-            <div class="col-md-12 col-lg-4 text-center ">
+            <div class="col-md-12 col-lg-4 text-center producto-img">
                 <?php
                 $imagen = 'upload/' . $info_producto['imagen'];
                 if (file_exists($imagen)) {
                 ?>
-                    <img src="<?php print $imagen; ?>" class="img-fluid">
+                    <img src="<?php print $imagen; ?>" class="producto-img py-md-4 align-self-center" style="object-fit: contain;">
 
                 <?php } else { ?>
                     Sin imagen
@@ -81,7 +81,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="d-flex">
                     <div class="col-md-7 col-lg-7 py-md-3">
                         <h6 class="fs-1-2 fw-700 m-0">Color</h6>
-                        <div class="color col-md-10 d-flex py-md-2">
+                        <div class="color col-md-10 d-flex pt-md-2">
 
                             <?php
                             $colores = $info_producto['color'];
@@ -102,7 +102,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         </div>
                     </div>
 
-                    <div class="col-md-5 col-lg-3 py-md-3">
+                    <div class="col-md-5 col-lg-3 pt-md-3">
                         <h6 class="fs-1-2 fw-600 m-0">Seleccionado</h6>
                         <div class="color col-md-12 d-flex py-md-2">
 
@@ -136,12 +136,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <h6 class="fs-1-2 fw-600 m-0 pt-md-3 pb-md-4">Seleccione la cantidad</h6>
                     <div class="col-lg-12 d-flex flex-wrap">
                         <?php
+                        $o = 1;
                         foreach ($separada_opciones as $opciones_producto) {
-                            $o = 0;
                         ?>
                             <div class="text-center col-lg-4 px-md-2 py-md-1">
                                 <h5 class="fw-600 pt-md-1"><?php print $opciones_producto ?></h5>
-                                <select class="qty-dropdown" id="cantidad_producto" name="cantidad_producto[]" onchange="cambiarPrecio()">
+                                <select class="qty-dropdown" id="selectOpciones<?php print $o; ?>_producto" name="selectOpciones<?php print $o; ?>_producto" onchange="cambiarPrecio()">
                                     <option value="">Unidades</option>
                                     <?php $x = 0;
                                     foreach ($separada_precio as $precios_producto) {
@@ -158,11 +158,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                                     ?>
                                 </select>
-                                <h6 class="text-start ps-md-2 pt-md-2" id="cantidad<?php print $o; ?>_producto">Unidades:</h6>
-                                <h6 class="text-start ps-md-2" id="precioselect<?php print $o; ?>_producto">Costo:</h6>
-                                <h6 class="text-start ps-md-2" id="precioIndividual<?php print $o; ?>">C/Unidad</h6>
+                                <h6 class="text-start ps-md-2 pt-md-2">Unidades: <span class="color-red fw-700" id="cantidad<?php print $o; ?>_producto"></span></h6>
+                                <h6 class="text-start ps-md-2">Costo: <span class="color-red fw-700" id="precioSelect<?php print $o; ?>_producto"></span></h6>
+                                <h6 class="text-start ps-md-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual<?php print $o; ?>_producto"></span></h6>
                             </div>
                         <?php
+                            $o++;
                         }
                         ?>
                     </div>
@@ -172,8 +173,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 ?>
             </form>
 
-            <div class="col-lg-2 color-grey3-bg">
-                nn
+            <div class="col-lg-2 color-grey3-bg px-md-4">
+                <h5 class="py-md-4 fw-600" id="precioTotal">Resumen de cotización</h5>
+                <h5 class="mb-md-4 color-red fw-600">TOTAL</h5>
+
+                <a class="btn btn-primary w-100" href="login.php" role="button">Realizar cotización</a>
+                <a class="btn btn-secondary mt-md-3 w-100" href="login.php" role="button">Guardar cotización</a>
+                <small class="d-flex form-text pt-md-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
             </div>
 
         </div>

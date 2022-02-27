@@ -2,7 +2,6 @@
 /*sass template*/
 /*global classes*/
 
-
 :root {
     --white: #ffffff;
     --purple: #775FC7;
@@ -244,7 +243,6 @@ textarea {
     font-size: 1em !important;
 }
 
-
 .select2-selection__choice span {
     color: var(--white);
     font-family: "Poppins"sans-serif;
@@ -440,7 +438,10 @@ select option:hover {
     height: 13em;
 }
 
-
+.producto-img
+{
+    height: 32em !important;
+}
 /*COLORES*/
 .color-aqua {
     color: var(--aqua) !important;
