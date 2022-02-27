@@ -16,7 +16,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 
     if (isset($_SESSION['carrito'])) {
-
         //si el producto existe en el carrito
         if (array_key_exists($id, $_SESSION['carrito'])) {
             actualizarProducto($id, $info_producto);
@@ -25,23 +24,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         else {
             agregarProducto($info_producto, $id);
         }
-        die;
     }
     //si el carrito no existe
     else {
         agregarProducto($info_producto, $id);
     }
-
 }
 ?>
 
 <!--carrito-section-->
 <section id="carrito" class="carrito-section">
     <div class="container">
-        <?php
-        print '<pre>';
-        print_r($_SESSION['carrito']);
-        ?>
         <h2 class="section-title py-md-5">Cotizaciones pendientes</h2>
     </div>
 </section>

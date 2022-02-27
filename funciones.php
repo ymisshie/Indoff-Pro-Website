@@ -2,8 +2,6 @@
 
 require 'vendor/autoload.php';
 
-$producto = new ameri\Producto;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_POST['accion'] === 'Realizar cotización') {
         print '<pre>';
@@ -32,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'peso' => $info_producto['peso'],
                 'color' => $_POST['color_selected']
             );
+            die;
             print '<pre>';
             print_r($_SESSION['carrito']);
-            die;
         }
         //cuando se el registro se de de forma correcta se direccina a 
         header("Location: carrito.php");
@@ -67,9 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'opcion10' => $_POST['selectOpciones10_producto'],
                 'size' => $info_producto['size'],
                 'peso' => $info_producto['peso'],
-                'color' => $_POST['color_selected'],
+                'color' => $_POST['color_selected']
             );
-            die;
             print '<pre>';
             print_r($_SESSION['carrito']);
         }

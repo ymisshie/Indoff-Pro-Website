@@ -129,21 +129,57 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $separada_precio = explode($separador, $precio);
                     $separada_cantidad = explode($separador, $cantidad);
                     $count_opciones = count($separada_opciones);
+
+                    if ($count_opciones > 1) {
                     ?>
-                    <div class="col-md-12 py-md-3 select-cantidades">
-                        <h6 class="fs-1-2 fw-600 m-0 pt-md-3 pb-md-4">Seleccione la cantidad</h6>
-                        <div class="col-lg-12 d-flex flex-wrap">
-                            <?php
-                            $o = 1;
-                            foreach ($separada_opciones as $opciones_producto) {
-                            ?>
+
+                        <div class="col-md-12 py-md-3 select-cantidades">
+                            <h6 class="fs-1-2 fw-600 m-0 pt-md-3 pb-md-4">Seleccione la cantidad</h6>
+                            <div class="col-lg-12 d-flex flex-wrap">
+                                <?php
+                                $o = 1;
+                                foreach ($separada_opciones as $opciones_producto) {
+                                ?>
+                                    <div class="text-center col-lg-4 px-md-2 py-md-1">
+                                        <h5 class="fw-600 pt-md-1"><?php print $opciones_producto ?></h5>
+                                        <select class="qty-dropdown" id="selectOpciones<?php print $o; ?>_producto" name="selectOpciones<?php print $o; ?>_producto" onchange="cambiarPrecio()">
+                                            <option value="">Unidades</option>
+                                            <?php $x = 0;
+                                            foreach ($separada_precio as $precios_producto) {
+                                                if ($precios_producto != '') {
+                                            ?>
+                                                    <option value="<?php print $separada_cantidad[$x];
+                                                                    print ',';
+                                                                    print $precios_producto;
+                                                                    print ',';
+                                                                    print $opciones_producto ?>"><?php print $separada_cantidad[$x]; ?></option>
+                                            <?php
+                                                    $x++;
+                                                }
+                                            } ?>
+                                        </select>
+                                        <h6 class="text-start ps-md-2 pt-md-2">Unidades: <span class="color-red fw-700" id="cantidad<?php print $o; ?>_producto" name="cantidad<?php print $o; ?>_producto"></span></h6>
+                                        <h6 class="text-start ps-md-2">Costo: <span class="color-red fw-700" id="precioSelect<?php print $o; ?>_producto" name="precioSelect<?php print $o; ?>_producto"></span></h6>
+                                        <h6 class="text-start ps-md-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual<?php print $o; ?>_producto" name="precioIndividual<?php print $o; ?>_producto"></span></h6>
+                                    </div>
+                                <?php
+                                    $o++;
+                                } ?>
+                            </div>
+                        </div>
+
+                    <?php
+                    } else {
+                    ?>
+                        <div class="col-md-12 py-md-3 select-cantidades">
+                            <h6 class="fs-1-2 fw-600 m-0 pt-md-3 pb-md-4">Seleccione la cantidad</h6>
+                            <div class="col-lg-12 d-flex flex-wrap">
                                 <div class="text-center col-lg-4 px-md-2 py-md-1">
-                                    <h5 class="fw-600 pt-md-1"><?php print $opciones_producto ?></h5>
-                                    <select class="qty-dropdown" id="selectOpciones<?php print $o; ?>_producto" name="selectOpciones<?php print $o; ?>_producto" onchange="cambiarPrecio()">
+
+                                    <select class="qty-dropdown" id="selectOpciones1_producto" name="selectOpciones1_producto" onchange="cambiarPrecio()">
                                         <option value="">Unidades</option>
                                         <?php $x = 0;
                                         foreach ($separada_precio as $precios_producto) {
-
                                             if ($precios_producto != '') {
                                         ?>
                                                 <option value="<?php print $separada_cantidad[$x];
@@ -154,23 +190,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                         <?php
                                                 $x++;
                                             }
-                                        }
-
-                                        ?>
+                                        } ?>
                                     </select>
-                                    <h6 class="text-start ps-md-2 pt-md-2">Unidades: <span class="color-red fw-700" id="cantidad<?php print $o; ?>_producto" name="cantidad<?php print $o; ?>_producto"></span></h6>
-                                    <h6 class="text-start ps-md-2">Costo: <span class="color-red fw-700" id="precioSelect<?php print $o; ?>_producto" name="precioSelect<?php print $o; ?>_producto"></span></h6>
-                                    <h6 class="text-start ps-md-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual<?php print $o; ?>_producto" name="precioIndividual<?php print $o; ?>_producto"></span></h6>
+                                    <h6 class="text-start ps-md-2 pt-md-2">Unidades: <span class="color-red fw-700" id="cantidad1_producto" name="cantidad1_producto"></span></h6>
+                                    <h6 class="text-start ps-md-2">Costo: <span class="color-red fw-700" id="precioSelect1_producto" name="precioSelect1_producto"></span></h6>
+                                    <h6 class="text-start ps-md-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
                                 </div>
-                            <?php
-                                $o++;
-                            }
-                            ?>
+
+                            </div>
                         </div>
-                    </div>
 
                     <?php
+                    }
                     ?>
+
+
                 </div>
 
                 <div class="col-md-4 col-lg-3 color-grey3-bg px-md-4">
