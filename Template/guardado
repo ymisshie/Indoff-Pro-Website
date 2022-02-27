@@ -1,62 +1,60 @@
-  <?php
-                                    $imagen = 'upload/' . $item_producto['imagen'];
-                                    if (file_exists($imagen)) {
-                                    ?>
+   <!--  shopping cart items   -->\
+   <div class="row">
+            <div class="col-md-9">
+                <!-- cart item -->
 
-                                        <img src="<?php print $imagen; ?>" class="p-md-3 img-fluid thumbnail-producto" style="object-fit:contain;">
+                <div class="row formulario ws p-md-3">
+                    <div class="col-md-3 col-lg-2 color-grey-bg align-self-center">
+                        <?php
+                        $imagen = 'upload/' . $info_producto['imagen'];
+                        if (file_exists($imagen)) {
+                        ?>
+                            <img src="<?php print $imagen; ?>" class="img-fluid">
 
-                                    <?php } else { ?>
-                                        Sin imagen
-                                    <?php } ?>
+                        <?php } else { ?>
+                            Sin imagen
+                        <?php } ?>
 
-                                    <div>
+                    </div>
+                    <div class="col-md-8">
+                        <h5 class="section-title pt-md-4 pb-md-0"><?php print $info_producto['nombre'] ?>
+                        </h5>
+                        <h6 class="fw-500"><?php print $info_producto['proveedor'] ?></h6>
 
+                        <p class="">Color: </p>
 
-                                        <div class="color col-lg-8 col-md-10 mx-auto d-flex justify-content-evenly py-md-2">
-                                            <?php
-                                            $colores = $item_producto['color'];
-                                            $separada = '';
-                                            $separador = ",";
-                                            $separada = explode($separador, $colores);
+                        <div class="d-flex pt-md-2">
+                            <a href="acciones_p.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-md-1" role="button">Eliminar<i class="far fa-trash-alt ms-md-2 me-md-1"></i></a>
+                        </div>
+                    </div>
 
-                                            $count_colores = count($separada);
+                    <div class="col-sm-2 text-right">
+                        <div class="font-size-20 text-danger font-baloo">
+                            $<span class="product_price">152</span>
+                        </div>
+                    </div>
+                </div>
 
-                                            for ($u = 0; $u < $count_colores; $u++) {
-                                            ?>
+                <!--
+                    <div class="row py-3 mt-3 producto-carrito">
 
-                                                <div class="p-md-2 mx-md-1 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
+                        <h5 class="section-title text-start m-0">No hay productos en el carrito.
+                        </h5>
 
-                                                </div>
-                                            <?php
-                                            }
-                                            ?>
+                    </div>
+                                    -->
+            </div>
 
-
-                                        </div>
-                                        <!-- !color -->
-
-                                        <h5 class="pt-md-3 m-0 fw-700"><?php print $item_producto['nombre'] ?></h5>
-
-                                        <h6 class="pt-md-1 m-0 fw-600"><?php print $item_producto['proveedor'] ?></h6>
-
-
-                                        <?php
-
-
-                                        $costo = $item_producto['precio'];
-                                        $cantidad = $item_producto['cantidad'];
-
-                                        $separada_costo = '';
-                                        $separada_cantidad = '';
-                                        $separador = ",";
-                                        $separada_costo = explode($separador, $costo);
-                                        $separada_cantidad = explode($separador, $cantidad);
-                                        $count_costo = count($separada_costo);
-                                        $count_cantidad = count($separada_cantidad);
-
-                                        ?>
-                                        <p class="fw-400 pt-md-3 pb-md-4 m-0">Desde $<?php print $separada_costo[0] ?> por <?php print $separada_cantidad[0] ?> unidades</p>
-                                        <?php
-
-                                        ?>
-                                    </div>
+            <!-- subtotal section-->
+            <div class="col-3 py-2">
+                <div class="sub-total text-center mt-2 border">
+                    <h6 class="text-success py-3"><i class="fas fa-check"></i> Su orden es elegible para ENVIO GRATIS</h6>
+                    <div class="border-top py-4">
+                        <h5 class="">Subtotal (2 articulos):&nbsp; <span class="text-danger">$<span class="text-danger" id="deal-price">152.00</span>
+                            </span> </h5>
+                        <button type="submit" class="btn btn-primary mt-3">Checkout</button>
+                    </div>
+                </div>
+            </div>
+            <!-- !subtotal section-->
+        </div>

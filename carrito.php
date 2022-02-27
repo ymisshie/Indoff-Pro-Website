@@ -2,7 +2,6 @@
 $title = "Carrito";
 $pagina ="carrito";
 
-session_start();
 require 'funciones.php';
 ?>
 

@@ -66,6 +66,7 @@
 
     function cambiarPrecio() {
 
+        // console.log(modificarlabel.textContent)
         var precios_lista = document.getElementById("selectOpciones1_producto");
         var valor = precios_lista.options[precios_lista.selectedIndex].value;
         //console.log(valor);
@@ -76,6 +77,8 @@
         modificarlabelcantidad.textContent = arreglo[1];
         var modificarprecioindividual = document.getElementById("precioIndividual1_producto");
         modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+        // console.log(modificarlabel.textContent)
+
 
         // console.log(modificarlabel.textContent)
         var precios_lista = document.getElementById("selectOpciones2_producto");
@@ -194,7 +197,6 @@
         modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
         // console.log(modificarlabel.textContent)
 
-        var precioTotal = document.getElementById("precioTotal");
     }
 </script>
 
