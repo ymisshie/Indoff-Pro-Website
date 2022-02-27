@@ -55,7 +55,6 @@
         document.getElementById('mostrarColor').style.backgroundColor = buttonName;
     };
 
-
     /*
         var nextinput = 0;
 

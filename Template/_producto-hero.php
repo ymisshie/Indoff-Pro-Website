@@ -54,7 +54,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <div class="row justify-content-center">
             <!--IMAGEN DEL PRODUCTO-->
-            <div class="col-md-12 col-lg-3 text-center ">
+            <div class="col-md-12 col-lg-4 text-center ">
                 <?php
                 $imagen = 'upload/' . $info_producto['imagen'];
                 if (file_exists($imagen)) {
@@ -68,7 +68,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <!--!IMAGEN DEL PRODUCTO-->
 
             <!--INFO DEL PRODUCTO-->
-            <form class="col-md-8 col-lg-5 px-md-4 px-lg-5 color-grey3-bg" method="POST" action="../acciones-carrito.php" enctype="multipart/form-data">
+            <form class="col-md-8 col-lg-5 px-md-4 px-lg-5 ws" method="POST" action="../acciones-carrito.php" enctype="multipart/form-data">
 
                 <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
 
@@ -118,55 +118,63 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 </div>
 
                 <!--Cantidades-->
+
+                <?php
+                $opciones = $info_producto['opciones'];
+                $precio = $info_producto['precio'];
+                $cantidad = $info_producto['cantidad'];
+                $separada_opciones = '';
+                $separada_precio = '';
+                $separada_cantidad = '';
+                $separador = ",";
+                $separada_opciones = explode($separador, $opciones);
+                $separada_precio = explode($separador, $precio);
+                $separada_cantidad = explode($separador, $cantidad);
+                $count_opciones = count($separada_opciones);
+                ?>
                 <div class="col-md-12 col-lg-12 py-md-3 select-cantidades">
-                    <h6 class="fs-1-2 fw-600 m-0 py-md-3">Seleccione la cantidad</h6>
-
-                    <!--select cantidades 1
-                    <div class="d-flex">
-                        <div class="col-lg-6 color-grey-bg formulario">
-                            <div class="text-center col p-md-2">
-                                <select name="" id="" class="qty-dropdown">
-                                    <option value="">Unidades</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 px-md-4">
-                            <h5>Precio</h5>
-                            <h6>C/u</h6>
-                        </div>
-
-                    </div>-->
-
-                    <!--select cantidades 1+-->
-
+                    <h6 class="fs-1-2 fw-600 m-0 pt-md-3 pb-md-4">Seleccione la cantidad</h6>
                     <div class="col-lg-12 d-flex flex-wrap">
-                        <div class="text-center col-lg-4 px-md-3 py-md-1 color-grey3-bg formulario">
-                            <h5 class="fw-600 pt-md-1">xs</h5>
-                            <select class="qty-dropdown" id="cantidad_producto" name="cantidad_producto[]" onchange="cambiarPrecio()">
-                                <option value="">Unidades</option>
-                                <option value="100, 20">100 unidades</option>
-                            </select>
-                            <h6 class="text-start ps-md-2 pt-md-2" id="precioselect1_producto">Costo:</h6>
-                            <h6 class="text-start ps-md-2" id="precioIndividual1">C/Unidad</h6>
-                        </div>
-                        <div class="text-center col-lg-4 px-md-3 py-md-1 color-grey3-bg formulario">
-                            <h5 class="fw-600 pt-md-1">m</h5>
-                            <select class="qty-dropdown" id="cantidad_producto" name="cantidad_producto[]" onchange="cambiarPrecio()">
-                                <option value="">Unidades</option>
-                                <option value="400, 30">200 unidades</option>
-                            </select>
-                            <h6 class="text-start ps-md-2 pt-md-2" id="precioselect2_producto">Costo:</h6>
-                            <h6 class="text-start ps-md-2" id="precioIndividual2">C/Unidad</h6>
-                        </div>
+                        <?php
+                        foreach ($separada_opciones as $opciones_producto) {
+                            $o = 0;
+                        ?>
+                            <div class="text-center col-lg-4 px-md-2 py-md-1">
+                                <h5 class="fw-600 pt-md-1"><?php print $opciones_producto ?></h5>
+                                <select class="qty-dropdown" id="cantidad_producto" name="cantidad_producto[]" onchange="cambiarPrecio()">
+                                    <option value="">Unidades</option>
+                                    <?php $x = 0;
+                                    foreach ($separada_precio as $precios_producto) {
 
+                                        if ($precios_producto != '') {
+                                    ?>
+                                            <option value="<?php print $separada_cantidad[$x];
+                                                            print ',';
+                                                            print $precios_producto; ?>"><?php print $separada_cantidad[$x]; ?></option>
+                                    <?php
+                                            $x++;
+                                        }
+                                    }
+
+                                    ?>
+                                </select>
+                                <h6 class="text-start ps-md-2 pt-md-2" id="cantidad<?php print $o; ?>_producto">Unidades:</h6>
+                                <h6 class="text-start ps-md-2" id="precioselect<?php print $o; ?>_producto">Costo:</h6>
+                                <h6 class="text-start ps-md-2" id="precioIndividual<?php print $o; ?>">C/Unidad</h6>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
-
-
-
                 </div>
 
+                <?php
+                ?>
             </form>
+
+            <div class="col-lg-2 color-grey3-bg">
+                nn
+            </div>
 
         </div>
 
