@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'peso' => $info_producto['peso'],
                 'color' => $_POST['color_selected']
             );
-            die;
+            
             print '<pre>';
             print_r($_SESSION['carrito']);
         }
