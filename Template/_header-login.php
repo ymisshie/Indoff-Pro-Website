@@ -23,7 +23,7 @@
             integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
         <!--CUSTOM CSS FILE-->
-        <link rel="stylesheet" href="../style6.css">
+        <link rel="stylesheet" href="../style.css">
         <link rel="stylesheet" href="../styles_login.css">
         
         <?php
@@ -37,7 +37,7 @@
 
     <!--start #header-->
     <header id="header">
-        <div class="d-flex justify-content-between px-5 pt-3 color-aqua-bg">
-            <a class="navbar-brand logo text-white" href="index.php">Indoff Pro</a>
+        <div class="justify-content-between py-1 py-md-2 color-aqua-bg text-center text-md-start">
+            <a class="navbar-brand logo fs-3 text-white" href="index.php">Indoff Pro Admin</a>
         </div>
     </header>

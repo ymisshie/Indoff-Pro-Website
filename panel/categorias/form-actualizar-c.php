@@ -34,10 +34,3 @@ include('../../Template/_header-admin.php')
 //include header.php file
 include('../../Template/_categorias-actualizar.php')
 ?>
-
-
-
-<?php
-    //include footer.php file
-    include('../../footer.php')
-?>

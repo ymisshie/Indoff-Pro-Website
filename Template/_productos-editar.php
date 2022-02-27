@@ -67,11 +67,11 @@ foreach ($info_producto as $productos) {
 
 <!--categorias-->
 <section id="categorias" class="categorias-section">
-    <div class="container-fluid px-md-5">
+    <div class="container-fluid">
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="section-title pt-md-5 text-center">
+                <h2 class="section-title pt-5 text-center">
 
                     <?php
                     print $cantidad_productos;
@@ -86,13 +86,13 @@ foreach ($info_producto as $productos) {
                     ?>
                 </h2>
             </div>
-            <div class="col-md-4 py-md-3 text-center">
+            <div class="py-3 text-center">
                 <a class="btn btn-primary" href="form-registrar-p.php?id=<?php print $info_categoria['id'] ?>" role="button">Agregar nuevo <i class="fas fa-plus ms-md-2 me-md-1"></i></a>
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <table class="col-md-3 table table-hover my-md-4">
+        <div class="justify-content-center table-responsive">
+            <table class="col-md-3 table table-hover my-4">
                 <thead>
                     <tr class="text-center color-red-bg color-white">
                         <th scope="col" class="col-md-1 col-lg-1">ID</th>
@@ -126,7 +126,7 @@ foreach ($info_producto as $productos) {
                                         $imagen = '../../upload/' . $item_producto['imagen'];
                                         if (file_exists($imagen)) {
                                         ?>
-                                            <img src="<?php print $imagen; ?>" width="150px">
+                                            <img src="<?php print $imagen; ?>" width="100px">
 
                                         <?php
                                         } else { ?>
@@ -137,9 +137,9 @@ foreach ($info_producto as $productos) {
 
                                     <td scope="col" class="fw-700"><?php print $item_producto['nombre'] ?>
                                         <br>
-                                        <p class="fw-500 pt-md-1"> <?php print $item_producto['proveedor'] ?></p>
+                                        <p class="fw-500 pt-1"> <?php print $item_producto['proveedor'] ?></p>
 
-                                        <a href="form-actualizar-p.php?id=<?php print $item_producto[0] ?>" class="btn-secondary btn btn-sm mx-md-3 mb-md-4" role="button">Editar<i class="far fa-edit ms-md-2 me-md-1"></i></a>
+                                        <a href="form-actualizar-p.php?id=<?php print $item_producto[0] ?>" class="btn-secondary btn btn-sm mx-3 mb-4" role="button">Editar<i class="far fa-edit ms-md-2 me-md-1"></i></a>
 
                                         <p class="fw-400 fs-09 "><?php print $item_producto['descripcion'] ?></p>
 
@@ -162,7 +162,7 @@ foreach ($info_producto as $productos) {
 
                                             for ($o = 0; $o < $count_opciones; $o++) {
                                             ?>
-                                                <p class="mx-1 my-md-1"><?php print $separada[$o]; ?>
+                                                <p class="mx-1 my-1"><?php print $separada[$o]; ?>
                                                 </p>
                                             <?php
                                             }
@@ -231,7 +231,7 @@ foreach ($info_producto as $productos) {
                                             for ($u = 0; $u < $count_colores; $u++) {
                                             ?>
 
-                                                <div class="col-1 p-md-3 rounded-circle mx-1 my-md-1" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
+                                                <div class="col-1 p-3 rounded-circle mx-1 my-1" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
 
 
                                                 </div>

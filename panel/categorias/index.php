@@ -33,8 +33,3 @@ include('../../Template/_header-admin.php')
 //include header.php file
 include('../../Template/_categorias-editar.php')
 ?>
-
-<?php
-//include footer.php file
-include('../../footer.php')
-?>

@@ -32,8 +32,3 @@ include('../../Template/_header-admin.php')
 //include header.php file
 include('../../Template/_productos-editar.php')
 ?>
-
-<?php
-//include header.php file
-include('../../footer.php')
-?>  

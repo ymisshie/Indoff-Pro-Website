@@ -35,10 +35,10 @@
     <header class="header-admin">
 
         <!--pimary navigation-->
-        <nav class="navbar py-md-0 navbar-expand-lg color-aqua-bg fw-600 px-md-1">
+        <nav class="navbar py-0 navbar-expand-lg color-aqua-bg fw-600 px-md-1">
             <div class="container-fluid">
                 <div class="d-flex">
-                    <a class="align-self-center navbar-brand px-md-3 fs-2 fw-500 text-white font-gentium me-auto" <?php echo $root_dashboard; ?>>Indoff Pro Dashboard</a>
+                    <a class="align-self-center navbar-brand px-3 fs-2 fw-500 text-white font-gentium me-auto" <?php echo $root_dashboard; ?>>Indoff Pro Dashboard</a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,10 +48,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item px-md-4 uppercase">
+                        <li class="nav-item px-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="/tutorial/Indoff Pro Website/index.php">Indoff Pro</a>
                         </li>
-                        <li class="nav-item px-md-4 dropdown">
+                        <li class="nav-item px-4 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
                                                                                         echo "active";
                                                                                     } ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
@@ -74,7 +74,7 @@
                                 ?>
                             </ul>
                         </li>
-                        <li class="nav-item dropdown px-md-4 ">
+                        <li class="nav-item dropdown px-4 ">
                             <a class="nav-link text-white text-white dropdown-toggle uppercase <?php if ($pagina == "eventos") {
                                                                                                     echo "active";
                                                                                                 } ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_eventos; ?>>Eventos</a>
@@ -98,24 +98,24 @@
                                 ?>
                             </ul>
                         </li>
-                        <li class="nav-item px-md-4 uppercase">
+                        <li class="nav-item px-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>
                         </li>
-                        <li class="nav-item px-md-4 uppercase">
+                        <li class="nav-item px-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Nosotros</a>
                         </li>
 
                     </ul>
-                    <div class="d-flex px-md-4 pb-md-2 pt-lg-1 m-0 mr-8">
+                    <div class="d-flex px-4 pb-2 pt-lg-1 m-0 mr-8">
                         <div class="align-items-center menu text-center d-flex text-white">
                             <div class="col mx-md-4 d-flex align-items-center">
                                 <div><i class="fas fa-file-invoice fs-1-5"></i></div>
-                                <div><a href="carrito.php" class="text-white px-md-3 admin-nav-menu">Cotizaciones</a></div>
+                                <div><a href="carrito.php" class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
                             </div>
                             <div class="col ms-md-1 d-flex align-items-center">
                                 <div><i class="fas fa-user-alt fs-1-5"></i></div>
                                 <div class="nav-item dropdown">
-                                    <a class="text-white px-md-3 dropdown-toggle admin-nav-menu" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="text-white px-3 dropdown-toggle admin-nav-menu" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                         <?php print $_SESSION['admin_info']['nombre_login'] ?>
                                     </a>
                                     <ul class="dropdown-menu">

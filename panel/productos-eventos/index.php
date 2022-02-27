@@ -31,8 +31,3 @@ include('../../Template/_header-admin.php')
 <?php
 include('../../Template/_productos-eventos-editar.php')
 ?>
-
-
-<?php
-include('../../footer.php')
-?>

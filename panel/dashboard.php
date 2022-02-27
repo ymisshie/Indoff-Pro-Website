@@ -35,8 +35,3 @@ include('../Template/_header-admin.php')
 //include header.php file
 include('../Template/_dashboard.php')
 ?>
-
-<?php
-//include header.php file
-include('../footer.php')
-?>

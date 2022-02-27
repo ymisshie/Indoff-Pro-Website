@@ -3,31 +3,29 @@
 
 <!--start #footer-->
 <footer class="color-aqua-bg">
-    <div class="container-fluid text-white px-md-5 py-md-3">
+    <div class="container-fluid text-white px-5 py-3">
         <div class="row justify-content-center py-md-3">
-            <div class="col offset-md-1 px-md-5">
-                <a class="navbar-brand fw-500 px-md-4 mx-md-2 text-white" href="index.php">Indoff Pro</a>
-            </div>
+            <a class="navbar-brand fw-500 mx-2 text-white" href="index.php">Indoff Pro</a>
         </div>
-        <div class="row justify-content-center pb-md-2">
-            <div class="col-md-3">
-                <h5 class="uppercase py-md-4 fw-600">Productos Promocionales</h5>
+        <div class="row justify-content-center pb-2">
+            <div class="col-12 col-md-3">
+                <h5 class="uppercase py-4 fw-600">Productos Promocionales</h5>
                 <p> <a href="categorias.php" class="uppercase text-white fw-500">Categorias</a></p>
                 <p> <a href="eventos.php" class="uppercase text-white fw-500">Eventos</a></p>
                 <p> <a href="contacto.php" class="uppercase text-white fw-500">Contacto</a></p>
                 <p> <a href="nosotros.php" class="uppercase text-white fw-500">Nosotros</a></p>
             </div>
-            <div class="col-md-3">
-                <h5 class="uppercase py-md-4 fw-600">Contáctanos</h5>
-                <p><span><i class="fas fa-map-marker-alt me-md-3 fs-1-2"></i></span> Tijuana, México</p>
-                <p><a href="mailto:mexico@indoff.com" class="text-white"><span><i class="fas fa-envelope me-md-3 fs-1-2"></i></span>mexico@indoff.com</a></p>
-                <p><span><i class="fas fa-phone me-md-3 fs-1-2"></i></span>(664) 625 11 11</p>
-                <p><span><i class="fas fa-phone me-md-3 fs-1-2"></i></span>(664) 123 39 90</p>
+            <div class="col-12 col-md-3">
+                <h5 class="uppercase py-4 fw-600">Contáctanos</h5>
+                <p><span><i class="fas fa-map-marker-alt me-3 fs-1-2"></i></span> Tijuana, México</p>
+                <p><a href="mailto:mexico@indoff.com" class="text-white"><span><i class="fas fa-envelope me-3 fs-1-2"></i></span>mexico@indoff.com</a></p>
+                <p><span><i class="fas fa-phone me-3 fs-1-2"></i></span>(664) 625 11 11</p>
+                <p><span><i class="fas fa-phone me-3 fs-1-2"></i></span>(664) 123 39 90</p>
             </div>
 
-            <div class="col-md-3">
-                <h5 class="uppercase py-md-4 fw-600 col-md-9">Conecta con nuestras redes sociales</h5>
-                <div class="col-md-7 d-flex justify-content-between">
+            <div class="col-12 col-md-3 pb-2">
+                <h5 class="uppercase py-4 fw-600 col-md-9 col-10">Conecta con nuestras redes sociales</h5>
+                <div class="col-7 d-flex justify-content-between">
                     <div class="">
                         <a href="https://www.linkedin.com/company/31381210/admin/"><i class="fab fa-linkedin fs-3 text-white"></i></a>
                     </div>
@@ -42,31 +40,23 @@
         </div>
     </div>
 </footer>
-<div class="text-center copyright py-md-4">
+<div class="text-center copyright py-3 py-md-4">
     © 2022 Copyright:
     <a class="text-reset fw-bold mb-0" href="index.php">indoffpro.com</a>
 </div>
 
 <!--!start #footer-->
-
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
-
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-<!--
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
--->
 
-<!--  isotope plugin cdn 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
--->
 
-<!--select-->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
 
 <!-- Custom Javascript -->
 <script src="index.js"></script>
@@ -75,9 +65,6 @@
     jQuery('button').click(function(e) {
         jQuery('.collapse').collapse('hide');
     });
-
-
-    //Seleccion de colores de producto por el admin
 
     $("#color-select").select2({
         placeholder: 'Seleccione los colores deseados o puede buscarlos por nombre con la referencia de abajo.',
