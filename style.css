@@ -56,6 +56,33 @@ body {
     text-decoration-color: var(--orange);
 }
 
+.header-admin .nav-link.active, .header-admin .nav-link:hover {
+    opacity: 85% !important;
+    text-decoration-line: underline !important;
+    text-underline-offset: 17px !important;
+    text-decoration-thickness: 4px !important;
+    text-decoration-color: var(--orange) !important;
+}
+
+.admin-nav-menu
+{
+    text-decoration: none;
+}
+
+.admin-nav-menu:hover
+{
+    opacity: 85% !important;
+    text-decoration-line: underline !important;
+    text-underline-offset: 19px !important;
+    text-decoration-thickness: 4px !important;
+    text-decoration-color: var(--orange) !important;
+}
+
+.admin-nav-menu:focus
+{
+    text-decoration-color: var(--red) !important;
+}
+
 .secondary-navbar .nav-link.active, .secondary-navbar .nav-link:hover {
     opacity: 85% !important;
     text-decoration-line: underline;
@@ -63,6 +90,7 @@ body {
     text-decoration-color: var(--aqua);
     text-decoration-thickness: 4px;
 }
+
 
 .dropdown-item {
     color: var(--black);
@@ -72,7 +100,6 @@ body {
     background-color: var(--red);
     color: var(--white);
 }
-
 
 .secondary-navbar .nav-item {
     font-weight: 500;
@@ -361,49 +388,39 @@ select option:hover {
 }
 
 /*categorias index*/
-.categorias .card-body, .eventos .card-body {
+.categorias .card-body, .eventos .card-body, .dashboard-card .card-body{
     color: var(--white);
+}
+
+.categorias, .eventos, .dashboard-card{
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
     background-color: var(--red);
 }
 
-.card {
-    border: none;
-}
-
-.categorias, .eventos {
-    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
-    background-color: var(--white);
-}
-
-.categorias .card-body:hover {
+.categorias .card-body:hover, .eventos .card-body:hover, .dashboard-card .card-body:hover  {
     background-color: var(--orange);
-}
-
-.categorias:hover, .eventos:hover {
-    background-color: var(--grey3);
 }
 
 .card {
     text-decoration: none;
+    border:none;
+}
+
+.card-img-top
+{
+    background-color: var(--white);
+    border-left: var(--grey) solid;
+    border-top: var(--grey) solid;
+    border-right: var(--grey) solid;
+}
+
+.card-img-top:hover
+{
+    background-color: var(--grey3);
 }
 
 .dashboard-card-icon {
     font-size: 6em;
-}
-
-/*categorias index*/
-.dashboard-card .card-body {
-    background-color: var(--red);
-    color: var(--white)
-}
-
-.dashboard-card {
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
-    background-color: var(--grey);
-}
-
-.dashboard-card .card-body:hover {
-    background-color: var(--orange);
 }
 
 .beneficios-section .beneficios {

@@ -64,8 +64,8 @@ if ($cantidad_categorias > 0) {
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h1 class="section-title pt-md-5 color-black" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
-                    <h6 class="pt-md-3 pb-md-2 fw-500" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
+                    <h1 class="section-title pt-md-5" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
+                    <h6 class="pt-md-3 pb-md-2 fw-400" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
                 </div>
             </div>
 

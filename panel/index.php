@@ -1,13 +1,8 @@
 <?php
 $title = "Admin Indoff Pro";
 $pagina = "inicio";
-// $root_styles = '<link rel="stylesheet" href="../style6.css">';
+$root_styles = '<link rel="stylesheet" href="../style.css">';
 ?>
-
-<!-- <php
-include header.php file
-include('variables_root.php')
-> -->
 
 <?php
 //include header.php file
