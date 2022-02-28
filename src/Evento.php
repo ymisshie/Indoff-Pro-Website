@@ -41,7 +41,7 @@ class Evento{
     }
 
     public function actualizar($_params){
-        $sql = "UPDATE `eventos` SET `nombre`=:nombre,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha WHERE `id`=:id";
+        $sql = "UPDATE `eventos` SET `nombre`=:nombre,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`orden`=:orden  WHERE `id`=:id";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -50,7 +50,8 @@ class Evento{
             ":descripcion" => $_params['descripcion'],
             ":imagen" => $_params['imagen'],
             ":fecha" => $_params['fecha'],
-            ":id" => $_params['id']
+            ":id" => $_params['id'],
+            ":orden" => $_params['orden']
         );
  
         if($resultado->execute($_array))
@@ -73,7 +74,28 @@ class Evento{
     }
 
     public function mostrar(){
-        $sql = "SELECT id, nombre, descripcion, imagen, fecha FROM `eventos`";
+        $sql = "SELECT id, nombre, descripcion, imagen, fecha, orden FROM `eventos`" ;
+        
+        $resultado = $this->cn->prepare($sql);
+
+        if($resultado->execute())
+            return $resultado->fetchAll();
+
+        return false;
+    }
+
+    public function mostrarOrden(){
+        $sql = "SELECT id, nombre, descripcion, imagen, fecha, orden FROM `eventos` ORDER BY `orden` LIMIT 2";
+        
+        $resultado = $this->cn->prepare($sql);
+
+        if($resultado->execute())
+            return $resultado->fetchAll();
+
+        return false;
+    }
+    public function mostrarOrden6(){
+        $sql = "SELECT id, nombre, descripcion, imagen, fecha, orden FROM `eventos` ORDER BY `orden` LIMIT 6";
         
         $resultado = $this->cn->prepare($sql);
 
@@ -86,6 +108,22 @@ class Evento{
     public function mostrarPorId($id){
         
         $sql = "SELECT * FROM `eventos` WHERE `id`=:id";
+
+        $resultado = $this->cn->prepare($sql);
+
+        $_array = array(
+            ":id" => $id
+        );
+        
+        if($resultado->execute($_array))
+            return $resultado->fetch();
+
+        return false;
+        
+    }
+    public function mostrarPorIdOrden($id){
+        
+        $sql = "SELECT * FROM `eventos` WHERE `id`=:id  ORDER BY `orden` LIMIT 6";
 
         $resultado = $this->cn->prepare($sql);
 

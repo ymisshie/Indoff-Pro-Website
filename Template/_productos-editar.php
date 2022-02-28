@@ -96,6 +96,7 @@ foreach ($info_producto as $productos) {
                 <thead>
                     <tr class="text-center color-red-bg color-white">
                         <th scope="col" class="col-md-1 col-lg-1">ID</th>
+                        <th scope="col" class="col-md-1 col-lg-1">Orden</th>
                         <th scope="col" class="col-md-1 col-lg-1">Imagen</th>
                         <th scope="col" class="col-md-1 col-lg-1">Información</th>
                         <th scope="col" class="col-md-1 col-lg-1">Variaciones</th>
@@ -121,6 +122,20 @@ foreach ($info_producto as $productos) {
 
                                 <tr class="text-center">
                                     <td scope="col" class="fw-600"><?php print $c ?></td>
+                                    <td>
+                                    
+                                    <select id="orden_productos" name="orden_productos">
+                                        <option value="1" <?php if ($item_producto['orden'] == 1) print "selected" ?> > 1 </option>
+                                        <option value="2" <?php if ($item_producto['orden'] == 2) print "selected" ?> >2</option>
+                                        <option value="3" <?php if ($item_producto['orden'] == 3) print "selected" ?>  >3</option>
+                                        <option value="4" <?php if ($item_producto['orden'] == 4) print "selected" ?> > 4  </option>
+                                        <option value="5" <?php if ($item_producto['orden'] == 5) print "selected" ?> > 5  </option>
+                                        <option value="6" <?php if ($item_producto['orden'] == 6) print "selected" ?> >  6  </option>
+                                        <option value="" <?php if ($item_producto['orden'] > 6) print "selected" ?> >    </option>
+                                    </select>
+
+                                    </td>
+
                                     <td scope="col" class="text-center">
                                         <?php
                                         $imagen = '../../upload/' . $item_producto['imagen'];

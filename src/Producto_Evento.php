@@ -51,7 +51,7 @@ class Producto_Evento
     }
 
     public function actualizar($_params){
-        $sql="UPDATE `productos_eventos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `evento_id`=:evento_id,`fecha`=:fecha, `opciones`=:opciones, `cantidad`=:cantidad,`precio`= :precio,`size`=:size, `peso`=:peso, `color`=:color WHERE `id` =:id";
+        $sql="UPDATE `productos_eventos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `evento_id`=:evento_id,`fecha`=:fecha, `opciones`=:opciones, `cantidad`=:cantidad,`precio`= :precio,`size`=:size, `peso`=:peso, `color`=:color, `orden`=:orden WHERE `id` =:id";
 
         $resultado=$this->cn->prepare($sql);
 
@@ -75,7 +75,8 @@ class Producto_Evento
             ":size" => $_params['size'], 
             ":peso" => $_params['peso'],
             ":color" => $_params['color'],
-            ":id" => $_params['id']
+            ":id" => $_params['id'],
+            ":orden" => $_params['orden']
 
         );
 
@@ -102,9 +103,24 @@ class Producto_Evento
     public function mostrar()
     {
 
-        $sql = "SELECT productos_eventos.id, productos_eventos.nombre, proveedor, productos_eventos.descripcion, productos_eventos.imagen, eventos.id, productos_eventos.fecha, opciones, cantidad, precio, size, peso, color FROM productos_eventos
+        $sql = "SELECT productos_eventos.id, productos_eventos.nombre, proveedor, productos_eventos.descripcion, productos_eventos.imagen, eventos.id, productos_eventos.fecha, opciones, cantidad, precio, size, peso, color, productos_eventos.orden FROM productos_eventos
         INNER JOIN eventos
         ON productos_eventos.evento_id = eventos.id ORDER BY productos_eventos.id ASC";
+
+
+        $resultado = $this->cn->prepare($sql);
+
+        if ($resultado->execute())
+            return $resultado->fetchAll();
+
+        return false;
+    }
+    public function mostrarOrden()
+    {
+
+        $sql = "SELECT productos_eventos.id, productos_eventos.nombre, proveedor, productos_eventos.descripcion, productos_eventos.imagen, eventos.id, productos_eventos.fecha, opciones, cantidad, precio, size, peso, color, productos_eventos.orden FROM productos_eventos
+        INNER JOIN eventos
+        ON productos_eventos.evento_id = eventos.id ORDER BY productos_eventos.orden ASC LIMIT 6";
 
 
         $resultado = $this->cn->prepare($sql);
@@ -118,6 +134,21 @@ class Producto_Evento
     public function mostrarPorId($id)
     {
         $sql = "SELECT * FROM  `productos_eventos` WHERE `id`=:id";
+
+        $resultado = $this->cn->prepare($sql);
+
+        $_array = array(
+            ":id" => $id
+        );
+
+        if ($resultado->execute($_array))
+            return $resultado->fetch();
+
+        return false;
+    }
+    public function mostrarPorIdOrden($id)
+    {
+        $sql = "SELECT * FROM  `productos_eventos` WHERE `id`=:id ORDER BY `orden` LIMIT 6";
 
         $resultado = $this->cn->prepare($sql);
 

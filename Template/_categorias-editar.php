@@ -41,6 +41,7 @@ $cantidad = count($info_categoria);
                 <thead>
                     <tr class="text-center color-red-bg color-white">
                         <th scope="col">ID</th>
+                        <th scope="col">Orden</th>
                         <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
@@ -62,6 +63,19 @@ $cantidad = count($info_categoria);
 
                             <tr class="text-center align-items-center">
                                 <td scope="col" class="fw-600"><?php print $c  ?></td>
+                                <td>
+                                    
+                                <select id="orden_categorias" name="orden_categorias">
+                                    <option value="1" <?php if ($item['orden'] == 1) print "selected" ?> > 1 </option>
+                                    <option value="2" <?php if ($item['orden'] == 2) print "selected" ?> >2</option>
+                                    <option value="3" <?php if ($item['orden'] == 3) print "selected" ?>  >3</option>
+                                    <option value="4" <?php if ($item['orden'] == 4) print "selected" ?> > 4  </option>
+                                    <option value="5" <?php if ($item['orden'] == 5) print "selected" ?> > 5  </option>
+                                    <option value="6" <?php if ($item['orden'] == 6) print "selected" ?> >  6  </option>
+                                    <option value="" <?php if ($item['orden'] > 6) print "selected" ?> >    </option>
+                                </select>
+
+                                </td>
                                 <td scope="col" class="text-center">
                                     <?php
                                     $imagen = '../../upload/' . $item['imagen'];
@@ -101,7 +115,16 @@ $cantidad = count($info_categoria);
             </table>
         </div>
 
+        <button onclick="ordenCategorias()"> Probar </button>
     </div>
 
 </section>
+
+
+<script>
+
+    function ordenCategorias(){
+        console.log("a");
+    }
+</script>
 <!--!categorias-->

@@ -1,5 +1,5 @@
 
-<section id="login">
+<section id="login" class="mb-5">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <h2 class="section-title mb-4">Iniciar Sesión</h2>

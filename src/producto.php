@@ -43,7 +43,7 @@ class Producto{
     }
 
     public function actualizar($_params){
-        $sql="UPDATE `productos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `categoria_id`=:categoria_id,`fecha`=:fecha, `opciones`=:opciones, `cantidad`=:cantidad,`precio`= :precio,`size`=:size, `peso`=:peso, `color`=:color WHERE `id` =:id";
+        $sql="UPDATE `productos` SET `nombre`=:nombre,`proveedor`=:proveedor, `descripcion`=:descripcion,`imagen`=:imagen, `categoria_id`=:categoria_id,`fecha`=:fecha, `opciones`=:opciones, `cantidad`=:cantidad,`precio`= :precio,`size`=:size, `peso`=:peso, `color`=:color, `orden`=:orden WHERE `id` =:id";
 
         $resultado=$this->cn->prepare($sql);
 
@@ -67,7 +67,8 @@ class Producto{
             ":size" => $_params['size'], 
             ":peso" => $_params['peso'],
             ":color" => $_params['color'],
-            ":id" => $_params['id']
+            ":id" => $_params['id'],
+            ":orden" => $_params['orden']
 
         );
 
@@ -93,9 +94,28 @@ class Producto{
     public function mostrar(){
 
 
-        $sql ="SELECT productos.id, productos.nombre, proveedor, productos.descripcion, productos.imagen, categorias.id, productos.fecha, opciones, cantidad, precio, size, peso, color FROM productos
+        $sql ="SELECT productos.id, productos.nombre, proveedor, productos.descripcion, productos.imagen, categorias.id, productos.fecha, opciones, cantidad, precio, size, peso, color, productos.orden FROM productos
         INNER JOIN categorias
         ON productos.categoria_id = categorias.id ORDER BY productos.id ASC";
+    
+        /*
+        $sql ="SELECT productos.id, productos.nombre, productos.descripcion, productos.imagen, precio, productos.fecha, xs, s, m, l, xl, 2xl, 3xl FROM productos
+        INNER JOIN categorias
+        ON productos.categoria_id = categorias.id ORDER BY productos.id DESC";
+        */
+
+        $resultado=$this->cn->prepare($sql);
+        
+        if($resultado->execute())
+        return $resultado->fetchAll();
+        return false;
+    }
+    public function mostrarOrden(){
+
+
+        $sql ="SELECT productos.id, productos.nombre, proveedor, productos.descripcion, productos.imagen, categorias.id, productos.fecha, opciones, cantidad, precio, size, peso, color, productos.orden FROM productos
+        INNER JOIN categorias
+        ON productos.categoria_id = categorias.id ORDER BY productos.orden ASC LIMIT 6";
     
         /*
         $sql ="SELECT productos.id, productos.nombre, productos.descripcion, productos.imagen, precio, productos.fecha, xs, s, m, l, xl, 2xl, 3xl FROM productos
@@ -116,10 +136,24 @@ class Producto{
         $resultado=$this->cn->prepare($sql);
         
         
-$_array=array(
-    ":id" => $id
-);
-      
+        $_array=array(
+            ":id" => $id
+        );
+        
+        if($resultado->execute($_array))
+        return $resultado->fetch();
+        return false;
+
+    }
+    public function mostrarPorIdOrden($id){
+        $sql ="SELECT * FROM `productos` WHERE `id` = :id ORDER BY `orden` LIMIT 6" ;
+
+        $resultado=$this->cn->prepare($sql);
+        
+        
+        $_array=array(
+            ":id" => $id
+        );
         
         if($resultado->execute($_array))
         return $resultado->fetch();

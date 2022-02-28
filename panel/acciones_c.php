@@ -58,6 +58,7 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
             'descripcion'=>$_POST['descripcion_categoria'],
             'fecha'=> date('Y-m-d'),
             'id'=>$_POST['id'],
+            'orden'=>$_POST['orden_categorias'],
         );
 
         if(!empty($_POST['imagen_temp']))

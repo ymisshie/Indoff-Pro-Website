@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+// print_r($_SESSION)
 ?>
 
 <!DOCTYPE html>
@@ -98,23 +98,45 @@ session_start();
                                     ?>"
                          aria-expanded="false">
                                     <?php if($_SESSION){
-                                        if ((!isset($_SESSION['admin_info']) && !isset($_SESSION['admin_info']))) {
-                                            print("Login");
-                                        }
-                                        elseif(isset($_SESSION['admin_info'])){
+                                        if(isset($_SESSION['admin_info'])){
                                             if($_SESSION['admin_info']){
                                             print $_SESSION['admin_info']['nombre_login'];
-                                            }
-                                            else{
-                                                print("Login");
                                             }}
-                                        elseif(isset($_SESSION['user_info'])){
+                                        if(isset($_SESSION['user_info'])){
                                             if($_SESSION['user_info']){
                                                 print $_SESSION['user_info']['nombre_login'];
                                             }
-                                            else{
-                                                print("Login");
-                                            }}
+                                        }
+                                        if ( (!isset($_SESSION['admin_info']) && !isset($_SESSION['user_info']))) {
+                                            print("Login");
+                                            
+                                        }
+                                        elseif(isset($_SESSION['user_info']) && !isset($_SESSION['admin_info'])){
+                                            if(!$_SESSION['user_info']){
+                                                print ("Login");
+                                            }
+                                        }
+                                        elseif(isset($_SESSION['admin_info']) && !isset($_SESSION['user_info'])){
+                                            if(!$_SESSION['admin_info']){
+                                                print ("Login");
+                                                
+                                            }
+                                        }
+                                        elseif(isset($_SESSION['admin_info']) && isset($_SESSION['user_info'])){
+                                            if($_SESSION['admin_info'] && !$_SESSION['user_info']){
+                                                print ("Login");
+                                            
+                                            }
+                                            if(!$_SESSION['admin_info'] && $_SESSION['user_info']){
+                                                print ("Login");
+                                            
+                                            }
+                                            if(!$_SESSION['admin_info'] && !$_SESSION['user_info']){
+                                                print ("Login");
+                                            
+                                            }
+                                        }
+                                    
                                         }
                                         else{
                                             print("Login");

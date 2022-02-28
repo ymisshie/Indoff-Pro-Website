@@ -21,7 +21,7 @@
 
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Imagen</h6>
-                        <input name="imagen" type="file" required">
+                        <input name="imagen" type="file" required>
                     </div>
 
 

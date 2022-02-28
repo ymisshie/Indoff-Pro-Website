@@ -40,6 +40,7 @@ $cantidad = count($info_evento);
                 <thead>
                     <tr class="text-center color-red-bg color-white">
                         <th scope="col">ID</th>
+                        <th scope="col">Orden</th>
                         <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripción</th>
@@ -60,7 +61,19 @@ $cantidad = count($info_evento);
                     ?>
 
                             <tr class="text-center align-items-center">
-                                <td scope="col" class="fw-600"><?php print $c  ?></td>
+                                <td scope="col" class="fw-600 id-value"><?php print $c ?></td>
+                                <td>
+                                <select  name="orden_eventos " class="orden_eventos">
+                                    <option value="1" <?php if ($item['orden'] == 1) print "selected" ?> > 1 </option>
+                                    <option value="2" <?php if ($item['orden'] == 2) print "selected" ?> >2</option>
+                                    <option value="3" <?php if ($item['orden'] == 3) print "selected" ?>  >3</option>
+                                    <option value="4" <?php if ($item['orden'] == 4) print "selected" ?> > 4  </option>
+                                    <option value="5" <?php if ($item['orden'] == 5) print "selected" ?> > 5  </option>
+                                    <option value="6" <?php if ($item['orden'] == 6) print "selected" ?> >  6  </option>
+                                    <option value="" <?php if ($item['orden'] > 6) print "selected" ?> >    </option>
+                                    
+                                </select>
+                                </td>
                                 <td scope="col" class="text-center">
                                     <?php
                                     $imagen = '../../upload/' . $item['imagen'];
@@ -100,7 +113,91 @@ $cantidad = count($info_evento);
             </table>
         </div>
 
+        
+        <!-- <button onclick="ordenEventos()"> Probar </button> -->
+        
     </div>
+    
+    <!-- <p id="orden_verificar" class="text-center">  </p>
+    <p id="variable" class="text-center">  </p>
+
+    <form name = "formulario" action="../acomodos.php" method="post" onsubmit="validateAcomodo(event);">
+        <input type="text" id="one" name="first" hidden>
+        <input type="text" id="two" name="second" hidden>
+        <input type="text" id="three" name="third" hidden>
+        <input type="text" id="four" name="fourth" hidden>
+        <input type="text" id="five" name="fifth" hidden>
+        <input type="text" id="six" name="sixth" hidden>
+
+        <div class="form-check d-flex justify-content-center mb-4">
+            <button type="submit" class="btn btn-secondary btn-lg mt-3 text-center" name="accion" value="eventos"> Guardar Acomodo </button>
+        </div>
+    </form> -->
+
 
 </section>
+
+<script>
+
+    function ordenEventos(){ 
+        lista = document.getElementsByClassName("orden_eventos");
+
+        var orden = {
+            one: "",
+            two: "",
+            three: "",
+            four: "",
+            five: "",
+            six: "",
+        };
+        var selectedValues = [];
+        for (let i = 0; i < lista.length; i++) {
+            // console.log(lista[i].value);
+            if(selectedValues.includes(lista[i].value) && lista[i].value != "none"){
+                document.getElementById('orden_verificar').textContent = "No se pueden repetir valores del orden";
+                // console.log("No se pueden repetir valores");
+                selectedValues = [];
+                return false;
+            }
+            selectedValues.push(lista[i].value);          
+        }
+        var numbers = ["one","two", "three", "four", "five", "six"];
+        for (let i = 0; i < numbers.length; i++) {
+            if(!selectedValues.includes(numbers[i])){
+                document.getElementById('orden_verificar').textContent = "Tienen que ser del 1 al 6";
+                // console.log("Tienen que tener del 1 al 6");
+                return false;
+            }            
+        }
+        var lista_ids = document.getElementsByClassName("id-value");
+        // console.log(lista_ids);
+        for (let i = 0; i < selectedValues.length; i++) {
+            if (orden[selectedValues[i]] != 'undefined') {
+                orden[selectedValues[i]] = lista_ids[i].innerText;
+                if(selectedValues[i]!= 'none'){
+                var a= document.getElementById(selectedValues[i]).value = lista_ids[i].innerText;
+            }    }         
+        }
+        // console.log(orden);
+        return true;
+        
+    }
+
+    function validateAcomodo(event)
+    {
+      if(!ordenEventos())
+      { 
+        event.preventDefault();
+        alert("Acomodo Incorrecto");
+        returnToPreviousPage();
+        //return false;
+      }
+
+      // alert("validations passed");
+      document.forms['formulario'].submit();
+      return true;
+    }
+</script>
+
+
 <!--!categorias-->

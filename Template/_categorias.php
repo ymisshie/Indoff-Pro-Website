@@ -11,7 +11,7 @@
             <?php
             require 'vendor/autoload.php';
             $categoria = new ameri\Categoria;
-            $info_categoria = $categoria->mostrar();
+            $info_categoria = $categoria->mostrarOrden();
             $cantidad = count($info_categoria);
 
             if ($cantidad > 0) {

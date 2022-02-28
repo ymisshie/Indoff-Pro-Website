@@ -35,3 +35,8 @@ include('../../Template/_header-admin.php')
 include('../../Template/_form-registrar-pe.php')
 ?>
 
+
+<?php
+//include header.php file
+include('../footer-admin.php')
+?>   

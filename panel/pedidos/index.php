@@ -31,3 +31,8 @@ $root_cerrar_sesion = '../cerrar-sesion.php';
 include('../../Template/_header-admin.php')
 ?>
 
+
+<?php
+//include header.php file
+include('../footer-admin.php')
+?>  

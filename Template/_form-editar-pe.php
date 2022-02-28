@@ -383,6 +383,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     </div>
 
+                    <div class="form-group text-center py-md-2">
+                        <h6 class="col-form-label fw-600">Orden</h6>
+                        <select  name="orden_productos_eventos" class="orden_productos_eventos">
+                            <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?> > 1 </option>
+                            <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?> >2</option>
+                            <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>  >3</option>
+                            <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?> > 4  </option>
+                            <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?> > 5  </option>
+                            <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?> >  6  </option>
+                            <option value="" <?php if ($resultado['orden'] > 6) print "selected" ?> >    </option>
+                        </select>
+                    </div>
+
                     <input type="submit" name="accion" href="../acciones-pe.php?id=<?php print $resultado['id'] ?>" class="btn btn-secondary my-md-4" value="Actualizar">
                     <a href="index.php?id=<?php print $resultado['5'] ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
 

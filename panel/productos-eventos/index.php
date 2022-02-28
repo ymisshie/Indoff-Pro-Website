@@ -31,3 +31,9 @@ include('../../Template/_header-admin.php')
 <?php
 include('../../Template/_productos-eventos-editar.php')
 ?>
+
+
+<?php
+//include header.php file
+include('../footer-admin.php')
+?>  

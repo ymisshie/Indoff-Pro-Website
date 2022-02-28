@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 $eventos = new ameri\Evento;
 
-$info_eventos = $eventos->mostrar();
+$info_eventos = $eventos->mostrarOrden();
 
 ?>
 

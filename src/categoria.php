@@ -36,7 +36,7 @@ class Categoria{
     }
 
     public function actualizar($_params){
-        $sql="UPDATE `categorias` SET `nombre`=:nombre,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha WHERE `id` =:id";
+        $sql="UPDATE `categorias` SET `nombre`=:nombre,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`orden`=:orden  WHERE `id` =:id";
 
         $resultado=$this->cn->prepare($sql);
 
@@ -45,7 +45,8 @@ class Categoria{
             ":descripcion" => $_params['descripcion'],  
             ":imagen" => $_params['imagen'], 
             ":fecha" => $_params['fecha'],
-            ":id" => $_params['id']
+            ":id" => $_params['id'],
+            ":orden" => $_params['orden']
         );
 
         if($resultado->execute($_array))
@@ -54,21 +55,32 @@ class Categoria{
     }
 
     public function eliminar($id){
-$sql ="DELETE FROM  `categorias` WHERE  `id`=:id";
-$resultado=$this->cn->prepare($sql);
+        $sql ="DELETE FROM  `categorias` WHERE  `id`=:id";
+        $resultado=$this->cn->prepare($sql);
 
-$_array=array(
-    ":id" =>$id
-);
+        $_array=array(
+            ":id" =>$id
+        );
 
-if($resultado->execute($_array))
-return true;
-return false;
+        if($resultado->execute($_array))
+        return true;
+        return false;
     }
 
 
     public function mostrar(){
         $sql = "SELECT * FROM categorias";
+        
+        $resultado = $this->cn->prepare($sql);
+
+        if($resultado->execute())
+            return $resultado->fetchAll();
+
+        return false;
+    }
+
+    public function mostrarOrden(){
+        $sql = "SELECT * FROM `categorias` ORDER BY `orden` LIMIT 6";
         
         $resultado = $this->cn->prepare($sql);
 
@@ -84,14 +96,32 @@ return false;
         $resultado=$this->cn->prepare($sql);
         
         
-$_array=array(
-    ":id" => $id
-);      
-        if($resultado->execute($_array))
-        return $resultado->fetch();
-        return false;
+        $_array=array(
+            ":id" => $id
+        );      
+                if($resultado->execute($_array))
+                return $resultado->fetch();
+                return false;
 
     }
+
+    public function mostrarPorIdOrden($id){
+        $sql ="SELECT * FROM `categorias` WHERE `id` = :id ORDER BY `orden` LIMIT 6";
+
+        $resultado=$this->cn->prepare($sql);
+        
+        
+        $_array=array(
+            ":id" => $id
+        );      
+                if($resultado->execute($_array))
+                return $resultado->fetch();
+                return false;
+
+    }
+    
+
+            
 
 
 }
