@@ -20,7 +20,7 @@
                     </div>
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Imagen</h6>
-                        <input name="imagen" ctype="file" required">
+                        <input name="imagen" type="file" required>
                     </div>
 
                     <input type="submit" name="accion" class="btn btn-secondary my-4" value="Registrar">

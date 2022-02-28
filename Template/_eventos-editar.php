@@ -70,7 +70,7 @@ $cantidad = count($info_evento);
                                     <option value="4" <?php if ($item['orden'] == 4) print "selected" ?> > 4  </option>
                                     <option value="5" <?php if ($item['orden'] == 5) print "selected" ?> > 5  </option>
                                     <option value="6" <?php if ($item['orden'] == 6) print "selected" ?> >  6  </option>
-                                    <option value="" <?php if ($item['orden'] > 6) print "selected" ?> >    </option>
+                                    <option value="7" <?php if ($item['orden'] > 6) print "selected" ?> > x   </option>
                                     
                                 </select>
                                 </td>

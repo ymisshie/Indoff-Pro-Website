@@ -414,7 +414,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                             <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?> > 4  </option>
                             <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?> > 5  </option>
                             <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?> >  6  </option>
-                            <option value="" <?php if ($resultado['orden'] > 6) print "selected" ?> >    </option>
+                            <option value="7" <?php if ($resultado['orden'] > 6) print "selected" ?> >  x  </option>
                         </select>
                     </div>
 

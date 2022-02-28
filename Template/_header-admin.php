@@ -49,10 +49,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item px-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" href="/tutorial/Indoff Pro Website/index.php">Indoff Pro</a>
+                            <a class="nav-link text-white" aria-current="page" <?php echo $root_indoffpro; ?>>Indoff Pro</a>
                         </li>
                         <li class="nav-item px-4 dropdown">
-                            <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
+                            <a class="nav-link text-white dropdown-toggle uppercase <?php if ($pagina == "categorias") {
                                                                                         echo "active";
                                                                                     } ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -77,8 +77,7 @@
                         <li class="nav-item dropdown px-4 ">
                             <a class="nav-link text-white text-white dropdown-toggle uppercase <?php if ($pagina == "eventos") {
                                                                                                     echo "active";
-                                                                                                } ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_eventos; ?>>Eventos</a>
-                            </a>
+                                                                                                } ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_eventos; ?>>Eventos</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
                                 require $root_vendor;
