@@ -19,16 +19,16 @@ $cantidad = count($info_categoria);
 
 
                 <h2 class="section-title pt-5 text-center"> <?php
-                                                                print $cantidad;
+                                                            print $cantidad;
 
-                                                                if ($cantidad == 1) {
+                                                            if ($cantidad == 1) {
 
-                                                                    print ' Categoria registrada';
-                                                                } else {
-                                                                    print ' Categorias registradas';
-                                                                }
+                                                                print ' Categoria registrada';
+                                                            } else {
+                                                                print ' Categorias registradas';
+                                                            }
 
-                                                                ?>
+                                                            ?>
                 </h2>
             </div>
             <div class="py-3 text-center">
@@ -80,7 +80,7 @@ $cantidad = count($info_categoria);
                                 <td scope="col" class="text-start fs-07"><?php print $item['descripcion'] ?></td>
                                 <td scope="col"><?php print $item['fecha'] ?></td>
                                 <td scope="col" class="text-center">
-                                    <a href="form-actualizar-c.php?id=<?php print $item['id'] ?>" class="btn-secondary btn btn-sm mx-3 mt-4 color-purple-bg " role="button">Editar<i class="far fa-edit ms-lg-2 me-lg-1"></i></a>
+                                    <a href="form-actualizar-c.php?id=<?php print $item['id'] ?>" class="btn-secondary btn btn-sm mx-3 my-4 color-purple-bg " role="button">Editar<i class="far fa-edit ms-lg-2 me-lg-1"></i></a>
                                     <a href="../acciones_c.php?id=<?php print $item['id'] ?>" class="btn-primary btn btn-sm my-4" role="button">Eliminar<i class="far fa-trash-alt ms-lg-2 me-lg-1"></i></a>
                                 </td>
                             </tr>

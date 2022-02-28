@@ -51,16 +51,16 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <!--product-hero-->
 <section id="producto" class="producto-hero">
 
-    <div class="container-fluid">
+    <div class="container-fluid py-5">
 
         <div class="row justify-content-center">
             <!--IMAGEN DEL PRODUCTO-->
-            <div class="col-md-12 col-lg-4 text-center producto-img">
+            <div class="col-12 col-lg-4 text-center producto-img">
                 <?php
                 $imagen = 'upload/' . $info_producto['imagen'];
                 if (file_exists($imagen)) {
                 ?>
-                    <img src="<?php print $imagen; ?>" class="producto-img py-md-4 align-self-center" style="object-fit: contain;">
+                    <img src="<?php print $imagen; ?>" class="producto-img py-4 align-self-center" style="object-fit: contain;">
 
                 <?php } else { ?>
                     Sin imagen
@@ -69,20 +69,24 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <!--!IMAGEN DEL PRODUCTO-->
 
             <!--INFO DEL PRODUCTO-->
-            <form class="col-md-12 col-lg-8 px-md-4 px-lg-5 d-flex" method="POST" action="funciones.php" enctype="multipart/form-data">
-                <div class="col-md-8 col-lg-9">
+            <form class="col-12 col-lg-8 px-4 d-flex" method="POST" action="" enctype="multipart/form-data">
+                <div class="col-md-8 col-8 col-lg-9">
                     <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
+                    <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
+                    <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
+                    <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
 
-                    <h4 class="section-title pt-md-4"><?php print $info_producto['nombre'] ?>
+
+                    <h4 class="section-title pt-4"><?php print $info_producto['nombre'] ?>
                     </h4>
-                    <h6 class="fw-600 py-md-1 color-red"> <?php print $info_producto['proveedor'] ?></h6>
-                    <p class="py-md-2 fw-400"><?php print $info_producto['descripcion'] ?></p>
+                    <h6 class="fw-600 py-1 color-red"> <?php print $info_producto['proveedor'] ?></h6>
+                    <p class="py-2 fw-400"><?php print $info_producto['descripcion'] ?></p>
 
                     <!-- color -->
                     <div class="d-flex">
-                        <div class="col-md-6 col-lg-7 py-md-3">
+                        <div class="col-6 col-lg-7 py-3">
                             <h6 class="fs-1-2 fw-700 m-0">Color</h6>
-                            <div class="color col-md-8 col-lg-10 d-flex pt-md-2">
+                            <div class="color col-md-8 col-lg-10 d-flex pt-2">
 
                                 <?php
                                 $colores = $info_producto['color'];
@@ -95,19 +99,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                 for ($u = 0; $u < $count_colores; $u++) {
                                 ?>
 
-                                    <button type="button" class="btn btn-color p-md-3 py-md-3 me-md-3" onclick="color_selected()" name="<?php print $separada[$u]; ?>" style="background-color: <?php print $separada[$u];  ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php //print $separada[$u];
-                                                                                                                                                                                                                                                                                            ?>"></button>
+                                    <button type="button" class="btn btn-color p-3 py-3 me-3" onclick="color_selected()" name="<?php print $separada[$u]; ?>" style="background-color: <?php print $separada[$u];  ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php //print $separada[$u];
+                                                                                                                                                                                                                                                                                ?>"></button>
                                 <?php
                                 }
                                 ?>
                             </div>
                         </div>
 
-                        <div class="col-md-5 col-lg-3 pt-md-3">
+                        <div class="col-5 col-lg-3 pt-3">
                             <h6 class="fs-1-2 fw-600 m-0">Seleccionado</h6>
-                            <div class="color col-md-12 d-flex py-md-2">
+                            <div class="color col-12 d-flex py-2">
 
-                                <button type="button" class="btn btn-color p-md-3 py-md-3 w-100" id="mostrarColor" style="background-color: <?php print $separada[0]; ?>;  border-radius: 1em;" href="#"></button>
+                                <button type="button" class="btn btn-color p-3 py-3 w-100" id="mostrarColor" style="background-color: <?php print $separada[0]; ?>;  border-radius: 1em;" href="#"></button>
 
                             </div>
                             <small class="d-flex form-text text-disbabled m-0" id="mostrarColorNombre" name="color_selected"><?php print $separada[0]; ?></small>
@@ -133,16 +137,16 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     if ($count_opciones > 1) {
                     ?>
 
-                        <div class="col-md-12 py-md-3 select-cantidades">
-                            <h6 class="fs-1-2 fw-600 m-0 pt-md-3 pb-md-4">Seleccione la cantidad</h6>
-                            <div class="col-lg-12 d-flex flex-wrap">
+                        <div class="col-12 py-3 select-cantidades">
+                            <h6 class="fs-1-2 fw-600 m-0 pt-3 pb-4">Seleccione la cantidad</h6>
+                            <div class="col-12 d-flex flex-wrap">
                                 <?php
                                 $o = 1;
                                 foreach ($separada_opciones as $opciones_producto) {
                                 ?>
-                                    <div class="text-center col-lg-4 px-md-2 py-md-1">
-                                        <h5 class="fw-600 pt-md-1"><?php print $opciones_producto ?></h5>
-                                        <select class="qty-dropdown" id="selectOpciones<?php print $o; ?>_producto" name="selectOpciones<?php print $o; ?>_producto" onchange="cambiarPrecio()">
+                                    <div class="text-center col-lg-4 px-2 py-1">
+                                        <h5 class="fw-600 pt-1"><?php print $opciones_producto ?></h5>
+                                        <select class="qty-dropdown" id="selectOpciones<?php print $o; ?>_producto" name="selectOpciones<?php print $o; ?>_producto" onchange="cambiarPrecio()" required>
                                             <option value="">Unidades</option>
                                             <?php $x = 0;
                                             foreach ($separada_precio as $precios_producto) {
@@ -158,9 +162,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                                 }
                                             } ?>
                                         </select>
-                                        <h6 class="text-start ps-md-2 pt-md-2">Unidades: <span class="color-red fw-700" id="cantidad<?php print $o; ?>_producto" name="cantidad<?php print $o; ?>_producto"></span></h6>
-                                        <h6 class="text-start ps-md-2">Costo: <span class="color-red fw-700" id="precioSelect<?php print $o; ?>_producto" name="precioSelect<?php print $o; ?>_producto"></span></h6>
-                                        <h6 class="text-start ps-md-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual<?php print $o; ?>_producto" name="precioIndividual<?php print $o; ?>_producto"></span></h6>
+                                        <h6 class="text-start ps-2 pt-2">Unidades: <span class="color-red fw-700" id="cantidad<?php print $o; ?>_producto" name="cantidad<?php print $o; ?>_producto"></span></h6>
+                                        <h6 class="text-start ps-2">Costo: <span class="color-red fw-700" id="precioSelect<?php print $o; ?>_producto" name="precioSelect<?php print $o; ?>_producto"></span></h6>
+                                        <h6 class="text-start ps-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual<?php print $o; ?>_producto" name="precioIndividual<?php print $o; ?>_producto"></span></h6>
                                     </div>
                                 <?php
                                     $o++;
@@ -171,12 +175,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <?php
                     } else {
                     ?>
-                        <div class="col-md-12 py-md-3 select-cantidades">
-                            <h6 class="fs-1-2 fw-600 m-0 pt-md-3 pb-md-4">Seleccione la cantidad</h6>
+                        <div class="col-12 py-3 select-cantidades">
+                            <h6 class="fs-1-2 fw-600 m-0 pt-3 pb-4">Seleccione la cantidad</h6>
                             <div class="col-lg-12 d-flex flex-wrap">
-                                <div class="text-center col-lg-4 px-md-2 py-md-1">
-
-                                    <select class="qty-dropdown" id="selectOpciones1_producto" name="selectOpciones1_producto" onchange="cambiarPrecio()">
+                                <div class="text-center col-lg-4 px-2 py-1">
+                                    <select class="qty-dropdown" id="selectOpciones1_producto" name="selectOpciones1_producto" onchange="cambiarPrecio()" required>
                                         <option value="">Unidades</option>
                                         <?php $x = 0;
                                         foreach ($separada_precio as $precios_producto) {
@@ -186,15 +189,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                                                 print ',';
                                                                 print $precios_producto;
                                                                 print ',';
-                                                                print $opciones_producto ?>"><?php print $separada_cantidad[$x]; ?></option>
+                                                                ?>"><?php print $separada_cantidad[$x]; ?></option>
                                         <?php
                                                 $x++;
                                             }
                                         } ?>
                                     </select>
-                                    <h6 class="text-start ps-md-2 pt-md-2">Unidades: <span class="color-red fw-700" id="cantidad1_producto" name="cantidad1_producto"></span></h6>
-                                    <h6 class="text-start ps-md-2">Costo: <span class="color-red fw-700" id="precioSelect1_producto" name="precioSelect1_producto"></span></h6>
-                                    <h6 class="text-start ps-md-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
+                                    <h6 class="text-start ps-2 pt-2">Unidades: <span class="color-red fw-700" id="cantidad1_producto" name="cantidad1_producto"></span></h6>
+                                    <h6 class="text-start ps-2">Costo: <span class="color-red fw-700" id="precioSelect1_producto" name="precioSelect1_producto"></span></h6>
+                                    <h6 class="text-start ps-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
                                 </div>
 
                             </div>
@@ -207,15 +210,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                 </div>
 
-                <div class="col-md-4 col-lg-3 color-grey3-bg px-md-4">
-                    <h5 class="py-md-4 fw-600" id="precioTotal">Resumen de cotización</h5>
-                    <h5 class="mb-md-4 color-red fw-600">TOTAL</h5>
+                <div class="col-4 col-lg-3 ws formulario px-4">
+                    <h5 class="py-4 fw-600" id="precioTotal">Resumen de cotización</h5>
+                    <h5 class="mb-4 color-red fw-600">TOTAL</h5>
 
 
                     <input type="submit" name="accion" class="btn btn-primary w-100" value="Realizar cotización"></a>
 
-                    <a class="btn btn-secondary mt-md-3 w-100" href="login.php" role="button">Guardar cotización</a>
-                    <small class="d-flex form-text pt-md-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
+                    <a class="btn btn-secondary mt-3 w-100" href="login.php" role="button">Guardar para después</a>
+                    <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
                 </div>
 
             </form>
@@ -225,4 +228,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     </div>
 
 </section>
+
+
+<?php
+
+print '<pre>';
+print_r($_POST);
+?>
 <!--!product-hero-->

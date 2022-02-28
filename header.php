@@ -26,7 +26,7 @@ session_start();
     <!--CUSTOM CSS FILE-->
     <link rel="stylesheet" href="style.css">
 
-    <!-- <link href="jquery.multiselect.css" rel="stylesheet" type="text/css"> -->
+     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css"> 
 
     <?php
     // require functions.php file
@@ -39,11 +39,11 @@ session_start();
 
     <!--start #header-->
     <header id="header" class="color-aqua-bg">
-        <div class="d-flex justify-content-between px-lg-5 pt-md-0 px-md-5">
+        <div class="d-flex justify-content-between px-lg-5 pt-md-2 px-md-5">
             <a class="align-self-center navbar-brand px-lg-5 fw-500 text-white font-gentiumme-auto" href="index.php">Indoff Pro</a>
             <div class="phone-info text-end ms-auto fw-600 align-self-center text-white">
-                <p class="mb-2">(664) 625 11 11</p>
-                <p class="mb-1">(664) 123 39 90</p>
+                <p class="mb-2  p-1"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 625 11 11</p>
+                <p class="mb-2  p-1"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 123 39 90</p>
             </div>
             <div class="align-items-center menu text-center d-flex text-white ps-lg-5 ps-md-3">
                 <div class="col btn-carrito">
@@ -118,7 +118,7 @@ session_start();
                         <li class="nav-item px-md-4 uppercase">
                             <a class="nav-link text-white  <?php if ($pagina == "inicio") {
                                                                 echo "active";
-                                                            } ?>" aria-current="page" href="index.php">Inicio</a>
+                                                            } ?>" aria-current="page" href="index.php"><span><i class="fa-solid fa-house me-3"></i></span> Inicio</a>
                         </li>
                         <li class="nav-item px-md-4 px-md-0 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle  <?php if ($pagina == "categorias") {

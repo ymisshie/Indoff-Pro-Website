@@ -61,42 +61,37 @@ if ($cantidad_categorias > 0) {
 
     <!--filtros-categorias-->
     <section class="categorias-filtro">
-        <div class="container">
+        <div class="container pb-5">
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h1 class="section-title pt-md-5 color-black" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
-                    <h6 class="py-md-3" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
+                    <h1 class="section-title pt-5" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
+                    <h6 class="pt-3 pb-5 fw-400" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
                 </div>
             </div>
 
-            <div class="row justify-content-center text-center">
-                <div class="col-12 d-flex justify-content-evenly flex-wrap flex-row">
+            <div class="row justify-content-evenly d-flex flex-wrap flex-row text-center">
 
-                    <?php
-                    foreach ($info_producto as $item_producto) {
+                <?php
+                foreach ($info_producto as $item_producto) {
 
-                        if ($item_producto[5] == $info_categoria_elegida['id']) {
-                    ?>
+                    if ($item_producto[5] == $info_categoria_elegida['id']) {
+                ?>
 
-                            <div href="producto.php?id=<?php print $item_producto[5] ?>" class="col-lg-3 col-md-8 m-lg-4">
+                        <div class="col-lg-3 col-6 col-md-6 pb-5 justify-content-evenly">
+                            <a class="card formulario ws align-self-center" href="producto-evento-hero.php?id=<?php print $item_producto[0] ?>">
+                                <?php
+                                $imagen = 'upload/' . $item_producto['imagen'];
+                                if (file_exists($imagen)) {
+                                ?>
 
-                                <div class="formulario ws align-self-center">
-                                    <?php
-                                    $imagen = 'upload/' . $item_producto['imagen'];
-                                    if (file_exists($imagen)) {
-                                    ?>
+                                    <img src="<?php print $imagen; ?>" class="p-3 img-fluid thumbnail-producto" style="object-fit:contain;">
 
-                                        <a href="producto.php?id=<?php print $item_producto[0] ?>">
-                                            <img src="<?php print $imagen; ?>" class="p-md-3 img-fluid thumbnail-producto" style="object-fit:contain;">
-                                        </a>
+                                <?php } else { ?>
+                                    Sin imagen
+                                <?php } ?>
 
-
-                                    <?php } else { ?>
-                                        Sin imagen
-                                    <?php } ?>
-
-
-                                    <div class="color col-lg-8 col-md-10 mx-auto d-flex justify-content-evenly py-md-2">
+                                <div class="card-body color-black">
+                                    <div class="color col-lg-8 col-10 col-md-10 mx-auto d-flex justify-content-evenly py-2">
                                         <?php
                                         $colores = $item_producto['color'];
                                         $separada = '';
@@ -108,7 +103,7 @@ if ($cantidad_categorias > 0) {
                                         for ($u = 0; $u < $count_colores; $u++) {
                                         ?>
 
-                                            <div class="p-md-2 mx-md-1 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
+                                            <div class="p-2 mx-1 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
 
                                             </div>
                                         <?php
@@ -117,16 +112,10 @@ if ($cantidad_categorias > 0) {
 
 
                                     </div>
-                                    <!-- !color -->
 
-                                    <h5 class="pt-md-3 m-0 fw-700"><?php print $item_producto['nombre'] ?></h5>
-
-                                    <h6 class="pt-md-1 m-0 fw-600"><?php print $item_producto['proveedor'] ?></h6>
-
+                                    <h5 class="pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h5>
 
                                     <?php
-
-
                                     $costo = $item_producto['precio'];
                                     $cantidad = $item_producto['cantidad'];
 
@@ -137,20 +126,19 @@ if ($cantidad_categorias > 0) {
                                     $separada_cantidad = explode($separador, $cantidad);
                                     $count_costo = count($separada_costo);
                                     $count_cantidad = count($separada_cantidad);
-
                                     ?>
-                                    <p class="fw-400 pt-md-3 pb-md-4 m-0">Desde $<?php print $separada_costo[0] ?> por <?php print $separada_cantidad[0] ?> unidades</p>
-                                    <?php
-
-                                    ?>
+                                    <p class="fw-400 pt-3 m-0">Desde <span class="fw-500"><?php print "$";
+                                                                                            print $separada_costo[0] ?></span></p>
+                                    <p class="fw-400 pt-2 m-0">Cantidad mínima: <span class="fw-500"><?php print $separada_cantidad[0] ?></span></p>
                                 </div>
-                            </div>
+                            </a>
+                        </div>
 
-                    <?php
-                        }
+                <?php
                     }
-                    ?>
-                </div>
+                }
+                ?>
+
             </div>
     </section>
     <!--!filtros-categorias-->

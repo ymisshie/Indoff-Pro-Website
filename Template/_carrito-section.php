@@ -1,6 +1,5 @@
 <?php
 
-//ACTIVAR SESIONES EN PHP
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
@@ -12,10 +11,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $info_producto = $producto->mostrarPorId($id);
 
     if (!$info_producto) {
-        header('Location: index.php');
+        header('Location: categorias.php?=$id');
     }
 
-    if (isset($_SESSION['carrito'])) {
+    agregarProducto($info_producto, $id);
+
+
+    /*
+    if (isset($_SESSION['cart'])) {
         //si el producto existe en el carrito
         if (array_key_exists($id, $_SESSION['carrito'])) {
             actualizarProducto($id, $info_producto);
@@ -29,6 +32,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     else {
         agregarProducto($info_producto, $id);
     }
+    */
 }
 ?>
 
