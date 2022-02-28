@@ -395,7 +395,6 @@ select option:hover {
 
 .section-title {
     font-weight: 800;
-    font-size: 2em;
 }
 
 .section-subtitle {
@@ -450,7 +449,7 @@ select option:hover {
 }
 
 .thumbnail-producto {
-    height: 13em;
+    height: 17em;
 }
 
 .producto-img {

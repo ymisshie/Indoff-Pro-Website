@@ -64,8 +64,8 @@ if ($cantidad_categorias > 0) {
         <div class="container pb-5">
             <div class="row justify-content-center">
                 <div class="col-12 text-center">
-                    <h1 class="section-title pt-5" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
-                    <h6 class="pt-3 pb-5 fw-400" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
+                    <h1 class="fw-800 pt-5" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
+                    <h6 class="pt-3 pb-4 fw-400" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
                 </div>
             </div>
 
@@ -77,20 +77,20 @@ if ($cantidad_categorias > 0) {
                     if ($item_producto[5] == $info_categoria_elegida['id']) {
                 ?>
 
-                        <div class="col-lg-3 col-6 col-md-6 pb-5 justify-content-evenly">
+                        <div class="col-lg-4 col-6 col-md-6 pb-5 justify-content-evenly">
                             <a class="card formulario ws align-self-center" href="producto.php?id=<?php print $item_producto[0] ?>">
                                 <?php
                                 $imagen = 'upload/' . $item_producto['imagen'];
                                 if (file_exists($imagen)) {
                                 ?>
 
-                                    <img src="<?php print $imagen; ?>" class="p-3 img-fluid thumbnail-producto" style="object-fit:contain;">
+                                    <img src="<?php print $imagen; ?>" class="py-3 img-fluid thumbnail-producto" style="object-fit:contain;">
 
                                 <?php } else { ?>
                                     Sin imagen
                                 <?php } ?>
 
-                                <div class="card-body color-black">
+                                <div class="card-body color-black px-4">
                                     <div class="color col-lg-8 col-10 col-md-10 mx-auto d-flex justify-content-evenly py-2">
                                         <?php
                                         $colores = $item_producto['color'];
@@ -113,7 +113,7 @@ if ($cantidad_categorias > 0) {
 
                                     </div>
 
-                                    <h5 class="pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h5>
+                                    <h2 class="text-start pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h2>
 
                                     <?php
                                     $costo = $item_producto['precio'];
@@ -127,9 +127,11 @@ if ($cantidad_categorias > 0) {
                                     $count_costo = count($separada_costo);
                                     $count_cantidad = count($separada_cantidad);
                                     ?>
-                                    <p class="fw-400 pt-3 m-0">Desde <span class="fw-500"><?php print "$";
-                                                                                            print $separada_costo[0] ?></span></p>
-                                    <p class="fw-400 pt-2 m-0">Cantidad mínima: <span class="fw-500"><?php print $separada_cantidad[0] ?></span></p>
+                                    <div class="col d-flex pt-3">
+                                        <h5 class="text-start fw-400 m-0">Desde <span class="fw-500"><?php print "$";
+                                                                                                            print $separada_costo[0] ?></span></h5>
+                                        <h5 class="text-start fw-400 m-auto m-0">Cantidad mín: <span class="fw-500"><?php print $separada_cantidad[0] ?></span></p>
+                                    </div>
                                 </div>
                             </a>
                         </div>
