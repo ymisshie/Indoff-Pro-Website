@@ -123,14 +123,6 @@ session_start();
                                             }
                                         }
                                         elseif(isset($_SESSION['admin_info']) && isset($_SESSION['user_info'])){
-                                            if($_SESSION['admin_info'] && !$_SESSION['user_info']){
-                                                print ("Login");
-                                            
-                                            }
-                                            if(!$_SESSION['admin_info'] && $_SESSION['user_info']){
-                                                print ("Login");
-                                            
-                                            }
                                             if(!$_SESSION['admin_info'] && !$_SESSION['user_info']){
                                                 print ("Login");
                                             
