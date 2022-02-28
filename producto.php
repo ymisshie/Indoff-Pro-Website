@@ -11,10 +11,10 @@ include('header.php')
 <?php
 
 require 'vendor/autoload.php';
+$idcarrito = count($_SESSION['carrito']);
 
 if (isset($_REQUEST["accion"])) {
     $id = $_REQUEST['id_producto'];
-    $idcarrito = 1;
 
     $producto = new ameri\Producto;
     $info_producto = $producto->mostrarPorId($id);
@@ -69,8 +69,8 @@ if (isset($_REQUEST["accion"])) {
         'descripcion' => $descripcion,
         'proveedor' => $proveedor,
         'color' => $color,
-        /*
         'opcion1' => $opcion1,
+        /*
         'opcion2' => $opcion2,
         'opcion3' => $opcion3,
         'opcion4' => $opcion4,
@@ -86,6 +86,7 @@ if (isset($_REQUEST["accion"])) {
     );
 
     if ($_SESSION['carrito'][$idcarrito]) {
+        $idcarrito++;
     }
 }
 

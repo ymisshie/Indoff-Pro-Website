@@ -81,7 +81,7 @@ if (!isset($_SESSION["carrito"])) {
                             <thead>
                                 <tr class="text-center color-grey3-bg ">
                                     <th scope="col"></th>
-                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Nobre</th>
                                     <th scope="col">Descripción</th>
                                     <th scope="col">Proveedor</th>
                                     <th scope="col">Color</th>
@@ -95,7 +95,7 @@ if (!isset($_SESSION["carrito"])) {
                                 <?php
 
                                 foreach ($_SESSION['carrito'] as $indice => $arreglo) {
-
+                                    //  print $indice;
                                 ?>
 
                                     <tr class="text-center align-items-center">
@@ -104,6 +104,7 @@ if (!isset($_SESSION["carrito"])) {
                                         <?php
 
                                         foreach ($arreglo as $key => $value) {
+                                            //     print $key;
 
                                             if ($key != 'id') {
 
