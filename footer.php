@@ -101,6 +101,18 @@
         });
         */
 
+
+    var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    var alertTrigger = document.getElementById('liveAlertBtn')
+
+
+    if (alertTrigger) {
+        alertTrigger.addEventListener('click', function() {
+            alert('Nice, you triggered this alert message!', 'success')
+        })
+    }
+
+
     function cambiarPrecio() {
 
         // console.log(modificarlabel.textContent)

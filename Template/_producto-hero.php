@@ -48,6 +48,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 </section>
 <!--!navbar-->
 
+<section>
+    <div class="container">
+        <div id="liveAlertPlaceholder"></div>
+    </div>
+</section>
+
+
 <!--product-hero-->
 <section id="producto" class="producto-hero">
 
@@ -229,11 +236,25 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <h5 class="py-4 fw-600" id="precioTotal">Resumen de cotización</h5>
                     <h5 class="mb-4 color-red fw-600">TOTAL</h5>
 
+                    <?php
+                    if ((!isset($_SESSION['admin_info'])) || (!isset($_SESSION['user_info']))) {
+                        if ((!isset($_SESSION['user_info']))) {
+                    ?>
+                            <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
+                            <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
 
-                    <input type="submit" name="accion" class="btn btn-primary w-100" value="Realizar cotización"></a>
+                            <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>
 
-                    <a class="btn btn-secondary mt-3 w-100" href="login.php" role="button">Guardar para después</a>
-                    <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
+                        <?php }
+                    }
+
+                    if (isset($_SESSION['user_info'])) {
+                        ?>
+                        <input type="submit" name="accion" id="liveAlertBtn" value="Agregar a carrito" class="btn btn-primary w-100">
+                        <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
+                    <?php
+                    }
+                    ?>
                 </div>
 
             </form>
