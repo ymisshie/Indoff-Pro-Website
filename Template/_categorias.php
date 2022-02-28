@@ -1,9 +1,9 @@
 <!--categorias-->
 <section id="categorias" class="categorias-section">
-    <div class="container-fluid py-5">
+    <div class="container-fluid pb-5">
 
         <div class="row justify-content-center">
-            <h2 class="text-center section-title pb-3">Top categorias</h2>
+            <h2 class="text-center section-title py-5">Top categorias</h2>
         </div>
 
         <div class="row justify-content-center">
