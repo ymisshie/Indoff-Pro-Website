@@ -89,6 +89,7 @@
         console.log(buttonName);
         document.getElementById('mostrarColorNombre').innerHTML = buttonName;
         document.getElementById('mostrarColor').style.backgroundColor = buttonName;
+        document.getElementById('color_producto').value = buttonName;
     };
 
     /*

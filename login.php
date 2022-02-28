@@ -23,8 +23,6 @@ include('header.php')
 include('Template/_login.php')
 ?>
 
-
-
 <?php
     //include footer.php file
     include('footer.php')

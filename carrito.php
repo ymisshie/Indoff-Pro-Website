@@ -2,7 +2,6 @@
 $title = "Carrito";
 $pagina ="carrito";
 
-require 'funciones.php';
 ?>
 
 

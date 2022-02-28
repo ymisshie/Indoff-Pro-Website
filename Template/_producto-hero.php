@@ -69,7 +69,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <!--!IMAGEN DEL PRODUCTO-->
 
             <!--INFO DEL PRODUCTO-->
-            <form class="col-12 col-lg-8 px-4 d-flex" method="POST" action="" enctype="multipart/form-data">
+            <form class="col-12 col-lg-6 px-4 d-flex" method="POST" action="" enctype="multipart/form-data">
                 <div class="col-md-8 col-8 col-lg-9">
                     <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
                     <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
@@ -114,7 +114,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                 <button type="button" class="btn btn-color p-3 py-3 w-100" id="mostrarColor" style="background-color: <?php print $separada[0]; ?>;  border-radius: 1em;" href="#"></button>
 
                             </div>
-                            <small class="d-flex form-text text-disbabled m-0" id="mostrarColorNombre" name="color_selected"><?php print $separada[0]; ?></small>
+                            <small class="d-flex form-text text-disbabled m-0" id="mostrarColorNombre" name="colorescogido"><?php print $separada[0]; ?></small>
+                            <input type="hidden" name="color_producto" id="color_producto" value="<?php print $separada[0]; ?>">
                         </div>
 
                     </div>
@@ -162,6 +163,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                                 }
                                             } ?>
                                         </select>
+
+
                                         <h6 class="text-start ps-2 pt-2">Unidades: <span class="color-red fw-700" id="cantidad<?php print $o; ?>_producto" name="cantidad<?php print $o; ?>_producto"></span></h6>
                                         <h6 class="text-start ps-2">Costo: <span class="color-red fw-700" id="precioSelect<?php print $o; ?>_producto" name="precioSelect<?php print $o; ?>_producto"></span></h6>
                                         <h6 class="text-start ps-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual<?php print $o; ?>_producto" name="precioIndividual<?php print $o; ?>_producto"></span></h6>
@@ -195,6 +198,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                             }
                                         } ?>
                                     </select>
+
+                                    <input type="hidden" name="selectOpciones2_producto" value="">
+                                    <input type="hidden" name="selectOpciones3_producto" value="">
+                                    <input type="hidden" name="selectOpciones4_producto" value="">
+                                    <input type="hidden" name="selectOpciones5_producto" value="">
+                                    <input type="hidden" name="selectOpciones6_producto" value="">
+                                    <input type="hidden" name="selectOpciones7_producto" value="">
+                                    <input type="hidden" name="selectOpciones8_producto" value="">
+                                    <input type="hidden" name="selectOpciones9_producto" value="">
+                                    <input type="hidden" name="selectOpciones10_producto" value="">
+
+
                                     <h6 class="text-start ps-2 pt-2">Unidades: <span class="color-red fw-700" id="cantidad1_producto" name="cantidad1_producto"></span></h6>
                                     <h6 class="text-start ps-2">Costo: <span class="color-red fw-700" id="precioSelect1_producto" name="precioSelect1_producto"></span></h6>
                                     <h6 class="text-start ps-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
@@ -210,7 +225,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                 </div>
 
-                <div class="col-4 col-lg-3 ws formulario px-4">
+                <div class="col-4 col-lg- ws formulario px-4">
                     <h5 class="py-4 fw-600" id="precioTotal">Resumen de cotización</h5>
                     <h5 class="mb-4 color-red fw-600">TOTAL</h5>
 
@@ -229,10 +244,4 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 </section>
 
-
-<?php
-
-print '<pre>';
-print_r($_POST);
-?>
 <!--!product-hero-->

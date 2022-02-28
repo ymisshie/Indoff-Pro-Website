@@ -26,7 +26,7 @@ session_start();
     <!--CUSTOM CSS FILE-->
     <link rel="stylesheet" href="style.css">
 
-     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css"> 
+    <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
     <?php
     // require functions.php file
@@ -47,102 +47,125 @@ session_start();
             </div>
             <div class="align-items-center menu text-center d-flex text-white ps-lg-5 ps-md-3">
                 <div class="col btn-carrito">
-                    <?php if ($_SESSION){
-                        if(isset($_SESSION['user_info'])) {
-                            if ($_SESSION['user_info']){
-                        ?>
-                    <div><i class="fa-solid fa-cart-shopping fs-1-5"></i></i></div>
-                    <div><a href="carrito.php" class="nav-link text-white px-md-3 fw-500">Carrito</a></div>
+                    <?php if ($_SESSION) {
+                        if (isset($_SESSION['user_info'])) {
+                            if ($_SESSION['user_info']) {
+                    ?>
+                                <div><i class="fa-solid fa-cart-shopping fs-1-5"></i></i></div>
+                                <div><a href="carrito.php" class="nav-link text-white px-md-3 fw-500">Carrito</a></div>
                     <?php
-                    }}}
+                            }
+                        }
+                    }
                     ?>
                     <?php
-                    if ($_SESSION){ 
-                        if(isset($_SESSION['admin_info'])) {
-                            if ($_SESSION['admin_info']){
-                        ?>
-                    <div><i class="fas fa-file-invoice fs-1-5"></i></div>
-                    <div><a href="#" class="nav-link text-white px-md-3 fw-500">Cotizaciones</a></div>
+                    if ($_SESSION) {
+                        if (isset($_SESSION['admin_info'])) {
+                            if ($_SESSION['admin_info']) {
+                    ?>
+                                <div><i class="fas fa-file-invoice fs-1-5"></i></div>
+                                <div><a href="#" class="nav-link text-white px-md-3 fw-500">Cotizaciones</a></div>
                     <?php
-                    }}}
+                            }
+                        }
+                    }
                     ?>
                 </div>
                 <div class="col btn-cuenta">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
-                    <div class="nav-item  <?php 
-                    if($_SESSION){
-                     if(isset($_SESSION['user_info'])){
-                         if($_SESSION['user_info']){
-                              echo 'dropdown';}}
-                     if(isset($_SESSION['admin_info'])){
-                        if($_SESSION['admin_info']){
-                             echo 'dropdown';}}}
-                             ?>">
-                        <a class="nav-link text-white px-lg-3 fw-500 <?php 
-                            if($_SESSION){
-                            if(isset($_SESSION['user_info'])){
-                                if($_SESSION['user_info']){
-                                    echo 'dropdown-toggle';}}
-                            if(isset($_SESSION['admin_info'])){
-                                if($_SESSION['admin_info']){
-                                    echo 'dropdown-toggle';}}}
-                                    ?>"
-                        href="login.php" data-bs-toggle="<?php 
-                            if($_SESSION){
-                            if(isset($_SESSION['user_info'])){
-                                if($_SESSION['user_info']){
-                                    echo 'dropdown';}}
-                            if(isset($_SESSION['admin_info'])){
-                                if($_SESSION['admin_info']){
-                                    echo 'dropdown';}}}
-                                    ?>"
-                         aria-expanded="false">
-                                    <?php if($_SESSION){
-                                        if ((!isset($_SESSION['admin_info']) && !isset($_SESSION['admin_info']))) {
-                                            print("Login");
-                                        }
-                                        elseif(isset($_SESSION['admin_info'])){
-                                            if($_SESSION['admin_info']){
-                                            print $_SESSION['admin_info']['nombre_login'];
+                    <div class="nav-item  <?php
+                                            if ($_SESSION) {
+                                                if (isset($_SESSION['user_info'])) {
+                                                    if ($_SESSION['user_info']) {
+                                                        echo 'dropdown';
+                                                    }
+                                                }
+                                                if (isset($_SESSION['admin_info'])) {
+                                                    if ($_SESSION['admin_info']) {
+                                                        echo 'dropdown';
+                                                    }
+                                                }
                                             }
-                                            else{
-                                                print("Login");
-                                            }}
-                                        elseif(isset($_SESSION['user_info'])){
-                                            if($_SESSION['user_info']){
-                                                print $_SESSION['user_info']['nombre_login'];
-                                            }
-                                            else{
-                                                print("Login");
-                                            }}
-                                        }
-                                        else{
-                                            print("Login");
-                                        }
-                                        ?>
-                                    </a>
+                                            ?>">
+                        <a class="nav-link text-white px-lg-3 fw-500 <?php
+                                                                        if ($_SESSION) {
+                                                                            if (isset($_SESSION['user_info'])) {
+                                                                                if ($_SESSION['user_info']) {
+                                                                                    echo 'dropdown-toggle';
+                                                                                }
+                                                                            }
+                                                                            if (isset($_SESSION['admin_info'])) {
+                                                                                if ($_SESSION['admin_info']) {
+                                                                                    echo 'dropdown-toggle';
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        ?>" href="login.php" data-bs-toggle="<?php
+                                                                            if ($_SESSION) {
+                                                                                if (isset($_SESSION['user_info'])) {
+                                                                                    if ($_SESSION['user_info']) {
+                                                                                        echo 'dropdown';
+                                                                                    }
+                                                                                }
+                                                                                if (isset($_SESSION['admin_info'])) {
+                                                                                    if ($_SESSION['admin_info']) {
+                                                                                        echo 'dropdown';
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                            ?>" aria-expanded="false">
+                            <?php if ($_SESSION) {
+                                if (isset($_SESSION['admin_info'])) {
+                                    if ($_SESSION['admin_info']) {
+                                        print $_SESSION['admin_info']['nombre_login'];
+                                    }
+                                }
+                                if (isset($_SESSION['user_info'])) {
+                                    if ($_SESSION['user_info']) {
+                                        print $_SESSION['user_info']['nombre_login'];
+                                    }
+                                }
+                                if ((!isset($_SESSION['admin_info']) && !isset($_SESSION['user_info']))) {
+                                    print("Login");
+                                } elseif (isset($_SESSION['user_info'])) {
+                                    if (!$_SESSION['user_info']) {
+                                        print("Login");
+                                    }
+                                } elseif (isset($_SESSION['admin_info'])) {
+                                    if (!$_SESSION['admin_info']) {
+                                        print("Login");
+                                    }
+                                }
+                            } else {
+                                print("Login");
+                            }
+                            ?>
 
-                                    <?php
-                                    if(isset($_SESSION['user_info'])){
-                                    if($_SESSION['user_info']) {
-                                        ?>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="cerrar-sesion.php">Cerrar sesión</a></li>
-                                        </ul>
-                                        <?php
-                                        }}
-                                    ?>
-                                    <?php
-                                    if(isset($_SESSION['admin_info'])){
-                                    if($_SESSION['admin_info']) {
-                                        ?>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="panel/cerrar-sesion.php">Cerrar sesión</a></li>
-                                        </ul>
-                                        <?php
-                                        }}
-                                    ?>
-                                    <!-- <ul class="dropdown-menu">
+                        </a>
+
+                        <?php
+                        if (isset($_SESSION['user_info'])) {
+                            if ($_SESSION['user_info']) {
+                        ?>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="cerrar-sesion.php">Cerrar sesión</a></li>
+                                </ul>
+                        <?php
+                            }
+                        }
+                        ?>
+                        <?php
+                        if (isset($_SESSION['admin_info'])) {
+                            if ($_SESSION['admin_info']) {
+                        ?>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="panel/cerrar-sesion.php">Cerrar sesión</a></li>
+                                </ul>
+                        <?php
+                            }
+                        }
+                        ?>
+                        <!-- <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="cerrar-sesion.php">Cerrar sesión</a></li>
                                     </ul> -->
                     </div>
