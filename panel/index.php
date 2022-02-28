@@ -10,60 +10,48 @@ include('../Template/_header-login.php');
 // rest of your code
 ?>
 
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7 col-11">
-            <div class="formulario ws color-white-bg">
-                <div class="text-center">
-                    <h4 class="fw-700 pt-4">Admin Login</h4>
-                </div>
-                <div class="p-3">
-                    <form action="login-admin.php" method="post">
-                        <div class="form-group">
-                            <div class="input-field">
-                                <span class="far fa-user p-2 color-red"></span>
-                                <input type="text" placeholder="Username or Email" required name="nombre_admin">
-                            </div>
+<section id="login" class="vh-100 py-5 color-grey3-bg">
+    <div class="container py-5">
+        <div class="row justify-content-center py-4">
+            <div class="col-6 formulario ws px-5 py-4 text-center ">
+                <form action="login-admin.php" method="post"">
+                    <h2 class=" section-title py-3">Admin Log In</h2>
+                    <div class="form-group text-start py-2">
+                        <div class="input-field form-control2">
+                            <span class="far fa-user p-2 color-red"></span>
+                            <input type="text" class="" placeholder="Username or Email" required name="nombre_admin">
                         </div>
-                        <div class="form-group py-2">
-                            <div class="input-field">
-                                <span class="fas fa-lock p-2 color-red"></span>
-                                <input type="password" placeholder="Enter your Password" required name="clave_admin">
-                                <!-- <button class="btn bg-white text-muted">
+                    </div>
+                    <div class="form-group text-start py-2">
+                        <div class="input-field form-control2">
+                            <span class="fas fa-lock p-2 color-red"></span>
+                            <input type="password" placeholder="Enter your Password" required name="clave_admin">
+                            <!-- <button class="btn bg-white text-muted">
                                     <span class="far fa-eye-slash"></span>
                                 </button> -->
-                            </div>
                         </div>
-                        <!-- <div class="form-inline">
-                            <a href="form-register-admin.php" id="createaccount" class="font-weight-bold">Create admin account</a>
-                            <a href="#" id="forgot" class="font-weight-bold float-end">Forgot password?</a>
-                        </div> -->
-                        <div>
-                            <?php
-                            session_start();
-                            if (!empty($_SESSION['message'])) {
-                                echo '<p class="message text-center mt-2" > ' . $_SESSION['message'] . '</p>';
-                                unset($_SESSION['message']);
-                            }
-                            ?>
-                        </div>
+                    </div>
+                    <?php
+                    //echo $mensaje2;
+                    ?>
+                    <div>
+                        <?php
+                        session_start();
+                        if (!empty($_SESSION['message'])) {
+                            echo '<p class="message text-center mt-2" > ' . $_SESSION['message'] . '</p>';
+                            unset($_SESSION['message']);
+                        }
+                        ?>
+                    </div>
 
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary mt-2 text-center"> Login </button>
-                        </div>
-                    </form>
-                </div>
+
+                    <button type="submit" value="Submit" class="btn btn-primary btn-lg my-4 py-2 w-100">Iniciar sesión</button>
+                    <div class="col-12 align-items-center mx-auto py-2">
+                        <h6 class="mb-0">¿No tiene una cuenta? <span><a href="form-register.php" class="color-red btn ss btn-link2"> Crear Cuenta </a>
+                            </span></h6>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
-
-</header>
-<!--!start #header-->
-
-<!--start #main-site-->
-<!-- <main id="main-site"> -->
-
-</body>
-
-</html>
+</section>

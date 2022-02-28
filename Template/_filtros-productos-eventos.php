@@ -6,11 +6,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
 
 
-    $producto = new ameri\Producto_Evento;
-    $categoria = new ameri\Evento;
+    $producto = new ameri\Evento;
+    $categoria = new ameri\Producto_Evento;
 
     $info_producto = $producto->mostrarOrden();
-    $info_categoria = $categoria->mostrarOrden6();
+    $info_categoria = $categoria->mostrarOrden();
 
     if (!$info_producto && $info_categoria)
         header('Location: index.php');
@@ -78,7 +78,7 @@ if ($cantidad_categorias > 0) {
                 ?>
 
                         <div class="col-lg-3 col-6 col-md-6 pb-5 justify-content-evenly">
-                            <a class="card formulario ws align-self-center" href="producto-evento-hero.php?id=<?php print $item_producto[0] ?>">
+                            <a class="card formulario ws align-self-center" href="producto.php?id=<?php print $item_producto[0] ?>">
                                 <?php
                                 $imagen = 'upload/' . $item_producto['imagen'];
                                 if (file_exists($imagen)) {

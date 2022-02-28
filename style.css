@@ -15,10 +15,8 @@
 }
 
 /*globales*/
-
 body {
     font-family: "Poppins", sans-serif;
-    font-size: 1em;
     color: var(--black);
 }
 
@@ -67,13 +65,11 @@ body {
     text-decoration-color: var(--orange) !important;
 }
 
-.admin-nav-menu
-{
+.admin-nav-menu {
     text-decoration: none;
 }
 
-.admin-nav-menu:hover
-{
+.admin-nav-menu:hover {
     opacity: 85% !important;
     text-decoration-line: underline !important;
     text-underline-offset: 19px !important;
@@ -81,12 +77,11 @@ body {
     text-decoration-color: var(--orange) !important;
 }
 
-footer a
-{
+footer a {
     text-decoration: none;
 }
-.admin-nav-menu:focus
-{
+
+.admin-nav-menu:focus {
     text-decoration-color: var(--red) !important;
 }
 
@@ -193,6 +188,22 @@ footer a
     padding-right: 1em;
 }
 
+.form-control2 {
+    height: 2.6em;
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: none !important;
+    border-bottom: solid 2px var(--grey) !important;
+}
+
+.form-control2:hover{
+    border-bottom: solid 2px var(--orange) !important;
+}
+.form-control2:focus{
+    border-bottom: solid 2px var(--red) !important;
+}
+
 .form-control, .qty-dropdown, .color-select, .color-select, .select2-selection {
     border: solid 3px var(--grey) !important;
     border-radius: 1em !important;
@@ -273,7 +284,6 @@ select option:hover {
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
     font-weight: 600;
 }
-
 
 #costmin2, #costmin3, #costmin4, #costmin5, #costmin6, #costmin7 {
     display: none !important;
@@ -376,13 +386,11 @@ select option:hover {
 .hero-title {
     font-weight: 700;
     font-size: 3em;
-    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .hero-description {
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.5em;
-    text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 .section-title {
@@ -395,34 +403,32 @@ select option:hover {
 }
 
 /*categorias index*/
-.categorias .card-body, .eventos .card-body, .dashboard-card .card-body{
+.categorias .card-body, .eventos .card-body, .dashboard-card .card-body {
     color: var(--white);
 }
 
-.categorias, .eventos, .dashboard-card{
+.categorias, .eventos, .dashboard-card {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
     background-color: var(--red);
 }
 
-.categorias .card-body:hover, .eventos .card-body:hover, .dashboard-card .card-body:hover  {
+.categorias .card-body:hover, .eventos .card-body:hover, .dashboard-card .card-body:hover {
     background-color: var(--orange);
 }
 
 .card {
     text-decoration: none;
-    border:none;
+    border: none;
 }
 
-.card-img-top
-{
+.card-img-top {
     background-color: var(--white);
     border-left: var(--grey) solid;
     border-top: var(--grey) solid;
     border-right: var(--grey) solid;
 }
 
-.card-img-top:hover
-{
+.card-img-top:hover {
     background-color: var(--grey3);
 }
 
@@ -440,17 +446,17 @@ select option:hover {
 }
 
 .thumbnail {
-    height: 13em;
+    height: 17em;
 }
 
 .thumbnail-producto {
     height: 13em;
 }
 
-.producto-img
-{
+.producto-img {
     height: 32em !important;
 }
+
 /*COLORES*/
 .color-aqua {
     color: var(--aqua) !important;
@@ -526,6 +532,10 @@ select option:hover {
 
 .color-black-bg {
     background: var(--black) !important;
+}
+
+.vh {
+    height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -2,7 +2,7 @@
 <!--!start #main-site-->
 
 <!--start #footer-->
-<footer class="color-aqua-bg">
+<footer class="color-black-bg">
     <div class="container-fluid text-white px-5 py-3">
         <div class="row justify-content-center py-md-3">
             <a class="navbar-brand col-md-9 fw-500 mx-2 text-white" href="index.php">Indoff Pro</a>

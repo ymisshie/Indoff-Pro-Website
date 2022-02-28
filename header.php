@@ -46,20 +46,19 @@ if (isset($_SESSION['carrito'])) {
 
     <!--start #header-->
     <header id="header" class="color-aqua-bg">
-        <div class="d-flex justify-content-between px-lg-5 pt-md-2 px-md-5">
-            <a class="align-self-center navbar-brand px-lg-5 fw-500 text-white font-gentiumme-auto" href="index.php">Indoff Pro</a>
+        <div class="d-flex justify-content-between px-md-5">
+            <a class="align-self-centers navbar-brand px-lg-5 fw-500 text-white font-gentiumme-auto" href="index.php">Indoff Pro</a>
             <div class="phone-info text-end ms-auto fw-600 align-self-center text-white">
-                <p class="mb-2  p-1"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 625 11 11</p>
-                <p class="mb-2  p-1"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 123 39 90</p>
+                <p class="mb-0 p-1"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 625 11 11 <span><i class="ms-3 me-3 fa-solid fa-phone"></i></span>(664) 123 39 90</p>
             </div>
-            <div class="align-items-center menu text-center d-flex text-white ps-lg-5 ps-md-3">
-                <div class="col btn-carrito">
+            <div class="align-items-center menu text-center d-flex text-white  ps-md-5">
+                <div class="col btn-carrito d-flex">
                     <?php if ($_SESSION){
                         if(isset($_SESSION['user_info'])) {
                             if ($_SESSION['user_info']){
                         ?>
-                    <div><i class="fa-solid fa-cart-shopping fs-1-5"></i></i></div>
-                    <div><a href="carrito.php" class="nav-link text-white px-md-3 fw-500">Carrito <span class="fw-600">( <?php if ($cantidad_carrito > 0) {
+                    <a href="carrito.php"><i class="fa-solid fa-cart-shopping fs-1-5"></i></a>
+                    <div><a href="carrito.php" class="nav-link text-white py-0 fw-500">Carrito <span class="fw-600">( <?php if ($cantidad_carrito > 0) {
                                                                                                                                             print $cantidad_carrito;
                                                                                                                                         } else {
                                                                                                                                             print '0';
@@ -73,12 +72,12 @@ if (isset($_SESSION['carrito'])) {
                             if ($_SESSION['admin_info']){
                         ?>
                     <div><i class="fas fa-file-invoice fs-1-5"></i></div>
-                    <div><a href="#" class="nav-link text-white px-md-3 fw-500">Cotizaciones</a></div>
+                    <div><a href="#" class="nav-link text-white py-0 fw-500">Cotizaciones</a></div>
                     <?php
                     }}}
                     ?>
                 </div>
-                <div class="col btn-cuenta">
+                <div class="col btn-cuenta d-flex ps-4">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
                     <div class="nav-item  <?php 
                     if($_SESSION){
@@ -89,7 +88,7 @@ if (isset($_SESSION['carrito'])) {
                         if($_SESSION['admin_info']){
                              echo 'dropdown';}}}
                              ?>">
-                        <a class="nav-link text-white px-lg-3 fw-500 <?php 
+                        <a class="nav-link text-white py-0 fw-500 <?php 
                             if($_SESSION){
                             if(isset($_SESSION['user_info'])){
                                 if($_SESSION['user_info']){
@@ -111,11 +110,11 @@ if (isset($_SESSION['carrito'])) {
                                     <?php if($_SESSION){
                                         if(isset($_SESSION['admin_info'])){
                                             if($_SESSION['admin_info']){
-                                            print $_SESSION['admin_info']['nombre_login'];
+                                            print 'Hola '.$_SESSION['admin_info']['nombre_login'];
                                             }}
                                         if(isset($_SESSION['user_info'])){
                                             if($_SESSION['user_info']){
-                                                print $_SESSION['user_info']['nombre_login'];
+                                                print 'Hola '.$_SESSION['user_info']['nombre_login'];
                                             }
                                         }
                                         if ( (!isset($_SESSION['admin_info']) && !isset($_SESSION['user_info']))) {

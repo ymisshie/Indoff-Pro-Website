@@ -38,6 +38,6 @@
     <!--start #header-->
     <header id="header">
         <div class="justify-content-between py-1 py-md-2 color-aqua-bg text-center text-md-start">
-            <a class="navbar-brand logo fs-3 text-white" href="index.php">Indoff Pro Admin</a>
+            <a class="navbar-brand logo fs-3 px-5 text-white" href="index.php">Indoff Pro Admin</a>
         </div>
     </header>

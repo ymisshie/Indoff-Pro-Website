@@ -9,71 +9,73 @@ include('header.php');
 // rest of your code
 ?>
 
-<h1 class="logo text-center section-title py-5"> Crear una cuenta </h1>
-
-<form class="container mt-4" name="formulario" action="register-user.php" method="post" onsubmit="validateMyForm(event);">
-  <div class="row mb-4">
-    <div class="col-5 mx-auto">
-      <div class="form-outline">
-        <label class="form-label required">First name</label>
-        <input type="text" name="first_name_user" id="name" required class="form-control" />
+<section class="py-5" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url(assets/suscribir.jpg);">
+  <form class="container formulario ws py-4 px-5" name="formulario" action="register-user.php" method="post" onsubmit="validateMyForm(event);">
+    <h2 class="text-center section-title pt-4 pb-5"> Crear una cuenta </h2>
+    <div class="row mb-4">
+      <div class="col-5 mx-auto">
+        <div class="form-outline">
+          <h5 class="form-label required py-2">First name</h5>
+          <input type="text" name="first_name_user" id="name" required class="form-control2" />
+        </div>
+      </div>
+      <div class="col-5  mx-auto">
+        <div class="form-outline">
+          <h5 class="form-label required py-2">Last name</h5>
+          <input type="text" name="last_name_user" required class="form-control2" />
+        </div>
       </div>
     </div>
-    <div class="col-5  mx-auto">
-      <div class="form-outline">
-        <label class="form-label required">Last name</label>
-        <input type="text" name="last_name_user" required class="form-control" />
+
+    <div class="row mb-4">
+      <div class="col-5  mx-auto">
+        <div class="form-outline">
+          <h5 class="form-label required py-2">User name</h5>
+          <input type="text" name="nombre_login" required class="form-control2" />
+        </div>
+      </div>
+      <div class="col-5  mx-auto">
+        <div class="form-outline">
+          <h5 class="form-label required py-2">Email address</h5>
+          <input type="email" name="email_user" id="email" required class="form-control2" />
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row mb-4">
-    <div class="col-5  mx-auto">
-      <div class="form-outline">
-        <label class="form-label required">User name</label>
-        <input type="text" name="nombre_login" required class="form-control" />
+    <div class="row mb-4">
+      <div class="col-5 mx-auto">
+        <div class="form-outline">
+          <h5 class="form-label required py-2">Password</h5>
+          <input type="password" name="pwd_user" id="pwd_user" required class="form-control2" onchange="contraInvalida();" />
+        </div>
+      </div>
+      <div class="col-5 mx-auto">
+        <div class="form-outline ">
+          <h5 class="form-label required py-2">Confirm password</h5>
+          <input type="password" name="pwd2_user" oninput="mismaContra();" onchange="diferenteContra();" id="pwd2_user" required class="form-control2" />
+        </div>
       </div>
     </div>
-    <div class="col-5  mx-auto">
-      <div class="form-outline">
-        <label class="form-label required">Email address</label>
-        <input type="email" name="email_user" id="email" required class="form-control" />
-      </div>
+    <p id="pwd_validar" class="text-danger col-5" style="margin-left: 3rem; margin-top: -1rem;"> </p>
+
+    <p id="pwd_verificar" class="text-center"> </p>
+
+    <!-- Checkbox -->
+    <div class="form-check d-flex justify-content-center">
+
+      <button type="submit" class="btn btn-primary btn-lg my-5 py-2 text-center w-50" name="accion" value="Registrar"> Registrarse </button>
     </div>
-  </div>
 
-  <div class="row mb-4">
-    <div class="col-5  mx-auto">
-      <div class="form-outline">
-        <label class="form-label required">Password</label>
-        <input type="password" name="pwd_user" id="pwd_user" required class="form-control" onchange="contraInvalida();" />
-      </div>
-    </div>
-    <div class="col-5  mx-auto">
-      <div class="form-outline">
-        <label class="form-label required">Confirm password</label>
-        <input type="password" name="pwd2_user" oninput="mismaContra();" onchange="diferenteContra();" id="pwd2_user" required class="form-control" />
-      </div>
-    </div>
-  </div>
-  <p id="pwd_validar" class="text-danger col-5" style="margin-left: 3rem; margin-top: -1rem;"> </p>
-
-  <p id="pwd_verificar" class="text-center"> </p>
-
-  <!-- Checkbox -->
-  <div class="form-check d-flex justify-content-center mb-4">
-    <button type="submit" class="btn btn-secondary btn-lg mt-3 text-center" name="accion" value="Registrar"> Registrarse </button>
-  </div>
-
-  <!-- Submit button -->
-</form>
+    <!-- Submit button -->
+  </form>
+</section>
 
 <script>
   function mismaContra() {
     var pwd1 = document.getElementById('pwd2_user').value;
     var pwd2 = document.getElementById('pwd_user').value;
     if (pwd2 == pwd1) {
-      document.getElementById('pwd_verificar').textContent = "Las contraseñas son iguales";
+      document.getElementById('pwd_verificar').textContent = "Contraseñas son iguales";
     }
   }
 
@@ -88,7 +90,7 @@ include('header.php');
 
   function contraInvalida() {
     var pwd = document.getElementById('pwd_user').value;
-    var respuesta = "La contraseña tiene que tener mínimo ";
+    var respuesta = "La contraseña debe tener mínimo ";
     var length_respuesta = respuesta.length;
     if (pwd.length < 8) {
       respuesta += "8 caracteres, ";
@@ -126,3 +128,9 @@ include('header.php');
     return true;
   }
 </script>
+
+<?php
+//include header.php file
+include('footer.php');
+// rest of your code
+?>

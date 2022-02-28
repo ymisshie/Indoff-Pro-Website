@@ -4,7 +4,6 @@
 print '<pre>';s
 print_r($_SESSION);
 */
-
 if (!isset($_SESSION["carrito"])) {
 ?>
     <!--carrito-section-->
@@ -52,15 +51,20 @@ if (!isset($_SESSION["carrito"])) {
     }
 } else 
     if (isset($_SESSION['carrito'])) {
-    $cantidad_carrito = 0;
+   // $cantidad_carrito = 0;
     $cantidad_carrito = count($_SESSION['carrito']);
 
     $total = 0;
+
+   // print '<pre>';
+   // print_r($_SESSION['carrito']);
+   // print $cantidad_carrito;
 
     /*
     print '<pre>';
     print_r ($_SESSION['carrito']);
     */
+
     ?>
 
     <!--carrito-section-->
@@ -87,6 +91,8 @@ if (!isset($_SESSION["carrito"])) {
                                     <th scope="col">Color</th>
                                     <th scope="col">Cantidad</th>
                                     <th scope="col">Precio</th>
+                                    <th scope="col">Tanaño</th>
+                                    <th scope="col">Peso</th>
                                 </tr>
                             </thead>
 

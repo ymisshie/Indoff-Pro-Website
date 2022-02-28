@@ -11,24 +11,29 @@ include('header.php')
 <?php
 
 require 'vendor/autoload.php';
-$idcarrito = count($_SESSION['carrito']);
+
+
 
 if (isset($_REQUEST["accion"])) {
-    $id = $_REQUEST['id_producto'];
 
-    $producto = new ameri\Producto;
-    $info_producto = $producto->mostrarPorId($id);
+    //si ya existe el carrito
+    if (isset($_SESSION['carrito'])) {
 
-    /*
-    print '<pre>';
-    print_r($_POST);
-    */
+        $idcarrito = count($_SESSION['carrito']);
 
-    $nombre = $_REQUEST['nombre_producto'];
-    $descripcion = $_REQUEST['descripcion_producto'];
-    $proveedor = $_REQUEST['proveedor_producto'];
-    $opcion1 = $_REQUEST['selectOpciones1_producto'];
-    /*
+        $id = $_REQUEST['id_producto'];
+
+        $producto = new ameri\Producto;
+        $info_producto = $producto->mostrarPorId($id);
+
+     //   print '<pre>';
+       // print_r($_POST);
+
+        $nombre = $_REQUEST['nombre_producto'];
+        $descripcion = $_REQUEST['descripcion_producto'];
+        $proveedor = $_REQUEST['proveedor_producto'];
+        $opcion1 = $_REQUEST['selectOpciones1_producto'];
+        /*
     $opcion2 = $_REQUEST['selectOpciones2_producto'];
     $opcion3 = $_REQUEST['selectOpciones3_producto'];
     $opcion4 = $_REQUEST['selectOpciones4_producto'];
@@ -39,9 +44,9 @@ if (isset($_REQUEST["accion"])) {
     $opcion9 = $_REQUEST['selectOpciones9_producto'];
     $opcion10 = $_REQUEST['selectOpciones10_producto'];
 */
-    $color = $_REQUEST['color_producto'];
+        $color = $_REQUEST['color_producto'];
 
-    /*
+        /*
     $_SESSION["carrito"][$nombre]["id"] = $id;
     $_SESSION["carrito"][$nombre]["nombre"] = $info_producto['nombre'];
     $_SESSION["carrito"][$nombre]["proveedor"] = $info_producto['proveedor'];
@@ -62,15 +67,15 @@ if (isset($_REQUEST["accion"])) {
     $_SESSION["carrito"][$nombre]["color"] = $color;
 
     */
-    $_SESSION['carrito'][$idcarrito] = array(
-        'imagen' => $info_producto['imagen'],
-        'id' => $id,
-        'nombre' => $nombre,
-        'descripcion' => $descripcion,
-        'proveedor' => $proveedor,
-        'color' => $color,
-        'opcion1' => $opcion1,
-        /*
+        $_SESSION['carrito'][$idcarrito] = array(
+            'imagen' => $info_producto['imagen'],
+            'id' => $id,
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'proveedor' => $proveedor,
+            'color' => $color,
+            'opcion1' => $opcion1,
+            /*
         'opcion2' => $opcion2,
         'opcion3' => $opcion3,
         'opcion4' => $opcion4,
@@ -81,13 +86,56 @@ if (isset($_REQUEST["accion"])) {
         'opcion9' => $opcion9,
         'opcion10' => $opcion10,
         */
-        'size' => $info_producto['size'],
-        'peso' => $info_producto['peso'],
-    );
+            'size' => $info_producto['size'],
+            'peso' => $info_producto['peso'],
+        );
 
-    if ($_SESSION['carrito'][$idcarrito]) {
+
+      //  print_r($_SESSION['carrito']);
+        //print $cantidad_carrito;
+
+        // if ($_SESSION['carrito'][$idcarrito]) {
+        $idcarrito++;
+
+    } else {
+        $idcarrito = 0;
+
+
+        $id = $_REQUEST['id_producto'];
+
+        $producto = new ameri\Producto;
+        $info_producto = $producto->mostrarPorId($id);
+
+       // print '<pre>';
+        //print_r($_POST);
+
+        $nombre = $_REQUEST['nombre_producto'];
+        $descripcion = $_REQUEST['descripcion_producto'];
+        $proveedor = $_REQUEST['proveedor_producto'];
+        $opcion1 = $_REQUEST['selectOpciones1_producto'];
+
+        $color = $_REQUEST['color_producto'];
+
+        $_SESSION['carrito'][$idcarrito] = array(
+            'imagen' => $info_producto['imagen'],
+            'id' => $id,
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'proveedor' => $proveedor,
+            'color' => $color,
+            'opcion1' => $opcion1,
+            'size' => $info_producto['size'],
+            'peso' => $info_producto['peso'],
+        );
+
+        //print_r($_SESSION['carrito']);
+       // print $cantidad_carrito;
+
+        // if ($_SESSION['carrito'][$idcarrito]) {
         $idcarrito++;
     }
+
+    // }
 }
 
 ?>

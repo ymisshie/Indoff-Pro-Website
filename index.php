@@ -24,7 +24,7 @@ include('Template/_categorias.php')
 
 <?php
 /*include eventos*/
-include('Template/_eventos.php')
+//include('Template/_eventos.php')
 /*include eventos*/
 ?>
 
