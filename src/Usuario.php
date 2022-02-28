@@ -75,7 +75,7 @@ class Usuario
             $password = $resultado_array['pwd_usuario_hash'];
             if (password_verify($pwd_usuario_hash, $password)){
                 // print("A");
-                $sql = "SELECT nombre_login FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
+                $sql = "SELECT nombre_login, email_user FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
                 $resultado = $this->cn->prepare($sql);
 
                 $_array = array(

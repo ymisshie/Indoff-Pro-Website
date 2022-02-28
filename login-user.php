@@ -20,6 +20,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         
         $_SESSION['user_info'] = array(
             "nombre_login" => $resultado['nombre_login'],
+            "email_user" => $resultado['email_user'],
             'estado' => 1
         );        
         header('Location: index.php');

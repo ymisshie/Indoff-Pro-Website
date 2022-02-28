@@ -400,14 +400,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-center py-md-2">
                         <h6 class="col-form-label fw-600">Orden</h6>
-                        <select name="orden_productos" class="orden_productos">
-                            <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?>> 1 </option>
-                            <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?>>2</option>
-                            <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>>3</option>
-                            <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?>> 4 </option>
-                            <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?>> 5 </option>
-                            <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?>> 6 </option>
-                            <option value="" <?php if ($resultado['orden'] > 6) print "selected" ?>> </option>
+                        <select  name="orden_productos" class="orden_productos">
+                            <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?> > 1 </option>
+                            <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?> >2</option>
+                            <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>  >3</option>
+                            <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?> > 4  </option>
+                            <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?> > 5  </option>
+                            <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?> >  6  </option>
+                            <option value="7" <?php if ($resultado['orden'] > 6) print "selected" ?> >  x  </option>
                         </select>
                     </div>
 

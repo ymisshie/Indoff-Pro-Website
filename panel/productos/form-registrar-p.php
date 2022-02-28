@@ -22,6 +22,7 @@ $root_logout = 'href="../index.php"';
 $root_vendor = '../../vendor/autoload.php';
 $root_productos_eventos_header = '../';
 $root_cerrar_sesion = '../cerrar-sesion.php';
+$root_indoffpro = 'href="../../index.php"';
 ?>
 
 <?php
