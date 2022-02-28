@@ -235,26 +235,29 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="col-4 col-lg- ws formulario px-4">
                     <h5 class="py-4 fw-600" id="precioTotal">Resumen de cotización</h5>
                     <h5 class="mb-4 color-red fw-600">TOTAL</h5>
-
+                    
                     <?php
-                    if ((!isset($_SESSION['admin_info'])) || (!isset($_SESSION['user_info']))) {
-                        if ((!isset($_SESSION['user_info']))) {
+                    if ((isset($_SESSION['admin_info'])) || (isset($_SESSION['user_info']))) {
+
                     ?>
-                            <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
-                            <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
-
-                            <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>
-
-                        <?php }
-                    }
-
-                    if (isset($_SESSION['user_info'])) {
-                        ?>
                         <input type="submit" name="accion" id="liveAlertBtn" value="Agregar a carrito" class="btn btn-primary w-100">
                         <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
                     <?php
+
+                    }
+                   elseif ((!isset($_SESSION['admin_info'])) && (!isset($_SESSION['user_info']))) {
+
+                    ?>
+                        <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
+                        <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
+
+                        <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>
+
+                    <?php
                     }
                     ?>
+
+
                 </div>
 
             </form>
