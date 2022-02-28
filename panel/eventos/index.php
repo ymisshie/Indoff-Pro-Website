@@ -10,7 +10,7 @@ if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
 <?php
 $root_functions = '../../functions.php';
 $root_inicio = 'href="../dashboard.php"';
-$root_styles = '<link rel="stylesheet" href="../../styles.css">';
+$root_styles = '<link rel="stylesheet" href="../../style.css">';
 $root_categorias = 'href="../categorias/index.php"';
 $root_dashboard = 'href="../dashboard.php"';
 $root_productos = 'href="../productos/index.php"';
@@ -33,3 +33,8 @@ include('../../Template/_header-admin.php')
 //include header.php file
 include('../../Template/_eventos-editar.php')
 ?>
+
+<?php
+//include header.php file
+include('../footer-admin.php')
+?>  

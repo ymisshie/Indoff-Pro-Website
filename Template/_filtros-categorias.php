@@ -9,8 +9,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $producto = new ameri\Producto;
     $categoria = new ameri\Categoria;
 
-    $info_producto = $producto->mostrar();
-    $info_categoria = $categoria->mostrar();
+    $info_producto = $producto->mostrarOrden();
+    $info_categoria = $categoria->mostrarOrden();
 
     if (!$info_producto && $info_categoria)
         header('Location: index.php');
@@ -26,7 +26,7 @@ $cantidad_categorias = count($info_categoria);
 
 if ($cantidad_categorias > 0) {
     //$cont_categorias=0;<
-    $info_categoria_elegida = $categoria->mostrarPorId($id);
+    $info_categoria_elegida = $categoria->mostrarPorIdOrden($id);
 ?>
 
     <!--navbar-->

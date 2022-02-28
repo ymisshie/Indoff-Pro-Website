@@ -1,7 +1,7 @@
 <?php
 
-print '<pre>';
-print_r($_POST);
+// print '<pre>';
+// print_r($_POST);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 

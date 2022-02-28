@@ -1,6 +1,6 @@
 <?php
-// print '<pre>';
-// print_r($_POST);
+print '<pre>';
+print_r($_POST);
 // print_r($_FILES);
 
 require '../vendor/autoload.php';
@@ -43,6 +43,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             // 'fecha'=>$_POST['fecha'],
             'fecha'=> date('Y-m-d'),
             'id'=>$_POST['id'],
+            'orden'=>$_POST['orden_eventos'],
         );
 
         if(!empty($_POST['imagen_temp']))
@@ -53,10 +54,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $rpt = $evento->actualizar($_params);
 
-        if($rpt)
-            header('Location: eventos/index.php');
-        else
-            print 'Error al editar una película';
+            if($rpt)
+                header('Location: eventos/index.php');
+            else
+                print 'Error al editar una película';
     }
 }
 

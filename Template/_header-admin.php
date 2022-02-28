@@ -54,7 +54,7 @@
                         <li class="nav-item px-4 dropdown">
                             <a class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
                                                                                         echo "active";
-                                                                                    } ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
+                                                                                    } ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" <?php echo $root_categorias; ?>>Categorías</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
                                 require $root_vendor;
@@ -115,7 +115,7 @@
                             <div class="col ms-md-1 d-flex align-items-center">
                                 <div><i class="fas fa-user-alt fs-1-5"></i></div>
                                 <div class="nav-item dropdown">
-                                    <a class="text-white px-3 dropdown-toggle admin-nav-menu" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="text-white px-3 dropdown-toggle admin-nav-menu nav-link" href="" data-bs-toggle="dropdown" aria-expanded="false">
                                         <?php print $_SESSION['admin_info']['nombre_login'] ?>
                                     </a>
                                     <ul class="dropdown-menu">
@@ -127,12 +127,16 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <!-- </div> -->
         </nav>
         <!--!pimary navigation-->
 
     </header>
+
+    
     <!--!start #header-->
 
     <!--start #main-site-->
     <main id="main-site">
+
+   

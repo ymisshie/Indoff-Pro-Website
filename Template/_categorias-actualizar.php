@@ -49,6 +49,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <input name="imagen" type="file">
                         <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen'] ?>">
                     </div>
+                    <div class="form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Orden</h6>
+                        <select  name="orden_categorias" class="orden_categorias">
+                            <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?> > 1 </option>
+                            <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?> >2</option>
+                            <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>  >3</option>
+                            <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?> > 4  </option>
+                            <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?> > 5  </option>
+                            <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?> >  6  </option>
+                            <option value="" <?php if ($resultado['orden'] > 6) print "selected" ?> >    </option>
+                        </select>
+                    </div>
 
                     <input type="submit" name="accion" class="btn btn-secondary my-lg-4" value="Actualizar">
                     <a href="index.php" type="submit" class="btn btn-primary my-lg-4 mx-lg-4" role="button">Cancelar</a>

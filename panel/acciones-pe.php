@@ -188,6 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'peso' => $_POST['peso_producto_evento'],
             'color' => $string_color,
             'id' => $_POST['id'],
+            'orden'=>$_POST['orden_productos_eventos'],
 
 
         );
