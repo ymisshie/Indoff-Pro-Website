@@ -5,7 +5,7 @@ $cantidad_carrito = 0;
 
 if (isset($_SESSION['carrito'])) {
 
- 
+
     $cantidad_carrito = count($_SESSION['carrito']);
 }
 
@@ -62,12 +62,16 @@ if (isset($_SESSION['carrito'])) {
                                 <div><i class="fa-solid fa-cart-shopping fs-1-5"></i></i></div>
                                 <div><a href="carrito.php" class="nav-link text-white px-md-3 fw-500">Carrito <span class="fw-600">( <?php if ($cantidad_carrito > 0) {
                                                                                                                                             print $cantidad_carrito;
-                                                                                                                                        } else{print '0';}?> )</span></a></div>
+                                                                                                                                        } else {
+                                                                                                                                            print '0';
+                                                                                                                                        } ?> )</span></a></div>
                     <?php
                             }
                         }
                     }
+
                     ?>
+
                     <?php
                     if ($_SESSION) {
                         if (isset($_SESSION['admin_info'])) {
@@ -83,102 +87,108 @@ if (isset($_SESSION['carrito'])) {
                 </div>
                 <div class="col btn-cuenta">
                     <div><i class="fas fa-user-alt fs-1-5"></i></div>
-                    <div class="nav-item  <?php 
-                    if($_SESSION){
-                     if(isset($_SESSION['user_info'])){
-                         if($_SESSION['user_info']){
-                              echo 'dropdown';}}
-                     if(isset($_SESSION['admin_info'])){
-                        if($_SESSION['admin_info']){
-                             echo 'dropdown';}}}
-                             ?>">
-                        <a class="nav-link text-white px-lg-3 fw-500 <?php 
-                            if($_SESSION){
-                            if(isset($_SESSION['user_info'])){
-                                if($_SESSION['user_info']){
-                                    echo 'dropdown-toggle';}}
-                            if(isset($_SESSION['admin_info'])){
-                                if($_SESSION['admin_info']){
-                                    echo 'dropdown-toggle';}}}
-                                    ?>"
-                        href="login.php" data-bs-toggle="<?php 
-                            if($_SESSION){
-                            if(isset($_SESSION['user_info'])){
-                                if($_SESSION['user_info']){
-                                    echo 'dropdown';}}
-                            if(isset($_SESSION['admin_info'])){
-                                if($_SESSION['admin_info']){
-                                    echo 'dropdown';}}}
-                                    ?>"
-                         aria-expanded="false">
-                                    <?php if($_SESSION){
-                                        if(isset($_SESSION['admin_info'])){
-                                            if($_SESSION['admin_info']){
-                                            print $_SESSION['admin_info']['nombre_login'];
-                                            }}
-                                        if(isset($_SESSION['user_info'])){
-                                            if($_SESSION['user_info']){
-                                                print $_SESSION['user_info']['nombre_login'];
+                    <div class="nav-item  <?php
+                                            if ($_SESSION) {
+                                                if (isset($_SESSION['user_info'])) {
+                                                    if ($_SESSION['user_info']) {
+                                                        echo 'dropdown';
+                                                    }
+                                                }
+                                                if (isset($_SESSION['admin_info'])) {
+                                                    if ($_SESSION['admin_info']) {
+                                                        echo 'dropdown';
+                                                    }
+                                                }
                                             }
-                                        }
-                                        if ( (!isset($_SESSION['admin_info']) && !isset($_SESSION['user_info']))) {
-                                            print("Login");
-                                            
-                                        }
-                                        elseif(isset($_SESSION['user_info']) && !isset($_SESSION['admin_info'])){
-                                            if(!$_SESSION['user_info']){
-                                                print ("Login");
-                                            }
-                                        }
-                                        elseif(isset($_SESSION['admin_info']) && !isset($_SESSION['user_info'])){
-                                            if(!$_SESSION['admin_info']){
-                                                print ("Login");
-                                                
-                                            }
-                                        }
-                                        elseif(isset($_SESSION['admin_info']) && isset($_SESSION['user_info'])){
-                                            if($_SESSION['admin_info'] && !$_SESSION['user_info']){
-                                                print ("Login");
-                                            
-                                            }
-                                            if(!$_SESSION['admin_info'] && $_SESSION['user_info']){
-                                                print ("Login");
-                                            
-                                            }
-                                            if(!$_SESSION['admin_info'] && !$_SESSION['user_info']){
-                                                print ("Login");
-                                            
-                                            }
-                                        }
-                                    
-                                        }
-                                        else{
-                                            print("Login");
-                                        }
-                                        ?>
-                                    </a>
+                                            ?>">
+                        <a class="nav-link text-white px-lg-3 fw-500 <?php
+                                                                        if ($_SESSION) {
+                                                                            if (isset($_SESSION['user_info'])) {
+                                                                                if ($_SESSION['user_info']) {
+                                                                                    echo 'dropdown-toggle';
+                                                                                }
+                                                                            }
+                                                                            if (isset($_SESSION['admin_info'])) {
+                                                                                if ($_SESSION['admin_info']) {
+                                                                                    echo 'dropdown-toggle';
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        ?>" href="login.php" data-bs-toggle="<?php
+                                                                                                                if ($_SESSION) {
+                                                                                                                    if (isset($_SESSION['user_info'])) {
+                                                                                                                        if ($_SESSION['user_info']) {
+                                                                                                                            echo 'dropdown';
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                    if (isset($_SESSION['admin_info'])) {
+                                                                                                                        if ($_SESSION['admin_info']) {
+                                                                                                                            echo 'dropdown';
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                ?>" aria-expanded="false">
+                            <?php if ($_SESSION) {
+                                if (isset($_SESSION['admin_info'])) {
+                                    if ($_SESSION['admin_info']) {
+                                        print $_SESSION['admin_info']['nombre_login'];
+                                    }
+                                }
+                                if (isset($_SESSION['user_info'])) {
+                                    if ($_SESSION['user_info']) {
+                                        print $_SESSION['user_info']['nombre_login'];
+                                    }
+                                }
+                                if ((!isset($_SESSION['admin_info']) && !isset($_SESSION['user_info']))) {
+                                    print("Login");
+                                } elseif (isset($_SESSION['user_info']) && !isset($_SESSION['admin_info'])) {
+                                    if (!$_SESSION['user_info']) {
+                                        print("Login");
+                                    }
+                                } elseif (isset($_SESSION['admin_info']) && !isset($_SESSION['user_info'])) {
+                                    if (!$_SESSION['admin_info']) {
+                                        print("Login");
+                                    }
+                                } elseif (isset($_SESSION['admin_info']) && isset($_SESSION['user_info'])) {
+                                    if ($_SESSION['admin_info'] && !$_SESSION['user_info']) {
+                                        print("Login");
+                                    }
+                                    if (!$_SESSION['admin_info'] && $_SESSION['user_info']) {
+                                        print("Login");
+                                    }
+                                    if (!$_SESSION['admin_info'] && !$_SESSION['user_info']) {
+                                        print("Login");
+                                    }
+                                }
+                            } else {
+                                print("Login");
+                            }
+                            ?>
+                        </a>
 
-                                    <?php
-                                    if(isset($_SESSION['user_info'])){
-                                    if($_SESSION['user_info']) {
-                                        ?>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="cerrar-sesion.php">Cerrar sesión</a></li>
-                                        </ul>
-                                        <?php
-                                        }}
-                                    ?>
-                                    <?php
-                                    if(isset($_SESSION['admin_info'])){
-                                    if($_SESSION['admin_info']) {
-                                        ?>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="panel/cerrar-sesion.php">Cerrar sesión</a></li>
-                                        </ul>
-                                        <?php
-                                        }}
-                                    ?>
-                                    <!-- <ul class="dropdown-menu">
+                        <?php
+                        if (isset($_SESSION['user_info'])) {
+                            if ($_SESSION['user_info']) {
+                        ?>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="cerrar-sesion.php">Cerrar sesión</a></li>
+                                </ul>
+                        <?php
+                            }
+                        }
+                        ?>
+                        <?php
+                        if (isset($_SESSION['admin_info'])) {
+                            if ($_SESSION['admin_info']) {
+                        ?>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="panel/cerrar-sesion.php">Cerrar sesión</a></li>
+                                </ul>
+                        <?php
+                            }
+                        }
+                        ?>
+                        <!-- <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="cerrar-sesion.php">Cerrar sesión</a></li>
                                     </ul> -->
                     </div>
@@ -255,10 +265,10 @@ if (isset($_SESSION['carrito'])) {
                             </ul>
 
                         <li class="nav-item px-md-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>
+                            <a class="nav-link text-white" aria-current="page" href="contacto.php">Contacto</a>
                         </li>
                         <li class="nav-item px-md-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" href="#">Nosotros</a>
+                            <a class="nav-link text-white" aria-current="page" href="nosotros.php">Nosotros</a>
                         </li>
                     </ul>
                 </div>
@@ -268,6 +278,5 @@ if (isset($_SESSION['carrito'])) {
 
     </header>
     <!--!start #header-->
-
     <!--start #main-site-->
     <main id="main-site">

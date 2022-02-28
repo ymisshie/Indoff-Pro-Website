@@ -14,6 +14,7 @@ require 'vendor/autoload.php';
 
 if (isset($_REQUEST["accion"])) {
     $id = $_REQUEST['id_producto'];
+    $idcarrito = 1;
 
     $producto = new ameri\Producto;
     $info_producto = $producto->mostrarPorId($id);
@@ -27,6 +28,7 @@ if (isset($_REQUEST["accion"])) {
     $descripcion = $_REQUEST['descripcion_producto'];
     $proveedor = $_REQUEST['proveedor_producto'];
     $opcion1 = $_REQUEST['selectOpciones1_producto'];
+    /*
     $opcion2 = $_REQUEST['selectOpciones2_producto'];
     $opcion3 = $_REQUEST['selectOpciones3_producto'];
     $opcion4 = $_REQUEST['selectOpciones4_producto'];
@@ -36,7 +38,7 @@ if (isset($_REQUEST["accion"])) {
     $opcion8 = $_REQUEST['selectOpciones8_producto'];
     $opcion9 = $_REQUEST['selectOpciones9_producto'];
     $opcion10 = $_REQUEST['selectOpciones10_producto'];
-
+*/
     $color = $_REQUEST['color_producto'];
 
     /*
@@ -60,13 +62,14 @@ if (isset($_REQUEST["accion"])) {
     $_SESSION["carrito"][$nombre]["color"] = $color;
 
     */
-    $_SESSION['carrito'][$nombre] = array(
+    $_SESSION['carrito'][$idcarrito] = array(
         'imagen' => $info_producto['imagen'],
         'id' => $id,
         'nombre' => $nombre,
         'descripcion' => $descripcion,
         'proveedor' => $proveedor,
         'color' => $color,
+        /*
         'opcion1' => $opcion1,
         'opcion2' => $opcion2,
         'opcion3' => $opcion3,
@@ -77,12 +80,12 @@ if (isset($_REQUEST["accion"])) {
         'opcion8' => $opcion8,
         'opcion9' => $opcion9,
         'opcion10' => $opcion10,
+        */
         'size' => $info_producto['size'],
         'peso' => $info_producto['peso'],
     );
 
-    if ($_SESSION['carrito']) {
-     
+    if ($_SESSION['carrito'][$idcarrito]) {
     }
 }
 

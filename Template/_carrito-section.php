@@ -5,12 +5,8 @@ print '<pre>';s
 print_r($_SESSION);
 */
 
-if (isset($_REQUEST["vaciar"])) {
-    unset($_SESSION["carrito"]);
-
+if (!isset($_SESSION["carrito"])) {
 ?>
-
-
     <!--carrito-section-->
     <section class="carrito-section">
         <div class="container">
@@ -30,7 +26,30 @@ if (isset($_REQUEST["vaciar"])) {
     <!--!carrito-section-->
 
 
-<?php
+    <?php
+} else if (isset($_REQUEST["vaciar"])) {
+    unset($_SESSION["carrito"]); { ?>
+
+        <!--carrito-section-->
+        <section class="carrito-section">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+
+                    <h2 class="section-title pt-5">Carrito vacio</h2>
+                    <div class="col">
+                        <a class="btn btn-primary my-4 btn-lg ss ms-auto" href="categorias.php?id=1" role="button">Ver productos</a>
+                    </div>
+                    <div class="col-12 pb-5">
+                        <span><i class="fas fa-cart-plus py-5" style="font-size: 15em;"></i></span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--!carrito-section-->
+
+    <?php
+    }
 } else 
     if (isset($_SESSION['carrito'])) {
     $cantidad_carrito = 0;
@@ -42,7 +61,7 @@ if (isset($_REQUEST["vaciar"])) {
     print '<pre>';
     print_r ($_SESSION['carrito']);
     */
-?>
+    ?>
 
     <!--carrito-section-->
     <section id="carrito" class="carrito-section">

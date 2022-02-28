@@ -284,19 +284,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         //print_r($array);
                         ?>
 
-                        <select name="color_producto[]" multiple class="color-select col-12" id="color-select" required>
+                        <textarea class="form-control textarea" name="color_producto" type="text"  placeholder="Escriba los colores del producto separados por comas sin espacios."><?php print $resultado['color']?></textarea>
 
-                            <?php
-
-                            for ($y = 0; $y < 141; $y++) {
-                            ?>
-                                <option value="<?php print $array[$y] ?>" style="background-color:<?php print $array[$y] ?>; " class="px-lg-3 fw-400">
-                                    <?php print $array[$y] ?>
-                                </option>
-                            <?php
-                            }
-                            ?>
-                        </select>
 
                         <div class="row p-4 py-4 px-3">
                             <?php
@@ -327,10 +316,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <h5 class="fw-700 py-4 mb-0">Variaciones del producto</h5>
                     </div>
 
+                    <!--
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Opciones del producto</h6>
                         <textarea class="form-control textarea" name="opciones_producto" type="text" placeholder="(Opcional) Si el producto tiene variaciones. Ej: tallas de camisetas, S, M, L, XL."><?php print $resultado['opciones'] ?> </textarea>
                     </div>
+                        -->
+                    <input class="" name="opciones_producto" type="hidden" value=""></input>
+
 
                     <?php
                     $count = 7;
@@ -350,12 +343,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                             <div class="d-flex py-2">
 
                                 <h6 class=" col-form-label col-md-3 col-lg-3 col-3  fw-600 color-grey2">Cantidad mín <?php
-                                                                                                                print $x;
-                                                                                                                if ($x == 1) {
-                                                                                                                    print ' <span class="color-red ms-md-1">  *</span>'
-                                                                                                                ?>
+                                                                                                                        print $x;
+                                                                                                                        if ($x == 1) {
+                                                                                                                            print ' <span class="color-red ms-md-1">  *</span>'
+                                                                                                                        ?>
                                     <?php
-                                                                                                                }
+                                                                                                                        }
                                     ?></h6>
                                 <div class="form-group col-md-3 mx-3">
 
@@ -375,22 +368,22 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                     ?>
 
                                     <input class=" col-12 qty-dropdown" type="number" name="cantidad_producto[]" value="<?php print $separada_cantidad[$x - 1] ?>" placeholder="0" <?php if ($x == 1) {
-                                                                                                                                                                                            print 'required';
-                                                                                                                                                                                        } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
+                                                                                                                                                                                        print 'required';
+                                                                                                                                                                                    } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
                                     <small class="d-flex form-text text-disbabled">Cantidad mín <?php print $x ?></small>
                                 </div>
                                 <h6 class="col-form-label fw-600 col-md-2 col-3 color-grey2 ms-md-4">Costo <?php
-                                                                                                        print $x;
-                                                                                                        if ($x == 1) {
-                                                                                                            print ' <span class="color-red ms-1">  *</span>'
-                                                                                                        ?>
+                                                                                                            print $x;
+                                                                                                            if ($x == 1) {
+                                                                                                                print ' <span class="color-red ms-1">  *</span>'
+                                                                                                            ?>
                                     <?php
-                                                                                                        }
+                                                                                                            }
                                     ?></h6>
                                 <div class="form-group col-md-3 col-3">
                                     <input class=" col-12 qty-dropdown" type="number" name="precio_producto[]" placeholder="0" value="<?php print $separada_costo[$x - 1] ?>" <?php if ($x == 1) {
-                                                                                                                                                                                        print 'required';
-                                                                                                                                                                                    } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
+                                                                                                                                                                                    print 'required';
+                                                                                                                                                                                } ?> onKeyPress="if (event.keyCode < 48 || event.keyCode > 57)event.returnValue = false;" min="1">
                                     <small class="d-flex form-text text-disbabled">Costo <?php
                                                                                             print $x;
 
@@ -407,14 +400,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-center py-md-2">
                         <h6 class="col-form-label fw-600">Orden</h6>
-                        <select  name="orden_productos" class="orden_productos">
-                            <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?> > 1 </option>
-                            <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?> >2</option>
-                            <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>  >3</option>
-                            <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?> > 4  </option>
-                            <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?> > 5  </option>
-                            <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?> >  6  </option>
-                            <option value="" <?php if ($resultado['orden'] > 6) print "selected" ?> >    </option>
+                        <select name="orden_productos" class="orden_productos">
+                            <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?>> 1 </option>
+                            <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?>>2</option>
+                            <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>>3</option>
+                            <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?>> 4 </option>
+                            <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?>> 5 </option>
+                            <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?>> 6 </option>
+                            <option value="" <?php if ($resultado['orden'] > 6) print "selected" ?>> </option>
                         </select>
                     </div>
 

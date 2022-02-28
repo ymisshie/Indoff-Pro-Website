@@ -11,8 +11,9 @@ include('header.php')
 ?>
 
 
+
 <?php
-/*include carrito-section*/
+
 include('Template/_carrito-section.php')
 /*include carrito-section*/
 ?>

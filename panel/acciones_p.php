@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 */
 
         $color = $_POST['color_producto'];
-        $string_color = implode(",", $color);
+       // $string_color = implode(",", $color);
 
         $cantidad = $_POST['cantidad_producto'];
         $string_cantidad = implode(",", $cantidad);
@@ -83,12 +83,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'categoria_id' => $_POST['categoria_id_producto'],
             'imagen' => subirFoto(),
             'fecha' => date('Y-m-d'),
-            'opciones' => $_POST['opciones_producto'],
+            'opciones' => "",
             'cantidad' => $string_cantidad,
             'precio' => $string_precio,
             'size' => $_POST['size_producto'],
             'peso' => $_POST['peso_producto'],
-            'color' => $string_color
+            'color' => $color
         );
 
         $rpt = $producto->registrar($_params);
@@ -145,9 +145,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit('Completar colores del producto');
         }
 
-        /*
+        
         $color = $_POST['color_producto'];
-        $color_array = implode(",", $color);
+       // $color_array = implode(",", $color);
         //echo $color_array;
 
         $cantidad = $_POST['cantidad_producto'];
@@ -156,10 +156,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $precio = $_POST['precio_producto'];
         $precio_array = implode(",", $precio);
-*/
 
+/*
         $color = $_POST['color_producto'];
         $string_color = implode(",", $color);
+*/
 
         $cantidad = $_POST['cantidad_producto'];
         $string_cantidad = implode(",", $cantidad);
@@ -181,12 +182,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'categoria_id' => $_POST['categoria_id_producto'],
             'imagen' => subirFoto(),
             'fecha' => date('Y-m-d'),
-            'opciones' => $_POST['opciones_producto'],
+            'opciones' => "",
             'cantidad' => $string_cantidad,
             'precio' => $string_precio,
             'size' => $_POST['size_producto'],
             'peso' => $_POST['peso_producto'],
-            'color' => $string_color,
+            'color' => $color,
             'id' => $_POST['id'],
             'orden'=>$_POST['orden_productos'],
 

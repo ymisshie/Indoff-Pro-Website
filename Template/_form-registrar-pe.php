@@ -279,19 +279,8 @@ die;
                         //print_r($array);
                         ?>
 
-                        <select name="color_producto[]" multiple class="color-select col-md-12 col-lg-12" id="color-select" required>
+                        <textarea class="form-control textarea" name="color_producto" type="text" placeholder="Escriba los colores del producto separados por comas sin espacios."></textarea>
 
-                            <?php
-
-                            for ($y = 0; $y < 141; $y++) {
-                            ?>
-                                <option value="<?php print $array[$y] ?>" style="background-color:<?php print $array[$y] ?>; " class="px-lg-3 fw-400">
-                                    <?php print $array[$y] ?>
-                                </option>
-                            <?php
-                            }
-                            ?>
-                        </select>
 
                         <div class="row p-lg-4 py-md-4 px-md-3">
                             <?php
@@ -322,10 +311,14 @@ die;
                         <h5 class="fw-700 py-md-4 mb-0">Variaciones del producto</h5>
                     </div>
 
+                    <!--
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Opciones del producto</h6>
                         <textarea class="form-control textarea" name="opciones_producto_evento" type="text" placeholder="(Opcional) Si el producto tiene variaciones. Ej: tallas de camisetas, S, M, L, XL."></textarea>
                     </div>
+                        -->
+
+                        <input class="" name="opciones_producto" type="hidden" value=""></input>
 
                     <?php
                     $count = 7;

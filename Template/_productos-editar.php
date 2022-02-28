@@ -99,7 +99,10 @@ foreach ($info_producto as $productos) {
                         <th scope="col" class="col-md-1 col-lg-1">Orden</th>
                         <th scope="col" class="col-md-1 col-lg-1">Imagen</th>
                         <th scope="col" class="col-md-1 col-lg-1">Información</th>
+
+                        <!--
                         <th scope="col" class="col-md-1 col-lg-1">Variaciones</th>
+                -->
                         <th scope="col" class="col-md-1 col-lg-1">Cant. y costo</th>
                         <th scope="col" class="col-md-1 col-lg-1">Colores</th>
                         <th scope="col" class="col-md-1 col-lg-1">Peso y tamaño</th>
@@ -162,33 +165,7 @@ foreach ($info_producto as $productos) {
                                     </td>
 
 
-                                    <td scope="col" class="fs-09">
-                                        <div class="d-flex justify-content-center">
-
-
-                                            <?php
-
-                                            $opciones = $item_producto['opciones'];
-                                            $separada = '';
-                                            $separador = ",";
-                                            $separada = explode($separador, $opciones);
-
-                                            $count_opciones = count($separada);
-
-                                            for ($o = 0; $o < $count_opciones; $o++) {
-                                            ?>
-                                                <p class="mx-1 my-1"><?php print $separada[$o]; ?>
-                                                </p>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-
-
-
-
-                                    </td>
-
+                              
 
 
                                     <td scope="col" class="fs-09 text-start">

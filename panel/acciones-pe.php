@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 */
 
         $color = $_POST['color_producto'];
-        $string_color = implode(",", $color);
+   //     $string_color = implode(",", $color);
 
         $cantidad = $_POST['cantidad_producto'];
         $string_cantidad = implode(",", $cantidad);
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'precio' => $string_precio,
             'size' => $_POST['size_producto_evento'],
             'peso' => $_POST['peso_producto_evento'],
-            'color' => $string_color
+            'color' => $color
         );
 
         $rpt = $producto_evento->registrar($_params);
@@ -159,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 */
 
         $color = $_POST['color_producto'];
-        $string_color = implode(",", $color);
+    //    $string_color = implode(",", $color);
 
         $cantidad = $_POST['cantidad_producto'];
         $string_cantidad = implode(",", $cantidad);
@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'precio' => $string_precio,
             'size' => $_POST['size_producto_evento'],
             'peso' => $_POST['peso_producto_evento'],
-            'color' => $string_color,
+            'color' => $color,
             'id' => $_POST['id'],
             'orden'=>$_POST['orden_productos_eventos'],
 

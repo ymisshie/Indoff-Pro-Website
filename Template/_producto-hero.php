@@ -60,14 +60,14 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     <div class="container-fluid py-5">
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-evenly">
             <!--IMAGEN DEL PRODUCTO-->
             <div class="col-12 col-lg-4 text-center producto-img">
                 <?php
                 $imagen = 'upload/' . $info_producto['imagen'];
                 if (file_exists($imagen)) {
                 ?>
-                    <img src="<?php print $imagen; ?>" class="producto-img py-4 align-self-center" style="object-fit: contain;">
+                    <img src="<?php print $imagen; ?>" class="producto-img img-fluid py-4 px-4 align-self-center" style="object-fit: contain;">
 
                 <?php } else { ?>
                     Sin imagen
@@ -76,7 +76,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <!--!IMAGEN DEL PRODUCTO-->
 
             <!--INFO DEL PRODUCTO-->
-            <form class="col-12 col-lg-6 px-4 d-flex" method="POST" action="" enctype="multipart/form-data">
+            <form class="col-12 col-lg-7 justify-content-evenly  d-flex" method="POST" action="" enctype="multipart/form-data">
                 <div class="col-md-8 col-8 col-lg-9">
                     <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
                     <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
@@ -232,10 +232,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                 </div>
 
-                <div class="col-4 col-lg- ws formulario px-4">
+                <div class="col-4 col-lg-3 ws bg px-4">
                     <h5 class="py-4 fw-600" id="precioTotal">Resumen de cotización</h5>
                     <h5 class="mb-4 color-red fw-600">TOTAL</h5>
-                    
+
                     <?php
                     if ((isset($_SESSION['admin_info'])) || (isset($_SESSION['user_info']))) {
 
@@ -244,8 +244,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
                     <?php
 
-                    }
-                   elseif ((!isset($_SESSION['admin_info'])) && (!isset($_SESSION['user_info']))) {
+                    } elseif ((!isset($_SESSION['admin_info'])) && (!isset($_SESSION['user_info']))) {
 
                     ?>
                         <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
