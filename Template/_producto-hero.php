@@ -76,7 +76,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <!--!IMAGEN DEL PRODUCTO-->
 
             <!--INFO DEL PRODUCTO-->
-            <form class="col-12 col-lg-7 justify-content-evenly  d-flex" method="POST" action="" enctype="multipart/form-data">
+            <form class="col-12 col-lg-7 justify-content-evenly  d-flex" method="POST" action="funciones.php" enctype="multipart/form-data">
                 <div class="col-md-8 col-8 col-lg-9">
                     <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
                     <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
@@ -240,7 +240,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     if ((isset($_SESSION['admin_info'])) || (isset($_SESSION['user_info']))) {
 
                     ?>
-                        <input type="submit" name="accion" id="liveAlertBtn" value="Agregar a carrito" class="btn btn-primary w-100">
+                        <input type="submit" name="accion" value="Agregar al carrito" class="btn btn-primary w-100">
                         <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
                     <?php
 

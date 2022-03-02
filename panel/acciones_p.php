@@ -95,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($rpt) {
 
-
             //cuando se el registro se de de forma correcta se direccina a
             header("Location: productos/index.php?id=".$_params['categoria_id']);
         } else {

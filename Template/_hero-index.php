@@ -6,7 +6,7 @@
             <div class="col-md-5 col-12 py-5">
                 <h1 class="hero-title fs-3-5">Promocione su marca con Indoff Pro</h1>
                 <h5 class=" hero-description py-3 mb-0">Un premio, reconocimiento o un simple gesto, ayuda a que los empleados se sientan parte de la empresa.</h5>
-                <a class="btn btn-primary btn-lg mt-3 w-50" href="register-user.php" role="button">Registrarse ahora </a>
+                <a class="btn btn-primary btn-lg mt-3 w-50" href="form-register.php" role="button">Registrarse ahora </a>
                 <a class="btn btn-secondary btn-lg mt-3 px-5 ms-4 text-white" href="categorias.php?id=1" role="button">Ver productos</a>
             </div>
             <div class="col-md-3 align-self-center ms-auto">

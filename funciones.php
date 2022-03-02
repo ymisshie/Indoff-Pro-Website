@@ -2,6 +2,151 @@
 
 require 'vendor/autoload.php';
 
+$producto_carrito = new ameri\Carrito;
+$producto = new ameri\Producto;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if ($_POST['accion'] === 'Agregar al carrito') {
+        
+        $id = $_POST['id_producto'];
+
+        $info_producto = $producto->mostrarPorId($id);
+
+        print '<pre>';
+        print_r($_POST);
+
+        print_r($_FILES);
+
+        $cantidad_selected = $_POST['cantidad_producto'];
+        $string_cantidad = implode(",", $cantidad_selected);
+      
+        $cantidad=$string_cantidad[0];
+        $precio=$string_cantidad[1];
+
+        $_params = array(
+            'usuarios_id' =>'',
+            'nombre' => $info_producto['nombre'],
+            'descripcion' => $info_producto['descripcion'],
+            'proveedor' => $info_producto['proveedor'],
+            'imagen' => $info_producto['imagen'],
+            'fecha' => date('Y-m-d'),
+            'opciones1' => "selectOpciones1_producto",
+            'opciones2' => "selectOpciones2_producto",
+            'opciones3' => "selectOpciones3_producto",
+            'opciones4' => "selectOpciones4_producto",
+            'opciones5' => "selectOpciones5_producto",
+            'opciones6' => "selectOpciones6_producto",
+            'opciones7' => "selectOpciones7_producto",
+            'opciones8' => "selectOpciones8_producto",
+            'opciones9' => "selectOpciones9_producto",
+            'opciones10' => "selectOpciones10_producto",
+            'cantidad' => $cantidad,
+            'precio' => $precio,
+            'size' => $info_producto['size'],
+            'peso' => $info_producto['peso'],
+            'color' => $_POST['color_producto']
+        );
+
+        $rpt = $producto_carrito->registrar($_params);
+
+        if ($rpt) {
+
+            //cuando se el registro se de de forma correcta se direccina a
+            header("Location: productos/index.php?id=" . $_params['categoria_id']);
+        } else {
+            print 'Error al registrar un producto';
+        }
+    }
+}
+
+
+/*
+if (isset($_REQUEST["accion"])) {
+
+    //si ya existe el carrito
+    if (isset($_SESSION['carrito'])) {
+
+        $idcarrito = count($_SESSION['carrito']);
+
+        $id = $_REQUEST['id_producto'];
+
+        $producto = new ameri\Producto;
+        $info_producto = $producto->mostrarPorId($id);
+
+     //   print '<pre>';
+       // print_r($_POST);
+
+        $nombre = $_REQUEST['nombre_producto'];
+        $descripcion = $_REQUEST['descripcion_producto'];
+        $proveedor = $_REQUEST['proveedor_producto'];
+        $opcion1 = $_REQUEST['selectOpciones1_producto'];
+   
+        $color = $_REQUEST['color_producto'];
+
+        $_SESSION['carrito'][$idcarrito] = array(
+            'imagen' => $info_producto['imagen'],
+            'id' => $id,
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'proveedor' => $proveedor,
+            'color' => $color,
+            'opcion1' => $opcion1,
+            'size' => $info_producto['size'],
+            'peso' => $info_producto['peso'],
+        );
+
+
+      //  print_r($_SESSION['carrito']);
+        //print $cantidad_carrito;
+
+        // if ($_SESSION['carrito'][$idcarrito]) {
+        $idcarrito++;
+
+    } else {
+        $idcarrito = 0;
+
+
+        $id = $_REQUEST['id_producto'];
+
+        $producto = new ameri\Producto;
+        $info_producto = $producto->mostrarPorId($id);
+
+       // print '<pre>';
+        //print_r($_POST);
+
+        $nombre = $_REQUEST['nombre_producto'];
+        $descripcion = $_REQUEST['descripcion_producto'];
+        $proveedor = $_REQUEST['proveedor_producto'];
+        $opcion1 = $_REQUEST['selectOpciones1_producto'];
+
+        $color = $_REQUEST['color_producto'];
+
+        $_SESSION['carrito'][$idcarrito] = array(
+            'imagen' => $info_producto['imagen'],
+            'id' => $id,
+            'nombre' => $nombre,
+            'descripcion' => $descripcion,
+            'proveedor' => $proveedor,
+            'color' => $color,
+            'opcion1' => $opcion1,
+            'size' => $info_producto['size'],
+            'peso' => $info_producto['peso'],
+        );
+
+        //print_r($_SESSION['carrito']);
+       // print $cantidad_carrito;
+
+        // if ($_SESSION['carrito'][$idcarrito]) {
+        $idcarrito++;
+    }
+
+    // }
+}
+*/
+
+
+/*
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_POST['accion'] === 'Realizar cotización') {
         $id = $_REQUEST['id_producto'];
@@ -29,26 +174,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $color = $_REQUEST['color_producto'];
 
-        /*
-        $_SESSION["carrito"]["id"] = $id;
-        $_SESSION["carrito"]["nombre"] = $info_producto['nombre'];
-        $_SESSION["carrito"]["proveedor"] = $info_producto['proveedor'];
-        $_SESSION["carrito"]["descripcion"] = $info_producto['descripcion'];
-        $_SESSION["carrito"]["imagen"] = $info_producto['imagen'];
-        $_SESSION["carrito"]["opcion1"] = $opcion1;
-        $_SESSION["carrito"]["opcion2"] = $opcion2;
-        $_SESSION["carrito"]["opcion3"] = $opcion3;
-        $_SESSION["carrito"]["opcion4"] = $opcion4;
-        $_SESSION["carrito"]["opcion5"] = $opcion5;
-        $_SESSION["carrito"]["opcion6"] = $opcion6;
-        $_SESSION["carrito"]["opcion7"] = $opcion7;
-        $_SESSION["carrito"]["opcion8"] = $opcion8;
-        $_SESSION["carrito"]["opcion9"] = $opcion9;
-        $_SESSION["carrito"]["opcion10"] = $opcion10;
-        $_SESSION["carrito"]["size"] = $info_producto['size'];
-        $_SESSION["carrito"]["peso"] = $info_producto['peso'];
-        $_SESSION["carrito"]["color"] = $color;
-*/
 
         $_SESSION['carrito'] = array(
             'id' => $id,
@@ -81,6 +206,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+*/
+
+
 
 /*
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
