@@ -19,9 +19,9 @@ class Carrito
         ));
     }
 
-    public function registrar($_params)
+    public function agregar($_params)
     {
-        $sql = "INSERT INTO `carrito`(`usuarios_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `opciones`, `cantidad`, `precio`, `size`, `peso`, `color`) VALUES (:usuarios_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :opciones, :cantidad, :precio, :color)";
+        $sql = "INSERT INTO `carrito`(`usuarios_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `opciones`, `cantidad`, `precio`, `size`, `peso`, `color`) VALUES (:usuarios_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :opciones, :cantidad, :precio, :size, :peso, :color)";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -90,12 +90,9 @@ class Carrito
 
     public function mostrar()
     {
-
-
-        $sql = "SELECT carrito.id, usuarios.id, carrito.nombre, proveedor, descripcion, imagen, carrito.fecha, opciones, cantidad, precio, size, peso, color, FROM carrito
+        $sql ="SELECT carrito.id, usuarios.id, carrito.nombre, proveedor, carrito.descripcion, carrito.imagen, carrito.fecha, opciones, cantidad, precio, size, peso, color FROM carrito
         INNER JOIN usuarios
-        ON carrito.usuarios_id = usuarios.id ORDER BY carrito.id ASC";
-
+        ON carrito.usuarios_id = usuarios.nombre_login ORDER BY carrito.id ASC";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -106,13 +103,12 @@ class Carrito
 
     public function mostrarPorId($id)
     {
-        $sql = "SELECT * FROM `carritos` WHERE `id` = :id";
+        $sql = "SELECT * FROM `carrito` WHERE `usuarios_id` = :nombre_login";
 
         $resultado = $this->cn->prepare($sql);
 
-
         $_array = array(
-            ":id" => $id
+            ":nombre_login" => $id
         );
 
         if ($resultado->execute($_array))

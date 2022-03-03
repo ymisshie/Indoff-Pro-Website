@@ -1,10 +1,26 @@
 <?php
 
-/*
-print '<pre>';s
-print_r($_SESSION);
-*/
-if (!isset($_SESSION["carrito"])) {
+use ameri\Carrito;
+
+require 'vendor/autoload.php';
+
+$info_carrito = new ameri\Carrito;
+
+$id = $_SESSION['user_info']['nombre_login'];
+//print $id;
+
+$carrito = $info_carrito->mostrarPorId($id);
+
+print '<pre>';
+print_r ($carrito);
+
+$cantidad_carrito =0;
+
+foreach ($carrito as $item_carrito=> $arreglo) 
+{
+}
+
+if (!isset($_SESSION["user_info"])) {
 ?>
     <!--carrito-section-->
     <section class="carrito-section">
@@ -27,7 +43,7 @@ if (!isset($_SESSION["carrito"])) {
 
     <?php
 } else if (isset($_REQUEST["vaciar"])) {
-    unset($_SESSION["carrito"]); { ?>
+    unset($_SESSION["user_info"]); { ?>
 
         <!--carrito-section-->
         <section class="carrito-section">
@@ -50,20 +66,7 @@ if (!isset($_SESSION["carrito"])) {
     <?php
     }
 } else 
-    if (isset($_SESSION['carrito'])) {
-   // $cantidad_carrito = 0;
-    $cantidad_carrito = count($_SESSION['carrito']);
-
-    $total = 0;
-
-   // print '<pre>';
-   // print_r($_SESSION['carrito']);
-   // print $cantidad_carrito;
-
-    /*
-    print '<pre>';
-    print_r ($_SESSION['carrito']);
-    */
+    if (isset($_SESSION['user_info'])) {
 
     ?>
 
@@ -98,85 +101,6 @@ if (!isset($_SESSION["carrito"])) {
 
                             <tbody>
 
-                                <?php
-
-                                foreach ($_SESSION['carrito'] as $indice => $arreglo) {
-                                    //  print $indice;
-                                ?>
-
-                                    <tr class="text-center align-items-center">
-
-
-                                        <?php
-
-                                        foreach ($arreglo as $key => $value) {
-                                            //     print $key;
-
-                                            if ($key != 'id') {
-
-                                                if ($value != '') {
-
-                                                    if ($key == 'imagen') {
-                                                        $imagen = 'upload/' . $value;
-
-                                                        if (file_exists($imagen)) {
-                                        ?>
-                                                            <td scope="col" class="text-center">
-                                                                <img src="<?php print $imagen; ?>" width="100px">
-                                                            </td>
-
-                                                        <?php
-                                                        }
-                                                    } elseif ($key == 'color') {
-                                                        $colores = $value;
-                                                        $separada = '';
-                                                        $separador = ",";
-                                                        $separada = explode($separador, $colores);
-
-                                                        $count_colores = count($separada); ?>
-                                                        <td scope="col" class="">
-
-                                                            <?php
-                                                            for ($u = 0; $u < $count_colores; $u++) {
-                                                            ?>
-
-                                                                <div class="col-1 mx-auto p-3 rounded-circle my-1" style="background-color: <?php print $separada[$u] ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
-
-                                                                </div>
-
-                                                            <?php
-                                                            } ?>
-                                                        </td>
-
-                                                    <?php
-                                                    } elseif ($key == 'opcion1') {
-                                                        $opcion = $value;
-                                                        $separada = '';
-                                                        $separador = ",";
-                                                        $separada_opcion = explode($separador, $opcion);
-
-                                                        $total += $total;
-
-                                                    ?>
-
-                                                        <td scope="col" class=""><?php print $separada_opcion[0] . ' unidades'; ?></td>
-                                                        <td scope="col" class="fw-600 color-red"><?php print '$' . $separada_opcion[1]; ?></td>
-
-                                                    <?php
-                                                    } else {
-                                                    ?>
-                                                        <td scope="col" class=""><?php print $value ?></td>
-                                        <?php
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        ?>
-                                    </tr>
-                                <?php
-
-                                }
-                                ?>
                             </tbody>
                         </table>
                     </div>

@@ -10,8 +10,6 @@ $pagina ="carrito";
 include('header.php')
 ?>
 
-
-
 <?php
 
 include('Template/_carrito-section.php')

@@ -11,6 +11,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $categoria = new ameri\Categoria;
     $info_categoria = $categoria->mostrar();
 
+    //print_r ($_SESSION);
+
     if (!$info_producto)
         header('Location: index.php');
 } else {
@@ -82,6 +84,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
                     <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
                     <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
+                    <input type="hidden" name="usuario_nombre" value="<?php print $_SESSION['user_info']['nombre_login'] ?>">
 
 
                     <h4 class="section-title pt-4"><?php print $info_producto['nombre'] ?>
@@ -132,13 +135,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <?php
                     $opciones = $info_producto['opciones'];
                     $precio = $info_producto['precio'];
+                  //  print $precio;
                     $cantidad = $info_producto['cantidad'];
+                 //   print $cantidad;
                     $separada_opciones = '';
                     $separada_precio = '';
                     $separada_cantidad = '';
                     $separador = ",";
                     $separada_opciones = explode($separador, $opciones);
+
                     $separada_precio = explode($separador, $precio);
+                   
                     $separada_cantidad = explode($separador, $cantidad);
                     $count_opciones = count($separada_opciones);
 
@@ -151,6 +158,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                 <?php
                                 $o = 1;
                                 foreach ($separada_opciones as $opciones_producto) {
+
                                 ?>
                                     <div class="text-center col-lg-4 px-2 py-1">
                                         <h5 class="fw-600 pt-1"><?php print $opciones_producto ?></h5>
@@ -184,6 +192,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <?php
                     } else {
+
                     ?>
                         <div class="col-12 py-3 select-cantidades">
                             <h6 class="fs-1-2 fw-600 m-0 pt-3 pb-4">Seleccione la cantidad</h6>
@@ -199,7 +208,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                                                 print ',';
                                                                 print $precios_producto;
                                                                 print ',';
-                                                                ?>"><?php print $separada_cantidad[$x]; ?></option>
+                                                                ?>"><?php print $separada_cantidad[$x] ?></option>
                                         <?php
                                                 $x++;
                                             }
@@ -217,8 +226,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                     <input type="hidden" name="selectOpciones10_producto" value="">
 
 
-                                    <h6 class="text-start ps-2 pt-2">Unidades: <span class="color-red fw-700" id="cantidad1_producto" name="cantidad1_producto"></span></h6>
-                                    <h6 class="text-start ps-2">Costo: <span class="color-red fw-700" id="precioSelect1_producto" name="precioSelect1_producto"></span></h6>
+                                    <h5 class="text-start ps-2 pt-3">Unidades: <span class="color-red fw-700" id="cantidad1_producto" name="cantidad1_producto"></span></h5>
+                                    <h5 class="text-start ps-2 pb-2">Costo: <span class="color-red fw-700" id="precioSelect1_producto" name="precioSelect1_producto"></span></h5>
                                     <h6 class="text-start ps-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
                                 </div>
 

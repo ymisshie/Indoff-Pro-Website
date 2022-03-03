@@ -16,22 +16,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         print '<pre>';
         print_r($_POST);
 
-        print_r($_FILES);
-
-        $cantidad_selected = $_POST['cantidad_producto'];
-        $string_cantidad = implode(",", $cantidad_selected);
+        
+        $cantidad_selected = $_POST['selectOpciones1_producto'];
+        $string_cantidad = explode(",", $cantidad_selected);
       
         $cantidad=$string_cantidad[0];
         $precio=$string_cantidad[1];
 
         $_params = array(
-            'usuarios_id' =>'',
+            'usuarios_id' =>$_POST['usuario_nombre'],
             'nombre' => $info_producto['nombre'],
-            'descripcion' => $info_producto['descripcion'],
             'proveedor' => $info_producto['proveedor'],
+            'descripcion' => $info_producto['descripcion'],
             'imagen' => $info_producto['imagen'],
             'fecha' => date('Y-m-d'),
-            'opciones' => "selectOpciones1_producto",
+            'opciones' => "",
             'cantidad' => $cantidad,
             'precio' => $precio,
             'size' => $info_producto['size'],
@@ -39,12 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'color' => $_POST['color_producto']
         );
 
-        $rpt = $producto_carrito->registrar($_params);
+        print_r ($_params);
+        $rpt = $producto_carrito->agregar($_params);
 
         if ($rpt) {
 
             //cuando se el registro se de de forma correcta se direccina a
-            header("Location: productos/index.php?id=" . $_params['categoria_id']);
+            header("Location: producto.php?id=$id");
         } else {
             print 'Error al registrar un producto';
         }
