@@ -1,31 +1,6 @@
 <?php
 session_start();
 
-require 'vendor/autoload.php';
-
-$info_carrito = new ameri\Carrito;
-
-if ($_SESSION) {
-    if (isset($_SESSION['user_info'])) {
-
-        $id = $_SESSION['user_info']['nombre_login'];
-
-        //print $id;
-
-        $carrito = $info_carrito->mostrar();
-
-
-        $cantidad_carrito = 0;
-
-        foreach ($carrito as $item_carrito) {
-            if ($item_carrito['usuarios_id'] == $id) {
-                $cantidad_carrito++;
-            }
-        }
-
-        $_SESSION['cantidad_carrito'] = $cantidad_carrito;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -56,6 +31,32 @@ if ($_SESSION) {
     <?php
     // require functions.php file
     require('functions.php');
+
+    require 'vendor/autoload.php';
+
+    $info_carrito = new ameri\Carrito;
+
+    if ($_SESSION) {
+        if (isset($_SESSION['user_info'])){
+
+            $id = $_SESSION['user_info']['nombre_login'];
+
+            //print $id;
+
+            $carrito = $info_carrito->mostrar();
+
+
+            $cantidad_carrito = 0;
+
+            foreach ($carrito as $item_carrito) {
+                if ($item_carrito['usuarios_id'] == $id) {
+                    $cantidad_carrito++;
+                }
+            }
+
+            $_SESSION['cantidad_carrito'] = $cantidad_carrito;
+        }
+    }
     ?>
 
 </head>
