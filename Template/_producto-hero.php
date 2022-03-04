@@ -1,6 +1,9 @@
 <?php
 require 'vendor/autoload.php';
-$cantidad=$_SESSION['cantidad_carrito'];
+if (isset($_SESSION['cantidad_carrito'])){
+    $cantidad=$_SESSION['cantidad_carrito'];
+}
+
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
@@ -78,7 +81,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
                         <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
                         <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
-                        <input type="hidden" name="usuario_nombre" value="<?php print $_SESSION['user_info']['nombre_login'] ?>">
+                        <input type="hidden" name="usuario_nombre" value="<?php if(isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_login'] ?>">
 
 
                         <h4 class="section-title pt-4"><?php print $info_producto['nombre'] ?>
