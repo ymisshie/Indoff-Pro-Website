@@ -10,4 +10,18 @@
         </div>
     </div>
 
+
+</section>
+
+<section class="mx-auto row justifiy-content color-aqua-bg mb-5">
+      <div class="bg-white rounded-3 cuadrado mx-auto col-4 my-5 ">
+        <h2 class="text-center hero-title m-3">Misión</h2>
+        <p class="text-center"> 
+           Contribuir en el establecimiento de la imagen, su posicionamiento, la creación de un valor único y un mejor rendimiento laboral en las empresas del noroeste a través de productos promocionales. </p>
+      </div>
+      <div class="bg-white  rounded-3 cuadrado mx-auto col-4 my-5">
+        <h2 class="text-center hero-title m-3">Visión</h2>
+        <p class="text-center">Convertirnos en líderes del noroeste en el área de productos promocionales siendo reconocidos por su calidad, su variedad y su plan de reconocimientos enfocado en la satisfacción de sus colaboradores. 
+            </p>
+      </div>
 </section>

@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="row justify-content-center text-center">
-            <h2 class="section-title py-5">Categorias destacadas</h2>
+            <h2 class="section-title py-5">Categorías destacadas</h2>
         </div>
 
         <div class="row justify-content-center text-center pb-5">

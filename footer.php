@@ -10,7 +10,7 @@
         <div class="row justify-content-center pb-2">
             <div class="col-12 col-md-3">
                 <h5 class="uppercase py-4 fw-600">Productos Promocionales</h5>
-                <p> <a href="categorias.php" class="uppercase text-white fw-500">Categorias</a></p>
+                <p> <a href="categorias.php?id=1" class="uppercase text-white fw-500">Categorías</a></p>
                 <p> <a href="eventos.php" class="uppercase text-white fw-500">Eventos</a></p>
                 <p> <a href="contacto.php" class="uppercase text-white fw-500">Contacto</a></p>
                 <p> <a href="nosotros.php" class="uppercase text-white fw-500">Nosotros</a></p>
@@ -27,13 +27,13 @@
                 <h5 class="uppercase py-4 fw-600 col-md-9 col-10">Conecta con nuestras redes sociales</h5>
                 <div class="col-7 d-flex justify-content-between">
                     <div class="">
-                        <a href="https://www.linkedin.com/company/31381210/admin/"><i class="fab fa-linkedin fs-3 text-white"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/company/31381210/admin/"><i class="fab fa-linkedin fs-3 text-white"></i></a>
                     </div>
                     <div class="">
-                        <a href="https://www.facebook.com/indoffpro"><i class="fab fa-facebook fs-3 text-white"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/indoffpro"><i class="fab fa-facebook fs-3 text-white"></i></a>
                     </div>
                     <div class="">
-                        <a href="mailto:mexico@indoff.com"><i class="fas fa-envelope fs-3 text-white"></i></a>
+                        <a target="_blank" href="mailto:mexico@indoff.com"><i class="fas fa-envelope fs-3 text-white"></i></a>
                     </div>
                 </div>
             </div>

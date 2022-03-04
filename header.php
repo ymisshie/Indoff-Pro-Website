@@ -221,7 +221,7 @@ if (isset($_SESSION['carrito'])) {
                             <a class="nav-link text-white dropdown-toggle uppercase<?php if ($pagina == "eventos") {
                                                                                                     echo "active";
                                                                                                 } ?>" id="navbarDropdown" href="eventos.php" role="button" aria-haspopup="true"  aria-expanded="false">
-                                Eventos
+                                EVENTOS
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
