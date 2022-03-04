@@ -24,7 +24,7 @@ session_start();
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style4.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -38,7 +38,8 @@ session_start();
 
     if ($_SESSION) {
         if (isset($_SESSION['user_info'])){
-
+            if ($_SESSION['user_info']) {
+            
             $id = $_SESSION['user_info']['nombre_login'];
 
             //print $id;
@@ -56,7 +57,7 @@ session_start();
 
             $_SESSION['cantidad_carrito'] = $cantidad_carrito;
         }
-    }
+    }}
     ?>
 
 </head>

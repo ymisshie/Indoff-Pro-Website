@@ -6,11 +6,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
 
 
-    $producto = new ameri\Evento;
-    $categoria = new ameri\Producto_Evento;
+    $categoria = new ameri\Evento;
+    $producto = new ameri\Producto_Evento;
 
     $info_producto = $producto->mostrarOrden();
-    $info_categoria = $categoria->mostrarOrden();
+    $info_categoria = $categoria->mostrarOrden6();
 
     if (!$info_producto && $info_categoria)
         header('Location: index.php');

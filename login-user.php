@@ -17,10 +17,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if ($resultado){
         session_start();
-
+        
         $_SESSION['user_info'] = array(
-            "nombre" => $resultado['nombre_usuario'],
-            "apellido" => $resultado['apellido_usuario'],
             "nombre_login" => $resultado['nombre_login'],
             "email_user" => $resultado['email_user'],
             'estado' => 1

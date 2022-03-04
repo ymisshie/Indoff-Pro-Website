@@ -40,7 +40,7 @@ class Usuario
 
     public function registrar($_params){
         // Lectura de la ruta de la consulta
-        $sql = "INSERT INTO `usuarios`(`nombre_login`, `pwd_usuario_hash`, `nombre_usuario`, `apellido_usuario`, `email_user`, `estado`) VALUES (:nombre_login, :pwd_usuario_hash, :nombre_usuario, :apellido_usuario, :email_user, :estado)";
+        $sql = "INSERT INTO `usuarios`(`nombre_login`, `pwd_usuario_hash`, `nombre_usuario`, `apellido_usuario`, `email_user`, `estado`, `verification_key`) VALUES (:nombre_login, :pwd_usuario_hash, :nombre_usuario, :apellido_usuario, :email_user, :estado, :verification_key)";
         
         // Preparar la consulta
         $resultado = $this->cn->prepare($sql);
@@ -53,6 +53,7 @@ class Usuario
             ":apellido_usuario" =>$_params['apellido_usuario'],
             ":email_user" =>$_params['email_user'],
             ":estado" =>$_params['estado'],
+            ":verification_key" =>$_params['verification_key'],
         );
 
         // Ejecutar la consulta 
@@ -63,7 +64,7 @@ class Usuario
 
     public function login($nombre_login, $pwd_usuario_hash)
     {   
-        $pwd = "SELECT pwd_usuario_hash FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
+        $pwd = "SELECT pwd_usuario_hash, verificado FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
         $resultado_pwd = $this->cn->prepare($pwd);
 
         $_array_pwd = array(
@@ -73,9 +74,9 @@ class Usuario
         if ($resultado_pwd->execute($_array_pwd)){
             $resultado_array = $resultado_pwd->fetch();
             $password = $resultado_array['pwd_usuario_hash'];
-            if (password_verify($pwd_usuario_hash, $password)){
+            if (password_verify($pwd_usuario_hash, $password) && $resultado_array['verificado']==1){
                 // print("A");
-                $sql = "SELECT nombre_login, email_user, nombre_usuario,  apellido_usuario    FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
+                $sql = "SELECT nombre_login, email_user, nombre_usuario,  apellido_usuario   FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
                 $resultado = $this->cn->prepare($sql);
 
                 $_array = array(
@@ -92,5 +93,38 @@ class Usuario
             
         }
     }
+    public function verificarVkeyUser($verification_key)
+    {   
+        $vkey = "SELECT verification_key FROM  `usuarios` WHERE `verificado`= 0 AND `verification_key`=:verification_key LIMIT 1";
+        $resultado_vkey = $this->cn->prepare($vkey);
 
+        $_array_vkey = array(
+            ":verification_key" => $verification_key,
+        );
+
+        if ($resultado_vkey->execute($_array_vkey))
+                    return $resultado_vkey->fetch();
+
+        return false;
+        
+            
+        
+    }
+    public function updateVerificado($verification_key)
+    {   
+        $vkey = "UPDATE `usuarios` SET `verificado` = 1 WHERE `verification_key`=:verification_key LIMIT 1";
+        $resultado_vkey = $this->cn->prepare($vkey);
+
+        $_array_vkey = array(
+            ":verification_key" => $verification_key,
+        );
+
+        if ($resultado_vkey->execute($_array_vkey))
+                    return true;
+
+        return false;
+        
+            
+        
+    }
 }

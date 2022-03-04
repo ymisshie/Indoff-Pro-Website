@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     else{
         header("Location: index.php?message=success");
         session_start();
-        $_SESSION['message'] = 'Usuario o contraseña incorrecto';
+        $_SESSION['message_admin'] = 'Usuario o contraseña incorrecto';
         header("Location: index.php");
         exit(json_encode(array('estado'=>FALSE, 'mensaje'=>'Error al iniciar sesión')));
     }
