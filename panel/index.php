@@ -3,9 +3,14 @@ $title = "Admin Indoff Pro";
 $pagina = "inicio";
 $root_styles = '<link rel="stylesheet" href="../style.css">';
 
-?>
+if(isset($_SESSION['user_info'])){
+    $_SESSION['user_info'] = array();  
+    session_destroy();
+}
 
-<?php
+
+
+
 //include header.php file
 include('../Template/_header-login.php');
 // rest of your code

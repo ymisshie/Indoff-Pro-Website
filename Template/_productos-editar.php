@@ -89,13 +89,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                     <td>
                                     
                                     <select id="orden_productos" name="orden_productos">
-                                        <option value="1" <?php if ($item_producto['orden'] == 1) print "selected" ?> > 1 </option>
-                                        <option value="2" <?php if ($item_producto['orden'] == 2) print "selected" ?> >2</option>
-                                        <option value="3" <?php if ($item_producto['orden'] == 3) print "selected" ?>  >3</option>
-                                        <option value="4" <?php if ($item_producto['orden'] == 4) print "selected" ?> > 4  </option>
-                                        <option value="5" <?php if ($item_producto['orden'] == 5) print "selected" ?> > 5  </option>
-                                        <option value="6" <?php if ($item_producto['orden'] == 6) print "selected" ?> >  6  </option>
-                                        <option value="7" <?php if ($item_producto['orden'] > 6) print "selected" ?> >  x  </option>
+                                        <option value="1" disabled="disabled"<?php if ($item_producto['orden'] == 1) print "selected" ?> > 1 </option>
+                                        <option value="2" disabled="disabled"<?php if ($item_producto['orden'] == 2) print "selected" ?> >2</option>
+                                        <option value="3" disabled="disabled"<?php if ($item_producto['orden'] == 3) print "selected" ?>  >3</option>
+                                        <option value="4" disabled="disabled"<?php if ($item_producto['orden'] == 4) print "selected" ?> > 4  </option>
+                                        <option value="5" disabled="disabled"<?php if ($item_producto['orden'] == 5) print "selected" ?> > 5  </option>
+                                        <option value="6" disabled="disabled"<?php if ($item_producto['orden'] == 6) print "selected" ?> >  6  </option>
+                                        <option value="7" disabled="disabled"<?php if ($item_producto['orden'] > 6) print "selected" ?> >  x  </option>
                                     </select>
 
                                     </td>

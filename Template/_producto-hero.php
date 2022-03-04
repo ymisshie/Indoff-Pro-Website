@@ -4,11 +4,6 @@ if (isset($_SESSION['cantidad_carrito'])) {
     $cantidad = $_SESSION['cantidad_carrito'];
 }
 
-/*
-print '<pre>';
-print_r($_SESSION);
-*/
-
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $id = $_GET['id'];
@@ -20,7 +15,20 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     if (!$info_producto)
         header('Location: index.php');
-
+$user_existe = 0;
+$admin_existe = 0;
+if ((isset($_SESSION['user_info']))) {
+    $user_existe ++;
+    if($_SESSION['user_info']){
+        $user_existe ++;
+    }
+}
+if ((isset($_SESSION['admin_info']))) {
+    $admin_existe ++;
+    if($_SESSION['admin_info']){
+        $admin_existe ++;
+    }
+}
 ?>
     <!--navbar-->
     <section>
@@ -252,28 +260,25 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <h5 class="mb-4 color-black fw-600">Total: <span id="precioTotal" class="fw-700 color-red"></span></h5>
 
                         <?php
-                        if ((isset($_SESSION['admin_info'])) || (isset($_SESSION['user_info']))) {
-
-
+                        if ($user_existe>1 || $admin_existe >1) {
                         ?>
 
                             <input role="button" type="submit" name="accion" value="Agregar al carrito" class="btn btn-primary w-100" onclick="cambiarCarrito(<?php print $cantidad ?>)">
                             <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
                         <?php
 
-                        } elseif ((!isset($_SESSION['admin_info'])) && (!isset($_SESSION['user_info']))) {
-
-                        ?>
-                            <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
-                            <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
-
-                            <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>
-
-                        <?php
-                        }
-                        ?>
-
-
+                        } 
+                        else {
+                            ?>
+                                <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
+                                <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
+    
+                                <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>
+    
+                            <?php
+                            }
+                            ?>
+                
                     </div>
 
                 </form>

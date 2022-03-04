@@ -1,12 +1,8 @@
-<!-- <?php
-    // session_start();
-    // if(!empty($_SESSION['message'])) {
-    //     $mensaje = '<p class="message text-center mt-2" > '.$_SESSION['message'].'</p>';
-        
-    //     unset($_SESSION['message']);
-    // }
-    // $mensaje2 = "aaa";
-?> -->
+<?php
+// session_start();
+
+   
+?>
 
 <?php
 $title = "Inicio Indoff Pro";

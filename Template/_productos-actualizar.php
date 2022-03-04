@@ -71,43 +71,22 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     </div>
 
                     <div class="form-group text-start py-2">
-                        <h6 class="col-form-label fw-600">Categoria del producto <span class="color-red">*</span></h6>
+                        <h6 class="col-form-label fw-600">Categoría del producto <span class="color-red">*</span></h6>
                         <select class="form-control" name="categoria_id_producto" required>
-
+                            <option value="">Seleccione una categoría</option>
                             <?php
-
-                            $categoria2 = new ameri\Categoria;
-                            $info_categorias = $categoria2->mostrar();
-                            $cantidad = count($info_categorias);
-
-
+                            require '../../vendor/autoload.php';
+                            $categoria = new ameri\Categoria;
+                            $info_categoria = $categoria->mostrar();
+                            $cantidad = count($info_categoria);
                             for ($x = 0; $x < $cantidad; $x++) {
-                                $item = $info_categorias[$x];
-
-                                if ($item['id'] == $info_categoria['id']) {
+                                $item = $info_categoria[$x];
                             ?>
-                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
-
-                                <?php
-                                }
-                            }
-
-                            for ($w = 0; $w < $cantidad; $w++) {
-                                $item = $info_categorias[$w];
-
-                                if ($item['id'] != $info_categoria['id']) {
-                                ?>
-
-                                    <option value="<?php print $item['id'] ?>"><?php print $item['nombre'] ?></option>
+                                <option value="<?php print $item['id'] ?>" <?php print $resultado['categoria_id'] == $item['id'] ? 'selected' : '' ?>><?php print $item['nombre'] ?></option>
                             <?php
 
-                                }
                             }
-
                             ?>
-
-                            <option value="">Seleccione una categoria</option>
-
                         </select>
                     </div>
 

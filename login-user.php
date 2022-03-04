@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     else{
         //header("Location: login.php?message=success");
         session_start();
-        $_SESSION['message'] = 'Usuario o contraseña incorrecto';
+        $_SESSION['message'] = 'Usuario, contraseña incorrecta o la cuenta no ha sido verificada';
         header("Location: login.php");
         exit(json_encode(array('estado'=>FALSE, 'mensaje'=>'Error al iniciar sesión')));
     }
