@@ -32,7 +32,7 @@ include('header.php');
                     <tr class="text-center color-grey3-bg ">
                         <th scope="col">#</th>
                         <th scope="col">Información de la cotización</th>
-                        <th scope="col"></th>
+                        <th scope="col">r</th>
                     </tr>
                 </thead>
 

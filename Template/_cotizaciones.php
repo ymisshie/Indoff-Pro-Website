@@ -27,7 +27,7 @@ print_r($cotizacion);
         <div class="row mx-auto pb-5 justify-content-center table-responsive">
             <table class="table">
                 <thead>
-                    <tr class="text-center color-grey3-bg ">
+                    <tr class="text-center color-red-bg color-white">
                         <th scope="col">#</th>
                         <th scope="col">Información de la cotización</th>
                         <th scope="col"></th>
@@ -49,7 +49,7 @@ print_r($cotizacion);
 
                             <td scope="col" class="fw-500 text-center"><span><?php print 'Cotizacion ' . $cot['fecha']; ?> </span></td>
                             <td scope="col" class="text-center">
-                                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Visualizar</a>
+                                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-secondary btn btn-sm my-md-1 text-center" role="button">Visualizar</a>
                                                 </td>
 
                         </tr>
