@@ -278,10 +278,9 @@ if (isset($_REQUEST["vaciar"])) {
                         <h6 class="my-4 fw-600"><?php echo 'Productos: ' . $cantidad_carrito ?></h6>
                         <h5 class="mb-4 color-red fw-600">Total: <span><?php echo $total ?></span></h5>
 
+                        <a type="button" href="cotizacion.php" class="btn btn-primary w-100">Enviar cotización</a>
 
-                        <input type="submit" name="accion" class="btn btn-primary w-100" value="Enviar cotización"></a>
-
-                        <a class="btn btn-secondary mt-3 w-100" href="login.php" role="button">Seguir viendo</a>
+                        <a class="btn btn-secondary mt-3 w-100" href="index.php#categorias" role="button">Seguir viendo</a>
                         <small class="d-flex form-text py-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
                     </div>
 

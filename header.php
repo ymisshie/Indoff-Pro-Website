@@ -5,22 +5,27 @@ require 'vendor/autoload.php';
 
 $info_carrito = new ameri\Carrito;
 
-$id = $_SESSION['user_info']['nombre_login'];
-//print $id;
+if ($_SESSION) {
+    if (isset($_SESSION['user_info'])) {
 
-$carrito = $info_carrito->mostrar();
+        $id = $_SESSION['user_info']['nombre_login'];
+
+        //print $id;
+
+        $carrito = $info_carrito->mostrar();
 
 
-$cantidad_carrito = 0;
+        $cantidad_carrito = 0;
 
-foreach ($carrito as $item_carrito) {
-    if ($item_carrito['usuarios_id'] == $id) {
-        $cantidad_carrito++;
+        foreach ($carrito as $item_carrito) {
+            if ($item_carrito['usuarios_id'] == $id) {
+                $cantidad_carrito++;
+            }
+        }
+
+        $_SESSION['cantidad_carrito'] = $cantidad_carrito;
     }
 }
-
-$_SESSION['cantidad_carrito'] = $cantidad_carrito;
-
 ?>
 
 <!DOCTYPE html>
@@ -73,10 +78,10 @@ $_SESSION['cantidad_carrito'] = $cantidad_carrito;
                     ?>
                                 <a href="carrito.php"><i class="fa-solid color-white fa-cart-shopping fs-1-5"></i></a>
                                 <div><a href="carrito.php" class="nav-link text-white py-0 fw-500">Carrito <span class="fw-600 rounded-circle p-2 px-3 ms-2" style="background-color:#E49F49;" id="cantidadCarrito"><?php if ($_SESSION['cantidad_carrito'] > 0) {
-                                                                                                                                                                                                        print $_SESSION['cantidad_carrito'];
-                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                        print '0';
-                                                                                                                                                                                                    } ?></span></a></div>
+                                                                                                                                                                                                                        print $_SESSION['cantidad_carrito'];
+                                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                                        print '0';
+                                                                                                                                                                                                                    } ?></span></a></div>
                     <?php
                             }
                         }
