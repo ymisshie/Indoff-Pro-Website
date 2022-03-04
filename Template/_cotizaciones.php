@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 $info_productos = new ameri\Cotizaciones;
 $info_cotizacion = new ameri\Cotcat;
@@ -12,8 +12,6 @@ $cotizacion = $info_cotizacion->mostrar();
 print '<pre>';
 print_r($cotizacion);
 */
-
-include('header.php');
 
 ?>
 
@@ -31,9 +29,8 @@ include('header.php');
                 <thead>
                     <tr class="text-center color-grey3-bg ">
                         <th scope="col">#</th>
-                        <th scope="col">Cliente</th>
                         <th scope="col">Información de la cotización</th>
-                        <th scope="col">Ver</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
 
@@ -49,11 +46,10 @@ include('header.php');
                         <tr class="">
 
                             <td scope="col" class="fw-500 text-center"><?php print $x;?></td>
-                            <td scope="col" class="fw-500 text-center"><?php print $cot['usuarios_id'];?></td>
 
                             <td scope="col" class="fw-500 text-center"><span><?php print 'Cotizacion ' . $cot['fecha']; ?> </span></td>
                             <td scope="col" class="text-center">
-                                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Eliminar <i class="far fa-trash-alt"></i></a>
+                                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Visualizar</a>
                                                 </td>
 
                         </tr>
@@ -72,7 +68,3 @@ include('header.php');
 
     </div>
 </section>
-
-<?php
-include('footer.php');
-?>

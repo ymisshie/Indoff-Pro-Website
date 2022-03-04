@@ -32,7 +32,7 @@ include('header.php');
                     <tr class="text-center color-grey3-bg ">
                         <th scope="col">#</th>
                         <th scope="col">Información de la cotización</th>
-                        <th scope="col">Ver</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
 
@@ -52,7 +52,7 @@ include('header.php');
 
                                 <td scope="col" class="fw-500 text-center"><span><?php print 'Cotizacion ' . $cot['fecha']; ?> </span></td>
                                 <td scope="col" class="text-center">
-                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Eliminar <i class="far fa-trash-alt"></i></a>
+                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Visualizar</a>
                                 </td>
 
                             </tr>
