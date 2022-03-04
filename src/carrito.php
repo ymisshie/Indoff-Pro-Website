@@ -47,12 +47,13 @@ class Carrito
 
     public function actualizar($_params)
     {
-        $sql = "UPDATE `carrito` SET `usuarios_id`=:usuarios_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`opciones`=:opciones,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`peso`=:peso,`color`=:color WHERE `id` =:id";
+        $sql = "UPDATE `carrito` SET `producto_id`=:producto_id,`usuarios_id`=:usuarios_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`opciones`=:opciones,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`peso`=:peso,`color`=:color WHERE `id` =:id";
 
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
             ":usuarios_id" => $_params['usuarios_id'],
+            ":producto_id" => $_params['producto_id'],
             ":nombre" => $_params['nombre'],
             ":proveedor" => $_params['proveedor'],
             ":descripcion" => $_params['descripcion'],
@@ -65,6 +66,21 @@ class Carrito
             ":peso" => $_params['peso'],
             ":color" => $_params['color'],
             ":id" => $_params['id']
+        );
+
+        if ($resultado->execute($_array))
+            return true;
+        return false;
+    }
+
+
+    public function eliminarPorUsuario($id)
+    {
+        $sql = "DELETE FROM  `carrito` WHERE  `usuarios_id`=:nombre_login";
+        $resultado = $this->cn->prepare($sql);
+
+        $_array = array(
+            ":nombre_login" => $id
         );
 
         if ($resultado->execute($_array))
@@ -90,7 +106,7 @@ class Carrito
 
     public function mostrar()
     {
-        $sql ="SELECT carrito.id, usuarios.id, carrito.nombre, proveedor, carrito.descripcion, carrito.imagen, carrito.fecha, opciones, cantidad, precio, size, peso, color FROM carrito
+        $sql ="SELECT carrito.id, producto_id, usuarios_id, nombre, proveedor, descripcion, carrito.imagen, carrito.fecha, opciones, cantidad, precio, size, peso, color FROM carrito
         INNER JOIN usuarios
         ON carrito.usuarios_id = usuarios.nombre_login ORDER BY carrito.id ASC";
 

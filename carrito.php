@@ -4,10 +4,10 @@ $pagina ="carrito";
 
 ?>
 
-
 <?php
 //include header.php file
-include('header.php')
+include('header.php');
+
 ?>
 
 <?php

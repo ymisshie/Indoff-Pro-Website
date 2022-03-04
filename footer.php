@@ -101,7 +101,11 @@
         });
         */
 
-
+    function cambiarCarrito(nombre) {
+        document.getElementById('cantidadCarrito').style.backgroundColor = '#775FC7';
+        console.log(nombre);
+        document.getElementById('cantidadCarrito').textContent = nombre;
+    }
 
     function cambiarPrecio() {
 
@@ -114,6 +118,8 @@
         modificarlabelcantidad.textContent = arreglo[0];
         var modificarlabelcantidad = document.getElementById("precioSelect1_producto");
         modificarlabelcantidad.textContent = arreglo[1];
+        var modificartotal = document.getElementById("precioTotal");
+        modificartotal.textContent = '$' + arreglo[1];
         var modificarprecioindividual = document.getElementById("precioIndividual1_producto");
         modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
         // console.log(modificarlabel.textContent)

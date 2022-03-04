@@ -8,7 +8,7 @@ $producto = new ameri\Producto;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($_POST['accion'] === 'Agregar al carrito') {
-        
+
         $id = $_POST['id_producto'];
 
         $info_producto = $producto->mostrarPorId($id);
@@ -16,15 +16,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         print '<pre>';
         print_r($_POST);
 
-        
         $cantidad_selected = $_POST['selectOpciones1_producto'];
         $string_cantidad = explode(",", $cantidad_selected);
-      
-        $cantidad=$string_cantidad[0];
-        $precio=$string_cantidad[1];
+
+        $cantidad = $string_cantidad[0];
+        $precio = $string_cantidad[1];
 
         $_params = array(
-            'usuarios_id' =>$_POST['usuario_nombre'],
+            'usuarios_id' => $_POST['usuario_nombre'],
+            'producto_id' => $_POST['id_producto'],
             'nombre' => $info_producto['nombre'],
             'proveedor' => $info_producto['proveedor'],
             'descripcion' => $info_producto['descripcion'],
@@ -38,13 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'color' => $_POST['color_producto']
         );
 
-        print_r ($_params);
+        print_r($_params);
         $rpt = $producto_carrito->agregar($_params);
 
         if ($rpt) {
-
             //cuando se el registro se de de forma correcta se direccina a
-            header("Location: producto.php?id=$id");
+            header("Location: carrito.php");
         } else {
             print 'Error al registrar un producto';
         }
@@ -54,6 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 /*
 if (isset($_REQUEST["accion"])) {
+
+
+isset($_REQUEST["GET"])
+    
 
     //si ya existe el carrito
     if (isset($_SESSION['carrito'])) {

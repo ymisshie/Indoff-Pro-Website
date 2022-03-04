@@ -1,13 +1,26 @@
 <?php
 session_start();
 
+require 'vendor/autoload.php';
+
+$info_carrito = new ameri\Carrito;
+
+$id = $_SESSION['user_info']['nombre_login'];
+//print $id;
+
+$carrito = $info_carrito->mostrar();
+
+
 $cantidad_carrito = 0;
 
-if (isset($_SESSION['carrito'])) {
-
-
-    $cantidad_carrito = count($_SESSION['carrito']);
+foreach ($carrito as $item_carrito) {
+    if ($item_carrito['usuarios_id'] == $id) {
+        $cantidad_carrito++;
+    }
 }
+
+$_SESSION['cantidad_carrito'] = $cantidad_carrito;
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +42,7 @@ if (isset($_SESSION['carrito'])) {
 
     <!-- font awesome icons -->
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
-    
+
     <!--CUSTOM CSS FILE-->
     <link rel="stylesheet" href="style.css">
 
@@ -59,11 +72,11 @@ if (isset($_SESSION['carrito'])) {
                             if ($_SESSION['user_info']) {
                     ?>
                                 <a href="carrito.php"><i class="fa-solid color-white fa-cart-shopping fs-1-5"></i></a>
-                                <div><a href="carrito.php" class="nav-link text-white py-0 fw-500">Carrito <span class="fw-600 rounded-circle color-orange-bg p-2 px-3 ms-2" id="cantidadCarrito"><?php if ($cantidad_carrito > 0) {
-                                                                                                                                        print $cantidad_carrito; 
-                                                                                                                                    } else {
-                                                                                                                                        print '0';
-                                                                                                                                    } ?></span></a></div>
+                                <div><a href="carrito.php" class="nav-link text-white py-0 fw-500">Carrito <span class="fw-600 rounded-circle p-2 px-3 ms-2" style="background-color:#E49F49;" id="cantidadCarrito"><?php if ($_SESSION['cantidad_carrito'] > 0) {
+                                                                                                                                                                                                        print $_SESSION['cantidad_carrito'];
+                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                        print '0';
+                                                                                                                                                                                                    } ?></span></a></div>
                     <?php
                             }
                         }
@@ -112,19 +125,19 @@ if (isset($_SESSION['carrito'])) {
                                                                         }
                                                                     }
                                                                     ?>" href="login.php" data-bs-toggle="<?php
-                                                                            if ($_SESSION) {
-                                                                                if (isset($_SESSION['user_info'])) {
-                                                                                    if ($_SESSION['user_info']) {
-                                                                                        echo 'dropdown';
-                                                                                    }
-                                                                                }
-                                                                                if (isset($_SESSION['admin_info'])) {
-                                                                                    if ($_SESSION['admin_info']) {
-                                                                                        echo 'dropdown';
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                            ?>" aria-expanded="false">
+                                                                                                            if ($_SESSION) {
+                                                                                                                if (isset($_SESSION['user_info'])) {
+                                                                                                                    if ($_SESSION['user_info']) {
+                                                                                                                        echo 'dropdown';
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                if (isset($_SESSION['admin_info'])) {
+                                                                                                                    if ($_SESSION['admin_info']) {
+                                                                                                                        echo 'dropdown';
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                            ?>" aria-expanded="false">
                             <?php if ($_SESSION) {
                                 if (isset($_SESSION['admin_info'])) {
                                     if ($_SESSION['admin_info']) {

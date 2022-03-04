@@ -21,47 +21,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $cantidad_productos++;
         }
     }
-
-    /*
- print '<pre>';
- print_r ($info_categoria);
-
-die;
-*/
-
-    /*
- print '<pre>';
- print_r($info_producto);
-*/
-
-    /*
-    foreach ($info_producto as $productos) {
-        //if ($resultadop['categoria_id']=$resultadoc['id'])
-        print '<pre>';
-        print_r($productos);
-    }
-*/
 }
 
-
-/*
-foreach ($info_producto as $productos) {
-    //if ($resultadop['categoria_id']=$resultadoc['id'])
-    print '<pre>';
-    print $productos[5];
-    print $productos['0'];
-}
-*/
-
-/*
- print '<pre>';
-
- if($resultadop['categoria_id'] ==$id)
- {
-     print $resultadop;
- }
- die;
- */
 
 ?>
 
