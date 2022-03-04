@@ -2,12 +2,12 @@
 <section id="categorias" class="categorias-section">
     <div class="container">
         <div class="row justify-content-center text-center pb-md-5">
-            <h2 class="section-title py-md-5">Categorias destacadas</h2>
+            <h2 class="section-title py-md-5">Eventos destacados</h2>
 
             <?php
             require 'vendor/autoload.php';
             $Evento = new ameri\Evento;
-            $info_evento = $Evento->mostrar();
+            $info_evento = $Evento->mostrarOrden6();
             $cantidad = count($info_evento);
 
             if ($cantidad > 0) {

@@ -24,7 +24,7 @@ session_start();
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -222,13 +222,13 @@ session_start();
                                                             } ?>" aria-current="page" href="index.php"><span><i class="fa-solid fa-house me-3"></i></span> Inicio</a>
                         </li>
                         <li class="nav-item px-md-4 px-md-0 dropdown">
-                            <a class="nav-link text-white uppercase dropdown-toggle  <?php if ($pagina == "categorias") {
+                            <a  class="nav-link text-white uppercase dropdown-toggle <?php if ($pagina == "categorias") {
                                                                                             echo "active";
-                                                                                        } ?>" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                                        } ?>" id="navbarDropdown1" role="button" aria-expanded="false" aria-haspopup="true">
                                 Categorias
                             </a>
 
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
                                 <?php
                                 require 'vendor/autoload.php';
                                 $categoria = new ameri\Categoria;
@@ -249,13 +249,13 @@ session_start();
 
                         </li>
                         <li class="nav-item dropdown px-md-4">
-                            <a class="nav-link text-white text-white dropdown-toggle uppercase <?php if ($pagina == "eventos") {
+                            <a class="nav-link text-white dropdown-toggle uppercase<?php if ($pagina == "eventos") {
                                                                                                     echo "active";
-                                                                                                } ?>" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Eventos
+                                                                                                } ?>" id="navbarDropdown" href="eventos.php" role="button" aria-haspopup="true"  aria-expanded="false">
+                                EVENTOS
                             </a>
 
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <?php
                                 require 'vendor/autoload.php';
                                 $evento = new ameri\Evento;
@@ -266,19 +266,19 @@ session_start();
                                     for ($x = 0; $x < $cantidad; $x++) {
                                         $item = $info_evento[$x];
                                 ?>
-                                        <li><a class="dropdown-item" href="productos-eventos.php?id=<?php print $item['id'] ?>"><?php print $item['nombre'] ?></a></li>
+                                        <a class="dropdown-item" href="productos-eventos.php?id=<?php print $item['id'] ?>"><?php print $item['nombre'] ?></a>
 
                                 <?php
                                     }
                                 } ?>
 
-                            </ul>
+                            </div>
 
                         <li class="nav-item px-md-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>
+                            <a class="nav-link text-white" aria-current="page" href="contacto.php">Contacto</a>
                         </li>
                         <li class="nav-item px-md-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" href="#">Nosotros</a>
+                            <a class="nav-link text-white" aria-current="page" href="nosotros.php">Nosotros</a>
                         </li>
                     </ul>
                 </div>

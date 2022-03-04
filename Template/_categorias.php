@@ -2,8 +2,8 @@
 <section id="categorias" class="categorias-section">
     <div class="container-fluid pb-5">
 
-        <div class="row justify-content-center">
-            <h2 class="text-center section-title py-5">Top categorias</h2>
+        <div class="row justify-content-center text-center">
+            <h2 class="section-title py-5">Categorías destacadas</h2>
         </div>
 
         <div class="row justify-content-center">

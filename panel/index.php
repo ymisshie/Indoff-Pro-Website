@@ -1,7 +1,7 @@
 <?php
 $title = "Admin Indoff Pro";
 $pagina = "inicio";
-$root_styles = '<link rel="stylesheet" href="../style.css">';
+$root_styles = '<link rel="stylesheet" href="../style2.css">';
 ?>
 
 <?php
