@@ -4,23 +4,41 @@ require 'vendor/autoload.php';
 
 include('header.php');
 
+/*
 $diassemana = array("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sábado");
 $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 
 $fecha = $diassemana[date('w')] . " " . date('d') . " de " . $meses[date('n') - 1] . " del " . date('Y');
-
-/*
-print '<pre>';
-print_r ($_SESSION);
 */
 
-?>
 
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $info_productos = new ameri\Cotizaciones;
+    $info_cotizacion = new ameri\Cotcat;
+
+    $infocotcat= $info_cotizacion -> mostrar();
+
+    foreach($infocotcat as $item)
+    {
+        if($item['id']==$id)
+        {
+            $fecha =$item['fecha'];
+        }
+    }
+
+    $pp = $info_productos->mostrar();
+
+
+    //$cotizacion = $info_cotizacion->mostrarPorId();
+}
+?>
 
 <!--carrito-section-->
 
 
-<section name="txtMensa" class="color-grey3-bg py-5">
+<section name="" class="color-grey3-bg py-5">
     <div class="container ws p-5 color-white-bg">
         <div class="row pb-5">
 
@@ -58,13 +76,12 @@ print_r ($_SESSION);
 
         </div>
 
-        <div class="row mx-auto py-5  justify-content-center table-responsive">
+        <div class="row mx-auto py-5 justify-content-center table-responsive">
             <table class="table">
                 <thead>
                     <tr class="text-center color-grey3-bg ">
                         <th scope="col"></th>
                         <th scope="col">Información del producto</th>
-
                         <th scope="col">Color</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio</th>
@@ -80,8 +97,11 @@ print_r ($_SESSION);
                     <?php
 
 
-                    foreach ($carrito as $producto) {
-                        if ($id == $producto['usuarios_id']) {
+                    foreach ($pp as $producto) {
+
+                        if ($id == $producto['cotcat_id']) {
+
+                           
                     ?>
                             <tr class="">
 
@@ -210,7 +230,7 @@ print_r ($_SESSION);
                         }
                     }
 
-                  ?>
+                    ?>
 
 
                 </tbody>
@@ -231,7 +251,6 @@ print_r ($_SESSION);
             <h5 class="text-center py-2" style="font-style: italic;">Gracias por preferir Indoff, especialistas en promocionales e incentivos.</h5>
             <h5 class="text-center pt-5 color-red fw-700 pb-2">Lic. Ana Gallegos</h5>
             <h6 class="text-center color-black fw-600 pb-2">Manager Communications</h6>
-
             <p class="text-disbaled pt-4 text-center" style="font-style: italic;">Esta cotización es provisional. Al enviarse será revisada y se le dará seguimiento por correo en los próximos días hábiles.</p>
 
         </div>
@@ -239,7 +258,7 @@ print_r ($_SESSION);
     </div>
 </section>
 
-
+<!--
 <section class="py-5 color-grey3-bg">
     <form class="container formulario ws py-4 px-5" form method="POST" action="correo.php" enctype="multipart/form-data" name="" onsubmit="validateMyForm(event);">
         <h2 class="text-center section-title pt-4 pb-3">Envio de cotización</h2>
@@ -276,14 +295,15 @@ print_r ($_SESSION);
         <p id="pwd_verificar" class="text-center"> </p>
 
         <div class="form-check d-flex justify-content-center">
-            <input type="submit" onclick="pdf()" class="btn btn-primary btn-lg my-5 py-2 text-center w-50" name="accion" value="Enviar"></input>
+            <input type="submit" class="btn btn-primary btn-lg my-5 py-2 text-center w-50" name="accion" value="Enviar"></input>
 
-            <a type="buttom" href="carrito.php"  class="btn btn-secondary btn-lg my-5 py-2 text-center ms-5 w-25" name="accion" value="Registrar"> Cancelar </a>
+            <a type="buttom" href="carrito.php" class="btn btn-secondary btn-lg my-5 py-2 text-center ms-5 w-25" name="accion" value="Registrar"> Cancelar </a>
         </div>
+
 
     </form>
 </section>
-
+                -->
 <?php
 include('footer.php');
 ?>
