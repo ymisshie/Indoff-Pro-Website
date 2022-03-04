@@ -3,8 +3,8 @@
 
 // if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
 //     header('Location: index.php');
-// print '<pre>';
-// print_r($_POST);
+print '<pre>';
+print_r($_POST);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -16,9 +16,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $email_user = $_POST['email_user'];
     $clave_admin = $_POST['pwd_user'];
     $clave_admin2 = $_POST['pwd2_user'];
+    $captcha = $_POST['g-recaptcha-response'];
+    $secret = "6LcpJ7MeAAAAAE6pd-nIeeMl0PbFPYX9nUpDWm9d";
     //$pwd_peppered = hash_hmac("sha256", $clave_admin, $pepper);
     $pwd_hash = password_hash($clave_admin, PASSWORD_DEFAULT); 
     require 'vendor/autoload.php';
+
+    //Generar vkey
+    $vkey = md5(time().$nombre_login);
 
     $usuario = new ameri\Usuario;
 
@@ -37,14 +42,52 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             "apellido_usuario" =>$apellido_user,
             "email_user" =>$email_user,
             "estado" => 1,
+            "verification_key" => $vkey,
         );
 
-        $rpt = $usuario->registrar($_params);
+        if (!$captcha){
+            header("Location: form-register.php?message=success");
+            session_start();
+            $_SESSION['message_crear_cuenta'] = 'Captcha inválido';
+            header("Location: form-register.php");
+            exit(json_encode(array('estado'=>FALSE, 'mensaje'=>'Error al crear sesión')));
+        }
+        $response_captcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha");
+        $captcha_success = json_decode($response_captcha, TRUE);
+
+        if ($captcha_success['success']){
+            $rpt = $usuario->registrar($_params);
+            if($rpt){
+                $email_subject = "Verificación de Correo";
+
+                $email_body = "Gracias por su preferencia, para verificar su correo de click al siguiente link: <a href='http://localhost/Indoff-Pro-Website/registration-verify.php?vkey=$vkey'> Confirmar Correo </a>";
+            
+                $to = "alessandra.palacios@indoff.com";
+            
+                $headers = "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                // $headers = "From: $email_from \r\n";
+                
+                // $headers .= "Reply-To: $visitor_email \r\n";
+            
+                mail($to,$email_subject,$email_body,$headers);
+                header('Location: thankyou-user.php');
+            }
+            
+                else{
+                print 'Error al registrar el usuario';}
+        }
+        else{
+            header("Location: form-register.php?message=success");
+            session_start();
+            $_SESSION['message_crear_cuenta'] = 'Captcha inválido';
+            header("Location: form-register.php");
+            exit(json_encode(array('estado'=>FALSE, 'mensaje'=>'Error al crear sesión')));
+        }
+
         
-        if($rpt)
-            header('Location: index.php');
-        else
-            print 'Error al registrar el usuario';
+        
+        
     }
 
     //$admin = new ameri\Admin;

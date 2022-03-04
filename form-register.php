@@ -8,6 +8,7 @@ $pagina = "registro-user";
 include('header.php');
 // rest of your code
 ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <section class="py-5" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url(assets/suscribir.jpg);">
   <form class="container formulario ws py-4 px-5" name="formulario" action="register-user.php" method="post" onsubmit="validateMyForm(event);">
@@ -60,6 +61,7 @@ include('header.php');
 
     <p id="pwd_verificar" class="text-center"> </p>
 
+    <div class="g-recaptcha  align-self-center d-flex justify-content-center mt-5" data-sitekey="6LcpJ7MeAAAAACSFJlj_r4u4screB6eJewNXYdqi"></div>
     <!-- Checkbox -->
     <div class="form-check d-flex justify-content-center">
 
@@ -69,6 +71,7 @@ include('header.php');
     <!-- Submit button -->
   </form>
 </section>
+
 
 <script>
   function mismaContra() {

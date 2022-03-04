@@ -38,7 +38,8 @@ session_start();
 
     if ($_SESSION) {
         if (isset($_SESSION['user_info'])){
-
+            if ($_SESSION['user_info']) {
+            
             $id = $_SESSION['user_info']['nombre_login'];
 
             //print $id;
@@ -56,7 +57,7 @@ session_start();
 
             $_SESSION['cantidad_carrito'] = $cantidad_carrito;
         }
-    }
+    }}
     ?>
 
 </head>

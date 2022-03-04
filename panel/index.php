@@ -38,9 +38,9 @@ include('../Template/_header-login.php');
                     <div>
                         <?php
                         session_start();
-                        if (!empty($_SESSION['message'])) {
-                            echo '<p class="message text-center mt-2" > ' . $_SESSION['message'] . '</p>';
-                            unset($_SESSION['message']);
+                        if (!empty($_SESSION['message_admin'])) {
+                            echo '<p class="message text-center mt-2" > ' . $_SESSION['message_admin'] . '</p>';
+                            unset($_SESSION['message_admin']);
                         }
                         ?>
                     </div>
