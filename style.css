@@ -60,7 +60,7 @@ body {
 .header-admin .nav-link.active, .header-admin .nav-link:hover {
     opacity: 85% !important;
     text-decoration-line: underline !important;
-    text-underline-offset: 17px !important;
+    text-underline-offset:25px !important;
     text-decoration-thickness: 4px !important;
     text-decoration-color: var(--orange) !important;
 }
@@ -72,7 +72,7 @@ body {
 .admin-nav-menu:hover {
     opacity: 85% !important;
     text-decoration-line: underline !important;
-    text-underline-offset: 19px !important;
+    text-underline-offset: 26px !important;
     text-decoration-thickness: 4px !important;
     text-decoration-color: var(--orange) !important;
 }
