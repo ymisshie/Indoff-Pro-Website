@@ -1,5 +1,21 @@
-
-
+<?php
+// session_start();
+// print_r($_SESSION);
+if (isset($_SESSION)){
+    if(isset($_SESSION['admin_info'])){
+        if($_SESSION['admin_info']){
+            $_SESSION['admin_info'] = array();  
+            session_destroy();
+        }
+    }
+    if(isset($_SESSION['user_info'])){
+        if($_SESSION['user_info']){
+            $_SESSION['user_info'] = array();  
+            session_destroy();
+        }
+    }
+}
+?>
 <section id="login" class="py-5" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url(assets/promo.jpg);">
     <div class="container py-5">
         <div class="row justify-content-center py-4">
@@ -17,7 +33,14 @@
                     <?php
                     //echo $mensaje2;
                     ?>
-
+                    <div>
+                        <?php
+                        if (!empty($_SESSION['message'])) {
+                            echo '<p class="message text-center mt-2" > ' . $_SESSION['message'] . '</p>';
+                            unset($_SESSION['message']);
+                        }
+                        ?>
+                    </div>
                     <button type="submit" value="Submit" class="btn btn-primary btn-lg my-4 py-2 w-100">Iniciar sesión</button>
                     <div class="col-12 align-items-center mx-auto py-2">
                         <h6 class="mb-0">¿No tiene una cuenta? <span><a href="form-register.php" class="color-red btn ss btn-link2"> Crear Cuenta </a>

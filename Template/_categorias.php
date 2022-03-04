@@ -6,7 +6,7 @@
             <h2 class="section-title py-5">Categorías destacadas</h2>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center col-lg-15 col-md-10 mx-auto">
             <?php
             require 'vendor/autoload.php';
             $categoria = new ameri\Categoria;
@@ -17,7 +17,7 @@
                 for ($x = 0; $x < $cantidad; $x++) {
                     $item = $info_categoria[$x];
             ?>
-                    <div class="col-lg-3 col-12 col-md-6 px-5">
+                    <div class="col-lg-4 col-md-6 px-5">
                         <a class="card categorias mb-5" href="categorias.php?id=<?php print $item['id'] ?>">
                             <?php
                             $imagen = 'upload/' . $item['imagen'];
