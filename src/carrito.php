@@ -21,11 +21,13 @@ class Carrito
 
     public function agregar($_params)
     {
-        $sql = "INSERT INTO `carrito`(`usuarios_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `opciones`, `cantidad`, `precio`, `size`, `peso`, `color`) VALUES (:usuarios_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :opciones, :cantidad, :precio, :size, :peso, :color)";
+        $sql = "INSERT INTO `carrito`(`info_usuario`,`id_usuario`,`usuarios_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `opciones`, `cantidad`, `precio`, `size`, `peso`, `color`) VALUES (:info_usuario, :id_usuario, :usuarios_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :opciones, :cantidad, :precio, :size, :peso, :color)";
 
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
+            ":info_usuario" => $_params['info_usuario'],
+            ":id_usuario" => $_params['id_usuario'],
             ":usuarios_id" => $_params['usuarios_id'],
             ":nombre" => $_params['nombre'],
             ":proveedor" => $_params['proveedor'],
@@ -47,11 +49,13 @@ class Carrito
 
     public function actualizar($_params)
     {
-        $sql = "UPDATE `carrito` SET `producto_id`=:producto_id,`usuarios_id`=:usuarios_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`opciones`=:opciones,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`peso`=:peso,`color`=:color WHERE `id` =:id";
+        $sql = "UPDATE `carrito` SET `info_usuario`=:info_usuario, `id_usuario`=:id_usuario, `usuarios_id`=:usuarios_id,`producto_id`=:producto_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`opciones`=:opciones,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`peso`=:peso,`color`=:color WHERE `id` =:id";
 
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
+            ":info_usuario" => $_params['info_usuario'],
+            ":id_usuario" => $_params['id_usuario'],
             ":usuarios_id" => $_params['usuarios_id'],
             ":producto_id" => $_params['producto_id'],
             ":nombre" => $_params['nombre'],
@@ -90,7 +94,7 @@ class Carrito
 
     public function eliminar($id)
     {
-        $sql = "DELETE FROM  `carrito` WHERE  `id`=:id";
+        $sql = "DELETE FROM  `carrito` WHERE  `usuarios_id`=:id";
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
@@ -106,7 +110,7 @@ class Carrito
 
     public function mostrar()
     {
-        $sql ="SELECT carrito.id, producto_id, usuarios_id, nombre, proveedor, descripcion, carrito.imagen, carrito.fecha, opciones, cantidad, precio, size, peso, color FROM carrito
+        $sql ="SELECT carrito.info_usuario, carrito.id_usuario, carrito.id, producto_id, usuarios_id, nombre, proveedor, descripcion, carrito.imagen, carrito.fecha, opciones, cantidad, precio, size, peso, color FROM carrito
         INNER JOIN usuarios
         ON carrito.usuarios_id = usuarios.nombre_login ORDER BY carrito.id ASC";
 

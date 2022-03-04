@@ -19,6 +19,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         session_start();
         
         $_SESSION['user_info'] = array(
+            "id" => $resultado['id'],
+            "nombre_usuario" => $resultado['nombre_usuario'],
+            "apellido_usuario" => $resultado['apellido_usuario'],
             "nombre_login" => $resultado['nombre_login'],
             "email_user" => $resultado['email_user'],
             'estado' => 1

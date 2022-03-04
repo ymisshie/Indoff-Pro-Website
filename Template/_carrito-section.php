@@ -9,11 +9,6 @@ $id = $_SESSION['user_info']['nombre_login'];
 
 $carrito = $info_carrito->mostrar();
 
-/*
-print '<pre>';
-print_r($carrito);
-*/
-
 $cantidad_carrito = 0;
 
 foreach ($carrito as $item_carrito) {
@@ -114,6 +109,11 @@ if (isset($_REQUEST["vaciar"])) {
 
                                     foreach ($carrito as $producto) {
                                         if ($id == $producto['usuarios_id']) {
+
+                                            /*
+                                            print '<pre>';
+                                            print_r ($producto);
+                                            */
                                     ?>
                                             <tr class="">
 
@@ -237,7 +237,7 @@ if (isset($_REQUEST["vaciar"])) {
 
 
                                                 <td scope="col" class="text-center">
-                                                    <a href="eliminar-carrito.php?id=<?php print $producto[0] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Eliminar <i class="far fa-trash-alt"></i></a>
+                                                    <a href="eliminar-carrito.php?id=<?php print $producto[4] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Eliminar <i class="far fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
                                     <?php
@@ -279,7 +279,7 @@ if (isset($_REQUEST["vaciar"])) {
                         <h6 class="my-4 fw-600"><?php echo 'Productos: ' . $cantidad_carrito ?></h6>
                         <h5 class="mb-4 color-red fw-600">Total: <span><?php echo $total ?></span></h5>
 
-                        <a type="button" href="funciones_cot.php?id=<?php print $id;?>" class="btn btn-primary w-100">Enviar cotización</a>
+                        <a type="button" href="funciones_cot.php?id=<?php print $_SESSION['user_info']['nombre_login'];?>" class="btn btn-primary w-100">Enviar cotización</a>
 
                         <a class="btn btn-secondary mt-3 w-100" href="index.php#categorias" role="button">Seguir viendo</a>
                         <small class="d-flex form-text py-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>

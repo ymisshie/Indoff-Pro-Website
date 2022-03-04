@@ -56,7 +56,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <div class="col-4">
                 <h5 class="fw-700">FECHA: <span class="fw-500"><?php print $fecha; ?></span>
                 </h5>
-                <h5 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php print $_SESSION['user_info']['nombre'] . ' ' . $_SESSION['user_info']['apellido']; ?></span>
+                <h5 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php print $_SESSION['user_info']['nombre_usuario'] . ' ' . $_SESSION['user_info']['apellido_usuario']; ?></span>
                 </h5>
             </div>
 

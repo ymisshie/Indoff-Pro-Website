@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $precio = $string_cantidad[1];
 
         $_params = array(
+            'info_usuario' => $_POST['info_usuario'],
+            'id_usuario' => $_POST['id_usuario'],
             'usuarios_id' => $_POST['usuario_nombre'],
             'producto_id' => $_POST['id_producto'],
             'nombre' => $info_producto['nombre'],
@@ -37,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'peso' => $info_producto['peso'],
             'color' => $_POST['color_producto']
         );
+
 
         print_r($_params);
         $rpt = $producto_carrito->agregar($_params);

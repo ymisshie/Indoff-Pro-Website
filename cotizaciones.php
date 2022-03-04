@@ -8,12 +8,14 @@ $info_cotizacion = new ameri\Cotcat;
 $productos = $info_productos->mostrar();
 $cotizacion = $info_cotizacion->mostrar();
 
+
+
+include('header.php');
+
 /*
 print '<pre>';
 print_r($cotizacion);
 */
-
-include('header.php');
 
 ?>
 
@@ -45,10 +47,7 @@ include('header.php');
                     foreach ($cotizacion as $cot) {
 
 
-                        print '<pre>';
-                        print_r ($cot);
-
-                        if ($cot['usuarios_id'] == $_SESSION['user_info']['id']) {
+                        if ($cot['id_usuario'] == $_SESSION['user_info']['id']) {
                     ?>
                             <tr class="">
 

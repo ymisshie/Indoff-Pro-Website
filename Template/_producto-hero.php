@@ -1,9 +1,13 @@
 <?php
 require 'vendor/autoload.php';
-if (isset($_SESSION['cantidad_carrito'])){
-    $cantidad=$_SESSION['cantidad_carrito'];
+if (isset($_SESSION['cantidad_carrito'])) {
+    $cantidad = $_SESSION['cantidad_carrito'];
 }
 
+/*
+print '<pre>';
+print_r($_SESSION);
+*/
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
@@ -81,7 +85,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
                         <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
                         <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
-                        <input type="hidden" name="usuario_nombre" value="<?php if(isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_login'] ?>">
+                        <input type="hidden" name="usuario_nombre" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_login'] ?>">
+                        <input type="hidden" name="info_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_usuario']; print ' ';  print $_SESSION['user_info']['apellido_usuario']; ?>">
+                        <input type="hidden" name="id_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['id']; ?>">
 
 
                         <h4 class="section-title pt-4"><?php print $info_producto['nombre'] ?>
@@ -248,10 +254,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <?php
                         if ((isset($_SESSION['admin_info'])) || (isset($_SESSION['user_info']))) {
 
-                            
+
                         ?>
 
-                            <input role="button" type="submit" name="accion" value="Agregar al carrito" class="btn btn-primary w-100" onclick="cambiarCarrito(<?php print $cantidad?>)">
+                            <input role="button" type="submit" name="accion" value="Agregar al carrito" class="btn btn-primary w-100" onclick="cambiarCarrito(<?php print $cantidad ?>)">
                             <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
                         <?php
 

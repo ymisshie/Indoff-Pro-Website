@@ -21,11 +21,13 @@ class Cotizaciones
 
     public function registrar($_params)
     {
-        $sql = "INSERT INTO `cotizaciones`(`usuarios_id`,`cotcat_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `opciones`, `cantidad`, `precio`, `size`, `peso`, `color`) VALUES (:usuarios_id, :cotcat_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :opciones, :cantidad, :precio, :size, :peso, :color)";
+        $sql = "INSERT INTO `cotizaciones`(`info_usuario`,`id_usuario`,`usuarios_id`,`cotcat_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `opciones`, `cantidad`, `precio`, `size`, `peso`, `color`) VALUES (:info_usuario, :id_usuario, :usuarios_id, :cotcat_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :opciones, :cantidad, :precio, :size, :peso, :color)";
 
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
+            ":info_usuario" => $_params['info_usuario'],
+            ":id_usuario" => $_params['id_usuario'],
             ":usuarios_id" => $_params['usuarios_id'],
             ":cotcat_id" => $_params['cotcat_id'],
             ":nombre" => $_params['nombre'],
@@ -48,11 +50,13 @@ class Cotizaciones
 
     public function actualizar($_params)
     {
-        $sql = "UPDATE `cotizaciones` SET `usuarios_id`=:usuarios_id, `cotcat_id`=:cotcat_id,`producto_id`=:producto_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`opciones`=:opciones,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`peso`=:peso,`color`=:color WHERE `id` =:id";
+        $sql = "UPDATE `cotizaciones` SET `info_usuario`=:info_usuario,`id_usuario`=:id_usuario,`usuarios_id`=:usuarios_id, `cotcat_id`=:cotcat_id,`producto_id`=:producto_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`opciones`=:opciones,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`peso`=:peso,`color`=:color WHERE `id` =:id";
 
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
+            ":info_usuario" => $_params['info_usuario'],
+            ":id_usuario" => $_params['id_usuario'],
             ":usuarios_id" => $_params['usuarios_id'],
             ":cotcat_id" => $_params['cotcat_id'],
             ":producto_id" => $_params['producto_id'],
@@ -106,7 +110,7 @@ class Cotizaciones
 
     public function mostrar()
     {
-        $sql = "SELECT cotizaciones.id, cotizaciones.usuarios_id, cotcat_id, producto_id, nombre, proveedor, descripcion, cotizaciones.imagen, cotizaciones.fecha, opciones, cantidad, precio, size, peso, color FROM cotizaciones
+        $sql = "SELECT cotizaciones.id, cotizaciones.info_usuario, cotizaciones.id_usuario, cotizaciones.usuarios_id, cotcat_id, producto_id, nombre, proveedor, descripcion, cotizaciones.imagen, cotizaciones.fecha, opciones, cantidad, precio, size, peso, color FROM cotizaciones
         INNER JOIN cotcat
         ON cotizaciones.cotcat_id = cotcat.id ORDER BY cotizaciones.id ASC";
 

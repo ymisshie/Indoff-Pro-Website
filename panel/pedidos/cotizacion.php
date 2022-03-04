@@ -41,8 +41,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $usuario = $info_usuario->mostrar();
 
 
-   
-
     $info_productos = new ameri\Cotizaciones;
     $info_cotizacion = new ameri\Cotcat;
 
@@ -52,11 +50,11 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     foreach ($infocotcat as $item) {
         if ($item['id'] == $id) {
+            $nombre_usuario = $item['info_usuario'];
             $fecha = $item['fecha'];
         }
 
-
-
+    
         $pp = $info_productos->mostrar();
 
         //$cotizacion = $info_cotizacion->mostrarPorId();
@@ -87,7 +85,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <div class="col-4">
                 <h5 class="fw-700">FECHA: <span class="fw-500"><?php print $fecha; ?></span>
                 </h5>
-                <h5 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php   ?></span>
+                <h5 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php  print $nombre_usuario;?></span>
                 </h5>
             </div>
 
