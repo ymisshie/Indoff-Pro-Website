@@ -15,7 +15,7 @@
                     <span><i class="fas fa-door-open py-3 color-purple fs-3-5"></i></span>
                     <div class="card-body">
                         <h5 class="fw-700 color-purple">Onboarding</h5>
-                        <p class="fw-500 m-0">Descripcion</p>
+                        <p class="fw-500 m-0">Demostrar el compromiso con el desarrollo personal y profesional de los trabajadores</p>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <span><i class="fas fa-address-card py-3 color-purple fs-3-5"></i></span>
                     <div class="card-body">
                         <h5 class="fw-700 color-purple">Identidad</h5>
-                        <p class="fw-500 m-0">Descripcion</p>
+                        <p class="fw-500 m-0">Potencializar sentido de pertenencia fomentando el liderazgo e identidad con la empresa.</p>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                     <span><i class="fas fa-award py-3 color-purple fs-3-5"></i></span>
                     <div class="card-body">
                         <h5 class="fw-700 color-purple">Reconocimiento</h5>
-                        <p class="fw-500 m-0">Descripcion</p>
+                        <p class="fw-500 m-0">Demostrar sentido de valoración mediante atención a su progreso y crecimiento.</p>
                     </div>
                 </div>
             </div>
