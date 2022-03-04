@@ -103,6 +103,11 @@ footer a
     color: var(--black);
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+ }
+
 .dropdown-item:hover {
     background-color: var(--red);
     color: var(--white);

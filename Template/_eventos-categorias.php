@@ -7,7 +7,7 @@
             <?php
             require 'vendor/autoload.php';
             $Evento = new ameri\Evento;
-            $info_evento = $Evento->mostrar();
+            $info_evento = $Evento->mostrarOrden6();
             $cantidad = count($info_evento);
 
             if ($cantidad > 0) {

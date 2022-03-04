@@ -1,44 +1,64 @@
-<section class="cid-r7cKOlORZL" id="form1-9">
+<section >
     
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12 mt-5 mb-3">
                 <div class="main-heading-content text-center">
-                    <h2 class="mbr-fonts-style mbr-section-title align-center display-2">We'll contact you back</h2>
+                    <h2 class="hero-title mbr-fonts-style mbr-section-title align-center display-2">Contáctanos</h2>
                     
                     
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6" data-form-type="formoid">            
-                <div data-form-alert="" hidden="">Thanks for filling out the form!</div>
-                <form class="mbr-form" action="https://mobirise.com/" method="post" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="XySkqUnwYvbTxBWl7JL72LD05KtsxS+lC80+eAfDb04CMFWv/HWMAsDl4+o4MfPHIlHhQVTOTQFIADTueDCGCcyeAjDYr5SUi7vafFkcw/562suOZkWBk3sYMsS5A2VL">
+            <div class="col-md-6" >            
+                <div id="thank_you" hidden="false">Thanks for filling out the form!</div>
+                <form  action="contact-form-email.php" method="post">
                     <div class="row row-sm-offset">
-                        <div class="col-md-12 multi-horizontal" data-for="name">
+                        <div class="col-md-12 multi-horizontal mb-3">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Name" data-form-field="Name" required="" id="name-form1-9">
+                                <input type="text" class="form-control" name="name" placeholder="Name" required>
                             </div>
                         </div>
-                        <div class="col-md-12 multi-horizontal" data-for="email">
+                        <div class="col-md-12 multi-horizontal mb-3">
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email" data-form-field="Email" required="" id="email-form1-9">
+                                <input type="email" class="form-control" name="email" placeholder="Email" required>
                             </div>
                         </div>
-                        <div class="col-md-12 multi-horizontal" data-for="phone">
+                        <div class="col-md-12 multi-horizontal mb-3">
                             <div class="form-group">
-                                <input type="tel" class="form-control" name="phone" placeholder="Phone" data-form-field="Phone" id="phone-form1-9">
+                                <input type="tel" class="form-control" name="phone" placeholder="Phone" required >
                             </div>
                         </div>
                     </div>
-                    <div class="form-group" data-for="message">
-                        <textarea type="text" class="form-control" name="message" rows="7" placeholder="Message" data-form-field="Message" id="message-form1-9"></textarea>
+                    <div class="form-group mb-3" data-for="message">
+                        <textarea type="text" class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
                     </div>
-                    <span class="input-group-btn"><button href="" type="submit" class="btn btn-form btn-primary display-4">SEND</button></span>
+                    <span class="input-group-btn"><button type="submit" class="btn btn-form btn-primary display-4 mb-3 mx-auto">SEND</button></span>
                 </form>
             </div>
-            <div class="col-md-6">
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
+            <div class="col-md-6 ">
+                <div class="container pb-5">
+                <div class="row justify-content-center mx-aut">
+                    <div class="mt-5 col-10 rounded p-2" style="border-style: solid; border-width: 5px; ">
+                        <div class="pt-2 row">
+                            <p class="col-1"></p>
+                            <i class="col-1  pt-1 fa-solid fa-location-dot" style="color: #c54955"></i>
+                            <p class="col-8">Parque Industrial El Águila, Tijuana, México </p>
+                        </div>
+                        <div class="pt-2 row ">
+                            <p class="col-1"></p>
+                            <i class="col-1 pt-1 fa-solid fa-phone" style="color: #c54955"></i>
+                            <p class="col-8" >(664) 625 1111 </p>
+                        </div>
+                        <div class="pt-2 row">
+                            <p class="col-1"></p>
+                            <i class="col-1 pt-1 fa-solid fa-envelope" style="color: #c54955"></i>
+                            <p class="col-8" >mexico@indoff.com </p>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
    </div>
