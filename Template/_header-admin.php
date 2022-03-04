@@ -35,7 +35,7 @@
     <header class="header-admin">
 
         <!--pimary navigation-->
-        <nav class="navbar py-0 navbar-expand-lg color-aqua-bg fw-600 px-md-1">
+        <nav class="navbar py-2 navbar-expand-lg color-aqua-bg fw-600 px-md-1">
             <div class="container-fluid">
                 <div class="d-flex">
                     <a class="align-self-center navbar-brand px-3 fs-2 fw-500 text-white font-gentium me-auto" <?php echo $root_dashboard; ?>>Indoff Pro Dashboard</a>
@@ -97,19 +97,22 @@
                                 ?>
                             </ul>
                         </li>
+
+                        <!--
                         <li class="nav-item px-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>
                         </li>
                         <li class="nav-item px-4 uppercase">
                             <a class="nav-link text-white" aria-current="page" href="#">Nosotros</a>
                         </li>
+                            -->
 
                     </ul>
                     <div class="d-flex px-4 pb-2 pt-lg-1 m-0 mr-8">
                         <div class="align-items-center menu text-center d-flex text-white">
                             <div class="col mx-md-4 d-flex align-items-center">
                                 <div><i class="fas fa-file-invoice fs-1-5"></i></div>
-                                <div><a href="carrito.php" class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
+                                <div><a href="<?php print $root_pedidos?>" class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
                             </div>
                             <div class="col ms-md-1 d-flex align-items-center">
                                 <div><i class="fas fa-user-alt fs-1-5"></i></div>

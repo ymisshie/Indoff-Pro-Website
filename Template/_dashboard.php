@@ -3,12 +3,15 @@
 require '../vendor/autoload.php';
 $eventos = new ameri\Evento;
 $categorias = new ameri\Categoria;
+$cotizaciones = new ameri\Cotcat;
 
 $info_eventos = $eventos->mostrar();
 $info_categorias = $categorias->mostrar();
+$info_cotizaciones = $cotizaciones->mostrar();
 
 $cantidade = count($info_eventos);
 $cantidadca = count($info_categorias);
+$cantidadco = count($info_cotizaciones);
 
 
 
@@ -46,6 +49,19 @@ $cantidadca = count($info_categorias);
                     <div class="card-body py-4">
                         <h5 class="fw-600">Eventos <i class="fa-solid fa-pen-to-square"></i></h5>
                         <p class="fw-400 m-0">Editar los eventos activos y los productos disponibles.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-10">
+                <a class="card dashboard-card mb-5 text-center" href="pedidos/index.php">
+                    <div class="card-img-top">
+                        <h3 class="fw-600 p-4 pb-0 color-purple text-end"><?php print $cantidadco ?></h3>
+                        <i class="dashboard-card-icon fas fa-file-invoice pt-3 pb-5 color-purple"></i>
+                    </div>
+                    <div class="card-body py-4">
+                        <h5 class="fw-600">Cotizaciones <i class="fa-solid fa-pen-to-square"></i></h5>
+                        <p class="fw-400 m-0">Revisar las cotizaciones solicitadas y editar.</p>
                     </div>
                 </a>
             </div>

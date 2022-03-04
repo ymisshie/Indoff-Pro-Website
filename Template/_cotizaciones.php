@@ -22,7 +22,7 @@ include('header.php');
     <div class="container">
         <div class="row pb-5">
             <div class="col-12 d-flex justify-content-between">
-                <h2 class="section-title py-5">Mis cotizaciones pendientes</h2>
+                <h2 class="section-title py-5">Cotizaciones solicitadas pendientes</h2>
             </div>
         </div>
 
@@ -31,6 +31,7 @@ include('header.php');
                 <thead>
                     <tr class="text-center color-grey3-bg ">
                         <th scope="col">#</th>
+                        <th scope="col">Cliente</th>
                         <th scope="col">Información de la cotización</th>
                         <th scope="col">Ver</th>
                     </tr>
@@ -44,22 +45,21 @@ include('header.php');
                     $x = 1;
                     foreach ($cotizacion as $cot) {
 
-                        if ($cot['usuarios_id'] == $_SESSION['user_info']['nombre_login']) {
                     ?>
-                            <tr class="">
+                        <tr class="">
 
-                                <td scope="col" class="fw-500 text-center"><?php print $x; ?></td>
+                            <td scope="col" class="fw-500 text-center"><?php print $x;?></td>
+                            <td scope="col" class="fw-500 text-center"><?php print $cot['usuarios_id'];?></td>
 
-                                <td scope="col" class="fw-500 text-center"><span><?php print 'Cotizacion ' . $cot['fecha']; ?> </span></td>
-                                <td scope="col" class="text-center">
-                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Eliminar <i class="far fa-trash-alt"></i></a>
-                                </td>
+                            <td scope="col" class="fw-500 text-center"><span><?php print 'Cotizacion ' . $cot['fecha']; ?> </span></td>
+                            <td scope="col" class="text-center">
+                                                    <a href="cotizacion.php?id=<?php print $cot['id'] ?>" class="btn-primary btn btn-sm my-md-1 text-center" role="button">Eliminar <i class="far fa-trash-alt"></i></a>
+                                                </td>
 
-                            </tr>
+                        </tr>
                     <?php
 
-                            $x++;
-                        }
+                        $x++;
                     }
 
 

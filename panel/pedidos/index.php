@@ -32,6 +32,10 @@ $root_indoffpro = 'href="../../index.php"';
 include('../../Template/_header-admin.php')
 ?>
 
+<?php
+//include header.php file
+include('../../Template/_cotizaciones.php')
+?>
 
 <?php
 //include header.php file
