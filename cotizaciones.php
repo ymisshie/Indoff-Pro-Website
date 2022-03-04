@@ -44,7 +44,11 @@ include('header.php');
                     $x = 1;
                     foreach ($cotizacion as $cot) {
 
-                        if ($cot['usuarios_id'] == $_SESSION['user_info']['nombre_login']) {
+
+                        print '<pre>';
+                        print_r ($cot);
+
+                        if ($cot['usuarios_id'] == $_SESSION['user_info']['id']) {
                     ?>
                             <tr class="">
 

@@ -19,11 +19,12 @@ class Cotcat{
     }
 
     public function registrar($_params){
-        $sql="INSERT INTO `cotcat`(`fecha`) VALUES (:fecha)";
+        $sql="INSERT INTO `cotcat`(`usuarios_id`,`fecha`) VALUES (:usuarios_id, :fecha)";
 
         $resultado=$this->cn->prepare($sql);
 
         $_array=array( 
+            ":usuarios_id" => $_params['usuarios_id'],
             ":fecha" => $_params['fecha'],
         );
 
@@ -33,11 +34,12 @@ class Cotcat{
     }
 
     public function actualizar($_params){
-        $sql="UPDATE `cotcat` SET `fecha`=:fecha  WHERE `id` =:id";
+        $sql="UPDATE `cotcat` SET `usuarios_id`=:usuarios_id, `fecha`=:fecha  WHERE `id` =:id";
 
         $resultado=$this->cn->prepare($sql);
 
         $_array=array(
+            ":usuarios_id" => $_params['usuarios_id'],
             ":fecha" => $_params['fecha'],
             ":id" => $_params['id'],
         );

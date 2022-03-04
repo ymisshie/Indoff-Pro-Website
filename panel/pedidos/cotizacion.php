@@ -7,7 +7,7 @@ $pagina = "cotizacion";
 
 session_start();
 
-if(!isset($_SESSION['admin_info']) OR empty($_SESSION['admin_info']))
+if (!isset($_SESSION['admin_info']) or empty($_SESSION['admin_info']))
     header('Location: ../index.php');
 
 ?>
@@ -37,20 +37,30 @@ include('../../Template/_header-admin.php');
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
 
+    $info_usuario = new ameri\Usuario;
+    $usuario = $info_usuario->mostrar();
+
+
+   
+
     $info_productos = new ameri\Cotizaciones;
     $info_cotizacion = new ameri\Cotcat;
 
     $infocotcat = $info_cotizacion->mostrar();
 
+    //  print_r($infocotcat);
+
     foreach ($infocotcat as $item) {
         if ($item['id'] == $id) {
             $fecha = $item['fecha'];
         }
+
+
+
+        $pp = $info_productos->mostrar();
+
+        //$cotizacion = $info_cotizacion->mostrarPorId();
     }
-
-    $pp = $info_productos->mostrar();
-
-    //$cotizacion = $info_cotizacion->mostrarPorId();
 }
 
 ?>
@@ -77,7 +87,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <div class="col-4">
                 <h5 class="fw-700">FECHA: <span class="fw-500"><?php print $fecha; ?></span>
                 </h5>
-                <h5 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php print $_SESSION['user_info']['nombre'] . ' ' . $_SESSION['user_info']['apellido']; ?></span>
+                <h5 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php   ?></span>
                 </h5>
             </div>
 
@@ -127,7 +137,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <tr class="">
 
                             <td scope="col" class="fw-600"><?php
-                                                            $imagen = 'upload/' . $producto['imagen'];
+                                                            $imagen = '../../upload/' . $producto['imagen'];
                                                             if (file_exists($imagen)) {
                                                             ?>
                                     <img src="<?php print $imagen; ?>" width="100px">

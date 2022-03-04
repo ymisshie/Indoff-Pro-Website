@@ -93,4 +93,16 @@ class Usuario
         }
     }
 
+    public function mostrar(){
+        $sql = "SELECT * FROM usuarios";
+        
+        $resultado = $this->cn->prepare($sql);
+
+        if($resultado->execute())
+            return $resultado->fetchAll();
+
+        return false;
+    }
+
+
 }

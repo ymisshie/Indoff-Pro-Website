@@ -112,7 +112,7 @@
                         <div class="align-items-center menu text-center d-flex text-white">
                             <div class="col mx-md-4 d-flex align-items-center">
                                 <div><i class="fas fa-file-invoice fs-1-5"></i></div>
-                                <div><a href="<?php print $root_pedidos?>" class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
+                                <div><a <?php print $root_pedidos?> class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
                             </div>
                             <div class="col ms-md-1 d-flex align-items-center">
                                 <div><i class="fas fa-user-alt fs-1-5"></i></div>
