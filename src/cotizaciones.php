@@ -106,7 +106,7 @@ class Cotizaciones
 
     public function mostrar()
     {
-        $sql = "SELECT cotizaciones.id, usuarios_id, cotcat_id, producto_id, nombre, proveedor, descripcion, cotizaciones.imagen, cotizaciones.fecha, opciones, cantidad, precio, size, peso, color FROM cotizaciones
+        $sql = "SELECT cotizaciones.id, cotizaciones.usuarios_id, cotcat_id, producto_id, nombre, proveedor, descripcion, cotizaciones.imagen, cotizaciones.fecha, opciones, cantidad, precio, size, peso, color FROM cotizaciones
         INNER JOIN cotcat
         ON cotizaciones.cotcat_id = cotcat.id ORDER BY cotizaciones.id ASC";
 

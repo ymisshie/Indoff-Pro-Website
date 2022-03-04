@@ -105,7 +105,7 @@ class Usuario
 
         return false;
     }
-    
+
     public function verificarVkeyUser($verification_key)
     {   
         $vkey = "SELECT verification_key FROM  `usuarios` WHERE `verificado`= 0 AND `verification_key`=:verification_key LIMIT 1";
@@ -121,7 +121,6 @@ class Usuario
 
         return false;
         
-            
         
     }
     public function updateVerificado($verification_key)
