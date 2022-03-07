@@ -11,12 +11,6 @@ include('header.php')
 ?>
 
 <?php
-/*include slider1*/
-include('Template/_hero-index.php')
-/*include slider1*/
-?>
-
-<?php
 /*include categorias*/
 include('Template/_categorias.php')
 /*include categorias*/

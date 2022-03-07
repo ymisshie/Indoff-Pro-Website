@@ -12,12 +12,40 @@
     --grey3: #f3f3f3;
     --grey2: #9b9b9b;
     --aqua: #3AB0AB;
+    --yellow: #F0DC74;
 }
 
 /*globales*/
 body {
     font-family: "Poppins", sans-serif;
     color: var(--black);
+    font-size: smaller;
+}
+
+.fondo1
+{
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(assets/fondo1.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fondo2
+{
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(assets/fondo2.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+.lh-10
+{
+    line-height: 30px;
 }
 
 .uppercase {
@@ -40,9 +68,7 @@ body {
 
 /*Logo*/
 .navbar-brand {
-    font-family: "Gentium Book Basic", serif;
-    font-size: 4em;
-    font-style: italic;
+   width: 4em !important;
 }
 
 .navbar-brand:hover {
@@ -60,7 +86,7 @@ body {
 .header-admin .nav-link.active, .header-admin .nav-link:hover {
     opacity: 85% !important;
     text-decoration-line: underline !important;
-    text-underline-offset:25px !important;
+    text-underline-offset: 25px !important;
     text-decoration-thickness: 4px !important;
     text-decoration-color: var(--orange) !important;
 }
@@ -93,18 +119,18 @@ footer a {
     text-decoration-thickness: 4px;
 }
 
-
 .dropdown-item {
     color: var(--black);
+    font-size: smaller;
 }
 
 .dropdown:hover .dropdown-menu {
     display: block;
-    margin-top: 0; 
- }
+    margin-top: 0;
+}
 
 .dropdown-item:hover {
-    background-color: var(--red);
+    background-color: var(--purple);
     color: var(--white);
 }
 
@@ -119,6 +145,7 @@ footer a {
     font-weight: 600;
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
     border: none;
+    padding: .7em 1em .7em 1em;
 }
 
 .btn-primary {
@@ -126,7 +153,7 @@ footer a {
 }
 
 .btn-primary:hover {
-    background-color: var(--orange);
+    background-color: var(--yellow);
 }
 
 .btn-secondary {
@@ -202,10 +229,11 @@ footer a {
     border-bottom: solid 2px var(--grey) !important;
 }
 
-.form-control2:hover{
+.form-control2:hover {
     border-bottom: solid 2px var(--orange) !important;
 }
-.form-control2:focus{
+
+.form-control2:focus {
     border-bottom: solid 2px var(--red) !important;
 }
 
@@ -413,7 +441,7 @@ select option:hover {
 
 .categorias, .eventos, .dashboard-card {
     box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.3);
-    background-color: var(--red);
+    background-color: var(--purple);
 }
 
 .categorias .card-body:hover, .eventos .card-body:hover, .dashboard-card .card-body:hover {
@@ -450,7 +478,7 @@ select option:hover {
 }
 
 .thumbnail {
-    height: 17em;
+    height: 12em;
 }
 
 .thumbnail-producto {
@@ -518,7 +546,7 @@ select option:hover {
     color: var(--grey2) !important;
 }
 
-.color-grey23 {
+.color-grey3{
     color: var(--grey3) !important;
 }
 
@@ -538,12 +566,9 @@ select option:hover {
     background: var(--black) !important;
 }
 
-.vh {
-    height: 100vh;
-}
+
 
 /*# sourceMappingURL=style.css.map */
-
 
 /*RESPONSIVE*/
 /*breakpoint mediano*/

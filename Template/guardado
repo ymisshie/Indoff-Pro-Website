@@ -1,41 +1,63 @@
-<select name="color_producto[]" multiple class="color-select col-12" id="color-select" required>
+<section class="">
 
-<?php
+    <div class="container-fluid">
 
-for ($y = 0; $y < 141; $y++) {
-?>
-    <option value="<?php print $array[$y] ?>" style="background-color:<?php print $array[$y] ?>; " class="px-lg-3 fw-400">
-        <?php print $array[$y] ?>
-    </option>
-<?php
-}
-?>
-</select>
+        <div class="row justify-content-start color-white">
+            <div class="col-4 p-5 vh-100" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3)), url(assets/hero-index.jpg);">
+                <div class="">
+                    <h1 class="hero-title fs-3-5">Promocione su marca con Indoff Pro</h1>
+                    <h5 class=" hero-description py-3 mb-0">Un premio, reconocimiento o un simple gesto, ayuda a que los empleados se sientan parte de la empresa.</h5>
+                    <a class="btn btn-primary btn-lg mt-3 w-50" href="form-register.php" role="button">Registrarse ahora </a>
+                    <a class="btn btn-secondary btn-lg mt-3 px-5 ms-4 text-white" href="categorias.php?id=1" role="button">Ver productos</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
+</section>
+<!--categorias-->
+<section id="categorias" class="categorias-section">
+    <div class="container-fluid pb-5">
 
+        <div class="row justify-content-center text-center">
+            <h2 class="section-title py-5">Categorías destacadas</h2>
+        </div>
 
-      <!--
-                                    <td scope="col" class="fs-09">
-                                        <div class="d-flex justify-content-center">
+        <div class="row justify-content-center col-lg-15 col-md-10 mx-auto">
+            <?php
+            require 'vendor/autoload.php';
+            $categoria = new ameri\Categoria;
+            $info_categoria = $categoria->mostrarOrden();
+            $cantidad = count($info_categoria);
 
-                                        <?php
-/*
-                                            $opciones = $item_producto['opciones'];
-                                            $separada = '';
-                                            $separador = ",";
-                                            $separada = explode($separador, $opciones);
+            if ($cantidad > 0) {
+                for ($x = 0; $x < $cantidad; $x++) {
+                    $item = $info_categoria[$x];
+            ?>
+                    <div class="col-lg-4 col-md-6 px-5">
+                        <a class="card categorias mb-5" href="categorias.php?id=<?php print $item['id'] ?>">
+                            <?php
+                            $imagen = 'upload/' . $item['imagen'];
+                            if (file_exists($imagen)) {
+                            ?>
 
-                                            $count_opciones = count($separada);
+                                <img src="<?php print $imagen; ?>" class="card-img-top thumbnail" style="object-fit: cover;" alt="...">
 
-                                            for ($o = 0; $o < $count_opciones; $o++) {
-                                                */
-                                            ?>
-                                                <p class="mx-1 my-1"><?php// print $separada[$o]; ?>
-                                                </p>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
+                            <?php } else { ?>
+                                <p>La imagen no se encuentra disponible</p> <?php } ?>
 
-                                    </td>
-                                        -->
+                            <div class="card-body">
+                                <h4 class="fw-700 px-4 mb-1"><?php print $item['nombre'] ?></h4>
+                            </div>
+                        </a>
+                    </div>
+                <?php }
+            } else { ?>
+                <h4>NO HAY REGISTROS</h4>
+            <?php } ?>
+        </div>
+
+    </div>
+
+</section>
+<!--!categorias-->
