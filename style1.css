@@ -22,8 +22,95 @@ body {
     font-size: smaller;
 }
 
-.fondo1
-{
+p::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+p::-moz-selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+h6::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+h6::-moz-selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+h5::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+h5::-moz-selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+h4::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+h4::-moz-selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+h3::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+h3::-moz-selection {
+    background: var(--purple);
+    color: var(--white);
+}
+
+h2::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+h2::-moz-selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+h1::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+h1::-moz-selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+a::selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+/* Firefox */
+a::-moz-selection {
+    background: var(--orange);
+    color: var(--white);
+}
+
+.fondo1 {
     background-size: cover;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -32,8 +119,8 @@ body {
     flex-direction: column;
     align-items: center;
 }
-.fondo2
-{
+
+.fondo2 {
     background-size: cover;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -42,10 +129,13 @@ body {
     flex-direction: column;
     align-items: center;
 }
-  
-.lh-10
-{
+
+.lh-30 {
     line-height: 30px;
+}
+
+.lh-22 {
+    line-height: 22px;
 }
 
 .uppercase {
@@ -68,10 +158,14 @@ body {
 
 /*Logo*/
 .navbar-brand {
-   width: 4em !important;
+    width: 4em !important;
 }
 
-.navbar-brand:hover {
+.footer-brand {
+    width: 8em !important;
+}
+
+.navbar-brand:hover, .footer-brand:hover {
     opacity: 85%;
 }
 
@@ -103,8 +197,17 @@ body {
     text-decoration-color: var(--orange) !important;
 }
 
-footer a {
+footer a, .copyright a {
     text-decoration: none;
+}
+
+footer a:hover 
+{
+    opacity: 85% !important;
+    text-decoration-line: underline !important;
+    text-underline-offset: 4px !important;
+    text-decoration-thickness: 3px !important;
+    text-decoration-color: var(--orange) !important;
 }
 
 .admin-nav-menu:focus {
@@ -137,7 +240,6 @@ footer a {
 .secondary-navbar .nav-item {
     font-weight: 500;
 }
-
 
 /*botones*/
 
@@ -522,6 +624,16 @@ select option:hover {
     background: var(--purple) !important;
 }
 
+.color-yellow {
+    color: var(--yellow) !important;
+}
+
+.color-yellow-bg {
+    background-color: var(--yellow) !important;
+}
+
+
+
 .color-white {
     color: var(--white) !important;
 }
@@ -546,7 +658,7 @@ select option:hover {
     color: var(--grey2) !important;
 }
 
-.color-grey3{
+.color-grey3 {
     color: var(--grey3) !important;
 }
 

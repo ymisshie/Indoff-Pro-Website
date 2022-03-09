@@ -24,7 +24,7 @@ session_start();
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -77,16 +77,16 @@ session_start();
 <body>
 
     <!--start #header-->
-    <header id="header" class="color-red-bg py-1 px-">
+    <header id="header" class="color-red-bg py-1 px-md-5">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-1">
-                    <a class="navbar-brand mb-0" href="index.php"> <img src="assets/logo_1.png" class="img-fluid p-2 mb-0" alt="Logo Indoff Pro"></a>
+                <div class="col-1 align-self-center">
+                    <a class="navbar-brand" href="index.php"> <img src="assets/logo_1.png" class="img-fluid p-0" alt="Logo Indoff Pro"></a>
                 </div>
                 <div class="col-11 align-items-end">
                     <div class="d-flex py-3 justify-content-between">
                         <div class="phone-info text-end me-auto fw-600 align-self-center text-white">
-                            <p class="mb-0 etiqueta-evento color-aqua-bg fw-500 ns p-1 px-3"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 123 39 90 <span><i class="ms-3 me-3 fa-solid fa-phone"></i></span>(664) 625 11 11</p>
+                            <p class="mb-0 etiqueta-evento color-aqua-bg fw-500 ns p-1 px-4"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 123 39 90 <span><i class="ms-3 me-3 fa-solid fa-phone"></i></span>(664) 625 11 11</p>
                         </div>
                         <div class="align-items-center menu text-center d-flex text-white">
                             <div class="col btn-carrito d-flex ps-5">

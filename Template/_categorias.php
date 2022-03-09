@@ -4,7 +4,7 @@
             <div class="col-md-5 align-self-center p-5">
                 <div class="px-lg-2 py-4">
                     <h1 class="fw-800 color-red">Promocione su marca con Indoff Pro</h1>
-                    <h5 class="py-4 fw-600 lh-10">Un Premio, Reconocimiento o un simple gesto de Identidad, ayudan a que los empleados se sientan parte de la empresa.</h5>
+                    <h5 class="py-4 fw-600 lh-30">Un Premio, Reconocimiento o un simple gesto de Identidad, ayudan a que los empleados se sientan parte de la empresa.</h5>
                     <a class="btn btn-primary mt-3 w-50" href="form-register.php" role="button">Registrarse ahora </a>
                     <a class="btn btn-secondary mt-3 px-5 ms-4 text-white" href="categorias.php?id=1" role="button">Ver productos</a>
                 </div>

@@ -4,10 +4,10 @@
 <!--start #footer-->
 <footer class="color-black-bg">
     <div class="container-fluid text-white px-5 py-3">
-        <div class="row justify-content-center py-md-3">
-            <a class="navbar-brand col-md-9 fw-500 mx-2 text-white" href="index.php">Indoff Pro</a>
+        <div class="row py-md-4">
+            <a class="col-md-8 offset-md-1 footer-brand" href="index.php"> <img src="assets/logo_1.png" class="img-fluid" alt="Logo Indoff Pro"></a>
         </div>
-        <div class="row justify-content-center pb-2">
+        <div class="row justify-content-evenly pb-2">
             <div class="col-12 col-md-3">
                 <h5 class="uppercase py-4 fw-600">Productos Promocionales</h5>
                 <p> <a href="categorias.php?id=1" class="uppercase text-white fw-500">Categorías</a></p>
@@ -15,17 +15,17 @@
                 <p> <a href="contacto.php" class="uppercase text-white fw-500">Contacto</a></p>
                 <p> <a href="nosotros.php" class="uppercase text-white fw-500">Nosotros</a></p>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-2">
                 <h5 class="uppercase py-4 fw-600">Contáctanos</h5>
                 <p><span><i class="fas fa-map-marker-alt me-3 fs-1-2"></i></span> Tijuana, México</p>
-                <p><a href="mailto:mexico@indoff.com" class="text-white"><span><i class="fas fa-envelope me-3 fs-1-2"></i></span>mexico@indoff.com</a></p>
-                <p><span><i class="fas fa-phone me-3 fs-1-2"></i></span>(664) 625 11 11</p>
+                <p><a href="mailto:mexico@indoff.com" class="text-white"><span><i class="fas fa-envelope me-3 fs-1-2"></i></span>ana.gallegos@indoff.com</a></p>
                 <p><span><i class="fas fa-phone me-3 fs-1-2"></i></span>(664) 123 39 90</p>
+                <p><span><i class="fas fa-phone me-3 fs-1-2"></i></span>(664) 625 11 11</p>
             </div>
 
-            <div class="col-12 col-md-3 pb-2">
-                <h5 class="uppercase py-4 fw-600 col-md-9 col-10">Conecta con nuestras redes sociales</h5>
-                <div class="col-7 d-flex justify-content-between">
+            <div class="col-12 col-lg-3 pb-2">
+                <h5 class="uppercase py-4 fw-600">Conecta con nuestras redes</h5>
+                <div class="col-7 col-lg-6 d-flex justify-content-between">
                     <div class="">
                         <a target="_blank" href="https://www.linkedin.com/company/31381210/admin/"><i class="fab fa-linkedin fs-3 text-white"></i></a>
                     </div>
@@ -40,9 +40,9 @@
         </div>
     </div>
 </footer>
-<div class="text-center copyright py-3 py-md-4">
+<div class="text-center copyright py-3 py-md-4 fw-60">
     © 2022 Copyright:
-    <a class="text-reset fw-bold mb-0" href="index.php">indoffpro.com</a>
+    <a class="color-red fw-800 mb-0" href="index.php">indoffpro.com</a>
 </div>
 
 <!--!start #footer-->
