@@ -24,7 +24,7 @@ session_start();
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style2.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 

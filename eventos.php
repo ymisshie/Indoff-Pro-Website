@@ -14,12 +14,6 @@ include('header.php')
 ?>
 
 <?php
-/*include hero-categorias*/
-include('Template/_hero-eventos.php')
-/*include hero-categorias*/
-?>
-
-<?php
 /*include filtros-categorias*/
 include('Template/_eventos-categorias.php')
 /*include filtros-categorias*/

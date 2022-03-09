@@ -60,88 +60,80 @@ if ($cantidad_categorias > 0) {
     <!--!navbar-->
 
     <!--filtros-categorias-->
-    <section class="categorias-filtro">
-        <div class="container pb-5">
+    <section class="categorias-filtro fondo1">
+        <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <h1 class="fw-800 pt-5" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
-                    <h6 class="pt-3 pb-4 fw-400" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
+                <div class="col-2 p-5">
+                    <h2 class="fw-800 color-red" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h2>
+                    <h6 class="pt-2 pb-4 fw-600" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
                 </div>
-            </div>
 
-            <div class="row justify-content-evenly d-flex flex-wrap flex-row text-center">
+                <div class="col-9 p-5 justify-content-evenly d-flex flex-wrap flex-row">
+                    <?php
+                    foreach ($info_producto as $item_producto) {
 
-                <?php
-                foreach ($info_producto as $item_producto) {
-
-                    if ($item_producto[5] == $info_categoria_elegida['id']) {
-                ?>
-
-                        <div class="col-lg-4 col-6 col-md-6 pb-5 justify-content-evenly">
-                            <a class="card formulario ws align-self-center" href="producto.php?id=<?php print $item_producto[0] ?>">
-                                <?php
-                                $imagen = 'upload/' . $item_producto['imagen'];
-                                if (file_exists($imagen)) {
-                                ?>
-
-                                    <img src="<?php print $imagen; ?>" class="py-3 img-fluid thumbnail-producto" style="object-fit:contain;">
-
-                                <?php } else { ?>
-                                    Sin imagen
-                                <?php } ?>
-
-                                <div class="card-body color-black px-4">
-                                    <div class="color col-lg-8 col-10 col-md-10 mx-auto d-flex justify-content-evenly py-2">
+                        if ($item_producto[5] == $info_categoria_elegida['id']) {
+                    ?>
+                            <div class="col-lg-4 col-6">
+                                <a class="ws d-flex align-items-center producto-ficha formulario mx-3 mb-4" href="producto.php?id=<?php print $item_producto[0] ?>">
+                                    <div class="col-6 align-self-center">
                                         <?php
-                                        $colores = $item_producto['color'];
-                                        $separada = '';
-                                        $separador = ",";
-                                        $separada = explode($separador, $colores);
-
-                                        $count_colores = count($separada);
-
-                                        for ($u = 0; $u < $count_colores; $u++) {
+                                        $imagen = 'upload/' . $item_producto['imagen'];
+                                        if (file_exists($imagen)) {
                                         ?>
+                                            <img src="<?php print $imagen; ?>" class="p-3 img-fluid thumbnail-producto align-self-center" style="object-fit:contain;">
+                                        <?php } else { ?>
+                                            Sin imagen
+                                        <?php } ?>
+                                    </div>
 
-                                            <div class="p-2 mx-1 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
+                                    <div class="col-6 color-black px-1 align-self-center">
+                                        <h5 class="pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h2>
+                                            <div class="color col-lg-8 col-10 col-md-10 d-flex py-3">
+                                                <?php
+                                                $colores = $item_producto['color'];
+                                                $separada = '';
+                                                $separador = ",";
+                                                $separada = explode($separador, $colores);
+
+                                                $count_colores = count($separada);
+
+                                                for ($u = 0; $u < $count_colores; $u++) {
+                                                ?>
+                                                    <div class="p-2 me-3 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php print $separada[$u]; ?>"></div>
+                                                <?php
+                                                }
+                                                ?>
+
 
                                             </div>
-                                        <?php
-                                        }
-                                        ?>
+                                            <?php
+                                            $costo = $item_producto['precio'];
+                                            $cantidad = $item_producto['cantidad'];
 
-
+                                            $separada_costo = '';
+                                            $separada_cantidad = '';
+                                            $separador = ",";
+                                            $separada_costo = explode($separador, $costo);
+                                            $separada_cantidad = explode($separador, $cantidad);
+                                            $count_costo = count($separada_costo);
+                                            $count_cantidad = count($separada_cantidad);
+                                            ?>
+                                            <div class="col">
+                                                <p class="text-start fw-500 m-0">Desde <span class="fw-700"><?php print "$";
+                                                                                                            print $separada_costo[0] ?></span></p>
+                                                <p class="text-start fw-500 m-auto m-0">Cantidad mín: <span class="fw-700"><?php print $separada_cantidad[0] ?></span></p>
+                                            </div>
                                     </div>
+                                </a>
+                            </div>
 
-                                    <h2 class="text-start pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h2>
-
-                                    <?php
-                                    $costo = $item_producto['precio'];
-                                    $cantidad = $item_producto['cantidad'];
-
-                                    $separada_costo = '';
-                                    $separada_cantidad = '';
-                                    $separador = ",";
-                                    $separada_costo = explode($separador, $costo);
-                                    $separada_cantidad = explode($separador, $cantidad);
-                                    $count_costo = count($separada_costo);
-                                    $count_cantidad = count($separada_cantidad);
-                                    ?>
-                                    <div class="col d-flex pt-3">
-                                        <h5 class="text-start fw-400 m-0">Desde <span class="fw-500"><?php print "$";
-                                                                                                            print $separada_costo[0] ?></span></h5>
-                                        <h5 class="text-start fw-400 m-auto m-0">Cantidad mín: <span class="fw-500"><?php print $separada_cantidad[0] ?></span></p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-
-                <?php
+                    <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
 
-            </div>
+                </div>
     </section>
     <!--!filtros-categorias-->
 <?php

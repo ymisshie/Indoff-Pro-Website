@@ -6,8 +6,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];
 
 
-    $categoria = new ameri\Evento;
     $producto = new ameri\Producto_Evento;
+    $categoria = new ameri\Evento;
 
     $info_producto = $producto->mostrarOrden();
     $info_categoria = $categoria->mostrarOrden6();
@@ -46,7 +46,7 @@ if ($cantidad_categorias > 0) {
                             <li class="nav-item px-md-4">
                                 <a class="nav-link color-black <?php if ($categorias['id'] == $id) {
                                                                     print 'active';
-                                                                } ?>" aria-current="page" href="productos-eventos.php?id=<?php print $categorias['id']; ?>"><?php print $categorias['nombre']; ?></a>
+                                                                } ?>" aria-current="page" href="categorias.php?id=<?php print $categorias['id']; ?>"><?php print $categorias['nombre']; ?></a>
                             </li>
                         <?php
                         }
@@ -60,86 +60,80 @@ if ($cantidad_categorias > 0) {
     <!--!navbar-->
 
     <!--filtros-categorias-->
-    <section class="categorias-filtro">
-        <div class="container pb-5">
+    <section class="categorias-filtro fondo1">
+        <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-12 text-center">
-                    <h1 class="section-title pt-5" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h1>
-                    <h6 class="pt-3 pb-5 fw-400" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
+                <div class="col-2 p-5">
+                    <h2 class="fw-800 color-red" id="nombreCategoria"><?php print $info_categoria_elegida['nombre']; ?></h2>
+                    <h6 class="pt-2 pb-4 fw-600" id="descripcionCategoria"><?php print $info_categoria_elegida['descripcion'] ?></h6>
                 </div>
-            </div>
 
-            <div class="row justify-content-evenly d-flex flex-wrap flex-row text-center">
+                <div class="col-9 p-5 justify-content-evenly d-flex flex-wrap flex-row">
+                    <?php
+                    foreach ($info_producto as $item_producto) {
 
-                <?php
-                foreach ($info_producto as $item_producto) {
-
-                    if ($item_producto[5] == $info_categoria_elegida['id']) {
-                ?>
-
-                        <div class="col-lg-3 col-6 col-md-6 pb-5 justify-content-evenly">
-                            <a class="card formulario ws align-self-center" href="producto.php?id=<?php print $item_producto[0] ?>">
-                                <?php
-                                $imagen = 'upload/' . $item_producto['imagen'];
-                                if (file_exists($imagen)) {
-                                ?>
-
-                                    <img src="<?php print $imagen; ?>" class="p-3 img-fluid thumbnail-producto" style="object-fit:contain;">
-
-                                <?php } else { ?>
-                                    Sin imagen
-                                <?php } ?>
-
-                                <div class="card-body color-black">
-                                    <div class="color col-lg-8 col-10 col-md-10 mx-auto d-flex justify-content-evenly py-2">
+                        if ($item_producto[5] == $info_categoria_elegida['id']) {
+                    ?>
+                            <div class="col-lg-4 col-6">
+                                <a class="ws d-flex align-items-center producto-ficha formulario mx-3 mb-4" href="producto-evento-hero.php?id=<?php print $item_producto[0] ?>">
+                                    <div class="col-6 align-self-center">
                                         <?php
-                                        $colores = $item_producto['color'];
-                                        $separada = '';
-                                        $separador = ",";
-                                        $separada = explode($separador, $colores);
-
-                                        $count_colores = count($separada);
-
-                                        for ($u = 0; $u < $count_colores; $u++) {
+                                        $imagen = 'upload/' . $item_producto['imagen'];
+                                        if (file_exists($imagen)) {
                                         ?>
-
-                                            <div class="p-2 mx-1 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
-
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
-
-
+                                            <img src="<?php print $imagen; ?>" class="p-3 img-fluid thumbnail-producto align-self-center" style="object-fit:contain;">
+                                        <?php } else { ?>
+                                            Sin imagen
+                                        <?php } ?>
                                     </div>
 
-                                    <h5 class="pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h5>
+                                    <div class="col-6 color-black px-1 align-self-center">
+                                        <h5 class="pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h2>
+                                            <div class="color col-lg-8 col-10 col-md-10 d-flex py-3">
+                                                <?php
+                                                $colores = $item_producto['color'];
+                                                $separada = '';
+                                                $separador = ",";
+                                                $separada = explode($separador, $colores);
 
-                                    <?php
-                                    $costo = $item_producto['precio'];
-                                    $cantidad = $item_producto['cantidad'];
+                                                $count_colores = count($separada);
 
-                                    $separada_costo = '';
-                                    $separada_cantidad = '';
-                                    $separador = ",";
-                                    $separada_costo = explode($separador, $costo);
-                                    $separada_cantidad = explode($separador, $cantidad);
-                                    $count_costo = count($separada_costo);
-                                    $count_cantidad = count($separada_cantidad);
-                                    ?>
-                                    <p class="fw-400 pt-3 m-0">Desde <span class="fw-500"><?php print "$";
-                                                                                            print $separada_costo[0] ?></span></p>
-                                    <p class="fw-400 pt-2 m-0">Cantidad mínima: <span class="fw-500"><?php print $separada_cantidad[0] ?></span></p>
-                                </div>
-                            </a>
-                        </div>
+                                                for ($u = 0; $u < $count_colores; $u++) {
+                                                ?>
+                                                    <div class="p-2 me-3 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="left" title="<?php print $separada[$u]; ?>"></div>
+                                                <?php
+                                                }
+                                                ?>
 
-                <?php
+
+                                            </div>
+                                            <?php
+                                            $costo = $item_producto['precio'];
+                                            $cantidad = $item_producto['cantidad'];
+
+                                            $separada_costo = '';
+                                            $separada_cantidad = '';
+                                            $separador = ",";
+                                            $separada_costo = explode($separador, $costo);
+                                            $separada_cantidad = explode($separador, $cantidad);
+                                            $count_costo = count($separada_costo);
+                                            $count_cantidad = count($separada_cantidad);
+                                            ?>
+                                            <div class="col">
+                                                <p class="text-start fw-500 m-0">Desde <span class="fw-700"><?php print "$";
+                                                                                                            print $separada_costo[0] ?></span></p>
+                                                <p class="text-start fw-500 m-auto m-0">Cantidad mín: <span class="fw-700"><?php print $separada_cantidad[0] ?></span></p>
+                                            </div>
+                                    </div>
+                                </a>
+                            </div>
+
+                    <?php
+                        }
                     }
-                }
-                ?>
+                    ?>
 
-            </div>
+                </div>
     </section>
     <!--!filtros-categorias-->
 <?php

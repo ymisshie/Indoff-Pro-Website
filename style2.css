@@ -7,7 +7,7 @@
     --purple: #775FC7;
     --red: #c54955;
     --orange: #E49F49;
-    --black: #414141;
+    --black: #464646;
     --grey: #E7E7E7;
     --grey3: #f3f3f3;
     --grey2: #9b9b9b;
@@ -169,6 +169,10 @@ a::-moz-selection {
     opacity: 85%;
 }
 
+.nav-link {
+    font-weight: 600;
+}
+
 .nav-link:hover, .nav-link.active {
     opacity: 85%;
     text-decoration-line: underline;
@@ -201,8 +205,7 @@ footer a, .copyright a {
     text-decoration: none;
 }
 
-footer a:hover 
-{
+footer a:hover {
     opacity: 85% !important;
     text-decoration-line: underline !important;
     text-underline-offset: 4px !important;
@@ -217,8 +220,8 @@ footer a:hover
 .secondary-navbar .nav-link.active, .secondary-navbar .nav-link:hover {
     opacity: 85% !important;
     text-decoration-line: underline;
-    text-underline-offset: 13px;
-    text-decoration-color: var(--aqua);
+    text-underline-offset: 11px;
+    text-decoration-color: var(--orange);
     text-decoration-thickness: 4px;
 }
 
@@ -358,8 +361,12 @@ textarea {
 }
 
 .categorias-filtro .formulario:hover {
-    border-color: var(--red) !important;
+    border-color: var(--purple) !important;
     cursor: pointer;
+}
+
+.producto-ficha {
+    text-decoration: none !important;
 }
 
 .color-select, .select2-selection {
@@ -584,7 +591,7 @@ select option:hover {
 }
 
 .thumbnail-producto {
-    height: 17em;
+    height: 18em !important;
 }
 
 .producto-img {
