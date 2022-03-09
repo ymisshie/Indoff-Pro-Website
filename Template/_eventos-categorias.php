@@ -1,17 +1,7 @@
 <section class="fondo1">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-5 align-self-center p-5">
-                <div class="px-lg-2 py-4">
-                    <h1 class="fw-800 color-red">Productos para toda ocasión</h1>
-                    <h5 class="py-4 fw-600 lh-30">Indoff Promocionales tiene un detalle para cada temporada. Observa la variedad que existe para el regalo ideal.</h5>
-                    <a class="btn btn-primary mt-3 w-50" href="form-register.php" role="button">Registrarse ahora </a>
-                    <a class="btn btn-secondary mt-3 px-5 ms-4 text-white" href="categorias.php?id=1" role="button">Ver productos</a>
-                </div>
-            </div>
-
             <div class="col-md-7 p-5">
-
                 <div class="d-flex flex-wrap justify-content-evenly">
 
                     <?php
@@ -44,6 +34,14 @@
                     } else { ?>
                         <h4>NO HAY REGISTROS</h4>
                     <?php } ?>
+                </div>
+            </div>
+            <div class="col-md-5 align-self-center p-5">
+                <div class="px-lg-2 py-4">
+                    <h1 class="fw-800 color-red">Productos para toda ocasión</h1>
+                    <h5 class="py-4 fw-600 lh-30">Indoff Promocionales tiene un detalle para cada temporada. Observa la variedad que existe para el regalo ideal.</h5>
+                    <a class="btn btn-primary mt-3 w-50" href="form-register.php" role="button">Registrarse ahora </a>
+                    <a class="btn btn-secondary mt-3 px-5 ms-4 text-white" href="categorias.php?id=1" role="button">Ver productos</a>
                 </div>
             </div>
         </div>
