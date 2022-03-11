@@ -12,7 +12,7 @@
     --grey3: #f3f3f3;
     --grey2: #9b9b9b;
     --aqua: #3AB0AB;
-    --yellow: #F0DC74;
+    --yellow: #ecd24c;
 }
 
 /*globales*/
@@ -125,6 +125,16 @@ a::-moz-selection {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-image: url(assets/fondo2.png);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fondo3 {
+    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url(assets/fondo3.png);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -251,6 +261,7 @@ footer a:hover {
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
     border: none;
     padding: .7em 1em .7em 1em;
+    color: var(--white) !important;
 }
 
 .btn-primary {
@@ -274,45 +285,36 @@ footer a:hover {
 }
 
 .btn-third:hover {
-    background-color: var(--aqua);
+    background-color: var(--orange);
 }
 
 .btn-link {
     box-shadow: none;
+    color: var(--red);
     text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
     text-decoration-line: underline;
     text-underline-offset: 6px;
 }
 
-.btn-link2 {
-    box-shadow: none;
-    text-shadow: none;
-    text-decoration-line: underline;
-    text-underline-offset: 6px;
-}
-
-.btn-link:hover {
-    background-color: var(--orange);
+.btn-link:hover, .btn-link:focus {
+    color: var(--purple);
     text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.0);
-    text-decoration: none;
-}
-
-.btn-link2:hover, .btn-link2:focus {
-    background-color: var(--orange);
-    text-shadow: none;
-    text-decoration: none;
-    color: var(--white) !important;
 }
 
 .btn-color {
     cursor: pointer;
     border-radius: 5em;
     box-shadow: none;
-    border: #00000000 solid 4px;
+    border: #00000000 solid 3px;
+}
+
+.color .btn-color:hover {
+    border: var(--black) solid 3px;
+    cursor: pointer;
 }
 
 .btn-color:hover {
-    border: var(--white) solid 4px;
+   cursor:text;
 }
 
 .btn-color:active, .btn-color:focus {
@@ -591,11 +593,12 @@ select option:hover {
 }
 
 .thumbnail-producto {
-    height: 18em !important;
+    height: 15em !important;
 }
 
 .producto-img {
-    height: 32em !important;
+    height: 45em !important;
+    object-fit: cover;
 }
 
 /*COLORES*/

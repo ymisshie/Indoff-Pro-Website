@@ -47,12 +47,12 @@
             'dev_requirement' => false,
         ),
         'phenx/php-svg-lib' => array(
-            'pretty_version' => '0.4.0',
-            'version' => '0.4.0.0',
+            'pretty_version' => '0.4.1',
+            'version' => '0.4.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phenx/php-svg-lib',
             'aliases' => array(),
-            'reference' => '3ffbbb037f0871c3a819e90cff8b36dd7e656189',
+            'reference' => '4498b5df7b08e8469f0f8279651ea5de9626ed02',
             'dev_requirement' => false,
         ),
         'sabberworm/php-css-parser' => array(

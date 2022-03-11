@@ -128,7 +128,8 @@
         var modificartotal = document.getElementById("precioTotal");
         modificartotal.textContent = '$' + arreglo[1];
         var modificarprecioindividual = document.getElementById("precioIndividual1_producto");
-        modificarprecioindividual.textContent = arreglo[0] / arreglo[1];
+    
+        modificarprecioindividual.textContent = Number((arreglo[0] / arreglo[1]).toFixed(2));
         // console.log(modificarlabel.textContent)
 
 

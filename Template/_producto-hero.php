@@ -15,20 +15,20 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     if (!$info_producto)
         header('Location: index.php');
-$user_existe = 0;
-$admin_existe = 0;
-if ((isset($_SESSION['user_info']))) {
-    $user_existe ++;
-    if($_SESSION['user_info']){
-        $user_existe ++;
+    $user_existe = 0;
+    $admin_existe = 0;
+    if ((isset($_SESSION['user_info']))) {
+        $user_existe++;
+        if ($_SESSION['user_info']) {
+            $user_existe++;
+        }
     }
-}
-if ((isset($_SESSION['admin_info']))) {
-    $admin_existe ++;
-    if($_SESSION['admin_info']){
-        $admin_existe ++;
+    if ((isset($_SESSION['admin_info']))) {
+        $admin_existe++;
+        if ($_SESSION['admin_info']) {
+            $admin_existe++;
+        }
     }
-}
 ?>
     <!--navbar-->
     <section>
@@ -67,10 +67,8 @@ if ((isset($_SESSION['admin_info']))) {
 
 
     <!--product-hero-->
-    <section id="producto" class="producto-hero">
-
-        <div class="container-fluid">
-
+    <section id="producto" class="producto-hero fondo3">
+        <div class="container-fluid px-5">
             <div class="row justify-content-evenly">
                 <!--IMAGEN DEL PRODUCTO-->
                 <div class="col-12 col-lg-4 text-center producto-img">
@@ -78,8 +76,7 @@ if ((isset($_SESSION['admin_info']))) {
                     $imagen = 'upload/' . $info_producto['imagen'];
                     if (file_exists($imagen)) {
                     ?>
-                        <img src="<?php print $imagen; ?>" class="img-fluid align-self-center" style="object-fit:contain;">
-
+                        <img src="<?php print $imagen; ?>" class="producto-img align-self-center">
                     <?php } else { ?>
                         Sin imagen
                     <?php } ?>
@@ -87,28 +84,29 @@ if ((isset($_SESSION['admin_info']))) {
                 <!--!IMAGEN DEL PRODUCTO-->
 
                 <!--INFO DEL PRODUCTO-->
-                <form class="color-grey3-bg py-5 px-5 col-12 col-lg-7 justify-content-evenly d-flex" method="POST" action="funciones.php" enctype="multipart/form-data">
-                    <div class="col-md-8 col-8 col-lg-9">
+                <form class="py-5 px-5 col-12 col-lg-8 justify-content-evenly d-flex" method="POST" action="funciones.php" enctype="multipart/form-data">
+                    <div class="col-md-8 col-8 col-lg-8">
                         <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
                         <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
                         <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
                         <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
                         <input type="hidden" name="usuario_nombre" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_login'] ?>">
-                        <input type="hidden" name="info_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_usuario']; print ' ';  print $_SESSION['user_info']['apellido_usuario']; ?>">
+                        <input type="hidden" name="info_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_usuario'];
+                                                                        print ' ';
+                                                                        print $_SESSION['user_info']['apellido_usuario']; ?>">
                         <input type="hidden" name="id_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['id']; ?>">
 
 
-                        <h4 class="section-title pt-4"><?php print $info_producto['nombre'] ?>
-                        </h4>
-                        <h6 class="fw-600 py-1 color-red"> <?php print $info_producto['proveedor'] ?></h6>
+                        <h2 class="fw-800 pt-4 color-red"><?php print $info_producto['nombre'] ?>
+                        </h2>
+                        <h6 class="fw-700 py-1"> <?php print $info_producto['proveedor'] ?></h6>
                         <p class="py-2 fw-400"><?php print $info_producto['descripcion'] ?></p>
 
                         <!-- color -->
                         <div class="d-flex">
-                            <div class="col-6 col-lg-7 py-3">
+                            <div class="col-6 col-lg-7 pt-3">
                                 <h6 class="fs-1-2 fw-700 m-0">Color</h6>
-                                <div class="color col-md-8 col-lg-10 d-flex pt-2">
-
+                                <div class="color col-md-8 col-lg-10 d-flex pt-3">
                                     <?php
                                     $colores = $info_producto['color'];
                                     $separada = '';
@@ -119,9 +117,7 @@ if ((isset($_SESSION['admin_info']))) {
 
                                     for ($u = 0; $u < $count_colores; $u++) {
                                     ?>
-
-                                        <button type="button" class="btn btn-color p-3 py-3 me-3" onclick="color_selected()" name="<?php print $separada[$u]; ?>" style="background-color: <?php print $separada[$u];  ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php //print $separada[$u];
-                                                                                                                                                                                                                                                                                    ?>"></button>
+                                        <button type="button" class="btn btn-color p-3 me-3" onclick="color_selected()" name="<?php print $separada[$u]; ?>" style="background-color: <?php print $separada[$u];  ?>;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php print $separada[$u];  ?>"></button>
                                     <?php
                                     }
                                     ?>
@@ -130,10 +126,8 @@ if ((isset($_SESSION['admin_info']))) {
 
                             <div class="col-5 col-lg-3 pt-3">
                                 <h6 class="fs-1-2 fw-600 m-0">Seleccionado</h6>
-                                <div class="color col-12 d-flex py-2">
-
-                                    <button type="button" class="btn btn-color p-3 py-3 w-100" id="mostrarColor" style="background-color: <?php print $separada[0]; ?>;  border-radius: 1em;" href="#"></button>
-
+                                <div class="col-12 d-flex pt-3 pb-2">
+                                    <button type="button" class="btn btn-color p-3 w-100" id="mostrarColor" style="background-color: <?php print $separada[0]; ?>;  border-radius: 1em;" href="#"></button>
                                 </div>
                                 <small class="d-flex form-text text-disbabled m-0" id="mostrarColorNombre" name="colorescogido"><?php print $separada[0]; ?></small>
                                 <input type="hidden" name="color_producto" id="color_producto" value="<?php print $separada[0]; ?>">
@@ -162,7 +156,6 @@ if ((isset($_SESSION['admin_info']))) {
 
                         if ($count_opciones > 1) {
                         ?>
-
                             <div class="col-12 py-3 select-cantidades">
                                 <h6 class="fs-1-2 fw-600 m-0 pt-3 pb-4">Seleccione la cantidad</h6>
                                 <div class="col-12 d-flex flex-wrap">
@@ -203,15 +196,14 @@ if ((isset($_SESSION['admin_info']))) {
                                     } ?>
                                 </div>
                             </div>
-
                         <?php
                         } else {
-
                         ?>
-                            <div class="col-12 py-3 select-cantidades">
+                            <div class="col-12 pb-3 select-cantidades">
                                 <h6 class="fs-1-2 fw-600 m-0 pt-3 pb-4">Seleccione la cantidad</h6>
-                                <div class="col-lg-12 d-flex flex-wrap">
-                                    <div class="text-center col-lg-4 px-2 py-1">
+
+                                <div class="d-flex">
+                                    <div class="col-7 pe-5">
                                         <select class="qty-dropdown" id="selectOpciones1_producto" name="selectOpciones1_producto" onchange="cambiarPrecio()" required>
                                             <option value="">Unidades</option>
                                             <?php $x = 0;
@@ -228,7 +220,6 @@ if ((isset($_SESSION['admin_info']))) {
                                                 }
                                             } ?>
                                         </select>
-
                                         <input type="hidden" name="selectOpciones2_producto" value="">
                                         <input type="hidden" name="selectOpciones3_producto" value="">
                                         <input type="hidden" name="selectOpciones4_producto" value="">
@@ -238,47 +229,40 @@ if ((isset($_SESSION['admin_info']))) {
                                         <input type="hidden" name="selectOpciones8_producto" value="">
                                         <input type="hidden" name="selectOpciones9_producto" value="">
                                         <input type="hidden" name="selectOpciones10_producto" value="">
-
-
-                                        <h5 class="text-start ps-2 pt-3">Unidades: <span class="color-red fw-700" id="cantidad1_producto" name="cantidad1_producto"></span></h5>
-                                        <h5 class="text-start ps-2 pb-2">Costo: <span class="color-red fw-700" id="precioSelect1_producto" name="precioSelect1_producto"></span></h5>
-                                        <h6 class="text-start ps-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
                                     </div>
-
+                                    <div class="col-3">
+                                        <h6 class="text-start">Unidades: <span class="color-purple fw-700 fs-1-2" id="cantidad1_producto" name="cantidad1_producto"></span></h6>
+                                        <h6 class="text-start">Costo: <span class="color-purple fw-700 fs-1-2" id="precioSelect1_producto" name="precioSelect1_producto"></span></h6>
+                                        <h6 class="text-start">C/Unidad: <span class="color-purple fw-700 fs-1-2" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
+                                    </div>
                                 </div>
                             </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+
+                    <div class="col-4 col-lg-4 ws bg px-4 formulario py-5 align-self-start">
+                        <h5 class="pb-3 fw-700">Resumen de la cotización</h5>
+                        <h6 class="mb-4 color-black fw-600">Total: <span id="precioTotal" class="fw-700 color-purple fs-1-5"></span></h6>
+                        <?php
+                        if ($user_existe > 1 || $admin_existe > 1) {
+                        ?>
+                            <input role="button" type="submit" name="accion" value="Agregar al carrito" class="btn btn-primary w-100" onclick="cambiarCarrito(<?php print $cantidad ?>)">
+                            <!--<small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>-->
+                        <?php
+
+                        } else {
+                        ?>
+                            <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
+                            <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
+
+                            <!--  <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>-->
 
                         <?php
                         }
                         ?>
 
-
-                    </div>
-
-                    <div class="col-4 col-lg-3 ws bg px-4 formulario">
-                        <h5 class="py-5 fw-600">Resumen de cotización</h5>
-                        <h5 class="mb-4 color-black fw-600">Total: <span id="precioTotal" class="fw-700 color-red"></span></h5>
-
-                        <?php
-                        if ($user_existe>1 || $admin_existe >1) {
-                        ?>
-
-                            <input role="button" type="submit" name="accion" value="Agregar al carrito" class="btn btn-primary w-100" onclick="cambiarCarrito(<?php print $cantidad ?>)">
-                            <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>
-                        <?php
-
-                        } 
-                        else {
-                            ?>
-                                <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
-                                <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
-    
-                                <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>
-    
-                            <?php
-                            }
-                            ?>
-                
                     </div>
 
                 </form>

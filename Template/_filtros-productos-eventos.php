@@ -88,7 +88,7 @@ if ($cantidad_categorias > 0) {
                                     </div>
 
                                     <div class="col-6 color-black px-1 align-self-center">
-                                        <h5 class="pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h2>
+                                        <h5 class="color-purple pt-3 m-0 fw-800"><?php print $item_producto['nombre'] ?></h2>
                                             <div class="color col-lg-8 col-10 col-md-10 d-flex py-3">
                                                 <?php
                                                 $colores = $item_producto['color'];

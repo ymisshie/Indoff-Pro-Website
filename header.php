@@ -24,7 +24,7 @@ session_start();
     <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
 
     <!--CUSTOM CSS FILE-->
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
 
     <link href="jquery.multiselect.css" rel="stylesheet" type="text/css">
 
@@ -86,7 +86,7 @@ session_start();
                 <div class="col-11 align-items-end">
                     <div class="d-flex py-3 justify-content-between">
                         <div class="phone-info text-end me-auto fw-600 align-self-center text-white">
-                            <p class="mb-0 etiqueta-evento color-aqua-bg fw-500 ns p-1 px-4"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 123 39 90 <span><i class="ms-3 me-3 fa-solid fa-phone"></i></span>(664) 625 11 11</p>
+                            <p class="mb-0 etiqueta-evento color-aqua-bg fw-500 ns p-1 px-3"><span><i class="me-3 fa-solid fa-phone"></i></span>(664) 123 39 90 <span><i class="ms-3 me-3 fa-solid fa-phone"></i></span>(664) 625 11 11</p>
                         </div>
                         <div class="align-items-center menu text-center d-flex text-white">
                             <div class="col btn-carrito d-flex ps-5">
@@ -94,9 +94,10 @@ session_start();
                                 if ($user_existe > 1) {
                                 ?>
                                     <a href="carrito.php"><i class="fa-solid color-white fa-cart-shopping fs-1-5"></i></a>
-                                    <div><a href="carrito.php" class="nav-link text-white py-0 fw-500">Carrito <span class="fw-600 rounded-circle p-2 px-3 ms-2" style="background-color:#E49F49;" id="cantidadCarrito"><?php if ($_SESSION['cantidad_carrito'] > 0) {
+                                    <div><a href="carrito.php" class="nav-link text-white py-0 fw-500">Carrito <span class="fw-600 rounded-circle p-2 px-3 ms-2 color-white" style="background-color:#E49F49;" id="cantidadCarrito"><?php if ($_SESSION['cantidad_carrito']) {
                                                                                                                                                                                                                             print $_SESSION['cantidad_carrito'];
-                                                                                                                                                                                                                        } ?></span></a></div>
+                                                                                                                                                                                                                        } 
+                                                                                                                                                                                                                      ?></span></a></div>
                                 <?php
                                 }
                                 ?>

@@ -33,12 +33,11 @@
 
     <!--start #header-->
     <header class="header-admin">
-
         <!--pimary navigation-->
-        <nav class="navbar py-2 navbar-expand-lg color-aqua-bg fw-600 px-md-1">
+        <nav class="navbar py-2 navbar-expand-lg color-red-bg fw-600 px-md-1">
             <div class="container-fluid">
-                <div class="d-flex">
-                    <a class="align-self-center navbar-brand px-3 fs-2 fw-500 text-white font-gentium me-auto" <?php echo $root_dashboard; ?>>Indoff Pro Dashboard</a>
+                <div class="col-1">
+                    <a class="navbar-brand" href="index.php"> <img src="../assets/logo_1.png" class="img-fluid p-0" alt="Logo Indoff Pro"></a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -112,7 +111,7 @@
                         <div class="align-items-center menu text-center d-flex text-white">
                             <div class="col mx-md-4 d-flex align-items-center">
                                 <div><i class="fas fa-file-invoice fs-1-5"></i></div>
-                                <div><a <?php print $root_pedidos?> class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
+                                <div><a <?php print $root_pedidos ?> class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
                             </div>
                             <div class="col ms-md-1 d-flex align-items-center">
                                 <div><i class="fas fa-user-alt fs-1-5"></i></div>
@@ -129,16 +128,14 @@
                         </div>
                     </div>
                 </div>
-            <!-- </div> -->
+                <!-- </div> -->
         </nav>
         <!--!pimary navigation-->
 
     </header>
 
-    
+
     <!--!start #header-->
 
     <!--start #main-site-->
     <main id="main-site">
-
-   
