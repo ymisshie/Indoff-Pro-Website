@@ -58,7 +58,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                 <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?>> 5 </option>
                                 <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?>> 6 </option>
                                 <option value="7" <?php if ($resultado['orden'] > 6) print "selected" ?>> No mostrar </option>
-                           
                         </select>
                     </div>
 

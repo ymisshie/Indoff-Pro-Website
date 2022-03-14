@@ -10,6 +10,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $producto = new ameri\Producto;
     $info_producto = $producto->mostrarPorId($id);
+    $info_producto2 = $producto->mostrar();
     $categoria = new ameri\Categoria;
     $info_categoria = $categoria->mostrar();
 
@@ -30,34 +31,48 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         }
     }
 ?>
-    <!--navbar-->
-    <section>
-        <nav class="navbar secondary-navbar color-grey3-bg py-md-1 navbar-expand-lg fw-600 px-lg-5 px-md-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
-                        <i class="fas fa-bars text-white m-0"></i>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto">
-                        <?php
-                        foreach ($info_categoria as $categorias) {
-                        ?>
-                            <li class="nav-item px-md-4">
-                                <a class="nav-link color-black <?php if ($info_producto[5] == $categorias['id']) {
-                                                                    print 'active';
-                                                                } ?>" aria-current="page" href="categorias.php?id=<?php print $categorias['id']; ?>"><?php print $categorias['nombre']; ?></a>
-                            </li>
-                        <?php
-                        }
-                        ?>
-                    </ul>
+
+
+   <!--navbar-->
+   <section>
+            <nav class="navbar secondary-navbar color-grey3-bg py-md-1 navbar-expand-lg fw-600 px-lg-5 px-md-3">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fas fa-bars text-white m-0"></i>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto">
+                            <?php
+                            foreach ($info_categoria as $categorias) {
+                                $p = 1;
+
+                                foreach ($info_producto2 as $item_producto) {
+                                    if ($item_producto['id'] == $categorias['id']) {
+                                        $p++;
+                                        if ($p > 0) {
+                            ?>
+
+                                            <li class="nav-item px-md-4">
+                                                <a class="nav-link color-black <?php if ($categorias['id'] == $id) {
+                                                                                    print 'active';
+                                                                                } ?>" aria-current="page" href="categorias.php?id=<?php print $categorias['id']; ?>"><?php print $categorias['nombre']; ?></a>
+                                            </li>
+                            <?php
+                                        }
+                                    }
+                                }
+                            } ?>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </section>
-    <!--!navbar-->
+            </nav>
+        </section>
+        <!--!navbar-->
+
+
+
 
     <section>
         <div class="container">
@@ -67,7 +82,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
     <!--product-hero-->
-    <section id="producto" class="producto-hero fondo1">
+    <section id="producto" class="producto-hero fondo">
         <div class="container-fluid px-5">
             <div class="row justify-content-evenly">
                 <!--IMAGEN DEL PRODUCTO-->

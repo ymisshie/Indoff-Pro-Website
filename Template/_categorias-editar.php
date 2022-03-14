@@ -65,12 +65,9 @@ $cantidad = count($info_categoria);
                                 <td scope="col" class="fw-600"><?php print $c  ?></td>
                                 <td>
 
-                                   
                                     <select id="orden_categorias" name="orden_categorias" disabled>
                                         <?php
-
                                         if ($item['id'] >= 1 && $item['id'] < 7) {
-
                                         ?>
                                             <option value="1" <?php if ($item['id'] == 1) print "selected" ?>> 1 </option>
                                             <option value="2" <?php if ($item['id'] == 2) print "selected" ?>>2</option>
@@ -78,18 +75,18 @@ $cantidad = count($info_categoria);
                                             <option value="4" <?php if ($item['id'] == 4) print "selected" ?>> 4 </option>
                                             <option value="5" <?php if ($item['id'] == 5) print "selected" ?>> 5 </option>
                                             <option value="6" <?php if ($item['id'] == 6) print "selected" ?>> 6 </option>
+                                            <option value="7" <?php if ($item['id'] > 6) print "selected" ?>> No mostrar</option>
+                                            <option value="7" <?php if ($item['orden'] > 6) print "selected" ?>> No mostrar</option>
                                         <?php
-
                                         } else { ?>
-
                                             <option value="1" <?php if ($item['orden'] == 1) print "selected" ?>> 1 </option>
                                             <option value="2" <?php if ($item['orden'] == 2) print "selected" ?>>2</option>
                                             <option value="3" <?php if ($item['orden'] == 3) print "selected" ?>>3</option>
                                             <option value="4" <?php if ($item['orden'] == 4) print "selected" ?>> 4 </option>
                                             <option value="5" <?php if ($item['orden'] == 5) print "selected" ?>> 5 </option>
                                             <option value="6" <?php if ($item['orden'] == 6) print "selected" ?>> 6 </option>
-                                            <option value="7" <?php if ($item['id'] > 6) print "selected" ?>> No mostrar </option>
-                                            <option value="7" <?php if ($item['orden'] > 6) print "selected" ?>> No mostrar </option>
+                                            <option value="7" <?php if ($item['id'] > 6) print "selected" ?>> No mostrar</option>
+                                            <option value="7" <?php if ($item['orden'] > 6) print "selected" ?>> No mostrar</option>
                                         <?php
                                         }
                                         ?>

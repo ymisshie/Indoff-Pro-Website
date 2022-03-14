@@ -50,7 +50,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <select name="orden_categorias" class="orden_categorias form-control">
                             <?php
 
-                            if ($resultado['id'] >= 1 && $resultado['id'] < 7) {
+                            if ($resultado['id'] > 1 && $resultado['id'] < 7) {
 
                             ?>
                                 <option value="1" <?php if ($resultado['id'] == 1) print "selected" ?>> 1 </option>
@@ -70,7 +70,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                 <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?>> 5 </option>
                                 <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?>> 6 </option>
                                 <option value="7" <?php if ($resultado['id'] > 6) print "selected" ?>> No mostrar </option>
-                                <option value="7" <?php if ($resultado['orden'] > 6) print "selected" ?>> No mostrar </option>
                             <?php
                             }
                             ?>
