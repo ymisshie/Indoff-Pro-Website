@@ -40,11 +40,26 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="col-lg-4 col-md-9 col-11 mx-auto">
                     <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
 
+                    
                     <div class="col-lg-10 col-md-9 col-12 mx-auto d-flex py-2 justify-content-evenly">
                         <div class="ws col-md-2 col-2 rounded-circle color-orange-bg align-self-center py-3 ">
                             <span><i class="far fa-question-circle text-white fs-1-5"></i></span>
                         </div>
                         <h5 class="fw-700 py-4 mb-0">Información del producto</h5>
+                    </div>
+
+                    <div class="col-6 form-group text-start py-md-2">
+                        <h6 class="col-form-label fw-600">Orden</h6>
+                        <select name="orden_productos" class=" orden_productos form-control">
+                                <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?>> 1 </option>
+                                <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?>>2</option>
+                                <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>>3</option>
+                                <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?>> 4 </option>
+                                <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?>> 5 </option>
+                                <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?>> 6 </option>
+                                <option value="7" <?php if ($resultado['orden'] > 6) print "selected" ?>> No mostrar </option>
+                           
+                        </select>
                     </div>
 
                     <div class="form-group text-start py-2">
@@ -263,7 +278,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         //print_r($array);
                         ?>
 
-                        <textarea class="form-control textarea" name="color_producto" type="text"  placeholder="Escriba los colores del producto separados por comas sin espacios."><?php print $resultado['color']?></textarea>
+                        <textarea class="form-control textarea" name="color_producto" type="text" placeholder="Escriba los colores del producto separados por comas sin espacios."><?php print $resultado['color'] ?></textarea>
 
 
                         <div class="row p-4 py-4 px-3">
@@ -375,19 +390,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         }
                         ?>
 
-                    </div>
-
-                    <div class="form-group text-center py-md-2">
-                        <h6 class="col-form-label fw-600">Orden</h6>
-                        <select  name="orden_productos" class="orden_productos">
-                            <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?> > 1 </option>
-                            <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?> >2</option>
-                            <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>  >3</option>
-                            <option value="4" <?php if ($resultado['orden'] == 4) print "selected" ?> > 4  </option>
-                            <option value="5" <?php if ($resultado['orden'] == 5) print "selected" ?> > 5  </option>
-                            <option value="6" <?php if ($resultado['orden'] == 6) print "selected" ?> >  6  </option>
-                            <option value="7" <?php if ($resultado['orden'] > 6) print "selected" ?> >  x  </option>
-                        </select>
                     </div>
 
                     <input type="submit" name="accion" href="../acciones_p.php?id=<?php print $resultado['id'] ?>" class="btn btn-secondary my-4" value="Actualizar">
