@@ -19,6 +19,7 @@
                         <h6 class="col-form-label fw-600">Descripción <span class="color-red">*</span></h6>
                         <textarea class="form-control" name="descripcion_categoria" type="text" required></textarea>
                     </div>
+
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Imagen <span class="color-red">*</span></h6>
 

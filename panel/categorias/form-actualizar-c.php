@@ -33,7 +33,7 @@ include('../../Template/_header-admin.php')
 
 <?php
 //include header.php file
-include('../../Template/_categorias-actualizar.php')
+include('../../Template/_form-editar-c.php')
 ?>
 
 

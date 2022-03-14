@@ -67,16 +67,16 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
     <!--product-hero-->
-    <section id="producto" class="producto-hero fondo3">
+    <section id="producto" class="producto-hero fondo1">
         <div class="container-fluid px-5">
             <div class="row justify-content-evenly">
                 <!--IMAGEN DEL PRODUCTO-->
                 <div class="col-12 col-lg-4 text-center producto-img">
                     <?php
-                    $imagen = 'upload/' . $info_producto['imagen'];
+                    $imagen = 'upload/Productos/' . $info_producto['imagen'];
                     if (file_exists($imagen)) {
                     ?>
-                        <img src="<?php print $imagen; ?>" class="producto-img align-self-center">
+                        <img src="<?php print $imagen; ?>" class="img-fluid producto-img align-self-center">
                     <?php } else { ?>
                         Sin imagen
                     <?php } ?>

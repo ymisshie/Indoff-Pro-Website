@@ -614,7 +614,7 @@ select option:hover {
 
 .producto-img {
     height: 45em !important;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /*COLORES*/

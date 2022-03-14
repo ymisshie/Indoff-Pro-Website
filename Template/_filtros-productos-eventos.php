@@ -78,7 +78,7 @@ if ($cantidad_categorias > 0) {
                                 <a class="ws d-flex align-items-center producto-ficha formulario mx-3 mb-4" href="producto-evento-hero.php?id=<?php print $item_producto[0] ?>">
                                     <div class="col-6 align-self-center">
                                         <?php
-                                        $imagen = 'upload/' . $item_producto['imagen'];
+                                        $imagen = 'upload/Productos/' . $item_producto['imagen'];
                                         if (file_exists($imagen)) {
                                         ?>
                                             <img src="<?php print $imagen; ?>" class="p-3 img-fluid thumbnail-producto align-self-center" style="object-fit:contain;">
