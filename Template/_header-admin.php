@@ -38,19 +38,18 @@
         <!--pimary navigation-->
         <nav class="navbar py-1 navbar-expand-lg color-red-bg fw-600 px-md-1">
             <div class="container-fluid">
-                <div class="col-1">
-                    <a <?php print $root_dashboard; ?>"> <img src="../assets/logo_1.png" class="img-fluid navbar-brand p-1 ms-5" alt="Logo Indoff Pro"></a>
+                <div class="col-2">
+                    <a class="text-white fs-1-2 mb-0" <?php print $root_dashboard; ?>"> <img src="<?php print $root_logo; ?>" class="img-fluid navbar-brand p-1 ms-5" alt="Logo Indoff Pro">Admin View</a>
                 </div>
-
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <i class="fas fa-bars text-white m-0"></i>
                     </span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mx-auto">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item px-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" <?php echo $root_indoffpro; ?>>Indoff Pro</a>
+                            <a class="nav-link text-white me-5" aria-current="page" <?php echo $root_indoffpro; ?>><span><i class="fas fa-arrow-circle-left color-aqua fs-1-2 pe-3"></i></span>Regresar a Indoff Pro</a>
                         </li>
                         <li class="nav-item px-4 dropdown">
                             <a class="nav-link text-white dropdown-toggle uppercase <?php if ($pagina == "categorias") {
@@ -98,39 +97,29 @@
                                 ?>
                             </ul>
                         </li>
-
-                        <!--
                         <li class="nav-item px-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" href="#">Contacto</a>
+                            <a class="nav-link text-white" aria-current="page" <?php print $root_pedidos ?>>Cotizaciones</a>
                         </li>
-                        <li class="nav-item px-4 uppercase">
-                            <a class="nav-link text-white" aria-current="page" href="#">Nosotros</a>
-                        </li>
-                            -->
 
                     </ul>
                     <div class="d-flex px-4 pb-2 pt-lg-1 m-0 mr-8">
-                        <div class="align-items-center menu text-center d-flex text-white">
-                            <div class="col mx-md-4 d-flex align-items-center">
-                                <div><i class="fas fa-file-invoice fs-1-5"></i></div>
-                                <div><a <?php print $root_pedidos ?> class="text-white px-3 admin-nav-menu">Cotizaciones</a></div>
-                            </div>
-                            <div class="col ms-md-1 d-flex align-items-center">
-                                <div><i class="fas fa-user-alt fs-1-5"></i></div>
-                                <div class="nav-item dropdown">
-                                    <a class="text-white px-3 dropdown-toggle admin-nav-menu nav-link" href="" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <?php print $_SESSION['admin_info']['nombre_login'] ?>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="<?php print $root_cerrar_sesion ?>">Cerrar sesión</a></li>
-                                    </ul>
-                                </div>
-                            </div>
 
+                        <div class="col ms-md-1 color-white d-flex align-items-center">
+                            <div><i class="fas fa-user-alt fs-1-5"></i></div>
+                            <div class="nav-item dropdown">
+                                <a class="text-white px-3 dropdown-toggle admin-nav-menu nav-link" href="" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?php print $_SESSION['admin_info']['nombre_login'] ?>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="<?php print $root_cerrar_sesion ?>">Cerrar sesión</a></li>
+                                </ul>
+                            </div>
                         </div>
+
                     </div>
                 </div>
-                <!-- </div> -->
+            </div>
+            <!-- </div> -->
         </nav>
         <!--!pimary navigation-->
 

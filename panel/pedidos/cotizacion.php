@@ -13,6 +13,8 @@ if (!isset($_SESSION['admin_info']) or empty($_SESSION['admin_info']))
 ?>
 
 <?php
+$root_logo = '../../assets/logo.png';
+
 $root_functions = '../../functions.php';
 $root_inicio = 'href="../dashboard.php"';
 $root_styles = '<link rel="stylesheet" href="../../style.css">';

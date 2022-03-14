@@ -218,7 +218,10 @@ a::-moz-selection {
 .header-admin .navbar-brand {
     width: 3em !important;
 }
-
+.header-admin a
+{
+    text-decoration: none !important;
+}
 .admin-nav-menu {
     text-decoration: none;
 }
@@ -618,7 +621,7 @@ select option:hover {
 
 .producto-img {
     height: 45em !important;
-    object-fit: conta;
+    object-fit: contain;
 }
 
 /*COLORES*/
