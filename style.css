@@ -210,9 +210,13 @@ a::-moz-selection {
 .header-admin .nav-link.active, .header-admin .nav-link:hover {
     opacity: 85% !important;
     text-decoration-line: underline !important;
-    text-underline-offset: 25px !important;
+    text-underline-offset: 18px !important;
     text-decoration-thickness: 4px !important;
     text-decoration-color: var(--orange) !important;
+}
+
+.header-admin .navbar-brand {
+    width: 3em !important;
 }
 
 .admin-nav-menu {
@@ -222,7 +226,7 @@ a::-moz-selection {
 .admin-nav-menu:hover {
     opacity: 85% !important;
     text-decoration-line: underline !important;
-    text-underline-offset: 26px !important;
+    text-underline-offset: 19px !important;
     text-decoration-thickness: 4px !important;
     text-decoration-color: var(--orange) !important;
 }
@@ -614,7 +618,7 @@ select option:hover {
 
 .producto-img {
     height: 45em !important;
-    object-fit: contain;
+    object-fit: conta;
 }
 
 /*COLORES*/

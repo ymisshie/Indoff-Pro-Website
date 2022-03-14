@@ -36,10 +36,10 @@
     <!--start #header-->
     <header class="header-admin">
         <!--pimary navigation-->
-        <nav class="navbar py-2 navbar-expand-lg color-red-bg fw-600 px-md-1">
+        <nav class="navbar py-1 navbar-expand-lg color-red-bg fw-600 px-md-1">
             <div class="container-fluid">
                 <div class="col-1">
-                    <a class="navbar-brand" href="index.php"> <img src="../assets/logo_1.png" class="img-fluid p-0" alt="Logo Indoff Pro"></a>
+                    <a <?php print $root_dashboard; ?>"> <img src="../assets/logo_1.png" class="img-fluid navbar-brand p-1 ms-5" alt="Logo Indoff Pro"></a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
