@@ -11,18 +11,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $info_producto = $producto->mostrar();
     $info_categoria = $categoria->mostrarPorId($id);
-
-    /*
- print '<pre>';
- print_r ($info_categoria);
-
-die;
-*/
-
-    /*
- print '<pre>';
- print_r($info_producto);
-*/
 }
 
 ?>
@@ -62,7 +50,15 @@ die;
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Imagen <span class="color-red">*</span></h6>
-                        <input name="imagen" type="file" required>
+
+                        <div class="col-12 d-flex">
+                            <div class="col-9">
+                                <input name="imagen" accept="image/" onchange="loadImg()" type="file" required>
+                            </div>
+                            <div class="col-3">
+                                <img class="w-100 h-100 border" id="frame" />
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group text-start py-2">
@@ -318,7 +314,7 @@ die;
                     </div>
                         -->
 
-                        <input class="" name="opciones_producto" type="hidden" value=""></input>
+                    <input class="" name="opciones_producto" type="hidden" value=""></input>
 
                     <?php
                     $count = 7;
@@ -388,3 +384,11 @@ die;
         </div>
     </div>
 </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function loadImg() {
+        $('#frame').attr('src', URL.createObjectURL(event.target.files[0]));
+    }
+</script>
