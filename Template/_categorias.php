@@ -24,18 +24,18 @@
                         for ($x = 0; $x < $cantidad; $x++) {
                             $item = $info_categoria[$x];
                     ?>
-                            <div class="col-md-4 col-6">
-                                <a class="card categorias mb-4 me-4" href="categorias.php?id=<?php print $item['id'] ?>">
+                            <div class="col-md-4 col-6 mb-4 ">
+                                <a class="card h-100 categorias me-4" href="categorias.php?id=<?php print $item['id'] ?>">
                                     <?php
-                                    $imagen = 'upload/' . $item['imagen'];
+                                    $imagen = 'upload/Categorias/' . $item['imagen'];
                                     if (file_exists($imagen)) {
                                     ?>
-                                        <img src="<?php print $imagen; ?>" class="card-img-top thumbnail" style="object-fit: cover;" alt="...">
+                                        <img src="<?php print $imagen; ?>" class="card-img-top thumbnail" style="object-fit: contain;" alt="...">
 
                                     <?php } else { ?>
                                         <p>La imagen no se encuentra disponible</p> <?php } ?>
 
-                                    <div class="card-body py-3">
+                                    <div class="card-body py-3 ">
                                         <h5 class="fw-700 px-2 mb-0"><?php print $item['nombre'] ?></h5>
                                     </div>
                                 </a>

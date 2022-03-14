@@ -39,7 +39,7 @@ $cantidad = count($info_categoria);
         <div class="justify-content-center table-responsive">
             <table class="table table-hover my-4">
                 <thead>
-                    <tr class="text-center color-red-bg color-white">
+                    <tr class="text-center color-purple-bg color-white">
                         <th scope="col">ID</th>
                         <th scope="col">Orden</th>
                         <th scope="col">Imagen</th>
@@ -64,21 +64,21 @@ $cantidad = count($info_categoria);
                             <tr class="text-center align-items-center">
                                 <td scope="col" class="fw-600"><?php print $c  ?></td>
                                 <td>
-                                    
-                                <select id="orden_categorias" name="orden_categorias">
-                                    <option value="1" disabled="disabled" <?php if ($item['orden'] == 1) print "selected" ?> > 1 </option>
-                                    <option value="2" disabled="disabled" <?php if ($item['orden'] == 2) print "selected" ?> >2</option>
-                                    <option value="3" disabled="disabled" <?php if ($item['orden'] == 3) print "selected" ?>  >3</option>
-                                    <option value="4" disabled="disabled" <?php if ($item['orden'] == 4) print "selected" ?> > 4  </option>
-                                    <option value="5" disabled="disabled" <?php if ($item['orden'] == 5) print "selected" ?> > 5  </option>
-                                    <option value="6" disabled="disabled" <?php if ($item['orden'] == 6) print "selected" ?> >  6  </option>
-                                    <option value="7" disabled="disabled" <?php if ($item['orden'] > 6) print "selected" ?> >  x  </option>
-                                </select>
+
+                                    <select id="orden_categorias" name="orden_categorias">
+                                        <option value="1" disabled="disabled" <?php if ($item['orden'] == 1) print "selected" ?>> 1 </option>
+                                        <option value="2" disabled="disabled" <?php if ($item['orden'] == 2) print "selected" ?>>2</option>
+                                        <option value="3" disabled="disabled" <?php if ($item['orden'] == 3) print "selected" ?>>3</option>
+                                        <option value="4" disabled="disabled" <?php if ($item['orden'] == 4) print "selected" ?>> 4 </option>
+                                        <option value="5" disabled="disabled" <?php if ($item['orden'] == 5) print "selected" ?>> 5 </option>
+                                        <option value="6" disabled="disabled" <?php if ($item['orden'] == 6) print "selected" ?>> 6 </option>
+                                        <option value="7" disabled="disabled" <?php if ($item['orden'] > 6) print "selected" ?>> x </option>
+                                    </select>
 
                                 </td>
                                 <td scope="col" class="text-center">
                                     <?php
-                                    $imagen = '../../upload/' . $item['imagen'];
+                                    $imagen = '../../upload/Categorias/' . $item['imagen'];
                                     if (file_exists($imagen)) {
                                     ?>
                                         <img src="<?php print $imagen; ?>" height="100px">
@@ -103,8 +103,11 @@ $cantidad = count($info_categoria);
                     } else {
                         ?>
                         <tr>
-                            <td colspan="6">
-                                Sin registros
+                            <td colspan="7" class="">
+                                <div class="text-center py-2">
+                                    <i class="text-center display-1 fa-solid fa-folder-open"></i>
+                                    <p class="fw-00 py-2 mb-0">No hay categorias registradas todavia</p>
+                                </div>
                             </td>
                         </tr>
                     <?php

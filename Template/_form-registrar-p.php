@@ -16,10 +16,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 ?>
 
 <section class="color-grey-bg">
-    <div class="container pb-5" id="form-registro-p">
-        <div class="row justify-content-center">
-            <h3 class="pt-5 fw-700 pb-3 text-center">Añadir producto a <?php print $info_categoria['nombre']; ?></h3>
-        </div>
+    <div class="container py-5" id="form-registro-p">
 
         <div class="row">
 
@@ -51,14 +48,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Imagen <span class="color-red">*</span></h6>
 
-                        <div class="col-12 d-flex">
-                            <div class="col-9">
-                                <input name="imagen" accept="image/" onchange="loadImg()" type="file" required>
-                            </div>
-                            <div class="col-3">
-                                <img class="w-100 h-100 border" id="frame" />
-                            </div>
+                        <div class="col-12">
+                            <input name="imagen" accept="image/*" onchange="loadImg()" type="file" required>
                         </div>
+
+                        <div class="col-12">
+                            <img class="mt-3 img-fluid" id="frame" />
+                            <small class="d-flex form-text text-disbabled pt-2">Previsualización de la imagen.</small>
+                        </div>
+
                     </div>
 
                     <div class="form-group text-start py-2">
