@@ -38,10 +38,47 @@ class Usuario
     //     return false;
     // }
 
+    public function mismo_email($_params)
+    {
+        // Lectura de la ruta de la consulta
+        $sql = "SELECT nombre_login FROM  `usuarios` WHERE  `email_user`=:email_user";
+
+        // Preparar la consulta
+        $resultado = $this->cn->prepare($sql);
+
+        // Indicar los params
+        $_array = array(
+            ":email_user" => $_params['email_user'],
+        );
+
+        // Ejecutar la consulta 
+        if ($resultado->execute($_array))
+            return $resultado->fetch();
+        return false;
+    }
+    public function mismo_nombre_login($_params)
+    {
+        // Lectura de la ruta de la consulta
+        $sql = "SELECT nombre_login FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
+
+        // Preparar la consulta
+        $resultado = $this->cn->prepare($sql);
+
+        // Indicar los params
+        $_array = array(
+            ":nombre_login" => $_params['nombre_login'],
+        );
+
+        // Ejecutar la consulta 
+        if ($resultado->execute($_array))
+            return $resultado->fetch();
+        return false;
+    }
+
     public function registrar($_params)
     {
         // Lectura de la ruta de la consulta
-        $sql = "INSERT INTO `usuarios`(`nombre_login`, `pwd_usuario_hash`, `nombre_usuario`, `apellido_usuario`, `email_user`, `estado`, `verification_key`) VALUES (:nombre_login, :pwd_usuario_hash, :nombre_usuario, :apellido_usuario, :email_user, :estado, :verification_key)";
+        $sql = "INSERT INTO `usuarios`(`nombre_login`, `pwd_usuario_hash`, `nombre_usuario`, `apellido_usuario`, `email_user`, `phone_user`, `estado`, `verification_key`) VALUES (:nombre_login, :pwd_usuario_hash, :nombre_usuario, :apellido_usuario, :email_user, :estado, :verification_key)";
 
         // Preparar la consulta
         $resultado = $this->cn->prepare($sql);
@@ -53,6 +90,7 @@ class Usuario
             ":nombre_usuario" => $_params['nombre_usuario'],
             ":apellido_usuario" => $_params['apellido_usuario'],
             ":email_user" => $_params['email_user'],
+            ":phone_user" => $_params['phone_user'],
             ":estado" => $_params['estado'],
             ":verification_key" => $_params['verification_key'],
         );
@@ -77,7 +115,7 @@ class Usuario
             $password = $resultado_array['pwd_usuario_hash'];
             if (password_verify($pwd_usuario_hash, $password) && $resultado_array['verificado'] == 1) {
                 // print("A");
-                $sql = "SELECT nombre_login, email_user, nombre_usuario,  apellido_usuario, id  FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
+                $sql = "SELECT nombre_login, email_user, nombre_usuario,  apellido_usuario, id, phone_user  FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
                 $resultado = $this->cn->prepare($sql);
 
                 $_array = array(

@@ -16,6 +16,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $email_user = $_POST['email_user'];
     $clave_admin = $_POST['pwd_user'];
     $clave_admin2 = $_POST['pwd2_user'];
+    $phone_user = $_POST['phone_user'];
     $captcha = $_POST['g-recaptcha-response'];
     $secret = "6LcpJ7MeAAAAAE6pd-nIeeMl0PbFPYX9nUpDWm9d";
     //$pwd_peppered = hash_hmac("sha256", $clave_admin, $pepper);
@@ -41,21 +42,35 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             "nombre_usuario" =>$nombre_user,
             "apellido_usuario" =>$apellido_user,
             "email_user" =>$email_user,
+            "phone_user" =>$phone_user,
             "estado" => 1,
             "verification_key" => $vkey,
         );
 
         if (!$captcha){
-            header("Location: form-register.php?message=success");
-            session_start();
-            $_SESSION['message_crear_cuenta'] = 'Captcha inválido';
-            header("Location: form-register.php");
+            // session_start();
+            // $_SESSION['message_crear_cuenta'] = 'Captcha inválido';
+            $message = "Error al crear sesión";
+            header("Location: form-register.php?message=$message");
             exit(json_encode(array('estado'=>FALSE, 'mensaje'=>'Error al crear sesión')));
         }
         $response_captcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha");
         $captcha_success = json_decode($response_captcha, TRUE);
 
         if ($captcha_success['success']){
+
+            $rpt_same_login_name = $usuario->mismo_nombre_login($_params);
+            if ($rpt_same_login_name){
+                $message_same_name = "El nombre de usuario ya existe";
+                header("Location: form-register.php?same_login_name=$message_same_name");
+            }
+
+            $rpt_same_email = $usuario->mismo_email($_params);
+            if ($rpt_same_email){
+                $message_same_email = "El correo ya existe";
+                header("Location: form-register.php?same_email=$message_same_email");
+            }
+
             $rpt = $usuario->registrar($_params);
             if($rpt){
                 $email_subject = "Verificación de Correo";
@@ -78,16 +93,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 print 'Error al registrar el usuario';}
         }
         else{
-            header("Location: form-register.php?message=success");
-            session_start();
-            $_SESSION['message_crear_cuenta'] = 'Captcha inválido';
-            header("Location: form-register.php");
+            $message = "Error al crear sesión";
+            header("Location: form-register.php?message=$message");
             exit(json_encode(array('estado'=>FALSE, 'mensaje'=>'Error al crear sesión')));
         }
 
-        
-        
-        
     }
 
     //$admin = new ameri\Admin;
