@@ -5,7 +5,7 @@ require '../../vendor/autoload.php';
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $id = $_GET['id'];
-    $categoria = new ameri\Evento;
+    $categoria = new ameri\Categoria;
 
     $resultado = $categoria->mostrarPorId($id);
 
@@ -32,22 +32,22 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <div class="row justify-content-center pb-5">
 
-            <form class="col-11 col-lg-10 ws formulario p-3 my-4 text-center px-5 d-flex" method="POST" action="../acciones-e.php" enctype="multipart/form-data">
+            <form class="col-11 col-lg-10 ws formulario p-3 my-4 text-center px-5 d-flex" method="POST" action="../acciones_c.php" enctype="multipart/form-data">
                 <div class="col-6 col-lg-7">
 
                     <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
 
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Nombre de la categoria</h6>
-                        <input value="<?php print $resultado['nombre'] ?>" class="form-control" name="nombre_evento" type="text" required>
+                        <input value="<?php print $resultado['nombre'] ?>" class="form-control" name="nombre_categoria" type="text" required>
                     </div>
                     <div class="form-group text-start py-md-2">
                         <label class="col-form-label fw-600">Descripción</label>
-                        <textarea class="form-control" name="descripcion_evento" id="" type="text" placeholder="" required><?php print $resultado['descripcion'] ?> </textarea>
+                        <textarea class="form-control" name="descripcion_categoria" id="" type="text" placeholder="" required><?php print $resultado['descripcion'] ?> </textarea>
                     </div>
                     <div class="form-group text-start py-md-2 col-6">
                         <h6 class="col-form-label fw-600">Orden</h6>
-                        <select name="orden_eventos" class="orden_eventos form-control">
+                        <select name="orden_categorias" class="orden_categorias form-control">
                             <?php
 
                             if ($resultado['id'] > 1 && $resultado['id'] < 7) {
@@ -78,7 +78,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Imagen</h6>
-                        <input name="imagen" accept="image/*" onchange="loadImg()" type="file">
+                        <input name="imagen" accept="image/*" onchange="loadImg()" type="file" required>
                         <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen'] ?>">
                     </div>
 
@@ -86,7 +86,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <div class="col-6 col-lg-5 ps-5">
                     <div class="col-12">
                         <?php
-                        $imagen = '../../upload/Eventos/' . $resultado['imagen'];
+                        $imagen = '../../upload/Categorias/' . $resultado['imagen'];
 
                         if (file_exists($imagen)) {
 

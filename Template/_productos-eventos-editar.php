@@ -39,11 +39,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     if ($cantidad_productos == 1) {
 
-                        print ' Producto registrado';
+                        print ' Producto registrado en ';
                     } else {
-                        print ' Productos registrados';
+                        print ' Productos registrados en ';
                     }
 
+                  print $info_categoria['nombre'];
                     ?>
                 </h2>
             </div>

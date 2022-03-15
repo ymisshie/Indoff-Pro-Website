@@ -7,17 +7,17 @@
 
         <div class="row justify-content-center pb-5 ">
 
-            <form class="col-11 col-lg-10 ws formulario p-3 my-4 text-center px-5 d-flex" method="POST" action="../acciones_e.php" enctype="multipart/form-data">
+            <form class="col-11 col-lg-10 ws formulario p-3 my-4 text-center px-5 d-flex" method="POST" action="../acciones-e.php" enctype="multipart/form-data">
 
                 <div class="col-6 col-lg-7">
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Nombre de la categoria <span class="color-red">*</span></h6>
-                        <input class="form-control" name="nombre_categoria" type="text" required>
+                        <input class="form-control" name="nombre_evento" type="text" required>
                     </div>
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Descripción <span class="color-red">*</span></h6>
-                        <textarea class="form-control" name="descripcion_categoria" type="text" required></textarea>
+                        <textarea class="form-control" name="descripcion_evento" type="text" required></textarea>
                     </div>
 
                     <div class="form-group text-start py-2">

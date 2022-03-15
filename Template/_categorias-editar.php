@@ -27,6 +27,7 @@ $cantidad = count($info_categoria);
                                                             } else {
                                                                 print ' Categorias registradas';
                                                             }
+                                                            print $info_categoria['nombre'];
 
                                                             ?>
                 </h4>

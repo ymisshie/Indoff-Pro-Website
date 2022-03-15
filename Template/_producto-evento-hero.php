@@ -1,223 +1,298 @@
 <?php
 require 'vendor/autoload.php';
-
+if (isset($_SESSION['cantidad_carrito'])) {
+    $cantidad = $_SESSION['cantidad_carrito'];
+}
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     $id = $_GET['id'];
 
-
     $producto = new ameri\Producto_Evento;
     $info_producto = $producto->mostrarPorId($id);
-
+    $info_producto2 = $producto->mostrar();
+    $categoria = new ameri\Evento;
+    $info_categoria = $categoria->mostrar();
 
     if (!$info_producto)
         header('Location: index.php');
+    $user_existe = 0;
+    $admin_existe = 0;
+    if ((isset($_SESSION['user_info']))) {
+        $user_existe++;
+        if ($_SESSION['user_info']) {
+            $user_existe++;
+        }
+    }
+    if ((isset($_SESSION['admin_info']))) {
+        $admin_existe++;
+        if ($_SESSION['admin_info']) {
+            $admin_existe++;
+        }
+    }
+?>
+
+
+   <!--navbar-->
+   <section>
+            <nav class="navbar secondary-navbar color-grey3-bg py-md-1 navbar-expand-lg fw-600 px-lg-5 px-md-3">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="fas fa-bars text-white m-0"></i>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto">
+                            <?php
+                            foreach ($info_categoria as $categorias) {
+                                $p = 1;
+
+                                foreach ($info_producto2 as $item_producto) {
+                                    if ($item_producto['id'] == $categorias['id']) {
+                                        $p++;
+                                        if ($p > 0) {
+                            ?>
+
+                                            <li class="nav-item px-md-4">
+                                                <a class="nav-link color-black <?php if ($categorias['id'] == $id) {
+                                                                                    print 'active';
+                                                                                } ?>" aria-current="page" href="eventos.php?id=<?php print $categorias['id']; ?>"><?php print $categorias['nombre']; ?></a>
+                                            </li>
+                            <?php
+                                        }
+                                    }
+                                }
+                            } ?>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+        <!--!navbar-->
+
+
+
+
+    <section>
+        <div class="container">
+            <div id="liveAlertPlaceholder"></div>
+        </div>
+    </section>
+
+
+    <!--product-hero-->
+    <section id="producto" class="producto-hero fondo">
+        <div class="container-fluid px-5">
+            <div class="row justify-content-evenly">
+                <!--IMAGEN DEL PRODUCTO-->
+                <div class="col-12 col-lg-4 text-center producto-img">
+                    <?php
+                    $imagen = 'upload/Productos-Eventos/' . $info_producto['imagen'];
+                    if (file_exists($imagen)) {
+                    ?>
+                        <img src="<?php print $imagen; ?>" class="img-fluid producto-img align-self-center">
+                    <?php } else { ?>
+                        Sin imagen
+                    <?php } ?>
+                </div>
+                <!--!IMAGEN DEL PRODUCTO-->
+
+                <!--INFO DEL PRODUCTO-->
+                <form class="py-5 px-5 col-12 col-lg-8 justify-content-evenly d-flex" method="POST" action="funciones.php" enctype="multipart/form-data">
+                    <div class="col-md-8 col-8 col-lg-8">
+                        <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
+                        <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
+                        <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
+                        <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
+                        <input type="hidden" name="usuario_nombre" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_login'] ?>">
+                        <input type="hidden" name="info_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_usuario'];
+                                                                        print ' ';
+                                                                        print $_SESSION['user_info']['apellido_usuario']; ?>">
+                        <input type="hidden" name="id_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['id']; ?>">
+
+
+                        <h2 class="fw-800 pt-4 color-red"><?php print $info_producto['nombre'] ?>
+                        </h2>
+                        <h6 class="fw-700 py-1"> <?php print $info_producto['proveedor'] ?></h6>
+                        <p class="py-2 fw-400"><?php print $info_producto['descripcion'] ?></p>
+
+                        <!-- color -->
+                        <div class="d-flex">
+                            <div class="col-6 col-lg-7 pt-3">
+                                <h6 class="fs-1-2 fw-700 m-0">Color</h6>
+                                <div class="color col-md-8 col-lg-10 d-flex pt-3">
+                                    <?php
+                                    $colores = $info_producto['color'];
+                                    $separada = '';
+                                    $separador = ",";
+                                    $separada = explode($separador, $colores);
+
+                                    $count_colores = count($separada);
+
+                                    for ($u = 0; $u < $count_colores; $u++) {
+                                    ?>
+                                        <button type="button" class="btn btn-color p-3 me-3" onclick="color_selected()" name="<?php print $separada[$u]; ?>" style="background-color: <?php print $separada[$u];  ?>;" data-bs-toggle="tooltip" data-bs-placement="bottom" title="<?php print $separada[$u];  ?>"></button>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+
+                            <div class="col-5 col-lg-3 pt-3">
+                                <h6 class="fs-1-2 fw-600 m-0">Seleccionado</h6>
+                                <div class="col-12 d-flex pt-3 pb-2">
+                                    <button type="button" class="btn btn-color p-3 w-100" id="mostrarColor" style="background-color: <?php print $separada[0]; ?>;  border-radius: 1em;" href="#"></button>
+                                </div>
+                                <small class="d-flex form-text text-disbabled m-0" id="mostrarColorNombre" name="colorescogido"><?php print $separada[0]; ?></small>
+                                <input type="hidden" name="color_producto" id="color_producto" value="<?php print $separada[0]; ?>">
+                            </div>
+
+                        </div>
+
+                        <!--Cantidades-->
+
+                        <?php
+                        $opciones = $info_producto['opciones'];
+                        $precio = $info_producto['precio'];
+                        //  print $precio;
+                        $cantidad = $info_producto['cantidad'];
+                        //   print $cantidad;
+                        $separada_opciones = '';
+                        $separada_precio = '';
+                        $separada_cantidad = '';
+                        $separador = ",";
+                        $separada_opciones = explode($separador, $opciones);
+
+                        $separada_precio = explode($separador, $precio);
+
+                        $separada_cantidad = explode($separador, $cantidad);
+                        $count_opciones = count($separada_opciones);
+
+                        if ($count_opciones > 1) {
+                        ?>
+                            <div class="col-12 py-3 select-cantidades">
+                                <h6 class="fs-1-2 fw-600 m-0 pt-3 pb-4">Seleccione la cantidad</h6>
+                                <div class="col-12 d-flex flex-wrap">
+                                    <?php
+                                    $o = 1;
+                                    foreach ($separada_opciones as $opciones_producto) {
+
+                                    ?>
+                                        <div class="text-center col-lg-4 px-2 py-1">
+                                            <h5 class="fw-600 pt-1"><?php print $opciones_producto ?></h5>
+                                            <select class="qty-dropdown" id="selectOpciones<?php print $o; ?>_producto" name="selectOpciones<?php print $o; ?>_producto" onchange="cambiarPrecio()" required>
+                                                <option value="">Unidades</option>
+                                                <?php $x = 0;
+                                                foreach ($separada_precio as $precios_producto) {
+                                                    if ($precios_producto != '') {
+
+                                                ?>
+
+                                                        <option value="<?php print $separada_cantidad[$x];
+                                                                        print ',';
+                                                                        print $precios_producto;
+                                                                        print ',';
+                                                                        print $opciones_producto ?>"><?php print $separada_cantidad[$x]; ?></option>
+
+                                                <?php
+                                                        $x++;
+                                                    }
+                                                } ?>
+                                            </select>
+
+
+                                            <h6 class="text-start ps-2 pt-2">Unidades: <span class="color-red fw-700" id="cantidad<?php print $o; ?>_producto" name="cantidad<?php print $o; ?>_producto"></span></h6>
+                                            <h6 class="text-start ps-2">Costo: <span class="color-red fw-700" id="precioSelect<?php print $o; ?>_producto" name="precioSelect<?php print $o; ?>_producto"></span></h6>
+                                            <h6 class="text-start ps-2">C/Unidad: <span class="color-red fw-700" id="precioIndividual<?php print $o; ?>_producto" name="precioIndividual<?php print $o; ?>_producto"></span></h6>
+                                        </div>
+                                    <?php
+                                        $o++;
+                                    } ?>
+                                </div>
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            <div class="col-12 pb-3 select-cantidades">
+                                <h6 class="fs-1-2 fw-600 m-0 pt-3 pb-4">Seleccione la cantidad</h6>
+
+                                <div class="d-flex">
+                                    <div class="col-7 pe-5">
+                                        <select class="qty-dropdown" id="selectOpciones1_producto" name="selectOpciones1_producto" onchange="cambiarPrecio()" required>
+                                            <option value="">Unidades</option>
+                                            <?php $x = 0;
+                                            foreach ($separada_precio as $precios_producto) {
+                                                if ($precios_producto != '') {
+                                            ?>
+                                                    <option value="<?php print $separada_cantidad[$x];
+                                                                    print ',';
+                                                                    print $precios_producto;
+                                                                    print ',';
+                                                                    ?>"><?php print $separada_cantidad[$x] ?></option>
+                                            <?php
+                                                    $x++;
+                                                }
+                                            } ?>
+                                        </select>
+                                        <input type="hidden" name="selectOpciones2_producto" value="">
+                                        <input type="hidden" name="selectOpciones3_producto" value="">
+                                        <input type="hidden" name="selectOpciones4_producto" value="">
+                                        <input type="hidden" name="selectOpciones5_producto" value="">
+                                        <input type="hidden" name="selectOpciones6_producto" value="">
+                                        <input type="hidden" name="selectOpciones7_producto" value="">
+                                        <input type="hidden" name="selectOpciones8_producto" value="">
+                                        <input type="hidden" name="selectOpciones9_producto" value="">
+                                        <input type="hidden" name="selectOpciones10_producto" value="">
+                                    </div>
+                                    <div class="col-3">
+                                        <h6 class="text-start">Unidades: <span class="color-purple fw-700 fs-1-2" id="cantidad1_producto" name="cantidad1_producto"></span></h6>
+                                        <h6 class="text-start">Costo: <span class="color-purple fw-700 fs-1-2" id="precioSelect1_producto" name="precioSelect1_producto"></span></h6>
+                                        <h6 class="text-start">C/Unidad: <span class="color-purple fw-700 fs-1-2" id="precioIndividual1_producto" name="precioIndividual1_producto"></span></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+
+                    <div class="col-4 col-lg-4 ws bg px-4 formulario py-5 align-self-start">
+                        <h5 class="pb-3 fw-700">Resumen de la cotización</h5>
+                        <h6 class="mb-4 color-black fw-600">Total: <span id="precioTotal" class="fw-700 color-purple fs-1-5"></span></h6>
+                        <?php
+                        if ($user_existe > 1 || $admin_existe > 1) {
+                        ?>
+                            <input role="button" type="submit" name="accion" value="Agregar al carrito" class="btn btn-primary w-100" onclick="cambiarCarrito(<?php print $cantidad ?>)">
+                            <!--<small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Esta cotización es provisional. Al enviarla recibirá una copia al correo y uno de nuestros agentes se contactará para darle seguimiento.</small>-->
+                        <?php
+
+                        } else {
+                        ?>
+                            <a href="login.php" class="btn btn-primary w-100">Iniciar sesión</a>
+                            <a href="register-user.php" class="btn btn-secondary w-100 mt-3">Registrarse</a>
+
+                            <!--  <small class="d-flex form-text pt-4 text-disbabled m-0" style="font-style: italic;">Para poder guardar productos y realizar una cotización debe iniciar sesión o registrarse en Indoff Pro.</small>-->
+
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!--!product-hero-->
+
+<?php
 } else {
     header('Location: index.php');
 }
 
 ?>
-
-
-<!--product-hero-->
-<section id="producto" class="producto-hero">
-
-    <div class="container-fluid">
-
-        <div class="row px-md-5 py-md-5 p-lg-3 justify-content-center" method="POST" action="acciones_p.php" enctype="multipart/form-data">
-
-            <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
-
-            <!--IMAGEN DEL PRODUCTO-->
-            <div class="col-md-12 col-lg-4 text-center align-self-center">
-                <?php
-                $imagen = 'upload/' . $info_producto['imagen'];
-                if (file_exists($imagen)) {
-                ?>
-                    <img src="<?php print $imagen; ?>" class="img-fluid">
-
-                <?php } else { ?>
-                    Sin imagen
-                <?php } ?>
-            </div>
-            <!--!IMAGEN DEL PRODUCTO-->
-
-            <!--INFO DEL PRODUCTO-->
-            <div class="col-md-7 col-lg-5 px-md-4 px-lg-5">
-                <h4 class="section-title pt-md-4"><?php print $info_producto['nombre'] ?>
-                </h4>
-                <h6 class="fw-600 py-md-1 color-red"> <?php print $info_producto['proveedor'] ?></h6>
-                <p class="py-md-2"><?php print $info_producto['descripcion'] ?></p>
-
-                <!-- color -->
-                <div class="color col-12 py-md-3">
-                    <h6 class="fs-1-2 fw-600 m-0">Color</h6>
-
-                    <div class="color col-md-10 d-flex py-md-2">
-
-                        <?php
-
-                        $colores = $info_producto['color'];
-                        $separada = '';
-                        $separador = ",";
-                        $separada = explode($separador, $colores);
-
-                        $count_colores = count($separada);
-
-                        for ($u = 0; $u < $count_colores; $u++) {
-                        ?>
-
-                            <div class="p-md-3 p-lg-3 py-lg-3 me-md-3 btn btn-color" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
-                            </div>
-                        <?php
-                        }
-                        ?>
-
-
-                    </div>
-                    <!-- !color -->
-
-                </div>
-
-                <div class="color col-12 py-md-3">
-                    <h6 class="fs-1-2 fw-600 m-0">Unidades</h6>
-                    <p class="py-md-2 col-md-8 col-lg-12">Seleccione la cantidad y costo por variación de producto.</p>
-
-                    <?php
-                    $opciones = $info_producto['opciones'];
-                    $separada = '';
-                    $separador = ",";
-
-
-                    $cantidad = $info_producto['cantidad'];
-                    $costo = $info_producto['precio'];
-                    $separada_cantidad = '';
-                    $separada_costo = '';
-                    $separador = ",";
-                    $separada_cantidad = explode($separador, $cantidad);
-                    $separada_costo = explode($separador, $costo);
-
-                    $count_cantidad = count($separada_cantidad);
-
-                    $count_costo = count($separada_costo);
-                    ?>
-                    <!--CANTIDAD Y COSTO-->
-                    <div class="color-grey-bg 
-                    <?php
-                    if ($opciones != '') {
-                        print 'col-md-11 col-lg-12';
-                    } else if ($opciones == '') {
-                        print 'col-md-9';
-                    }
-                    ?>
-                    
-                    formulario d-flex flex-wrap py-md-2 mt-md-3 p-md-2">
-
-
-
-                        <?php
-
-                        if ($opciones != '') {
-                            $separada = explode($separador, $opciones);
-
-                            $count_opciones = count($separada);
-
-                            for ($o = 0; $o < $count_opciones; $o++) {
-                        ?>
-                                <div class="col-md-12 col-lg-6 text-center">
-                                    <h5 class="fw-500"><?php if ($separada[$o] != '') {
-                                                            print $separada[$o];
-                                                        } ?></h5>
-
-                                    <select class="col-md-12 qty-dropdown" name="cantidadcosto_producto" id="cantidadcosto_producto" onchange="cambiarPrecio()">
-                                        <option value="" class="fw-600">
-                                            Unidades, C/u, Total
-                                        </option>
-
-
-                                        <?php
-                                        for ($ca = 0; $ca < $count_cantidad; $ca++) {
-                                            $int_cantidad = intval($separada_cantidad[$ca]);
-                                            $int_costo = intval($separada_costo[$ca]);
-                                            $costounidad = $int_costo / $int_cantidad; ?>
-
-                                            <option value="<?php
-                                                            print $separada_cantidad[$ca];
-                                                            print ',';
-                                                            print $separada_costo[$ca]; ?>"><?php
-                                                                                            print $int_cantidad;
-                                                                                            print ', $';
-                                                                                            print number_format($costounidad, 2);
-                                                                                            print ', $';
-                                                                                            print $int_costo; ?></option>
-                                        <?php
-                                        }
-                                        ?>
-                                    </select>
-
-                                </div>
-
-                            <?php
-                            }
-                        } else {
-                            ?>
-                            <select class="col-md-12 me-auto qty-dropdown" name="cantidadcosto_producto" id="cantidadcosto_producto" onchange="cambiarPrecio()">
-                                <option value="" class="fw-600">
-                                    Unidades, C/u, Total
-                                </option>
-
-                                <?php
-                                for ($ca = 0; $ca < $count_cantidad; $ca++) {
-                                    $int_cantidad = intval($separada_cantidad[$ca]);
-                                    $int_costo = intval($separada_costo[$ca]);
-                                    $costounidad = $int_costo / $int_cantidad; ?>
-
-                                    <option value="<?php
-                                                    print $separada_cantidad[$ca];
-                                                    print ',';
-                                                    print $separada_costo[$ca]; ?>"><?php
-                                                                                    print $int_cantidad;
-                                                                                    print ', $';
-                                                                                    print number_format($costounidad, 2);
-                                                                                    print ', $';
-                                                                                    print $int_costo; ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                        <?php
-                        }
-                        ?>
-
-                    </div>
-                    <!--!CANTIDAD Y COSTO-->
-
-
-                </div>
-
-
-            </div>
-            <!--!INFO DEL PRODUCTO-->
-            <div class="col-md-5 col-lg-2 align-self-md-center">
-                <div class="formulario ws color-grey-bg px-md-4 py-md-5">
-
-                    <h4 class="py-md-3 fw-700" id="precio_dinamico">Costo total: $<?php print number_format($separada_costo[0], 2) ?></h4>
-                    <p class="m-0 fw-500" id="cantidad_dinamica">Cantidad total: <?php print $separada_cantidad[0] ?> Unidades</p>
-                    <p class="m-0 fw-500" id="costounidad_dinamico">$<?php print number_format((number_format($separada_costo[0])) / (number_format($separada_cantidad[0])), 2) ?>/Unidad</p>
-
-                    <!--
-<a href="productos-dashboard.php?id=<?php //print $info_categoria['id'] 
-                                    ?>" class="btn btn-primary my-md-4 mx-md-4" role="buttton">Cancelar</a>
-    -->
-
-                </div>
-
-                <!-- <input type="submit" name="accion" href="acciones_p.php?id=<?php print $info_categoria['id'] ?>" class="btn btn-lg btn-primary mt-md-5" value="Solicitar cotización"> -->
-
-            </div>
-        </div>
-
-
-</section>
-<!--!product-hero-->

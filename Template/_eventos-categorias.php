@@ -17,7 +17,7 @@
                             <div class="col-md-4 col-6 mb-4">
                                 <a class="card h-100 categorias me-4" href="productos-eventos.php?id=<?php print $item['id'] ?>">
                                     <?php
-                                    $imagen = 'upload/' . $item['imagen'];
+                                    $imagen = 'upload/Eventos/' . $item['imagen'];
                                     if (file_exists($imagen)) {
                                     ?>
                                         <img src="<?php print $imagen; ?>" class="card-img-top thumbnail" style="object-fit: cover;" alt="...">

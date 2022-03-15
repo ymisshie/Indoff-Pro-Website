@@ -20,7 +20,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <div class="row">
 
-            <form method="POST" action="../acciones_pe.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-4 mx-auto text-center">
+            <form method="POST" action="../acciones-pe.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-4 mx-auto text-center">
 
                 <div class="col-lg-4 col-md-9 col-11 mx-auto">
                     <div class="col-lg-10 col-md-9 col-12 mx-auto d-flex py-2 justify-content-evenly">
@@ -32,17 +32,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Nombre del producto <span class="color-red">*</span></h6>
-                        <input class="form-control" name="nombre_producto" type="text" placeholder="Nombre del producto" required>
+                        <input class="form-control" name="nombre_producto_evento" type="text" placeholder="Nombre del producto" required>
                     </div>
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Nombre del proveedor <span class="color-red">*</span></h6>
-                        <input class="form-control" name="proveedor_producto" type="text" placeholder="Nombre del proveedor o distribuidor" required>
+                        <input class="form-control" name="proveedor_producto_evento" type="text" placeholder="Nombre del proveedor o distribuidor" required>
                     </div>
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Descripción del producto <span class="color-red">*</span></h6>
-                        <textarea class="form-control textarea" name="descripcion_producto" type="text" placeholder="Descripción detallada del producto o colores de impresión." required></textarea>
+                        <textarea class="form-control textarea" name="descripcion_producto_evento" type="text" placeholder="Descripción detallada del producto o colores de impresión." required></textarea>
                     </div>
 
                     <div class="form-group text-start py-2">
@@ -61,7 +61,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Categoria del producto <span class="color-red">*</span></h6>
-                        <select class="form-control" name="categoria_id_producto" required>
+                        <select class="form-control" name="evento_id_producto" required>
 
                             <?php
 
@@ -106,12 +106,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                             <div class="form-group text-start py-2">
                                 <h6 class="col-form-label fw-600">Dimensiones</h6>
-                                <input class="form-control" name="size_producto" type="text" placeholder="55 x 30 cm">
+                                <input class="form-control" name="size_producto_evento" type="text" placeholder="55 x 30 cm">
                             </div>
 
                             <div class="form-group text-start  mx-4 py-2">
                                 <h6 class="col-form-label fw-600">Peso</h6>
-                                <input class="form-control" name="peso_producto" type="text" placeholder="0.5 kg">
+                                <input class="form-control" name="peso_producto_evento" type="text" placeholder="0.5 kg">
                             </div>
 
 

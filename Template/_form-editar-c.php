@@ -78,7 +78,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Imagen</h6>
-                        <input name="imagen" accept="image/*" onchange="loadImg()" type="file" required>
+                        <input name="imagen" accept="image/*" onchange="loadImg()" type="file">
                         <input type="hidden" name="imagen_temp" value="<?php print $resultado['imagen'] ?>">
                     </div>
 

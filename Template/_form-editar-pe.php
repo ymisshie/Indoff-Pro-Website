@@ -35,7 +35,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <div class="row">
 
-            <form method="POST" action="../acciones_pe.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-4 mx-auto text-center">
+            <form method="POST" action="../acciones-pe.php" enctype="multipart/form-data" class="d-lg-flex justify-content-lg-evenly ws formulario py-4 mx-auto text-center">
 
                 <div class="col-lg-4 col-md-9 col-11 mx-auto">
                     <input type="hidden" name="id" value="<?php print $resultado['id'] ?>">
@@ -50,7 +50,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="col-6 form-group text-start py-md-2">
                         <h6 class="col-form-label fw-600">Orden</h6>
-                        <select name="orden_productos" class=" orden_productos form-control">
+                        <select name="orden_productos_eventos" class=" orden_productos_eventos form-control">
                                 <option value="1" <?php if ($resultado['orden'] == 1) print "selected" ?>> 1 </option>
                                 <option value="2" <?php if ($resultado['orden'] == 2) print "selected" ?>>2</option>
                                 <option value="3" <?php if ($resultado['orden'] == 3) print "selected" ?>>3</option>
@@ -63,17 +63,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Nombre del producto <span class="color-red">*</span></h6>
-                        <input class="form-control" name="nombre_producto" value="<?php print $resultado['nombre']; ?>" type="text" placeholder="Nombre del producto" required>
+                        <input class="form-control" name="nombre_producto_evento" value="<?php print $resultado['nombre']; ?>" type="text" placeholder="Nombre del producto" required>
                     </div>
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Nombre del proveedor <span class="color-red">*</span></h6>
-                        <input class="form-control" name="proveedor_producto" type="text" value="<?php print $resultado['proveedor']; ?>" placeholder="Nombre del proveedor o distribuidor" required>
+                        <input class="form-control" name="proveedor_producto_evento" type="text" value="<?php print $resultado['proveedor']; ?>" placeholder="Nombre del proveedor o distribuidor" required>
                     </div>
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Descripción del producto <span class="color-red">*</span></h6>
-                        <textarea class="form-control textarea" name="descripcion_producto" type="text" placeholder="Descripción detallada del producto o colores de impresión." required><?php print $resultado['descripcion']; ?></textarea>
+                        <textarea class="form-control textarea" name="descripcion_producto_evento" type="text" placeholder="Descripción detallada del producto o colores de impresión." required><?php print $resultado['descripcion']; ?></textarea>
                     </div>
 
                     <div class="form-group text-start py-2">
@@ -86,17 +86,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     <div class="form-group text-start py-2">
                         <h6 class="col-form-label fw-600">Categoría del producto <span class="color-red">*</span></h6>
-                        <select class="form-control" name="categoria_id_producto" required>
+                        <select class="form-control" name="evento_id_producto" required>
                             <option value="">Seleccione una categoría</option>
                             <?php
                             require '../../vendor/autoload.php';
-                            $categoria = new ameri\Categoria;
+                            $categoria = new ameri\Evento;
                             $info_categoria = $categoria->mostrar();
                             $cantidad = count($info_categoria);
                             for ($x = 0; $x < $cantidad; $x++) {
                                 $item = $info_categoria[$x];
                             ?>
-                                <option value="<?php print $item['id'] ?>" <?php print $resultado['categoria_id'] == $item['id'] ? 'selected' : '' ?>><?php print $item['nombre'] ?></option>
+                                <option value="<?php print $item['id'] ?>" <?php print $resultado['evento_id'] == $item['id'] ? 'selected' : '' ?>><?php print $item['nombre'] ?></option>
                             <?php
 
                             }
@@ -110,12 +110,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                             <div class="form-group text-start py-2">
                                 <h6 class="col-form-label fw-600">Dimensiones</h6>
-                                <input class="form-control" name="size_producto" type="text" value="<?php print $resultado['size']; ?>" placeholder="55 x 30 cm">
+                                <input class="form-control" name="size_producto_evento" type="text" value="<?php print $resultado['size']; ?>" placeholder="55 x 30 cm">
                             </div>
 
                             <div class="form-group text-start mx-4 py-2">
                                 <h6 class="col-form-label fw-600">Peso</h6>
-                                <input class="form-control" name="peso_producto" type="text" value="<?php print $resultado['peso'] ?>" placeholder="0.5 kg">
+                                <input class="form-control" name="peso_producto_evento" type="text" value="<?php print $resultado['peso'] ?>" placeholder="0.5 kg">
                             </div>
 
 
@@ -315,7 +315,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <textarea class="form-control textarea" name="opciones_producto" type="text" placeholder="(Opcional) Si el producto tiene variaciones. Ej: tallas de camisetas, S, M, L, XL."><?php print $resultado['opciones'] ?> </textarea>
                     </div>
                         -->
-                    <input class="" name="opciones_producto" type="hidden" value=""></input>
+                    <input class="" name="opciones_producto_evento" type="hidden" value=""></input>
 
 
                     <?php
@@ -391,7 +391,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                     </div>
 
-                    <input type="submit" name="accion" href="../acciones_pe.php?id=<?php print $resultado['id'] ?>" class="btn btn-secondary my-4" value="Actualizar">
+                    <input type="submit" name="accion" href="../acciones-pe.php?id=<?php print $resultado['id'] ?>" class="btn btn-secondary my-4" value="Actualizar">
                     <a href="index.php?id=<?php print $resultado['5'] ?>" class="btn btn-primary my-4 mx-3" role="buttton">Cancelar</a>
 
                 </div>
