@@ -32,76 +32,50 @@ $root_indoffpro = 'href="../../index.php"';
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title><?php echo $title; ?></title>
-
-    <!--BOOTSTRAP CDN-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <!-- font awesome icons -->
-    <script src="https://kit.fontawesome.com/18bf3390f6.js" crossorigin="anonymous"></script>
-
-    <!--select-->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!--CUSTOM CSS FILE-->
-    <?php echo $root_styles; ?>
-    <!-- <link rel="stylesheet" href="../styles_login.css"> -->
-
-    <?php
-    // require functions.php file
-    require($root_functions);
-    // require('../functions.php');
-    ?>
-
-</head>
-
-<body>
-
-    <?php
+<?php
+//include header.php file
+include('../../Template/_header-admin.php');
 
 
 
-    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-        $id = $_GET['id'];
 
-        $info_usuario = new ameri\Usuario;
-        $usuario = $info_usuario->mostrar();
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
 
-
-        $info_productos = new ameri\Cotizaciones;
-        $info_cotizacion = new ameri\Cotcat;
-
-        $infocotcat = $info_cotizacion->mostrar();
-
-        //  print_r($infocotcat);
-
-        foreach ($infocotcat as $item) {
-            if ($item['id'] == $id) {
-                $nombre_usuario = $item['info_usuario'];
-                $fecha = $item['fecha'];
-            }
+    $info_usuario = new ameri\Usuario;
+    $usuario = $info_usuario->mostrar();
 
 
-            $pp = $info_productos->mostrar();
+    $info_productos = new ameri\Cotizaciones;
+    $info_cotizacion = new ameri\Cotcat;
 
-            //$cotizacion = $info_cotizacion->mostrarPorId();
+    $infocotcat = $info_cotizacion->mostrar();
+
+    //  print_r($infocotcat);
+
+    foreach ($infocotcat as $item) {
+        if ($item['id'] == $id) {
+            $nombre_usuario = $item['info_usuario'];
+            $fecha = $item['fecha'];
         }
+
+
+        $pp = $info_productos->mostrar();
+
+        //$cotizacion = $info_cotizacion->mostrarPorId();
     }
+}
 
-    ?>
 
-    <div class="container p-2 color-white-bg">
-        <div class="row">
+?>
+
+
+<!--carrito-section-->
+
+<button id="btn">imprimir</button>
+<section name="" id="content" class="color-grey3-bg py-5">
+    <div class="container ws p-5 color-white-bg">
+        <div class="row pb-5">
 
             <div class="col-12 d-flex justify-content-between">
 
@@ -311,8 +285,4 @@ $root_indoffpro = 'href="../../index.php"';
         </div>
 
     </div>
-
-
-</body>
-
-</html>
+</section>
