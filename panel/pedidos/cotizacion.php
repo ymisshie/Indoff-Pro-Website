@@ -2,6 +2,7 @@
 
 require '../../vendor/autoload.php';
 
+require("phpToPDF.php");
 $title = "Cotización | Indoff Pro";
 $pagina = "cotizacion";
 
@@ -282,19 +283,3 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     </div>
 </section>
-
-<div id="elementH"></div>
-
-<script src="js/jsPDF/dist/jspdf.min.js"></script>
-
-<script>
-    $(document).on('click', '#btn', function() {
-        let pdf = new jsPDF();
-        let section = $('body');
-        let page = function() {
-            pdf.save('pagename.pdf');
-
-        };
-        pdf.addHTML(section, page);
-    })
-</script>
