@@ -14,8 +14,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $categoria = new ameri\Categoria;
     $info_categoria = $categoria->mostrar();
 
-    if (!$info_producto)
-        header('Location: index.php');
+    if (!$info_producto){
+        header('Location: index.php');}
     $user_existe = 0;
     $admin_existe = 0;
     if ((isset($_SESSION['user_info']))) {
@@ -105,11 +105,13 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                         <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
                         <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
                         <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
-                        <input type="hidden" name="usuario_nombre" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_login'] ?>">
-                        <input type="hidden" name="info_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['nombre_usuario'];
+                        <input type="hidden" name="usuario_nombre" value="<?php if ($user_existe > 1) print $_SESSION['user_info']['nombre_login'] ?>">
+                        <input type="hidden" name="info_usuario" value="<?php if ($user_existe > 1){ 
+                                                                        print $_SESSION['user_info']['nombre_usuario'];
                                                                         print ' ';
-                                                                        print $_SESSION['user_info']['apellido_usuario']; ?>">
-                        <input type="hidden" name="id_usuario" value="<?php if (isset($_SESSION['user_info'])) if ($_SESSION['user_info']) print $_SESSION['user_info']['id']; ?>">
+                                                                        print $_SESSION['user_info']['apellido_usuario'];
+                                                                        } ?>">
+                        <input type="hidden" name="id_usuario" value="<?php if ($user_existe > 1) print $_SESSION['user_info']['id']; ?>">
 
 
                         <h2 class="fw-800 pt-4 color-red"><?php print $info_producto['nombre'] ?>

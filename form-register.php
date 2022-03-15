@@ -47,7 +47,7 @@ include('header.php');
       <div class="col-5 mx-auto">
         <div class="form-outline">
           <h5 class="form-label required py-2">Password</h5>
-          <input type="password" name="pwd_user" id="pwd_user" required class="form-control2" onchange="contraInvalida();" />
+          <input type="password" name="pwd_user" id="pwd_user" required class="form-control2" oninput="mismaContra();" onchange="contraInvalida(); diferenteContra()" />
         </div>
       </div>
       <div class="col-5 mx-auto">
@@ -57,9 +57,42 @@ include('header.php');
         </div>
       </div>
     </div>
+    <div class="row mb-4">
+      <div class="col-5 mx-auto">
+        <div class="form-outline">
+          <h5 class="form-label required py-2">Phone</h5>
+          <input type="phone" name="phone_user" id="phone" required class="form-control2" />
+        </div>
+      </div>
+    </div>
     <p id="pwd_validar" class="text-danger col-5" style="margin-left: 3rem; margin-top: -1rem;"> </p>
 
     <p id="pwd_verificar" class="text-center"> </p>
+
+    <?php
+
+    if($_GET){
+      if(isset($_GET['message'])){
+        ?>
+         <br>
+      <h4 class="text-danger text-center uppercase" > Captcha Inválido </h4>
+        <?php
+      }
+      if(isset($_GET['same_login_name'])){
+        ?>
+         <br>
+      <h4 class="text-danger text-center uppercase" > El nombre de usuario ya existe </h4>
+        <?php
+      }
+      if(isset($_GET['same_email'])){
+        ?>
+        <br>
+      <h4 class="text-danger text-center text-uppercase" > El correo ya se encuentra registrado </h4>
+        <?php
+      }
+    }
+
+    ?>  
 
     <div class="g-recaptcha  align-self-center d-flex justify-content-center mt-5" data-sitekey="6LcpJ7MeAAAAACSFJlj_r4u4screB6eJewNXYdqi"></div>
     <!-- Checkbox -->
@@ -116,12 +149,16 @@ include('header.php');
       respuesta = respuesta.substr(0, respuesta.length - 2)
     }
     document.getElementById('pwd_validar').textContent = respuesta;
+    if (respuesta == "Contraseña correcta"){
+      return false;
+    }
+    return true;
   }
 
   function validateMyForm(event) {
-    if (diferenteContra()) {
+    if (diferenteContra() || contraInvalida()) {
       event.preventDefault();
-      alert("validation failed false");
+      alert("Contraseña incorrecta");
       returnToPreviousPage();
       //return false;
     }

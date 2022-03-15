@@ -11,7 +11,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $visitor_email = $_POST['email'];
     $phone = $_POST['phone'];
     $mensaje = $_POST['message'];
+    $captcha = $_POST['g-recaptcha-response'];
+    $secret = "6LehDuMeAAAAAHjnSFp-eAXx4Fa5O3_q_fQu4RAI";
 
+    if (!$captcha){
+        // session_start();
+        // $_SESSION['message_crear_cuenta'] = 'Captcha inválido';
+        $message = "Error al enviar mensaje";
+        header("Location: contacto.php?message=$message");
+    }
+    $response_captcha = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$captcha");
+    $captcha_success = json_decode($response_captcha, TRUE);
+
+
+    if ($captcha_success['success']){
     // $email_from = "alessandra.palacios@indoff.com";
 	$email_subject = "Nuevo Mensaje en Indoff Pro";
 
@@ -35,6 +48,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $_SESSION['contacto'] = 'Su mensaje ha sido envíado, pronto lo contactaremos. Agradecemos su preferencia.';
     header("Location: contacto.php");
     exit(json_encode(array('estado'=>FALSE, 'mensaje'=>'Error al iniciar sesión')));
+}
 }
 
 ?>

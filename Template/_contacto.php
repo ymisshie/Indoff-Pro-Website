@@ -6,6 +6,7 @@ if(!empty($_SESSION['contacto'])) {
     //unset($_SESSION['contacto']);
 }
 ?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <section >
     <div class="container">
@@ -42,9 +43,21 @@ if(!empty($_SESSION['contacto'])) {
                     <div class="form-group mb-3" data-for="message">
                         <textarea type="text" class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
                     </div>
+                    <?php
+                    if($_GET){
+                    if(isset($_GET['message'])){
+                        ?>
+                        <br>
+                        <h4 class="text-danger text-center uppercase" > Captcha Inválido </h4>
+                        <?php
+                    }}
+                    ?> 
+                    <div class="g-recaptcha  align-self-center d-flex justify-content-center mt-5" data-sitekey="6LehDuMeAAAAAJlutCCDPTkVLTMacM8vqUqNzHdK"></div>
                     <span class="input-group-btn"><button type="submit" class="btn btn-form btn-primary display-4 mb-3 mx-auto">SEND</button></span>
                     
                 </form>
+
+                  
             </div>
             <div class="col-md-6 ">
                 <div class="container pb-5">

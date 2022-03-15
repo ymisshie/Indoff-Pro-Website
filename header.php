@@ -51,13 +51,8 @@ session_start();
             }
         }
         if ($user_existe > 1) {
-
             $id = $_SESSION['user_info']['nombre_login'];
-
-            //print $id;
-
             $carrito = $info_carrito->mostrar();
-
 
             $cantidad_carrito = 0;
 
