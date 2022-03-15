@@ -7,79 +7,222 @@ $pagina = "cotizacion";
 
 session_start();
 
-if (!isset($_SESSION['admin_info']) or empty($_SESSION['admin_info']))
+if (!isset($_SESSION['admin_info']) or empty($_SESSION['admin_info'])) {
     header('Location: ../index.php');
+}
+else{
+    $root_logo = '../../assets/logo.png';
+    $root_logo2 = '../../assets/logo2.png';
+    $root_functions = '../../functions.php';
+    $root_inicio = 'href="../dashboard.php"';
+    $root_styles = '<link rel="stylesheet" href="../../style.css">';
+    $root_categorias = 'href="../categorias/index.php"';
+    $root_dashboard = 'href="../dashboard.php"';
+    $root_productos = 'href="../productos/index.php"';
+    $root_eventos = 'href="../eventos/index.php"';
+    $root_eventos_productos = 'href="../productos-eventos/index.php"';
+    $root_pedidos = 'href="index.php"';
+    $root_logout = 'href="../index.php"';
+    $root_vendor = '../../vendor/autoload.php';
+    $root_productos_eventos_header = '../';
+    $root_cerrar_sesion = '../cerrar-sesion.php';
+    $root_indoffpro = 'href="../../index.php"';
 
-?>
+    //include header.php file
+    include('../../Template/_header-admin.php');
 
-<?php
-$root_logo = '../../assets/logo.png';
-$root_logo2 = '../../assets/logo2.png';
-$root_functions = '../../functions.php';
-$root_inicio = 'href="../dashboard.php"';
-$root_styles = '<link rel="stylesheet" href="../../style.css">';
-$root_categorias = 'href="../categorias/index.php"';
-$root_dashboard = 'href="../dashboard.php"';
-$root_productos = 'href="../productos/index.php"';
-$root_eventos = 'href="../eventos/index.php"';
-$root_eventos_productos = 'href="../productos-eventos/index.php"';
-$root_pedidos = 'href="index.php"';
-$root_logout = 'href="../index.php"';
-$root_vendor = '../../vendor/autoload.php';
-$root_productos_eventos_header = '../';
-$root_cerrar_sesion = '../cerrar-sesion.php';
-$root_indoffpro = 'href="../../index.php"';
-?>
+    if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+        $id = $_GET['id'];
 
-
-<?php
-//include header.php file
-include('../../Template/_header-admin.php');
-
-
-
-
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $id = $_GET['id'];
-
-    $info_usuario = new ameri\Usuario;
-    $usuario = $info_usuario->mostrar();
+        $info_usuario = new ameri\Usuario;
+        $usuario = $info_usuario->mostrar();
 
 
-    $info_productos = new ameri\Cotizaciones;
-    $info_cotizacion = new ameri\Cotcat;
+        $info_productos = new ameri\Cotizaciones;
+        $info_cotizacion = new ameri\Cotcat;
 
-    $infocotcat = $info_cotizacion->mostrar();
+        $infocotcat = $info_cotizacion->mostrar();
 
-    //  print_r($infocotcat);
+        //  print_r($infocotcat);
 
-    foreach ($infocotcat as $item) {
-        if ($item['id'] == $id) {
-            $nombre_usuario = $item['info_usuario'];
-            $fecha = $item['fecha'];
+        foreach ($infocotcat as $item) {
+            if ($item['id'] == $id) {
+                $nombre_usuario = $item['info_usuario'];
+                $fecha = $item['fecha'];
+            }
+
+            $pp = $info_productos->mostrar();
+
+            //$cotizacion = $info_cotizacion->mostrarPorId();
         }
 
+        $foreach = '';
+        $imagen = '';
+        $coloresc = '';
+        $cantidadc = '';
+        $precioc = '';
+        $ifc = '';
+        $p = '';
 
-        $pp = $info_productos->mostrar();
+        $sizec = '';
 
-        //$cotizacion = $info_cotizacion->mostrarPorId();
-    }
-}
+        $peso = '';
+
+        foreach ($pp as $producto) {
+            $foreach = $foreach . '<tr>
+        <td scope="col" class="fw-600">';
+
+            $imagen = '../../upload/Productos/' . $producto['imagen'] . '<img src="' . $imagen . '" width="100px">';
 
 
-?>
+            $foreach = $foreach . $imagen;
+            $foreach = $foreach . '
+        </td>
+        <td scope="col" class="fw-700"> <span class="color-purple">' . $producto['nombre'] . '</span><br><span class="fw-600 color-black">' . $producto['proveedor'] . '</span> <br><span class="fw-400 color-black">' . $producto['descripcion'] . '</span></td>
+        <td scope="col" class="text-center fw-400" style="text-transform: capitalize;">
+            <div class="d-flex justify-content-center">';
+
+            $colores = $producto['color'];
+            $separada = '';
+            $separador = ",";
+            $separada = explode($separador, $colores);
+
+            $count_colores = count($separada);
+
+            for ($u = 0; $u < $count_colores; $u++) {
+                $coloresc = '<div class="col-1 p-3 rounded-circle mx-1 my-1" style="background-color:';
+                $coloresc = $coloresc . $separada[$u];
+                $coloresc = $coloresc . '"data-bs-toggle="tooltip" data-bs-placement="top" title="';
+                $coloresc = $coloresc . $separada[$u] . '">
+                    </div>';
+            }
 
 
-<!--carrito-section-->
+            $coloresc = $coloresc . '</div>';
 
-<button id="btn">imprimir</button>
-<section name="" id="content" class="color-grey3-bg py-5">
+            $coloresc = $coloresc . $producto['color'] . '</td><td scope="col" class="fw-600">';
+
+            $foreach = $foreach . $coloresc;
+
+            $cantidad = $producto['cantidad'];
+            $separada_cantidad = '';
+            $separada_costo = '';
+            $separador = ",";
+            $separada_cantidad = explode($separador, $cantidad);
+
+            $count_cantidad = count($separada_cantidad);
+
+            for ($ca = 0; $ca < $count_cantidad; $ca++) {
+                $cantidadc = $cantidadc . '<div class="text-center fw-700 color-purple">';
+
+                $foreach = $foreach . $cantidadc;
+                if ($separada_cantidad[$ca] == "") {
+                } else {
+                    $ifc = $separada_cantidad[$ca];
+
+                    $ifc = $ifc . '<span class="fw-500 color-black">';
+
+                    if ($separada_cantidad[$ca] == 1) {
+                        $ifc = $ifc . ' unidad';
+                    } elseif ($separada_cantidad[$ca] > 1) {
+                        $ifc = $ifc . ' unidades';
+                    }
+
+                    $foreach = $foreach . $ifc;
+                    $foreach = $foreach . '                                       
+                        </span>
+                    <?php';
+                }
+
+                $foreach = $foreach . '
+                </div>';
+            }
+
+            $foreach = $foreach . '
+        </td>
+        <td scope="col" class="fw-600" id="costo_producto">';
+
+
+            $costo = $producto['precio'];
+            $separada_costo = '';
+            $separador = ",";
+            $separada_costo = explode($separador, $costo);
+
+            $count_costo = count($separada_costo);
+
+            for ($pa = 0; $pa < $count_cantidad; $pa++) {
+                $precioc = '
+                <div class="text-center fw-700 color-purple">';
+                if ($separada_costo[$pa] == "") {
+                } else {
+                    if ($separada_costo[$pa] == 1) {
+                        $precioc = $precioc . '$';
+                    } elseif ($separada_costo[$pa] > 1) {
+                        $precioc = $precioc . ' $';
+                    }
+                    $integer = (int)$separada_costo[$pa];
+                    $integer = number_format($integer, 2, '.', '.');
+                    $precioc = $precioc . $integer;
+                }
+
+                $foreach = $foreach . $precioc;
+                $foreach = $foreach.'</div>';
+            }
+
+    
+            $foreach = $foreach . '
+        </td>
+
+        <td scope="col" class="fw-500 text-center">';
+
+            if ($producto['size'] != '') {
+                $sizec = $producto['size'];
+            } else {
+                $sizec = 'N/A';
+            }
+            $foreach = $foreach . $sizec;
+
+            $foreach = $foreach . '
+                                                    </td>
+
+        <td scope="col" class="fw-500 text-center">';
+
+
+            if ($producto['peso'] != '') {
+                $pesoc = $producto['peso'];
+            } else {
+                $pesoc =  'N/A';
+            }
+
+            $foreach = $foreach . $pesoc;
+
+
+            $foreach = $foreach . '</td>
+    </tr>';
+        }
+
+        $html = '
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title></title>
+  </head>
+  <body>
+  
+<sectionid="content" class="color-grey3-bg py-5">
     <div class="container ws p-5 color-white-bg">
         <div class="row pb-5">
 
             <div class="col-12 d-flex justify-content-between">
 
-                <img src="<?php print $root_logo2; ?>" class="img-fluid navbar-brand p-1" alt="Logo Indoff Pro">
+                <img src="' . $root_logo2 . '"class="img-fluid navbar-brand p-1" alt="Logo Indoff Pro">
 
                 <div class="align-self-center">
                     <h3 class="color-red fw-700">Productos Promocionales e incentivos</h3>
@@ -89,9 +232,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         <div class="row">
             <div class="col-4">
-                <h6 class="fw-700">FECHA: <span class="fw-500"><?php print $fecha; ?></span>
+                <h6 class="fw-700">FECHA: <span class="fw-500">' . $fecha . '</span>
                 </h6>
-                <h6 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php print $nombre_usuario; ?></span>
+                <h6 class="fw-700 mb-0">CLIENTE: <span class="fw-500">' . $nombre_usuario . '</span>
                 </h6>
             </div>
 
@@ -127,141 +270,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 </thead>
 
 
-                <tbody>
-
-                    <?php
-                    foreach ($pp as $producto) {
-                    ?>
-                        <tr class="">
-
-                            <td scope="col" class="fw-600"><?php
-                                                            $imagen = '../../upload/Productos/' . $producto['imagen'];
-                                                            if (file_exists($imagen)) {
-                                                            ?>
-                                    <img src="<?php print $imagen; ?>" width="100px">
-
-                                <?php
-                                                            } else { ?>
-                                    Sin imagen
-                                <?php } ?>
-                            </td>
-                            <td scope="col" class="fw-700"><span class="color-purple"><?php print $producto['nombre'] ?></span><br><span class="fw-600 color-black"><?php print $producto['proveedor'] ?></span> <br><span class="fw-400 color-black"><?php print $producto['descripcion'] ?></span></td>
-                            <td scope="col" class="text-center fw-400" style="text-transform: capitalize;">
-                                <div class="d-flex justify-content-center">
-                                    <?php
-
-                                    $colores = $producto['color'];
-                                    $separada = '';
-                                    $separador = ",";
-                                    $separada = explode($separador, $colores);
-
-                                    $count_colores = count($separada);
-
-                                    for ($u = 0; $u < $count_colores; $u++) {
-                                    ?>
-                                        <div class="col-1 p-3 rounded-circle mx-1 my-1" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
-                                        </div>
-                                    <?php
-                                    } ?>
-                                </div>
-                                <?php print $producto['color'] ?>
-                            </td>
-                            <td scope="col" class="fw-600">
-                                <?php
-
-                                $cantidad = $producto['cantidad'];
-                                $costo = $producto['precio'];
-                                $separada_cantidad = '';
-                                $separada_costo = '';
-                                $separador = ",";
-                                $separada_cantidad = explode($separador, $cantidad);
-                                $separada_costo = explode($separador, $costo);
-
-                                $count_cantidad = count($separada_cantidad);
-                                $count_costo = count($separada_costo);
-
-                                for ($ca = 0; $ca < $count_cantidad; $ca++) {
-                                ?>
-                                    <div class="text-center fw-700 color-purple"><?php
-
-                                                                                    if ($separada_cantidad[$ca] == "") {
-                                                                                    } else {
-                                                                                        print $separada_cantidad[$ca]; ?>
-                                            <span class="fw-500 color-black">
-                                                <?php
-                                                                                        if ($separada_cantidad[$ca] == 1) {
-                                                                                            print ' unidad';
-                                                                                        } elseif ($separada_cantidad[$ca] > 1) {
-                                                                                            print ' unidades';
-                                                                                        } ?>
-                                            </span>
-                                        <?php
-                                                                                    } ?>
-                                    </div>
-                                <?php
-                                } ?>
-                            </td>
-                            <td scope="col" class="fw-600" id="costo_producto">
-                                <?php
-
-                                $cantidad = $producto['cantidad'];
-                                $costo = $producto['precio'];
-                                $separada_cantidad = '';
-                                $separada_costo = '';
-                                $separador = ",";
-                                $separada_cantidad = explode($separador, $cantidad);
-                                $separada_costo = explode($separador, $costo);
-
-                                $count_cantidad = count($separada_cantidad);
-                                $count_costo = count($separada_costo);
-
-                                for ($ca = 0; $ca < $count_cantidad; $ca++) {
-                                ?>
-                                    <div class="text-center fw-700 color-purple"><?php
-
-                                                                                    if ($separada_costo[$ca] == "") {
-                                                                                    } else {
-                                                                                        if ($separada_costo[$ca] == 1) {
-                                                                                            print '$';
-                                                                                        } elseif ($separada_costo[$ca] > 1) {
-                                                                                            print ' $';
-                                                                                        }
-                                                                                        $integer = (int)$separada_costo[$ca];
-                                                                                        $integer = number_format($integer, 2, '.', '.');
-                                                                                        print $integer;
-                                                                                    } ?>
-                                    </div>
-                                <?php
-                                } ?>
-                            </td>
-
-                            <td scope="col" class="fw-500 text-center"> <?php
-
-                                                                        if ($producto['size'] != '') {
-                                                                            print $producto['size'];
-                                                                        } else {
-                                                                            print 'N/A';
-                                                                        } ?></td>
-
-
-                            <td scope="col" class="fw-500 text-center"><?php
-
-                                                                        if ($producto['peso'] != '') {
-                                                                            print $producto['peso'];
-                                                                        } else {
-                                                                            print 'N/A';
-                                                                        } ?></td>
-
-
-
-                        </tr>
-                    <?php
-
-                    }
-
-                    ?>
-
-
+                <tbody>' . $foreach . '
                 </tbody>
             </table>
         </div>
@@ -286,3 +295,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     </div>
 </section>
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+-->
+</body>
+</html>
+';
+    }
+}
+use Dompdf\Dompdf;
+$dompdf=new Dompdf();
+$dompdf->load_html($html);
+$dompdf->render();
+$f;
+$l;
+
+$dompdf->stream("Cotizacion.pdf", array('Attachement'=>'0'));
