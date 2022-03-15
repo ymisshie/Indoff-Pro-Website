@@ -37,7 +37,7 @@
             <div class="container-fluid px-5">
                 <div class="row text-center text-md-start">
                     <div class="col-1 p-2">
-                        <a class="" style="width: 4em;" href="index.php"> <img src="../assets/logo_1.png" class="img-fluid p-2" alt="Logo Indoff Pro"></a>
+                        <a class="" style="width: 4em;" href="index.php"> <img src="../assets/logo.png" class="img-fluid p-2" alt="Logo Indoff Pro"></a>
                     </div>
                 </div>
             </div>

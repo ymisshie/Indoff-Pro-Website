@@ -81,7 +81,7 @@ session_start();
         <div class="container-fluid">
             <div class="row">
                 <div class="col-1 align-self-center">
-                    <a class="navbar-brand" href="index.php"> <img src="assets/logo_1.png" class="img-fluid p-0" alt="Logo Indoff Pro"></a>
+                    <a class="navbar-brand" href="index.php"> <img src="assets/logo.png" class="img-fluid p-0" alt="Logo Indoff Pro"></a>
                 </div>
                 <div class="col-11 align-items-end">
                     <div class="d-flex py-3 justify-content-between">
