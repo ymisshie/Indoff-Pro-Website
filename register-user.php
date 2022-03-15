@@ -77,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 $email_body = "Gracias por su preferencia, para verificar su correo de click al siguiente link: <a href='http://localhost/Indoff-Pro-Website/registration-verify.php?vkey=$vkey'> Confirmar Correo </a>";
             
-                $to = "alessandra.palacios@indoff.com";
+                $to = $email_user;
             
                 $headers = "MIME-Version: 1.0" . "\r\n";
                 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";

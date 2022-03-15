@@ -78,7 +78,7 @@ class Usuario
     public function registrar($_params)
     {
         // Lectura de la ruta de la consulta
-        $sql = "INSERT INTO `usuarios`(`nombre_login`, `pwd_usuario_hash`, `nombre_usuario`, `apellido_usuario`, `email_user`, `phone_user`, `estado`, `verification_key`) VALUES (:nombre_login, :pwd_usuario_hash, :nombre_usuario, :apellido_usuario, :email_user, :estado, :verification_key)";
+        $sql = "INSERT INTO `usuarios`(`nombre_login`, `pwd_usuario_hash`, `nombre_usuario`, `apellido_usuario`, `email_user`, `phone_user`, `estado`, `verification_key`) VALUES (:nombre_login, :pwd_usuario_hash, :nombre_usuario, :apellido_usuario, :email_user, :phone_user, :estado, :verification_key)";
 
         // Preparar la consulta
         $resultado = $this->cn->prepare($sql);
