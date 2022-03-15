@@ -50,7 +50,7 @@ print_r($cotizacion);
 
                             <td scope="col" class="fw-500 text-center"><span><?php print  'Solicitado: ' . $cot['fecha']; ?> </span></td>
                             <td scope="col" class="text-center">
-                                <a href="pdf-cot.php?id=<?php print $cot['id'] ?>" class="btn-secondary btn btn-sm my-md-1 text-center" role="button">Visualizar</a>
+                                <a href="pdf-cot.php?id=<?php print $cot['id'] ?>" class="btn-secondary btn btn-sm my-md-1 text-center" role="button">Ver y enviar al correo</a>
                             </td>
 
                         </tr>

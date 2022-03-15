@@ -4,13 +4,13 @@ require '../../vendor/autoload.php';
 
 $title = "Cotización | Indoff Pro";
 $pagina = "cotizacion";
+ob_clean();
 
 session_start();
 
 if (!isset($_SESSION['admin_info']) or empty($_SESSION['admin_info'])) {
     header('Location: ../index.php');
-}
-else{
+} else {
     $root_logo = '../../assets/logo.png';
     $root_logo2 = '../../assets/logo2.png';
     $root_functions = '../../functions.php';
@@ -166,10 +166,10 @@ else{
                 }
 
                 $foreach = $foreach . $precioc;
-                $foreach = $foreach.'</div>';
+                $foreach = $foreach . '</div>';
             }
 
-    
+
             $foreach = $foreach . '
         </td>
 
@@ -303,13 +303,37 @@ else{
 </body>
 </html>
 ';
+
+        print $html;
+
+
+           // $email_from = "alessandra.palacios@indoff.com";
+	$email_subject = "Nueva cotizacion";
+
+	$email_body = $html;
+
+    $to = "michelle.gastelum@indoff.com";
+
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+    // $headers = "From: $email_from \r\n";
+    
+    // $headers .= "Reply-To: $visitor_email \r\n";
+
+    mail($to,$email_subject,$email_body,$headers);
+
+
+
     }
 }
+
+
 use Dompdf\Dompdf;
-$dompdf=new Dompdf();
+
+$dompdf = new Dompdf();
 $dompdf->load_html($html);
 $dompdf->render();
 $f;
 $l;
 
-$dompdf->stream("Cotizacion.pdf", array('Attachement'=>'0'));
+$dompdf->stream("Cotizacion.pdf", array('Attachement' => '0'));
