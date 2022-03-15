@@ -75,7 +75,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
  
 function subirFoto() {
     // Dir devuelve la ruta del proyecto donde está almacenado
-    $carpeta = __DIR__.'/../upload/Eventos';
+    $carpeta = __DIR__.'/../upload/Eventos/';
     $archivo = $carpeta.$_FILES['imagen']['name'];
     
     move_uploaded_file($_FILES['imagen']['tmp_name'],$archivo);

@@ -14,7 +14,7 @@ if (!isset($_SESSION['admin_info']) or empty($_SESSION['admin_info']))
 
 <?php
 $root_logo = '../../assets/logo.png';
-
+$root_logo2 = '../../assets/logo2.png';
 $root_functions = '../../functions.php';
 $root_inicio = 'href="../dashboard.php"';
 $root_styles = '<link rel="stylesheet" href="../../style.css">';
@@ -56,7 +56,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $fecha = $item['fecha'];
         }
 
-    
+
         $pp = $info_productos->mostrar();
 
         //$cotizacion = $info_cotizacion->mostrarPorId();
@@ -68,27 +68,27 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 <!--carrito-section-->
 
-
-<section name="" class="color-grey3-bg py-5">
+<button id="btn">imprimir</button>
+<section name="" id="content" class="color-grey3-bg py-5">
     <div class="container ws p-5 color-white-bg">
         <div class="row pb-5">
 
             <div class="col-12 d-flex justify-content-between">
-                <div class="">
-                    <p class="align-self-center fw-500 color-red font-gentium navbar-brand pt-5 pb-0">Indoff Pro</p>
-                </div>
+
+                <img src="<?php print $root_logo2; ?>" class="img-fluid navbar-brand p-1" alt="Logo Indoff Pro">
+
                 <div class="align-self-center">
-                    <h3 class="fw-700">Productos Promocionales e incentivos</h3>
+                    <h3 class="color-red fw-700">Productos Promocionales e incentivos</h3>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-4">
-                <h5 class="fw-700">FECHA: <span class="fw-500"><?php print $fecha; ?></span>
-                </h5>
-                <h5 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php  print $nombre_usuario;?></span>
-                </h5>
+                <h6 class="fw-700">FECHA: <span class="fw-500"><?php print $fecha; ?></span>
+                </h6>
+                <h6 class="fw-700 mb-0">CLIENTE: <span class="fw-500"><?php print $nombre_usuario; ?></span>
+                </h6>
             </div>
 
             <div class="col-8 text-end">
@@ -126,18 +126,12 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <tbody>
 
                     <?php
-
-
                     foreach ($pp as $producto) {
-
-
-
-
                     ?>
                         <tr class="">
 
                             <td scope="col" class="fw-600"><?php
-                                                            $imagen = '../../upload/' . $producto['imagen'];
+                                                            $imagen = '../../upload/Productos/' . $producto['imagen'];
                                                             if (file_exists($imagen)) {
                                                             ?>
                                     <img src="<?php print $imagen; ?>" width="100px">
@@ -147,7 +141,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                     Sin imagen
                                 <?php } ?>
                             </td>
-                            <td scope="col" class="fw-700"><span><a href="producto.php?id=<?php print $producto['id']; ?>" class="color-red"><?php print $producto['nombre'] ?></a></span><br><span class="fw-600 color-black"><?php print $producto['proveedor'] ?></span> <br><span class="fw-400 color-black"><?php print $producto['descripcion'] ?></span></td>
+                            <td scope="col" class="fw-700"><span class="color-purple"><?php print $producto['nombre'] ?></span><br><span class="fw-600 color-black"><?php print $producto['proveedor'] ?></span> <br><span class="fw-400 color-black"><?php print $producto['descripcion'] ?></span></td>
                             <td scope="col" class="text-center fw-400" style="text-transform: capitalize;">
                                 <div class="d-flex justify-content-center">
                                     <?php
@@ -184,21 +178,21 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                                 for ($ca = 0; $ca < $count_cantidad; $ca++) {
                                 ?>
-                                    <div class="text-center fw-700 color-red"><?php
+                                    <div class="text-center fw-700 color-purple"><?php
 
-                                                                                if ($separada_cantidad[$ca] == "") {
-                                                                                } else {
-                                                                                    print $separada_cantidad[$ca]; ?>
+                                                                                    if ($separada_cantidad[$ca] == "") {
+                                                                                    } else {
+                                                                                        print $separada_cantidad[$ca]; ?>
                                             <span class="fw-500 color-black">
                                                 <?php
-                                                                                    if ($separada_cantidad[$ca] == 1) {
-                                                                                        print ' unidad';
-                                                                                    } elseif ($separada_cantidad[$ca] > 1) {
-                                                                                        print ' unidades';
-                                                                                    } ?>
+                                                                                        if ($separada_cantidad[$ca] == 1) {
+                                                                                            print ' unidad';
+                                                                                        } elseif ($separada_cantidad[$ca] > 1) {
+                                                                                            print ' unidades';
+                                                                                        } ?>
                                             </span>
                                         <?php
-                                                                                } ?>
+                                                                                    } ?>
                                     </div>
                                 <?php
                                 } ?>
@@ -219,19 +213,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                                 for ($ca = 0; $ca < $count_cantidad; $ca++) {
                                 ?>
-                                    <div class="text-center fw-700 color-red"><?php
+                                    <div class="text-center fw-700 color-purple"><?php
 
-                                                                                if ($separada_costo[$ca] == "") {
-                                                                                } else {
-                                                                                    if ($separada_costo[$ca] == 1) {
-                                                                                        print '$';
-                                                                                    } elseif ($separada_costo[$ca] > 1) {
-                                                                                        print ' $';
-                                                                                    }
-                                                                                    $integer = (int)$separada_costo[$ca];
-                                                                                    $integer = number_format($integer, 2, '.', '.');
-                                                                                    print $integer;
-                                                                                } ?>
+                                                                                    if ($separada_costo[$ca] == "") {
+                                                                                    } else {
+                                                                                        if ($separada_costo[$ca] == 1) {
+                                                                                            print '$';
+                                                                                        } elseif ($separada_costo[$ca] > 1) {
+                                                                                            print ' $';
+                                                                                        }
+                                                                                        $integer = (int)$separada_costo[$ca];
+                                                                                        $integer = number_format($integer, 2, '.', '.');
+                                                                                        print $integer;
+                                                                                    } ?>
                                     </div>
                                 <?php
                                 } ?>
@@ -288,3 +282,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     </div>
 </section>
+
+<div id="elementH"></div>
+
+<script src="js/jsPDF/dist/jspdf.min.js"></script>
+
+<script>
+    $(document).on('click', '#btn', function() {
+        let pdf = new jsPDF();
+        let section = $('body');
+        let page = function() {
+            pdf.save('pagename.pdf');
+
+        };
+        pdf.addHTML(section, page);
+    })
+</script>

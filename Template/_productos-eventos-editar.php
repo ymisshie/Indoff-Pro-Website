@@ -21,19 +21,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $cantidad_productos++;
         }
     }
-
-    /*
- print '<pre>';
- print_r ($info_categoria);
-
-die;
-*/
-
-    /*
- print '<pre>';
- print_r($info_producto);
-*/
-
 }
 
 
@@ -41,11 +28,11 @@ die;
 
 <!--categorias-->
 <section id="categorias" class="categorias-section">
-    <div class="container-fluid px-md-5">
+    <div class="container-fluid">
 
         <div class="row justify-content-center">
             <div class="col-12">
-                <h2 class="section-title pt-md-5 text-center">
+                <h2 class="section-title pt-5 text-center">
 
                     <?php
                     print $cantidad_productos;
@@ -60,20 +47,23 @@ die;
                     ?>
                 </h2>
             </div>
-            <div class="col-md-4 py-md-3 text-center">
+            <div class="py-3 text-center">
                 <a class="btn btn-primary" href="form-registrar-pe.php?id=<?php print $info_categoria['id'] ?>" role="button">Agregar nuevo <i class="fas fa-plus ms-md-2 me-md-1"></i></a>
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <table class="col-md-3 table table-hover my-md-4">
+        <div class="justify-content-center table-responsive">
+            <table class="col-md-3 table table-hover my-4">
                 <thead>
-                    <tr class="text-center color-red-bg color-white">
+                    <tr class="text-center color-aqua-bg color-white">
                         <th scope="col" class="col-md-1 col-lg-1">ID</th>
                         <th scope="col" class="col-md-1 col-lg-1">Orden</th>
                         <th scope="col" class="col-md-1 col-lg-1">Imagen</th>
                         <th scope="col" class="col-md-1 col-lg-1">Información</th>
+
+                        <!--
                         <th scope="col" class="col-md-1 col-lg-1">Variaciones</th>
+                -->
                         <th scope="col" class="col-md-1 col-lg-1">Cant. y costo</th>
                         <th scope="col" class="col-md-1 col-lg-1">Colores</th>
                         <th scope="col" class="col-md-1 col-lg-1">Peso y tamaño</th>
@@ -97,24 +87,25 @@ die;
                                 <tr class="text-center">
                                     <td scope="col" class="fw-600"><?php print $c ?></td>
                                     <td>
-                                    
-                                    <select id="orden_productos" name="orden_productos">
-                                        <option value="1" disabled="disabled" <?php if ($item_producto['orden'] == 1) print "selected" ?> > 1 </option>
-                                        <option value="2" disabled="disabled" <?php if ($item_producto['orden'] == 2) print "selected" ?> >2</option>
-                                        <option value="3" disabled="disabled" <?php if ($item_producto['orden'] == 3) print "selected" ?>  >3</option>
-                                        <option value="4" disabled="disabled" <?php if ($item_producto['orden'] == 4) print "selected" ?> > 4  </option>
-                                        <option value="5" disabled="disabled" <?php if ($item_producto['orden'] == 5) print "selected" ?> > 5  </option>
-                                        <option value="6" disabled="disabled" <?php if ($item_producto['orden'] == 6) print "selected" ?> >  6  </option>
-                                        <option value="7" disabled="disabled" <?php if ($item_producto['orden'] > 6) print "selected" ?> > x   </option>
-                                    </select>
 
+                                        <select id="orden_productos" name="orden_productos" disabled>
+                                            <option value="1" <?php if ($item_producto['orden'] == 1) print "selected" ?>> 1 </option>
+                                            <option value="2" <?php if ($item_producto['orden'] == 2) print "selected" ?>>2</option>
+                                            <option value="3" <?php if ($item_producto['orden'] == 3) print "selected" ?>>3</option>
+                                            <option value="4" <?php if ($item_producto['orden'] == 4) print "selected" ?>> 4 </option>
+                                            <option value="5" <?php if ($item_producto['orden'] == 5) print "selected" ?>> 5 </option>
+                                            <option value="6" <?php if ($item_producto['orden'] == 6) print "selected" ?>> 6 </option>
+                                            <option value="7" <?php if ($item_producto['orden'] > 6) print "selected" ?>> No mostrar </option>
+                                        </select>
+                                        <a href="form-editar-pe.php?id=<?php print $item['id'] ?>" class="btn-link ss color-purple ps-2">Cambiar</a>
                                     </td>
+
                                     <td scope="col" class="text-center">
                                         <?php
-                                        $imagen = '../../upload/' . $item_producto['imagen'];
+                                        $imagen = '../../upload/Productos-Eventos/' . $item_producto['imagen'];
                                         if (file_exists($imagen)) {
                                         ?>
-                                            <img src="<?php print $imagen; ?>" width="150px">
+                                            <img src="<?php print $imagen; ?>" width="100px">
 
                                         <?php
                                         } else { ?>
@@ -125,9 +116,9 @@ die;
 
                                     <td scope="col" class="fw-700"><?php print $item_producto['nombre'] ?>
                                         <br>
-                                        <p class="fw-500 pt-md-1"> <?php print $item_producto['proveedor'] ?></p>
+                                        <p class="fw-500 pt-1"> <?php print $item_producto['proveedor'] ?></p>
 
-                                        <a href="form-editar-pe.php?id=<?php print $item_producto[0] ?>" class="btn-secondary btn btn-sm mx-md-3 mb-md-4" role="button">Editar<i class="far fa-edit ms-md-2 me-md-1"></i></a>
+                                        <a href="form-editar-pe.php?id=<?php print $item_producto[0] ?>" class="btn-secondary btn btn-sm mx-3 mb-4" role="button">Editar<i class="far fa-edit ms-md-2 me-md-1"></i></a>
 
                                         <p class="fw-400 fs-09 "><?php print $item_producto['descripcion'] ?></p>
 
@@ -135,32 +126,6 @@ die;
                                     </td>
 
 
-                                    <td scope="col" class="fs-09">
-                                        <div class="d-flex justify-content-center">
-
-
-                                            <?php
-
-                                            $opciones = $item_producto['opciones'];
-                                            $separada = '';
-                                            $separador = ",";
-                                            $separada = explode($separador, $opciones);
-
-                                            $count_opciones = count($separada);
-
-                                            for ($o = 0; $o < $count_opciones; $o++) {
-                                            ?>
-                                                <p class="mx-1 my-md-1"><?php print $separada[$o]; ?>
-                                                </p>
-                                            <?php
-                                            }
-                                            ?>
-                                        </div>
-
-
-
-
-                                    </td>
 
 
 
@@ -219,7 +184,7 @@ die;
                                             for ($u = 0; $u < $count_colores; $u++) {
                                             ?>
 
-                                                <div class="col-1 p-md-3 rounded-circle mx-1 my-md-1" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
+                                                <div class="col-1 p-3 rounded-circle mx-1 my-1" style="background-color: <?php print $separada[$u]; ?>;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php print $separada[$u]; ?>">
 
 
                                                 </div>
@@ -253,7 +218,7 @@ die;
 
 
                                     <td class="col text-center">
-                                        <a href="../acciones-pe.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-md-1" role="button">Eliminar<i class="far fa-trash-alt ms-md-2 me-md-1"></i></a>
+                                        <a href="../acciones_pe.php?id=<?php print $item_producto[0] ?>" class="btn-primary btn btn-sm my-md-1" role="button">Eliminar<i class="far fa-trash-alt ms-md-2 me-md-1"></i></a>
                                     </td>
                                 </tr>
                         <?php
@@ -264,8 +229,11 @@ die;
                     } else if ($cantidad_productos == 0) {
                         ?>
                         <tr>
-                            <td colspan="9" class="text-center">
-                                Sin registros
+                            <td colspan="8" class="">
+                                <div class="text-center py-2">
+                                    <i class="text-center display-1 fa-solid fa-folder-open"></i>
+                                    <p class="fw-00 py-2 mb-0">No hay productos registradas todavia</p>
+                                </div>
                             </td>
                         </tr>
                     <?php
