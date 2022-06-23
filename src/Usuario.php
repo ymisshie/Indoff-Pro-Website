@@ -107,6 +107,32 @@ class Usuario
 
     public function login($nombre_login, $pwd_usuario_hash)
     {
+        $pwd = "SELECT pwd_usuario_hash, verificado FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
+        $resultado_pwd = $this->cn->prepare($pwd);
+
+        $_array_pwd = array(
+            ":nombre_login" => $nombre_login,
+        );
+
+        if ($resultado_pwd->execute($_array_pwd)) {
+            $resultado_array = $resultado_pwd->fetch();
+            $password = $resultado_array['pwd_usuario_hash'];
+            if (password_verify($pwd_usuario_hash, $password) && $resultado_array['verificado'] == 1) {
+                // print("A");
+                $sql = "SELECT nombre_login, email_user, nombre_usuario,  apellido_usuario, id, phone_user  FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
+                $resultado = $this->cn->prepare($sql);
+
+                $_array = array(
+                    ":nombre_login" => $nombre_login,
+                );
+
+                if ($resultado->execute($_array))
+                    return $resultado->fetch();
+
+                return false;
+            }
+            return false;
+        }
     }
 
     public function mostrar()
