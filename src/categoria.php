@@ -61,7 +61,6 @@ class Categoria
     public function eliminar($id)
     {
 
-
         $sql = "DELETE FROM  `categorias` WHERE  `id`=:id";
         $resultado = $this->cn->prepare($sql);
 
@@ -71,7 +70,7 @@ class Categoria
 
         if ($resultado->execute($_array))
 
-        return true;
+            return true;
         return false;
     }
 
@@ -90,7 +89,7 @@ class Categoria
 
     public function mostrarOrden()
     {
-        $sql = "SELECT * FROM `categorias` ORDER BY `orden` LIMIT 6";
+        $sql = "SELECT * FROM `categorias` ORDER BY `orden` LIMIT 5";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -117,7 +116,7 @@ class Categoria
 
     public function mostrarPorIdOrden($id)
     {
-        $sql = "SELECT * FROM `categorias` WHERE `id` = :id ORDER BY `orden` LIMIT 6";
+        $sql = "SELECT * FROM `categorias` WHERE `id` = :id ORDER BY `orden` LIMIT 5";
 
         $resultado = $this->cn->prepare($sql);
 

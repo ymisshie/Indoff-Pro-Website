@@ -1,25 +1,9 @@
 <?php
-
-$title = "Producto de Eventos";
-$pagina ="productos_eventos";
-
-
 $title = "Eventos";
 $pagina ="eventos";
-?>
 
-<?php
-//include header.php file
-include('header.php')
-?>
+include('header.php');
 
-<?php
-/*include filtros-categorias*/
-include('Template/_eventos-categorias.php')
-/*include filtros-categorias*/
-?>
+include('Template/Eventos/index.php');
 
-<?php
-//include footer.php file
-include('footer.php')
-?>
+include('footer.php');

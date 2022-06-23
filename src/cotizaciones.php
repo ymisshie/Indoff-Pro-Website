@@ -17,11 +17,16 @@ class Cotizaciones
         $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
+
+        /*
+        print '<pre>';
+        print_r($this->config);
+        */
     }
 
     public function registrar($_params)
     {
-        $sql = "INSERT INTO `cotizaciones`(`info_usuario`,`id_usuario`,`usuarios_id`,`cotcat_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `opciones`, `cantidad`, `precio`, `size`, `peso`, `color`) VALUES (:info_usuario, :id_usuario, :usuarios_id, :cotcat_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :opciones, :cantidad, :precio, :size, :peso, :color)";
+        $sql = "INSERT INTO `cotizaciones`(`info_usuario`,`id_usuario`,`usuarios_id`,`cotcat_id`, `nombre`, `proveedor`, `descripcion`, `imagen`, `fecha`, `cantidad`, `precio`, `size`, `impresion`,`color`, `categoria`) VALUES (:info_usuario, :id_usuario, :usuarios_id, :cotcat_id, :nombre, :proveedor, :descripcion, :imagen, :fecha, :cantidad, :precio, :size,:impresion, :color, :categoria)";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -35,12 +40,12 @@ class Cotizaciones
             ":descripcion" => $_params['descripcion'],
             ":imagen" => $_params['imagen'],
             ":fecha" => $_params['fecha'],
-            ":opciones" => $_params['opciones'],
             ":cantidad" => $_params['cantidad'],
             ":precio" => $_params['precio'],
             ":size" => $_params['size'],
-            ":peso" => $_params['peso'],
+            ":impresion" => $_params['impresion'],
             ":color" => $_params['color'],
+            ":categoria" => $_params['categoria'],
         );
 
         if ($resultado->execute($_array))
@@ -50,7 +55,7 @@ class Cotizaciones
 
     public function actualizar($_params)
     {
-        $sql = "UPDATE `cotizaciones` SET `info_usuario`=:info_usuario,`id_usuario`=:id_usuario,`usuarios_id`=:usuarios_id, `cotcat_id`=:cotcat_id,`producto_id`=:producto_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`opciones`=:opciones,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`peso`=:peso,`color`=:color WHERE `id` =:id";
+        $sql = "UPDATE `cotizaciones` SET `info_usuario`=:info_usuario,`id_usuario`=:id_usuario,`usuarios_id`=:usuarios_id, `cotcat_id`=:cotcat_id,`producto_id`=:producto_id,`nombre`=:nombre,`proveedor`=:proveedor,`descripcion`=:descripcion,`imagen`=:imagen,`fecha`=:fecha,`cantidad`=:cantidad,`precio`=:precio,`size`=:size,`impresion`=:impresion,`color`=:color, `categoria`=:categoria WHERE `id` =:id";
 
         $resultado = $this->cn->prepare($sql);
 
@@ -65,12 +70,12 @@ class Cotizaciones
             ":descripcion" => $_params['descripcion'],
             ":imagen" => $_params['imagen'],
             ":fecha" => $_params['fecha'],
-            ":opciones" => $_params['opciones'],
             ":cantidad" => $_params['cantidad'],
             ":precio" => $_params['precio'],
             ":size" => $_params['size'],
-            ":peso" => $_params['peso'],
+            ":impresion" => $_params['impresion'],
             ":color" => $_params['color'],
+            ":categoria" => $_params['categoria'],
             ":id" => $_params['id']
         );
 
@@ -110,7 +115,7 @@ class Cotizaciones
 
     public function mostrar()
     {
-        $sql = "SELECT cotizaciones.id, cotizaciones.info_usuario, cotizaciones.id_usuario, cotizaciones.usuarios_id, cotcat_id, producto_id, nombre, proveedor, descripcion, cotizaciones.imagen, cotizaciones.fecha, opciones, cantidad, precio, size, peso, color FROM cotizaciones
+        $sql = "SELECT cotizaciones.id, cotizaciones.info_usuario, cotizaciones.id_usuario, cotizaciones.usuarios_id, cotcat_id, producto_id, nombre, proveedor, descripcion, cotizaciones.imagen, cotizaciones.fecha, cantidad, precio, size, impresion,color, categoria FROM cotizaciones
         INNER JOIN cotcat
         ON cotizaciones.cotcat_id = cotcat.id ORDER BY cotizaciones.id ASC";
 

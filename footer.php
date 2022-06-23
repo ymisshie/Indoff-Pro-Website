@@ -1,78 +1,176 @@
-</main>
-<!--!start #main-site-->
+<!-- Modal 
+<div class="modal fade align-self-center" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close align-self-center" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-<!--start #footer-->
-<footer class="color-black-bg">
-    <div class="container-fluid text-white px-5 py-3">
-        <div class="row py-md-4">
-            <a class="col-md-8 offset-md-1 footer-brand" href="index.php"> <img src="assets/logo_1.png" class="img-fluid" alt="Logo Indoff Pro"></a>
+            <div class="modal-body">
+                <section id="login" class="">
+                    <div class="container">
+                        <div class="row text-center px-3 py-2">
+                            <form action="login-user.php" method="post">
+                                <h3 class="section-title pb-2">Login</h3>
+
+                                <div class="form-group text-start pb-2">
+                                    <h6 for="inputUsuarioLogin" class="col-2 py-2 fw-600">Usuario</h6>
+                                    <div class="d-flex">
+                                        <i class="fas fa-user color-purple align-self-center me-3"></i>
+                                        <input class="form-control2" name="nombre_usuario" type="text" placeholder="Nombre de usuario" aria-label="default input example" id="inputUsuarioLogin" required>
+                                    </div>
+                                </div>
+                                <div class="form-group text-start py-2">
+                                    <h6 for="inputPasswordLogin" class="col-2 py-2 fw-600">Password</h6>
+                                    <div class="d-flex">
+                                        <i class="fas fa-key color-purple align-self-center me-3"></i>
+                                        <input class="form-control2" name="clave_usuario" type="password" placeholder="Contraseña" aria-label="default input example" id="inputPasswordLogin" required>
+                                    </div>
+                                </div>
+                                <?php
+                                //echo $mensaje2;
+                                ?>
+                                <div>
+                                    <?php
+                                    if (!empty($_SESSION['message'])) {
+                                        echo '<p class="message text-center mt-2" > ' . $_SESSION['message'] . '</p>';
+                                        unset($_SESSION['message']);
+                                    }
+                                    ?>
+                                </div>
+                                <button type="submit" value="Submit" class="btn btn-primary mt-4 mb-4 w-100">Iniciar sesión</button>
+                                <div class="col-12 align-items-center mx-auto pt-4">
+                                    <h6 class="mb-0">¿No tiene una cuenta?<span><a href="form-register.php" class="color-red btn btn-link ss color-purple">Registrarse</a>
+                                        </span></h6>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
-        <div class="row justify-content-evenly pb-2">
-            <div class="col-12 col-md-3">
-                <h5 class="uppercase py-4 fw-600">Productos Promocionales</h5>
-                <p> <a href="categorias.php?id=1" class="uppercase text-white fw-500">Categorías</a></p>
-                <p> <a href="eventos.php" class="uppercase text-white fw-500">Eventos</a></p>
-                <p> <a href="contacto.php" class="uppercase text-white fw-500">Contacto</a></p>
-                <p> <a href="nosotros.php" class="uppercase text-white fw-500">Nosotros</a></p>
-            </div>
-            <div class="col-12 col-md-2">
-                <h5 class="uppercase py-4 fw-600">Contáctanos</h5>
-                <p><span><i class="fas fa-map-marker-alt me-3 fs-1-2"></i></span> Tijuana, México</p>
-                <p><a href="mailto:mexico@indoff.com" class="text-white"><span><i class="fas fa-envelope me-3 fs-1-2"></i></span>ana.gallegos@indoff.com</a></p>
-                <p><span><i class="fas fa-phone me-3 fs-1-2"></i></span>(664) 123 39 90</p>
-                <p><span><i class="fas fa-phone me-3 fs-1-2"></i></span>(664) 625 11 11</p>
+    </div>
+</div>
+
+<div class="modal fade align-self-center" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close align-self-center" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <div class="col-12 col-lg-3 pb-2">
-                <h5 class="uppercase py-4 fw-600">Conecta con nuestras redes</h5>
-                <div class="col-7 col-lg-6 d-flex justify-content-between">
-                    <div class="">
-                        <a target="_blank" href="https://www.linkedin.com/company/31381210/admin/"><i class="fab fa-linkedin fs-3 text-white"></i></a>
+            <div class="modal-body">
+                <section class="">
+                    <div class="px-5 pb-5 text-center">
+                        <h3 class="section-title pt-5 pb-3 col-8 mx-auto ">Su cuenta se ha registrado.</h3>
+                        <h6>Se ha enviado un correo de verificación. </h6>
+
+                        <i class="fas fa-envelope-open-text color-purple display-1 mt-4"></i>
+
+                        <div class="d-flex col-5 mx-auto">
+                            <a href="login.php" class="btn btn-primary my-5 py-2 me-4 text-center w-75">Login</a>
+                            <button type="submit" class="btn btn-secondary my-5 py-2 text-center w-50" name="accion" value="Volver a enviar"> Enviar de nuevo </button>
+                        </div>
                     </div>
-                    <div class="">
-                        <a target="_blank" href="https://www.facebook.com/indoffpro"><i class="fab fa-facebook fs-3 text-white"></i></a>
-                    </div>
-                    <div class="">
-                        <a target="_blank" href="mailto:mexico@indoff.com"><i class="fas fa-envelope fs-3 text-white"></i></a>
-                    </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+                                -->
+</main>
+<footer>
+    <div class="container-fluid bg-darkblue py-2 px-5" id="footer">
+        <div class=" row justify-content-between px-4 py-5">
+            <div class="col-3 px-0">
+                <div class="pb-4">
+                    <a href="index.php">
+                        <h5 class="logo fw-600 text-white">Indoff Pro Dashboard</h5>
+                        <p class="fw-600">Productos Promocionales</p>
+                    </a>
                 </div>
+                <p class="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos sequi voluptatibus perferendis laborum adipisci repellat quas praesentium iste aperiam tempore.</p>
+            </div>
+            <div class="col-2">
+                <h5 class="text-white fw-600 pb-4">Productos</h5>
+
+                <a href="<?php print $root_categorias; ?>">
+                    <p class="footer-link">Categorias</p>
+                </a>
+                <a href="<?php print $root_eventos; ?>">
+                    <p class="footer-link">Eventos</p>
+                </a>
+                <a href="<?php print $root_kits; ?>">
+                    <p class="footer-link">Kits</p>
+                </a>
+            </div>
+            <div class="col-2">
+                <h5 class="text-white fw-600 pb-4">Acerca de</h5>
+
+                <a href="<?php print $root_nosotros; ?>">
+                    <p class="footer-link">Quiénes somos</p>
+                </a>
+                <a href="<?php print $root_contacto; ?>">
+                    <p class="footer-link">Contáctanos</p>
+                </a>
+                <a href="<?php print $root_blogs; ?>">
+                    <p class="footer-link">Blogs</p>
+                </a>
+            </div>
+            <div class="col-2">
+                <h5 class="text-white fw-600 pb-4">Contacto</h5>
+                <p class=""><span><i class="fa-solid fa-location-dot me-3"></i></span>Tijuana, México</p>
+                <a href="mailto:indoffpro@indoff.com">
+                    <p class="footer-link"><span><i class="fa-solid fa-envelope me-3"></i></span>indoffpro@indoff.com</p>
+                </a>
+                <a href="">
+                    <p class=""><span><i class="fa-solid fa-phone me-3"></i></span>+52 (664) 123 39 90</p>
+                </a>
+                <a href="">
+                    <p class=""><span><i class="fa-solid fa-phone me-3"></i></span>+52 (664) 625 11 11</p>
+                </a>
+            </div>
+            <div class="col-2">
+                <h5 class="text-white fw-600 pb-4">¡Siguenos en nuestras redes sociales!</h5>
+                <div class="col-5 d-flex justify-content-between">
+                    <a href="https://www.linkedin.com/company/31381210/"><i class="fs-2 fa-brands fa-linkedin footer-link"></i></a>
+                    <a href="https://www.facebook.com/indoffpro"><i class="fs-2 fa-brands fa-facebook-square footer-link"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid bg-light py-4">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <p class="mb-0 fw-600 text-muted">©2022 Copyright
+                    <a class="text-purple fw-600 mb-0 footer-copy-link" href="index.php">indoffpro.com</a>
+                </p>
             </div>
         </div>
     </div>
 </footer>
-<div class="text-center copyright py-3 py-md-4 fw-60">
-    © 2022 Copyright:
-    <a class="color-red fw-800 mb-0" href="index.php">indoffpro.com</a>
-</div>
 
-<!--!start #footer-->
+<script src="https://www.google.com/recaptcha/api.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!--
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
--->
-
-<!--  isotope plugin cdn 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
--->
-
-<!--select-->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-
 <script>
-    jQuery('button').click(function(e) {
+    /*jQuery('button').click(function(e) {
         jQuery('.collapse').collapse('hide');
     });
+    */
 
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 
     function pdf() {
         var txtMensa = document.getElementById('txtMensa');
@@ -84,11 +182,6 @@
     $("#color-select").select2({
         placeholder: 'Seleccione los colores deseados o puede buscarlos por nombre con la referencia de abajo.',
         allowClear: true
-    });
-
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
     });
 
     //Obtener el valor del color
@@ -125,11 +218,11 @@
         var modificarlabelcantidad = document.getElementById("cantidad1_producto");
         modificarlabelcantidad.textContent = arreglo[0];
         var modificarlabelcantidad = document.getElementById("precioSelect1_producto");
-        modificarlabelcantidad.textContent = arreglo[1];
+        modificarlabelcantidad.textContent = '$' + arreglo[1] + ' USD';
         var modificartotal = document.getElementById("precioTotal");
-        modificartotal.textContent = '$' + arreglo[1];
+        modificartotal.textContent = '$' + arreglo[1] + ' USD';
         var modificarprecioindividual = document.getElementById("precioIndividual1_producto");
-    
+
         modificarprecioindividual.textContent = Number((arreglo[0] / arreglo[1]).toFixed(2));
         // console.log(modificarlabel.textContent)
 
@@ -252,8 +345,6 @@
         // console.log(modificarlabel.textContent)
 
     }
-
-  
 </script>
 
 </body>

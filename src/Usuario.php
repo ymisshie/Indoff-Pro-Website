@@ -4,7 +4,6 @@ namespace ameri;
 
 class Usuario
 {
-
     private $config;
     private $cn = null;
 
@@ -16,10 +15,11 @@ class Usuario
         $this->cn = new \PDO($this->config['dns'], $this->config['usuario'], $this->config['clave'], array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
         ));
-        // print '<pre>';
-        // print_r($this->config);
+        /*
+        print '<pre>';
+        print_r($this->config);
+        */
     }
-
 
     // public function login($nombre_login, $pwd_usuario_hash)
     // {
@@ -51,11 +51,13 @@ class Usuario
             ":email_user" => $_params['email_user'],
         );
 
-        // Ejecutar la consulta 
-        if ($resultado->execute($_array))
+        // Ejecutar la consulta
+        if ($resultado->execute($_array)) {
             return $resultado->fetch();
+        }
         return false;
     }
+
     public function mismo_nombre_login($_params)
     {
         // Lectura de la ruta de la consulta
@@ -69,9 +71,10 @@ class Usuario
             ":nombre_login" => $_params['nombre_login'],
         );
 
-        // Ejecutar la consulta 
-        if ($resultado->execute($_array))
+        // Ejecutar la consulta
+        if ($resultado->execute($_array)) {
             return $resultado->fetch();
+        }
         return false;
     }
 
@@ -95,42 +98,16 @@ class Usuario
             ":verification_key" => $_params['verification_key'],
         );
 
-        // Ejecutar la consulta 
-        if ($resultado->execute($_array))
+        // Ejecutar la consulta
+        if ($resultado->execute($_array)) {
             return true;
+        }
         return false;
     }
 
     public function login($nombre_login, $pwd_usuario_hash)
     {
-        $pwd = "SELECT pwd_usuario_hash, verificado FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
-        $resultado_pwd = $this->cn->prepare($pwd);
-
-        $_array_pwd = array(
-            ":nombre_login" => $nombre_login,
-        );
-
-        if ($resultado_pwd->execute($_array_pwd)) {
-            $resultado_array = $resultado_pwd->fetch();
-            $password = $resultado_array['pwd_usuario_hash'];
-            if (password_verify($pwd_usuario_hash, $password) && $resultado_array['verificado'] == 1) {
-                // print("A");
-                $sql = "SELECT nombre_login, email_user, nombre_usuario,  apellido_usuario, id, phone_user  FROM  `usuarios` WHERE  `nombre_login`=:nombre_login";
-                $resultado = $this->cn->prepare($sql);
-
-                $_array = array(
-                    ":nombre_login" => $nombre_login,
-                );
-
-                if ($resultado->execute($_array))
-                    return $resultado->fetch();
-
-                return false;
-            }
-            return false;
-        }
     }
-
 
     public function mostrar()
     {
@@ -138,9 +115,26 @@ class Usuario
 
         $resultado = $this->cn->prepare($sql);
 
-        if ($resultado->execute())
+        if ($resultado->execute()) {
             return $resultado->fetchAll();
+        }
 
+        return false;
+    }
+
+    public function mostrarPorId($id)
+    {
+        $sql = "SELECT * FROM `usuarios` WHERE `id` = :id";
+
+        $resultado = $this->cn->prepare($sql);
+
+        $_array = array(
+            ":id" => $id
+        );
+
+        if ($resultado->execute($_array)) {
+            return $resultado->fetch();
+        }
         return false;
     }
 
@@ -154,8 +148,9 @@ class Usuario
         );
 
 
-        if ($resultado_vkey->execute($_array_vkey))
+        if ($resultado_vkey->execute($_array_vkey)) {
             return $resultado_vkey->fetch();
+        }
 
         return false;
     }
@@ -168,8 +163,9 @@ class Usuario
             ":verification_key" => $verification_key,
         );
 
-        if ($resultado_vkey->execute($_array_vkey))
+        if ($resultado_vkey->execute($_array_vkey)) {
             return true;
+        }
 
         return false;
     }

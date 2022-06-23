@@ -1,41 +1,16 @@
-
-
 <?php
 $title = "Inicio Indoff Pro";
-$pagina = "inicio";
-?>
+$pagina = "index";
 
-<?php
-//include header.php file
-include('header.php')
-?>
+//Variables de navegacion
+include('indoffpro/roots.php');
 
-<?php
-/*include categorias*/
-include('Template/_categorias.php')
-/*include categorias*/
-?>
+include('header.php');
 
-<?php
-/*include eventos*/
-//include('Template/_eventos.php')
-/*include eventos*/
-?>
+include('indoffpro/index/index-categorias.php');
 
-<?php
-/*include beneficios*/
-include('Template/_beneficios.php')
-/*include beneficios*/
-?>
+include('indoffpro/index/beneficios.php');
 
-<?php
-/*include clientes*/
-include('Template/_clientes.php')
-/*include clientes*/
-?>
+include('indoffpro/index/clientes.php');
 
-
-<?php
-//include footer.php file
-include('footer.php')
-?>
+include('footer.php');

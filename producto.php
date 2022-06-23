@@ -1,18 +1,11 @@
 <?php
 $title = "Producto";
-$pagina = "productos";
-?>
-
-<?php
+$pagina = "producto";
 
 include('header.php');
 
 include('funciones.php');
 
-include('Template/_producto-hero.php');
+include('Template/Categorias/Productos/hero.php');
 
-include('footer.php')
-
-?>
-
-
+include('footer.php');
