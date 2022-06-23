@@ -19,16 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $resultado = $user->login($user, $password);
 
-        var_dump($resultado);
+        print($resultado);
 
-        die;
         if ($resultado) {
             session_start();
 
             $_SESSION['user_info'] = array(
-                "id" => $resultado['id'],
-                "nombre_usuario" => $resultado['nombre_usuario'],
-                "apellido_usuario" => $resultado['apellido_usuario'],
+                "nombre" => $resultado['nombre_usuario'],
+                "apellido" => $resultado['apellido_usuario'],
                 "nombre_login" => $resultado['nombre_login'],
                 "email_user" => $resultado['email_user'],
                 'estado' => 1
@@ -37,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             //header("Location: login.php?message=success");
             session_start();
-            $_SESSION['message'] = 'Usuario, contraseña incorrecta o la cuenta no ha sido verificada';
-            header("Location: index.php");
+            $_SESSION['message'] = 'Usuario o contraseña incorrecto';
+            header("Location: login.php");
             exit(json_encode(array('estado' => FALSE, 'mensaje' => 'Error al iniciar sesión')));
         }
     }
