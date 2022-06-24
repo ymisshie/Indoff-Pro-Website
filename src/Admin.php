@@ -45,6 +45,7 @@ class Admin
 
                 $_array = array(
                     ":admin_user" => $admin_user,
+
                 );
 
                 if ($resultado->execute($_array))

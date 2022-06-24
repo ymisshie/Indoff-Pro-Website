@@ -473,6 +473,15 @@ tr td {
     background: var(--blue) !important;
 }
 
+
+.form-select {
+    border: solid 2px var(--grey) !important;
+}
+
+.form-select:hover {
+    border-color: var(--purple) !important;
+}
+
 /*# sourceMappingURL=style.css.map */
 
 /*RESPONSIVE*/
@@ -529,6 +538,10 @@ required:after {
 
 .fs-4-5 {
     font-size: 4.5em !important;
+}
+
+.fs-5 {
+    font-size: 5em !important;
 }
 
 /*font weight*/

@@ -53,13 +53,13 @@ session_start();
         }
 
         if ($user_existe > 1) {
-            $id = $_SESSION['user_info']['nombre_login'];
+            $id = $_SESSION['user_info']['username'];
             $carrito = $info_carrito->mostrar();
 
             $cantidad_carrito = 0;
 
             foreach ($carrito as $item_carrito) {
-                if ($item_carrito['usuarios_id'] == $id) {
+                if ($item_carrito['id_usuario'] == $id) {
                     $cantidad_carrito++;
                 }
             }
@@ -193,7 +193,7 @@ session_start();
                     <div class="nav-item dropdown">
                         <a class="p-2 nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
                             <span> <i class="fas fa-user text-white align-self-center me-3"></i>
-                            </span> <?php print $_SESSION['admin_info']['admin_user']; ?>
+                            </span> <?php print $_SESSION['admin_info']['admin_name'] . ' ' . $_SESSION['admin_info']['admin_last_name']; ?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item py-2" href="<?php print $root_logout; ?>"><span><i class="me-2 fas fa-sign-out-alt align-self-center"></i></span>Cerrar sesión</a></li>

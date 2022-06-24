@@ -11,6 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $id = $_POST['id_producto'];
 
+        print_r($_POST);
+        die;
         $info_producto = $producto->mostrarPorId($id);
 
         print '<pre>';

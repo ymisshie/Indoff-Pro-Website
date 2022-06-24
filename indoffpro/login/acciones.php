@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -9,64 +10,64 @@ require '../../vendor/autoload.php';
 $mail = new PHPMailer(true);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     if ($_POST['accion'] === 'login') {
 
-        $user = $_POST['username'];
+        $username = $_POST['username'];
         $password = $_POST['user_password'];
 
         $user = new ameri\Usuario;
+        $result = $user->login($username, $password);
 
-        $resultado = $user->login($user, $password);
+        print '<pre>';
 
-        print($resultado);
-
-        if ($resultado) {
-            session_start();
+        if ($result) {
 
             $_SESSION['user_info'] = array(
-                "nombre" => $resultado['nombre_usuario'],
-                "apellido" => $resultado['apellido_usuario'],
-                "nombre_login" => $resultado['nombre_login'],
-                "email_user" => $resultado['email_user'],
-                'estado' => 1
+                "id" => $result['id'],
+                "username" => $result['username'],
+                "pwd_usuario_hash" => $result['pwd_usuario_hash'],
+                "user_firstname" => $result['user_firstname'],
+                "user_lastname" => $result['user_lastname'],
+                "email_user" => $result['email_user'],
+                "phone_user" => $result['phone_user'],
+                "estado" => 1,
+                "verification_key" => $result['verification_key'],
+                "verificado" => $result['verificado']
             );
-            header('Location: index.php');
+            print $result['verificado'];
+
+            if ($result['verificado'] == '' || empty($result['verificado'])) {
+                $message = 'La cuenta aún no ha sido verificada.';
+                $email = $result['email_user'];
+                $vkey = $result['verification_key'];
+                header("Location: index.php?message=$message&to=$email&vkey=$vkey");
+            } else {
+                header('Location: ../../index.php');
+            }
         } else {
-            //header("Location: login.php?message=success");
-            session_start();
-            $_SESSION['message'] = 'Usuario o contraseña incorrecto';
-            header("Location: login.php");
-            exit(json_encode(array('estado' => FALSE, 'mensaje' => 'Error al iniciar sesión')));
+
+            $message = 'Usuario o contraseña incorrectos';
+            header("Location: index.php?message=$message");
         }
     }
 
     if ($_POST['accion'] === 'Volver a enviar') {
 
-        $usuarios = new ameri\Usuario;
-        $info_usuarios = $usuarios->mostrar();
-
-
         $vkey = $_POST['vkey'];
-        $email_user = $_POST['email_user'];
+        $to = $_POST['to'];
 
-        print $vkey;
         $email_subject = "Indoff Pro | Verificar cuenta";
 
         $email_body = "Gracias por su preferencia, para verificar su correo por favor de click al siguiente link: <a href='http://indoffpro.com/registration-verify.php?vkey=$vkey'> Confirmar Correo </a>";
-
-        $to = $email_user;
-
-
         try {
 
             //Server settings
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'ecngx308.inmotionhosting.com';                     //Set the SMTP server to send through
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'indoffpro@indoffpro.com';                     //SMTP username
-            $mail->Password   = '9!IndoffPro12345';                               //SMTP password
+            $mail->Username   = 'michelle.gastelum@cetys.edu.mx';                     //SMTP username
+            $mail->Password   = 'n5dnin76';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -84,11 +85,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $mail->send();
             echo 'Message has been sent';
-            header("Location: confirmation.php?to=$email_user,$vkey");
+
+            $message = 'Un nuevo mensaje ha sido enviado';
+
+            header("Location: confirmation.php?to=$to&vkey=$vkey&message=$message");
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
-
-        header("Location: confirmation.php?to=$email_user,$vkey");
     }
 }

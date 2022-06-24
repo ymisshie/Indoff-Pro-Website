@@ -19,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password_user = $_POST['password_user'];
         $email_user = $_POST['email_user'];
 
-
         $ip = $_SERVER['REMOTE_ADDR'];
         $captcha = $_POST['g-recaptcha-response'];
         $secretkey = '6Ld_7SEgAAAAAEEdN2TWW9RV6SO0gZXV5pRPfLUB';
@@ -30,10 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         if (!$atributos['success']) {
+
             $_SESSION['message'] = 'Por favor verifique el captcha';
-
             print $_SESSION['message'];
-
             header("Location: index.php");
         } else {
             $pwd_hash = password_hash($password_user, PASSWORD_DEFAULT);
@@ -44,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = new ameri\Usuario;
 
             $_params = array(
-                "nombre_login" => $username,
+                "username" => $username,
                 "pwd_usuario_hash" => $pwd_hash,
-                "nombre_usuario" => $name_user,
-                "apellido_usuario" => $lastname_user,
+                "user_firstname" => $name_user,
+                "user_lastname" => $lastname_user,
                 "email_user" => $email_user,
                 "phone_user" => $phone_user,
                 "estado" => 1,
@@ -63,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $rpt_same_email = $usuario->mismo_email($_params);
             if ($rpt_same_email) {
                 $message_same_email = "El correo ya existe";
-                header("Location: index.php?message=$message");
+                header("Location: index.php?message=$message_same_email");
             }
 
             $rpt = $usuario->registrar($_params);
@@ -72,28 +70,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $email_subject = "Indoff Pro | Verificar cuenta";
 
-                $email_body = "Gracias por su preferencia, para verificar su correo por favor de click al siguiente link: <a href='http://indoffpro.com/registration-verify.php?vkey=$vkey'> Confirmar Correo </a>";
+                $email_body = "Gracias por registrarse con nosotros. Para verificar su correo, por favor de click al siguiente enlace: <a href='http://indoffpro.com/registration-verify.php?vkey=$vkey'> Confirmar Correo </a>";
 
                 $to = $email_user;
 
+                print $email_user;
+
                 try {
-                    //Server settings
                     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
                     $mail->isSMTP();                                            //Send using SMTP
-                    $mail->Host       = 'ecngx308.inmotionhosting.com';                     //Set the SMTP server to send through
+                    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                    $mail->Username   = 'indoffpro@indoffpro.com';                     //SMTP username
-                    $mail->Password   = '9!IndoffPro12345';                               //SMTP password
+                    $mail->Username   = 'michelle.gastelum@cetys.edu.mx';                     //SMTP username
+                    $mail->Password   = 'n5dnin76';                               //SMTP password
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-                    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+                    $mail->Port       = 465;
 
                     //Recipients
                     $mail->setFrom('indoffpro@indoffpro.com', 'Indoff Pro');
-                    $mail->addAddress($to, $name_user);     //Add a recipient
+                    $mail->addAddress($to);     //Add a recipient
                     $mail->addReplyTo('ana.gallegos@indoff.com', 'Contacto Indoff Pro');
                     //$mail->addCC('cc@example.com');
-                    $mail->addBCC('indoffpro@indoff.com');
 
+                    //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
                     $mail->Subject = $email_subject;
                     $mail->Body    = $email_body;
@@ -101,12 +100,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     $mail->send();
                     echo 'Message has been sent';
-                    header("Location: confirmation.php?to=$email_user,$vkey");
+
+                    header("Location: ../login/confirmation.php?to=$email_user&vkey=$vkey");
                 } catch (Exception $e) {
                     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 }
             } else {
-                print 'Error al registrar el usuario';
+                $error = 'Hubo un error en el registro. Por favor inténtelo de nuevo.';
+                header("Location: index.php?message=$error");
             }
         }
     }

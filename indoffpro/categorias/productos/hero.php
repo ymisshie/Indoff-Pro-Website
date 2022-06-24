@@ -148,21 +148,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                 <form class="p-5 col-8 justify-content-between d-flex" method="POST" action="../../carrito/acciones-p.php" enctype="multipart/form-data">
                     <div class="col-md-8 pe-5">
                         <input type="hidden" name="id_producto" value="<?php print $info_producto['id'] ?>">
-                        <input type="hidden" name="nombre_producto" value="<?php print $info_producto['nombre'] ?>">
-                        <input type="hidden" name="descripcion_producto" value="<?php print $info_producto['descripcion'] ?>">
-                        <input type="hidden" name="proveedor_producto" value="<?php print $info_producto['proveedor'] ?>">
-                        <input type="hidden" name="usuario_nombre" value="<?php if ($user_existe > 1) {
-                                                                                print $_SESSION['user_info']['nombre_login'];
-                                                                            } ?>">
-                        <input type="hidden" name="info_usuario" value="<?php if ($user_existe > 1) {
-                                                                            print $_SESSION['user_info']['nombre_usuario'];
-                                                                            print ' ';
-                                                                            print $_SESSION['user_info']['apellido_usuario'];
-                                                                        } ?>">
-                        <input type="hidden" name="id_usuario" value="<?php if ($user_existe > 1) {
-                                                                            print $_SESSION['user_info']['id'];
-                                                                        } ?>">
-
 
                         <h1 class="fw-700 text-red"><?php print $info_producto['nombre'] ?>
                         </h1>
@@ -185,7 +170,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                                 ?>
 
                                 <div class="color col-md-8 col-lg-10  pt-3">
-                                    <select name="color_producto" class="form-control" required>
+                                    <select name="color_producto" class="form-control form-select" required>
                                         <?php
                                         for ($ca = 0; $ca < $count_color; $ca++) {
                                         ?>
@@ -216,7 +201,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
                             <div class="d-flex">
                                 <div class="col-5 pe-5">
-                                    <select class="form-select form-control" id="selectOpciones1_producto" name="selectOpciones1_producto" onchange="cambiarPrecio()" required>
+                                    <select class="form-select form-control" id="cantidad_producto" name="cantidad_producto" onchange="cambiarPrecio()" required>
                                         <option value="">Unidades</option>
                                         <?php $x = 0;
                                         foreach ($separada_precio as $precios_producto) {

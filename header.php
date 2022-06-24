@@ -51,14 +51,16 @@ session_start();
             }
         }
 
+
         if ($user_existe > 1) {
-            $id = $_SESSION['user_info']['nombre_login'];
+
+            $id = $_SESSION['user_info']['id'];
             $carrito = $info_carrito->mostrar();
 
             $cantidad_carrito = 0;
 
             foreach ($carrito as $item_carrito) {
-                if ($item_carrito['usuarios_id'] == $id) {
+                if ($item_carrito['id_usuario'] == $id) {
                     $cantidad_carrito++;
                 }
             }
@@ -182,28 +184,28 @@ session_start();
                     <div class="col-md-5 justify-content-between d-flex">
 
                         <a href="<?php print $root_carrito; ?>">
-                            <div class="nav-item col btn-carrito d-flex align-items-center text-white">
-                                <i class="fa-solid fa-cart-shopping"></i>
-                                <p class="nav-link m-0 text-white">Carrito<span class="ms-3 p-2 rounded-circle color-aqua-bg" id="cantidadCarrito"><?php if ($_SESSION['cantidad_carrito']) {
-                                                                                                                                                        print $_SESSION['cantidad_carrito'];
-                                                                                                                                                    } elseif ($_SESSION['cantidad_carrito'] == 0)
-                                                                                                                                                        print '0';
-                                                                                                                                                    ?></span></p>
+                            <div class="nav-item text-center col d-flex align-items-center text-white">
+                                <p class="nav-link m-0 text-white p-2 px-3"><span> <i class="fa-solid fa-cart-shopping me-3"></i>
+                                    </span> Carrito<span class="ms-3 badge bg-purple p-2" id="cantidadCarrito"><?php if ($_SESSION['cantidad_carrito']) {
+                                                                                                                    print $_SESSION['cantidad_carrito'];
+                                                                                                                } elseif ($_SESSION['cantidad_carrito'] == 0)
+                                                                                                                    print '0';
+                                                                                                                ?></span></p>
                             </div>
                         </a>
 
                         <a href="<?php print $root_cotizaciones; ?>">
                             <div class="col btn-cotizaciones d-flex align-items-center py-0 text-white">
-                                <i class="fas fa-file-invoice"></i>
-                                <p class="nav-link m-0 text-white">Cotizaciones</p>
+                                <p class="nav-link m-0 text-white p-2 px-3"> <span> <i class="fas fa-file-invoice me-3"></i></span>Mis cotizaciones</p>
                             </div>
                         </a>
 
                         <div class="d-flex">
-                            <i class="fas fa-user text-white align-self-center"></i>
                             <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?php print $_SESSION['user_info']['nombre_usuario'] . ' ' . $_SESSION['user_info']['apellido_usuario']; ?>
+                                <a class="nav-link dropdown-toggle text-white p-2 px-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span> <i class="fas fa-user text-white align-self-center me-3"></i>
+                                    </span>
+                                    <?php print $_SESSION['user_info']['user_firstname'] . ' ' . $_SESSION['user_info']['user_lastname']; ?>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item py-2" href="<?php print $root_logout; ?>"><span><i class="me-2 fas fa-sign-out-alt align-self-center"></i></span>Cerrar sesión</a></li>
@@ -223,18 +225,18 @@ session_start();
 
                         <a href="<?php print $root_dashboard; ?>">
 
-                            <p class="nav-link m-0 text-white p-2"> <i class="fas fa-columns text-white me-3"></i>Admin Dashboard</p>
+                            <p class="nav-link m-0 text-white p-2 px-3"> <i class="fas fa-arrow-left text-white me-3"></i>Admin Dashboard</p>
 
                         </a>
 
                         <div class="d-flex">
 
                             <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-white p-2" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span> <i class="fas fa-user text-white align-self-center me-3"></i></span> <?php print $_SESSION['admin_info']['admin_user']; ?>
+                                <a class="nav-link dropdown-toggle text-white p-2 px-3" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span> <i class="fas fa-user text-white align-self-center me-3"></i></span> <?php print $_SESSION['admin_info']['admin_name'] . ' ' . $_SESSION['admin_info']['admin_last_name']; ?>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li><a class="dropdown-item py-2" href="<?php print $root_logout; ?>"><span><i class="me-2 fas fa-sign-out-alt align-self-center"></i></span>Cerrar sesión</a></li>
+                                    <li><a class="dropdown-item py-2" href="<?php print $root_logout_dashboard; ?>"><span><i class="me-2 fas fa-sign-out-alt align-self-center"></i></span>Cerrar sesión</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -19,7 +19,7 @@ if ($_SESSION) {
         }
     }
     if ($user_existe > 1) {
-        $id = $_SESSION['user_info']['nombre_login'];
+        $id = $_SESSION['user_info']['username'];
     }
 }
 ?>

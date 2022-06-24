@@ -262,7 +262,7 @@ if (!isset($_SESSION['admin_info']) or empty($_SESSION['admin_info'])) {
 
             <div class="form-card rounded p-5 my-4">
                 <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-folder-open fs-2 me-3 text-muted"></i>
+                    <i class="fa-solid fa-folder-open fs-2 me-3 pb-2"></i>
                     <p class="m-0">Actualmente no hay categorias registradas.</p>
                 </div>
                 <a class="btn btn-primary mt-3" href="form-registrar.php?id=<?php print $id; ?>&categoria=<?php print $info_categoria['nombre']; ?>" role="button">Agregar nuevo<i class="fas fa-plus ms-2"></i></a>

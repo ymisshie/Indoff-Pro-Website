@@ -12,7 +12,6 @@ require $root_vendor;
 // print_r($_SESSION);
 
 
-/*
 if (isset($_SESSION)) {
     if (isset($_SESSION['admin_info'])) {
         if ($_SESSION['admin_info']) {
@@ -27,9 +26,11 @@ if (isset($_SESSION)) {
         }
     }
 }
-*/
 
-
+if (isset($_GET['to']) && isset($_GET['vkey'])) {
+    $to = $_GET['to'];
+    $vkey = $_GET['vkey'];
+}
 ?>
 
 <section>
@@ -59,8 +60,17 @@ if (isset($_SESSION)) {
                                 ?>
                                     <div class="alert alert-danger alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
                                         <?php
-                                        print($_GET['message']);
-                                        unset($_GET['message']); ?>
+                                        if ($_GET['message'] == 'La cuenta aún no ha sido verificada.') {
+                                        ?>
+                                            <a class="btn btn-link p-0 text-white fw-500" href="confirmation.php?to=<?php print $to . '&vkey=' . $vkey; ?>"><?php print($_GET['message']); ?></a>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <p class="text-white fw-500 m-0"><?php print($_GET['message']); ?></p>
+
+                                        <?php   }
+                                        unset($_GET['message']);
+                                        ?>
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
 

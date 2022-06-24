@@ -15,7 +15,7 @@ require $root_vendor;
             <div class="col-5 px-5 align-self-center">
                 <h1 class="fw-700 text-red">Contáctanos</h1>
 
-                <p class="py-4">¿Tiene alguna pregunta? Nos gustaria saber sobre usted. Para cualquier situación puede contactarnos por los siguientes medios.</p>
+                <p class="py-4 fw-600">¿Tiene alguna pregunta? Nos gustaria saber sobre usted. Para cualquier situación puede contactarnos por los siguientes medios.</p>
 
                 <div class="col-3 justify-content-between d-flex">
                     <a href="https://www.facebook.com/indoffpro"><i class="fa-brands fa-facebook-square text-red fs-2-5"></i></a>
@@ -42,7 +42,7 @@ require $root_vendor;
                         </div>
                     </div>
 
-                    <div class="col-6 card p-3 bg-light">
+                    <div class="col-6 card p-3">
                         <div class="card-body">
                             <div class="col-2 bg-aqua text-center card-icon">
                                 <i class="fa-solid fa-user-tie fs-1-5 text-purple p-2 py-3"></i>
@@ -61,7 +61,7 @@ require $root_vendor;
                     </div>
                 </div>
 
-                <div class="mt-4 col-12 card bg-light p-3">
+                <div class="mt-4 col-12 card p-3">
                     <div class="card-body">
                         <div class="col-1 bg-aqua text-center card-icon">
                             <i class="fa-solid fa-location-dot fs-1-5 text-purple p-2 py-3"></i>

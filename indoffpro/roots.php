@@ -22,6 +22,32 @@ if ($pagina == 'index') {
     $root_cotizaciones = 'indoffpro/cotizaciones/index.php';
     $root_dashboard = 'panel/dashboard.php';
     $root_productos_kits = 'indoffpro/categorias/productos/index.php';
+    $root_logout_dashboard = 'panel/cerrar-sesion.php';
+}
+
+if ($pagina == 'admin-login') {
+    $root_logo = '../assets/logo.png';
+    $root_functions = '../database/functions.php';
+    $root_index = '../../index.php';
+    $root_styles = '<link rel="stylesheet" href="../style.css">';
+    $root_categorias = 'indoffpro/categorias/productos/index.php';
+    $root_eventos = '../indoffpro/eventos/index.php';
+    $root_productos_eventos = '../indoffpro/eventos/productos-eventos/index.php';
+    $root_carrito = '../indoffpro/carrito/index.php';
+    $root_login = '../indoffpro/login/index.php';
+    $root_logout = '../cerrar-sesion.php';
+    $root_vendor = '../vendor/autoload.php';
+    $root_blog = '../indoffpro/blog/index.php';
+    $root_contacto = '../indoffpro/contacto/index.php';
+    $root_nosotros = '../indoffpro/nosotros/index.php';
+    $root_upload_categorias = '../upload/Categorias/';
+    $root_upload_productos = '../upload/Productos/';
+    $root_upload_kits = '../upload/Kits/';
+    $root_register = '../indoffpro/registro/index.php';
+    $root_cotizaciones = '../indoffpro/cotizaciones/index.php';
+    $root_dashboard = 'dashboard.php';
+    $root_productos_kits = '../indoffpro/categorias/productos/index.php';
+    $root_logout_dashboard = 'cerrar-sesion.php';
 }
 
 if ($pagina == 'productos') {
@@ -46,6 +72,7 @@ if ($pagina == 'productos') {
     $root_cotizaciones = '../../cotizaciones/index.php';
     $root_dashboard = '../../../panel/dashboard.php';
     $root_productos_kits = 'index.php';
+    $root_logout_dashboard = '../../../panel/cerrar-sesion.php';
 }
 
 if ($pagina == 'producto') {
@@ -71,6 +98,7 @@ if ($pagina == 'producto') {
     $root_register = '../../registro/index.php';
     $root_cotizaciones = '../../cotizaciones/index.php';
     $root_dashboard = '../../../panel/dashboard.php';
+    $root_logout_dashboard = '../../../panel/cerrar-sesion.php';
 }
 
 if ($pagina == 'eventos') {
@@ -94,7 +122,8 @@ if ($pagina == 'eventos') {
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
     $root_cotizaciones = '../cotizaciones/index.php';
-    $root_dashboard = '../../panel/index.php';
+    $root_dashboard = '../../panel/dashboard.php';
+    $root_logout_dashboard = '../../panel/cerrar-sesion.php';
 }
 
 if ($pagina == 'productos-eventos') {
@@ -120,7 +149,8 @@ if ($pagina == 'productos-eventos') {
     $root_upload_eventos = '../../../upload/Eventos/';
     $root_register = '../../registro/index.php';
     $root_cotizaciones = '../../cotizaciones/index.php';
-    $root_dashboard = '../../../panel/index.php';
+    $root_dashboard = '../../../panel/dashboard.php';
+    $root_logout_dashboard = '../../../panel/cerrar-sesion.php';
 }
 
 if ($pagina == 'producto-evento') {
@@ -146,33 +176,8 @@ if ($pagina == 'producto-evento') {
     $root_upload_eventos = '../../../upload/Eventos/';
     $root_register = '../../registro/index.php';
     $root_cotizaciones = '../../cotizaciones/index.php';
-    $root_dashboard = '../../../panel/index.php';
-}
-
-if ($pagina == 'blog') {
-    $root_logo = '../../assets/logo.png';
-    $root_functions = '../../database/functions.php';
-    $root_index = '../../index.php';
-    $root_styles = '<link rel="stylesheet" href="../../style.css">';
-    $root_productos = 'hero.php';
-    $root_categorias = '../categorias/productos/index.php';
-    $root_eventos = '../eventos/index.php';
-    $root_productos_eventos = '../eventos/productos-eventos/index.php';
-    $root_productos_eventos_hero = 'hero.php';
-    $root_carrito = '../carrito/index.php';
-    $root_login = '../login/index.php';
-    $root_logout = '../../cerrar-sesion.php';
-    $root_vendor = '../../vendor/autoload.php';
-    $root_blog = 'index.php';
-    $root_contacto = '../contacto/index.php';
-    $root_nosotros = '../nosotros/index.php';
-    $root_upload_categorias = '../../upload/Categorias/';
-    $root_upload_productos = '../../upload/Productos/';
-    $root_upload_productos_eventos = '../../upload/Productos/';
-    $root_upload_eventos = '../../upload/Eventos/';
-    $root_register = '../registro/index.php';
-    $root_cotizaciones = '../cotizaciones/index.php';
-    $root_dashboard = '../../panel/index.php';
+    $root_dashboard = '../../../panel/dashboard.php';
+    $root_logout_dashboard = '../../../panel/cerrar-sesion.php';
 }
 
 if ($pagina == 'carrito') {
@@ -198,7 +203,6 @@ if ($pagina == 'carrito') {
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
     $root_cotizaciones = '../cotizaciones/index.php';
-    $root_dashboard = '../../panel/index.php';
 }
 
 if ($pagina == 'contacto') {
@@ -224,7 +228,8 @@ if ($pagina == 'contacto') {
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
     $root_cotizaciones = '../cotizaciones/index.php';
-    $root_dashboard = '../../panel/index.php';
+    $root_dashboard = '../../panel/dashboard.php';
+    $root_logout_dashboard = '../../panel/cerrar-sesion.php';
 }
 
 if ($pagina == 'nosotros') {
@@ -249,7 +254,8 @@ if ($pagina == 'nosotros') {
     $root_upload_productos_eventos = '../../upload/Productos/';
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
-    $root_dashboard = '../../panel/index.php';
+    $root_dashboard = '../../panel/dashboard.php';
+    $root_logout_dashboard = '../../panel/cerrar-sesion.php';
 }
 
 if ($pagina == 'login') {
@@ -274,7 +280,6 @@ if ($pagina == 'login') {
     $root_upload_productos_eventos = '../../upload/Productos/';
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
-    $root_dashboard = '../../panel/index.php';
 }
 
 if ($pagina == 'registro') {
@@ -299,7 +304,6 @@ if ($pagina == 'registro') {
     $root_upload_productos_eventos = '../../upload/Productos/';
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
-    $root_dashboard = '../../panel/index.php';
 }
 
 if ($pagina == 'cotizaciones') {
@@ -324,7 +328,6 @@ if ($pagina == 'cotizaciones') {
     $root_upload_productos_eventos = '../../upload/Productos/';
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
-    $root_dashboard = '../../panel/index.php';
 }
 
 if ($pagina == 'cotizacion') {
@@ -349,7 +352,6 @@ if ($pagina == 'cotizacion') {
     $root_upload_productos_eventos = '../../upload/Productos/';
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
-    $root_dashboard = '../../panel/index.php';
 }
 
 if ($pagina == 'confirmation-user') {
@@ -374,5 +376,4 @@ if ($pagina == 'confirmation-user') {
     $root_upload_productos_eventos = '../../upload/Productos/';
     $root_upload_eventos = '../../upload/Eventos/';
     $root_register = '../registro/index.php';
-    $root_dashboard = '../../panel/index.php';
 }

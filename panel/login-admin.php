@@ -35,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result) {
         $_SESSION['admin_info'] = array(
             "admin_user" => $result['admin_user'],
+            "admin_name" => $result['admin_name'],
+            "admin_last_name" => $result['admin_last_name'],
             'estado' => 1
         );
 
@@ -46,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $_SESSION['message'] = 'Usuario o contraseña incorrectos';
 
-        header("Location: index.php?admin_user=$admin_user&admin_password=$admin_password&message=si");
+        header("Location: index.php?admin_user=$admin_user&admin_password=$admin_password&message=$message");
         // exit(json_encode(array('estado' => false, 'mensaje' => 'Error al iniciar sesión')));
     }
 

@@ -3,18 +3,28 @@
 //Admin Login
 if ($page_name == 'admin-login') {
     $root_header = '../header.php';
-    $root_script = '../script.js';
     $root_logo = '../assets/logo.png';
     $root_functions = '../database/functions.php';
     $root_index = '../index.php';
     $root_styles = '<link rel="stylesheet" href="../style.css">';
-    $root_categorias = 'indoffpro/categorias/productos/index.php';
-    $root_eventos = 'indoffpro/eventos/index.php';
-    $root_productos_eventos = 'indoffpro/eventos/productos-eventos/index.php';
-    $root_carrito = 'indoffpro/carrito/index.php';
-    $root_login = 'indoffpro/login/index.php';
-    $root_logout = 'cerrar-sesion.php';
+    $root_categorias = '../indoffpro/categorias/productos/index.php';
+    $root_eventos = '../indoffpro/eventos/index.php';
+    $root_productos_eventos = '../indoffpro/eventos/productos-eventos/index.php';
+    $root_carrito = '../indoffpro/carrito/index.php';
+    $root_login = '../indoffpro/login/index.php';
+    $root_logout = '../cerrar-sesion.php';
     $root_vendor = '../vendor/autoload.php';
+    $root_blog = '../indoffpro/blog/index.php';
+    $root_contacto = '../indoffpro/contacto/index.php';
+    $root_nosotros = '../indoffpro/nosotros/index.php';
+    $root_upload_categorias = '../upload/Categorias/';
+    $root_upload_productos = '../upload/Productos/';
+    $root_upload_kits = '../upload/Kits/';
+    $root_register = '../indoffpro/registro/index.php';
+    $root_cotizaciones = '../indoffpro/cotizaciones/index.php';
+    $root_dashboard = 'dashboard.php';
+    $root_productos_kits = '../indoffpro/categorias/productos/index.php';
+    $root_logout_dashboard = 'cerrar-sesion.php';
 }
 
 //Dashboard

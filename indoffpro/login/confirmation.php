@@ -6,33 +6,69 @@ include('../roots.php');
 include('../../header.php');
 
 
-if (isset($_GET['to'])) {
-
-    $cadena = $_GET['to'];
-    $separador = ",";
-    $separada = explode($separador, $cadena);
-
-    $to = $separada[0];
-    $vkey = $separada[1];
+if (isset($_GET['to']) && isset($_GET['vkey'])) {
+    $to = $_GET['to'];
+    $vkey = $_GET['vkey'];
 }
 ?>
 
-<section class="">
-    <form class="px-5 text-center" action="../login/login-validation.php" method="post">
-        <h2 class="fw-700 pt-5 pb-3 col-8 mx-auto ">Se ha enviado un correo de confirmación</h2>
-        <h6>Por favor confirme su cuenta entrando al link enviado por correo para comenzar utilizarla. Gracias.</h6>
+<section>
+    <div class="container-fluid">
+        <form class="" action="acciones.php" method="post">
+            <div class="row">
+                <div class="col-6 bg-red">
+                </div>
+                <div class="col-6">
+                    <div class="col-9 mx-auto p-5">
+                        <div class="col-2 card-icon">
+                            <i class="bg-purple fa-solid fa-envelope-open-text fs-2 text-white p-3 card-icon"></i>
+                        </div>
 
-        <i class="fas fa-envelope-open-text color-purple display-1 mt-4"></i>
+                        <?php
+                        if (isset($_GET['message'])) {
+                        ?>
+                            <h1 class="py-4 fw-700 text-red m-0">Mensaje enviado</h1>
 
-        <div class="d-flex col-5 mx-auto">
+                            <!--Alert-->
+                            <div class="row pb-3">
+                                <div class="col">
 
-            <input type="hidden" name="email_user" value="<?php echo $to; ?>">
-            <input type="hidden" name="vkey" value="<?php echo $vkey; ?>">
-            <a href="<?php echo $root_login; ?>" class="btn btn-primary my-5 py-2 me-4 text-center w-75">Login</a>
-            <button type="submit" class="btn btn-secondary my-5 py-2 text-center w-50" name="accion" value="Volver a enviar"> Enviar de nuevo </button>
-        </div>
-    </form>
+                                    <div class="col-12 alert alert-danger mx-auto alert-dismissible fade show" id="liveAlertPlaceholder" role="alert">
 
+                                        <?php
+                                        print($_GET['message']);
+                                        unset($_GET['message']);
+
+                                        ?>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        <?php
+                        } else {
+                        ?>
+                            <h1 class="py-4 fw-700 text-red m-0">Registro exitoso</h1>
+
+                        <?php
+                        }
+                        ?>
+                        <h5 class="fw-600">Ha recibido un mensaje de verificación en su correo. Para comenzar a utilizar su cuenta, por favor confirme el enlace en el correo enviado.</h5>
+                        <h5 class="py-3 fw-600">¡Gracias!</h5>
+
+                        <input type="hidden" value="<?php print $to; ?>" name="to">
+                        <input type="hidden" value="<?php print $vkey; ?>" name="vkey">
+
+                        <button type="submit" class="btn btn-secondary text-center w-50" name="accion" value="Volver a enviar">Volver a enviar</button>
+                        <a href="<?php echo $root_login; ?>" class="btn btn-primary ms-3">Iniciar sesión</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
 </section>
 
 

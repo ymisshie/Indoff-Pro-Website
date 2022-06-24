@@ -1,11 +1,9 @@
 <?php
 
-// print '<pre>';
-// print_r($_GET);
 if (isset($_GET['vkey'])) {
 
     $verification_key = $_GET['vkey'];
-    require 'vendor/autoload.php';
+    require $root_vendor;
 
     $usuario = new ameri\Usuario;
 
@@ -16,9 +14,8 @@ if (isset($_GET['vkey'])) {
         $verificado_resp = $usuario->updateVerificado($verification_key);
         if ($verificado_resp) {
             $mensaje = "Su cuenta ha sido verificada con éxito.";
-            $mensaje1="Puede cerrar esta página y volver a Indoff Pro";
+            $mensaje1 = "Puede cerrar esta página y volver a Indoff Pro";
             $icono = "fas fa-badge-check";
-
         }
     } else {
         $mensaje = "Enlace inválido o la cuenta ya ha sido verificada.";
